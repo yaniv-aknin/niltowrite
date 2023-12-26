@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="max-image-preview:large">
+<title>Python&#8217;s Innards: Naming &#8211; NIL: .to write(1) ~ help:about</title>
+<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Python&#8217;s Innards: Naming Comments Feed" href="/2010/06/05/pythons-innards-naming/feed/">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.2"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🫱🏻‍🫲🏿","🫱🏻​🫲🏿")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style id="wp-block-site-logo-inline-css">.wp-block-site-logo{box-sizing:border-box;line-height:0}.wp-block-site-logo a{display:inline-block;line-height:0}.wp-block-site-logo.is-default-size img{height:auto;width:120px}.wp-block-site-logo img{height:auto;max-width:100%}.wp-block-site-logo a,.wp-block-site-logo img{border-radius:inherit}.wp-block-site-logo.aligncenter{margin-left:auto;margin-right:auto;text-align:center}.wp-block-site-logo.is-style-rounded{border-radius:9999px}</style>
+<style id="wp-block-site-title-inline-css">.wp-block-site-title a{color:inherit}
+.wp-block-site-title{font-family: var(--wp--preset--font-family--body);font-size: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.542), 1.2rem);font-style: normal;font-weight: 600;}
+.wp-block-site-title a:where(:not(.wp-element-button)){text-decoration: none;}
+.wp-block-site-title a:where(:not(.wp-element-button)):hover{text-decoration: none;}</style>
+<style id="wp-block-group-inline-css">.wp-block-group{box-sizing:border-box}</style>
+<style id="wp-block-page-list-inline-css">.wp-block-navigation .wp-block-page-list{align-items:var(--navigation-layout-align,initial);background-color:inherit;display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation .wp-block-navigation-item{background-color:inherit}</style>
+<link rel="stylesheet" id="wp-block-navigation-css" href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" media="all">
+<style id="wp-block-navigation-inline-css">.wp-block-navigation{font-weight: 500;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;text-decoration: none;}
+.wp-block-navigation a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
+<style id="wp-block-post-featured-image-inline-css">.wp-block-post-featured-image{margin-left:0;margin-right:0}.wp-block-post-featured-image a{display:block;height:100%}.wp-block-post-featured-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom;width:100%}.wp-block-post-featured-image.alignfull img,.wp-block-post-featured-image.alignwide img{width:100%}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim{background-color:#000;inset:0;position:absolute}.wp-block-post-featured-image{position:relative}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-gradient{background-color:transparent}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-0{opacity:0}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-10{opacity:.1}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-20{opacity:.2}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-30{opacity:.3}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-40{opacity:.4}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-50{opacity:.5}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-60{opacity:.6}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-70{opacity:.7}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-80{opacity:.8}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-90{opacity:.9}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-100{opacity:1}.wp-block-post-featured-image:where(.alignleft,.alignright){width:100%}
+.wp-block-post-featured-image img, .wp-block-post-featured-image .block-editor-media-placeholder, .wp-block-post-featured-image .wp-block-post-featured-image__overlay{border-radius: var(--wp--preset--spacing--20);}</style>
+<style id="wp-block-post-title-inline-css">.wp-block-post-title{box-sizing:border-box;word-break:break-word}.wp-block-post-title a{display:inline-block}
+.wp-block-post-title a:where(:not(.wp-element-button)){text-decoration: none;}
+.wp-block-post-title a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
+<style id="wp-block-post-date-inline-css">.wp-block-post-date{box-sizing:border-box}
+.wp-block-post-date{color: var(--wp--preset--color--contrast-2);font-size: var(--wp--preset--font-size--small);}
+.wp-block-post-date a:where(:not(.wp-element-button)){color: var(--wp--preset--color--contrast-2);text-decoration: none;}
+.wp-block-post-date a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
+<style id="wp-block-paragraph-inline-css">.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}p.has-background{padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}</style>
+<style id="wp-block-post-author-name-inline-css">.wp-block-post-author-name{font-size: var(--wp--preset--font-size--small);}
+.wp-block-post-author-name a:where(:not(.wp-element-button)){text-decoration: none;}
+.wp-block-post-author-name a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
+<style id="wp-block-post-terms-inline-css">.wp-block-post-terms{box-sizing:border-box}.wp-block-post-terms .wp-block-post-terms__separator{white-space:pre-wrap}
+
+				.is-style-pill a,
+				.is-style-pill span:not([class], [data-rich-text-placeholder]) {
+					display: inline-block;
+					background-color: var(--wp--preset--color--base-2);
+					padding: 0.375rem 0.875rem;
+					border-radius: var(--wp--preset--spacing--20);
+				}
+
+				.is-style-pill a:hover {
+					background-color: var(--wp--preset--color--contrast-3);
+				}
+.wp-block-post-terms{font-size: var(--wp--preset--font-size--small);}
+.wp-block-post-terms a:where(:not(.wp-element-button)){text-decoration: none;}
+.wp-block-post-terms a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
+<style id="wp-block-spacer-inline-css">.wp-block-spacer{clear:both}</style>
+<style id="wp-block-separator-inline-css">@charset "UTF-8";.wp-block-separator{border:1px solid;border-left:none;border-right:none}.wp-block-separator.is-style-dots{background:none!important;border:none;height:auto;line-height:1;text-align:center}.wp-block-separator.is-style-dots:before{color:currentColor;content:"···";font-family:serif;font-size:1.5em;letter-spacing:2em;padding-left:2em}
+.wp-block-separator{border-color: currentColor;border-width: 0 0 1px 0;border-style: solid;color: var(--wp--preset--color--contrast);}</style>
+<style id="wp-block-heading-inline-css">h1.has-background,h2.has-background,h3.has-background,h4.has-background,h5.has-background,h6.has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+
+				.is-style-asterisk:before {
+					content: '';
+					width: 1.5rem;
+					height: 3rem;
+					background: var(--wp--preset--color--contrast-2, currentColor);
+					clip-path: path('M11.93.684v8.039l5.633-5.633 1.216 1.23-5.66 5.66h8.04v1.737H13.2l5.701 5.701-1.23 1.23-5.742-5.742V21h-1.737v-8.094l-5.77 5.77-1.23-1.217 5.743-5.742H.842V9.98h8.162l-5.701-5.7 1.23-1.231 5.66 5.66V.684h1.737Z');
+					display: block;
+				}
+
+				/* Hide the asterisk if the heading has no content, to avoid using empty headings to display the asterisk only, which is an A11Y issue */
+				.is-style-asterisk:empty:before {
+					content: none;
+				}
+
+				.is-style-asterisk:-moz-only-whitespace:before {
+					content: none;
+				}
+
+				.is-style-asterisk.has-text-align-center:before {
+					margin: 0 auto;
+				}
+
+				.is-style-asterisk.has-text-align-right:before {
+					margin-left: auto;
+				}
+
+				.rtl .is-style-asterisk.has-text-align-left:before {
+					margin-right: auto;
+				}</style>
+<style id="wp-block-avatar-inline-css">.wp-block-avatar{line-height:0}.wp-block-avatar,.wp-block-avatar img{box-sizing:border-box}.wp-block-avatar.aligncenter{text-align:center}
+.wp-block-avatar img{border-radius: 90px;}</style>
+<style id="wp-block-comment-author-name-inline-css">.wp-block-comment-author-name{color: var(--wp--preset--color--contrast);font-size: var(--wp--preset--font-size--small);font-style: normal;font-weight: 600;}
+.wp-block-comment-author-name a:where(:not(.wp-element-button)){color: var(--wp--preset--color--contrast);text-decoration: none;}
+.wp-block-comment-author-name a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
+<style id="wp-block-comment-date-inline-css">.wp-block-comment-date{color: var(--wp--preset--color--contrast-2);font-size: var(--wp--preset--font-size--small);margin-top: 0px;margin-bottom: 0px;}
+.wp-block-comment-date a:where(:not(.wp-element-button)){color: var(--wp--preset--color--contrast-2);text-decoration: none;}
+.wp-block-comment-date a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
+<style id="wp-block-comment-content-inline-css">.comment-awaiting-moderation{display:block;font-size:.875em;line-height:1.5}
+.wp-block-comment-content{font-size: var(--wp--preset--font-size--small);margin-top: var(--wp--preset--spacing--20);margin-bottom: var(--wp--preset--spacing--20);}</style>
+<style id="wp-block-comment-edit-link-inline-css">.wp-block-comment-edit-link{font-size: var(--wp--preset--font-size--small);}
+.wp-block-comment-edit-link a:where(:not(.wp-element-button)){color: var(--wp--preset--color--contrast-2);text-decoration: none;}
+.wp-block-comment-edit-link a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
+<style id="wp-block-comment-reply-link-inline-css">.wp-block-comment-reply-link{font-size: var(--wp--preset--font-size--small);}
+.wp-block-comment-reply-link a:where(:not(.wp-element-button)){color: var(--wp--preset--color--contrast-2);text-decoration: none;}
+.wp-block-comment-reply-link a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
+<style id="wp-block-comment-template-inline-css">.wp-block-comment-template{box-sizing:border-box;list-style:none;margin-bottom:0;max-width:100%;padding:0}.wp-block-comment-template li{clear:both}.wp-block-comment-template ol{list-style:none;margin-bottom:0;max-width:100%;padding-left:2rem}.wp-block-comment-template.alignleft{float:left}.wp-block-comment-template.aligncenter{margin-left:auto;margin-right:auto;width:-moz-fit-content;width:fit-content}.wp-block-comment-template.alignright{float:right}</style>
+<style id="wp-block-comments-pagination-previous-inline-css">.wp-block-comments-pagination-previous{font-size: var(--wp--preset--font-size--small);}</style>
+<style id="wp-block-comments-pagination-next-inline-css">.wp-block-comments-pagination-next{font-size: var(--wp--preset--font-size--small);}</style>
+<style id="wp-block-comments-pagination-inline-css">.wp-block-comments-pagination>.wp-block-comments-pagination-next,.wp-block-comments-pagination>.wp-block-comments-pagination-numbers,.wp-block-comments-pagination>.wp-block-comments-pagination-previous{margin-bottom:.5em;margin-right:.5em}.wp-block-comments-pagination>.wp-block-comments-pagination-next:last-child,.wp-block-comments-pagination>.wp-block-comments-pagination-numbers:last-child,.wp-block-comments-pagination>.wp-block-comments-pagination-previous:last-child{margin-right:0}.wp-block-comments-pagination .wp-block-comments-pagination-previous-arrow{display:inline-block;margin-right:1ch}.wp-block-comments-pagination .wp-block-comments-pagination-previous-arrow:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-comments-pagination .wp-block-comments-pagination-next-arrow{display:inline-block;margin-left:1ch}.wp-block-comments-pagination .wp-block-comments-pagination-next-arrow:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-comments-pagination.aligncenter{justify-content:center}
+.wp-block-comments-pagination{font-size: var(--wp--preset--font-size--small);}</style>
+<style id="wp-block-post-comments-form-inline-css">.wp-block-post-comments-form{box-sizing:border-box}.wp-block-post-comments-form[style*=font-weight] :where(.comment-reply-title){font-weight:inherit}.wp-block-post-comments-form[style*=font-family] :where(.comment-reply-title){font-family:inherit}.wp-block-post-comments-form[class*=-font-size] :where(.comment-reply-title),.wp-block-post-comments-form[style*=font-size] :where(.comment-reply-title){font-size:inherit}.wp-block-post-comments-form[style*=line-height] :where(.comment-reply-title){line-height:inherit}.wp-block-post-comments-form[style*=font-style] :where(.comment-reply-title){font-style:inherit}.wp-block-post-comments-form[style*=letter-spacing] :where(.comment-reply-title){letter-spacing:inherit}.wp-block-post-comments-form input[type=submit]{box-shadow:none;cursor:pointer;display:inline-block;overflow-wrap:break-word;text-align:center}.wp-block-post-comments-form input:not([type=submit]),.wp-block-post-comments-form textarea{border:1px solid #949494;font-family:inherit;font-size:1em}.wp-block-post-comments-form input:not([type=submit]):not([type=checkbox]),.wp-block-post-comments-form textarea{padding:calc(.667em + 2px)}.wp-block-post-comments-form .comment-form input:not([type=submit]):not([type=checkbox]):not([type=hidden]),.wp-block-post-comments-form .comment-form textarea{box-sizing:border-box;display:block;width:100%}.wp-block-post-comments-form .comment-form-author label,.wp-block-post-comments-form .comment-form-email label,.wp-block-post-comments-form .comment-form-url label{display:block;margin-bottom:.25em}.wp-block-post-comments-form .comment-form-cookies-consent{display:flex;gap:.25em}.wp-block-post-comments-form .comment-form-cookies-consent #wp-comment-cookies-consent{margin-top:.35em}.wp-block-post-comments-form .comment-reply-title{margin-bottom:0}.wp-block-post-comments-form .comment-reply-title :where(small){font-size:var(--wp--preset--font-size--medium,smaller);margin-left:.5em}</style>
+<style id="wp-block-buttons-inline-css">.wp-block-buttons.is-vertical{flex-direction:column}.wp-block-buttons.is-vertical>.wp-block-button:last-child{margin-bottom:0}.wp-block-buttons>.wp-block-button{display:inline-block;margin:0}.wp-block-buttons.is-content-justification-left{justify-content:flex-start}.wp-block-buttons.is-content-justification-left.is-vertical{align-items:flex-start}.wp-block-buttons.is-content-justification-center{justify-content:center}.wp-block-buttons.is-content-justification-center.is-vertical{align-items:center}.wp-block-buttons.is-content-justification-right{justify-content:flex-end}.wp-block-buttons.is-content-justification-right.is-vertical{align-items:flex-end}.wp-block-buttons.is-content-justification-space-between{justify-content:space-between}.wp-block-buttons.aligncenter{text-align:center}.wp-block-buttons:not(.is-content-justification-space-between,.is-content-justification-right,.is-content-justification-left,.is-content-justification-center) .wp-block-button.aligncenter{margin-left:auto;margin-right:auto;width:100%}.wp-block-buttons[style*=text-decoration] .wp-block-button,.wp-block-buttons[style*=text-decoration] .wp-block-button__link{text-decoration:inherit}.wp-block-buttons.has-custom-font-size .wp-block-button__link{font-size:inherit}.wp-block-button.aligncenter{text-align:center}
+.wp-block-buttons-is-layout-flow > :first-child:first-child{margin-block-start: 0;}.wp-block-buttons-is-layout-flow > :last-child:last-child{margin-block-end: 0;}.wp-block-buttons-is-layout-flow > *{margin-block-start: 0.7rem;margin-block-end: 0;}.wp-block-buttons-is-layout-constrained > :first-child:first-child{margin-block-start: 0;}.wp-block-buttons-is-layout-constrained > :last-child:last-child{margin-block-end: 0;}.wp-block-buttons-is-layout-constrained > *{margin-block-start: 0.7rem;margin-block-end: 0;}.wp-block-buttons-is-layout-flex{gap: 0.7rem;}.wp-block-buttons-is-layout-grid{gap: 0.7rem;}</style>
+<style id="wp-block-button-inline-css">.wp-block-button__link{box-sizing:border-box;cursor:pointer;display:inline-block;text-align:center;word-break:break-word}.wp-block-button__link.aligncenter{text-align:center}.wp-block-button__link.alignright{text-align:right}:where(.wp-block-button__link){border-radius:9999px;box-shadow:none;padding:calc(.667em + 2px) calc(1.333em + 2px);text-decoration:none}.wp-block-button[style*=text-decoration] .wp-block-button__link{text-decoration:inherit}.wp-block-buttons>.wp-block-button.has-custom-width{max-width:none}.wp-block-buttons>.wp-block-button.has-custom-width .wp-block-button__link{width:100%}.wp-block-buttons>.wp-block-button.has-custom-font-size .wp-block-button__link{font-size:inherit}.wp-block-buttons>.wp-block-button.wp-block-button__width-25{width:calc(25% - var(--wp--style--block-gap, .5em)*.75)}.wp-block-buttons>.wp-block-button.wp-block-button__width-50{width:calc(50% - var(--wp--style--block-gap, .5em)*.5)}.wp-block-buttons>.wp-block-button.wp-block-button__width-75{width:calc(75% - var(--wp--style--block-gap, .5em)*.25)}.wp-block-buttons>.wp-block-button.wp-block-button__width-100{flex-basis:100%;width:100%}.wp-block-buttons.is-vertical>.wp-block-button.wp-block-button__width-25{width:25%}.wp-block-buttons.is-vertical>.wp-block-button.wp-block-button__width-50{width:50%}.wp-block-buttons.is-vertical>.wp-block-button.wp-block-button__width-75{width:75%}.wp-block-button.is-style-squared,.wp-block-button__link.wp-block-button.is-style-squared{border-radius:0}.wp-block-button.no-border-radius,.wp-block-button__link.no-border-radius{border-radius:0!important}.wp-block-button .wp-block-button__link.is-style-outline,.wp-block-button.is-style-outline>.wp-block-button__link{border:2px solid;padding:.667em 1.333em}.wp-block-button .wp-block-button__link.is-style-outline:not(.has-text-color),.wp-block-button.is-style-outline>.wp-block-button__link:not(.has-text-color){color:currentColor}.wp-block-button .wp-block-button__link.is-style-outline:not(.has-background),.wp-block-button.is-style-outline>.wp-block-button__link:not(.has-background){background-color:transparent;background-image:none}.wp-block-button .wp-block-button__link:where(.has-border-color){border-width:initial}.wp-block-button .wp-block-button__link:where([style*=border-top-color]){border-top-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-right-color]){border-right-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-bottom-color]){border-bottom-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-left-color]){border-left-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-style]){border-width:initial}.wp-block-button .wp-block-button__link:where([style*=border-top-style]){border-top-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-right-style]){border-right-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-bottom-style]){border-bottom-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-left-style]){border-left-width:medium}
+.is-style-outline.is-style-outline.wp-block-button .wp-block-button__link{border-width: 1px;padding-top: calc(0.6rem - 1px);padding-right: calc(1rem - 1px);padding-bottom: calc(0.6rem - 1px);padding-left: calc(1rem - 1px);}</style>
+<style id="wp-block-comments-inline-css">.wp-block-post-comments{box-sizing:border-box}.wp-block-post-comments .alignleft{float:left}.wp-block-post-comments .alignright{float:right}.wp-block-post-comments .navigation:after{clear:both;content:"";display:table}.wp-block-post-comments .commentlist{clear:both;list-style:none;margin:0;padding:0}.wp-block-post-comments .commentlist .comment{min-height:2.25em;padding-left:3.25em}.wp-block-post-comments .commentlist .comment p{font-size:1em;line-height:1.8;margin:1em 0}.wp-block-post-comments .commentlist .children{list-style:none;margin:0;padding:0}.wp-block-post-comments .comment-author{line-height:1.5}.wp-block-post-comments .comment-author .avatar{border-radius:1.5em;display:block;float:left;height:2.5em;margin-right:.75em;margin-top:.5em;width:2.5em}.wp-block-post-comments .comment-author cite{font-style:normal}.wp-block-post-comments .comment-meta{font-size:.875em;line-height:1.5}.wp-block-post-comments .comment-meta b{font-weight:400}.wp-block-post-comments .comment-meta .comment-awaiting-moderation{display:block;margin-bottom:1em;margin-top:1em}.wp-block-post-comments .comment-body .commentmetadata{font-size:.875em}.wp-block-post-comments .comment-form-author label,.wp-block-post-comments .comment-form-comment label,.wp-block-post-comments .comment-form-email label,.wp-block-post-comments .comment-form-url label{display:block;margin-bottom:.25em}.wp-block-post-comments .comment-form input:not([type=submit]):not([type=checkbox]),.wp-block-post-comments .comment-form textarea{box-sizing:border-box;display:block;width:100%}.wp-block-post-comments .comment-form-cookies-consent{display:flex;gap:.25em}.wp-block-post-comments .comment-form-cookies-consent #wp-comment-cookies-consent{margin-top:.35em}.wp-block-post-comments .comment-reply-title{margin-bottom:0}.wp-block-post-comments .comment-reply-title :where(small){font-size:var(--wp--preset--font-size--medium,smaller);margin-left:.5em}.wp-block-post-comments .reply{font-size:.875em;margin-bottom:1.4em}.wp-block-post-comments input:not([type=submit]),.wp-block-post-comments textarea{border:1px solid #949494;font-family:inherit;font-size:1em}.wp-block-post-comments input:not([type=submit]):not([type=checkbox]),.wp-block-post-comments textarea{padding:calc(.667em + 2px)}:where(.wp-block-post-comments input[type=submit]){border:none}</style>
+<style id="wp-block-post-navigation-link-inline-css">.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-previous{display:inline-block;margin-right:1ch}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-previous:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-next{display:inline-block;margin-left:1ch}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-next:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-post-navigation-link.has-text-align-left[style*="writing-mode: vertical-lr"],.wp-block-post-navigation-link.has-text-align-right[style*="writing-mode: vertical-rl"]{rotate:180deg}</style>
+<style id="wp-emoji-styles-inline-css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<style id="wp-block-library-inline-css">:root{--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,161;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px;--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{clip:rect(1px,1px,1px,1px);word-wrap:normal!important;border:0;-webkit-clip-path:inset(50%);clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{clip:auto!important;background-color:#ddd;-webkit-clip-path:none;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}</style>
+<style id="global-styles-inline-css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--base: #f9f9f9;--wp--preset--color--base-2: #ffffff;--wp--preset--color--contrast: #111111;--wp--preset--color--contrast-2: #636363;--wp--preset--color--contrast-3: #A4A4A4;--wp--preset--color--accent: #cfcabe;--wp--preset--color--accent-2: #c2a990;--wp--preset--color--accent-3: #d8613c;--wp--preset--color--accent-4: #b1c5a4;--wp--preset--color--accent-5: #b5bdbc;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--gradient--gradient-1: linear-gradient(to bottom, #cfcabe 0%, #F9F9F9 100%);--wp--preset--gradient--gradient-2: linear-gradient(to bottom, #C2A990 0%, #F9F9F9 100%);--wp--preset--gradient--gradient-3: linear-gradient(to bottom, #D8613C 0%, #F9F9F9 100%);--wp--preset--gradient--gradient-4: linear-gradient(to bottom, #B1C5A4 0%, #F9F9F9 100%);--wp--preset--gradient--gradient-5: linear-gradient(to bottom, #B5BDBC 0%, #F9F9F9 100%);--wp--preset--gradient--gradient-6: linear-gradient(to bottom, #A4A4A4 0%, #F9F9F9 100%);--wp--preset--gradient--gradient-7: linear-gradient(to bottom, #cfcabe 50%, #F9F9F9 50%);--wp--preset--gradient--gradient-8: linear-gradient(to bottom, #C2A990 50%, #F9F9F9 50%);--wp--preset--gradient--gradient-9: linear-gradient(to bottom, #D8613C 50%, #F9F9F9 50%);--wp--preset--gradient--gradient-10: linear-gradient(to bottom, #B1C5A4 50%, #F9F9F9 50%);--wp--preset--gradient--gradient-11: linear-gradient(to bottom, #B5BDBC 50%, #F9F9F9 50%);--wp--preset--gradient--gradient-12: linear-gradient(to bottom, #A4A4A4 50%, #F9F9F9 50%);--wp--preset--font-size--small: 0.9rem;--wp--preset--font-size--medium: 1.05rem;--wp--preset--font-size--large: clamp(1.39rem, 1.39rem + ((1vw - 0.2rem) * 0.767), 1.85rem);--wp--preset--font-size--x-large: clamp(1.85rem, 1.85rem + ((1vw - 0.2rem) * 1.083), 2.5rem);--wp--preset--font-size--xx-large: clamp(2.5rem, 2.5rem + ((1vw - 0.2rem) * 1.283), 3.27rem);--wp--preset--font-family--body: "Inter", sans-serif;--wp--preset--font-family--heading: Cardo;--wp--preset--font-family--system-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;--wp--preset--font-family--system-serif: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;--wp--preset--spacing--10: 1rem;--wp--preset--spacing--20: min(1.5rem, 2vw);--wp--preset--spacing--30: min(2.5rem, 3vw);--wp--preset--spacing--40: min(4rem, 5vw);--wp--preset--spacing--50: min(6.5rem, 8vw);--wp--preset--spacing--60: min(10.5rem, 13vw);--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}body { margin: 0;--wp--style--global--content-size: 620px;--wp--style--global--wide-size: 1280px; }.wp-site-blocks { padding-top: var(--wp--style--root--padding-top); padding-bottom: var(--wp--style--root--padding-bottom); }.has-global-padding { padding-right: var(--wp--style--root--padding-right); padding-left: var(--wp--style--root--padding-left); }.has-global-padding :where(.has-global-padding:not(.wp-block-block)) { padding-right: 0; padding-left: 0; }.has-global-padding > .alignfull { margin-right: calc(var(--wp--style--root--padding-right) * -1); margin-left: calc(var(--wp--style--root--padding-left) * -1); }.has-global-padding :where(.has-global-padding:not(.wp-block-block)) > .alignfull { margin-right: 0; margin-left: 0; }.has-global-padding > .alignfull:where(:not(.has-global-padding):not(.is-layout-flex):not(.is-layout-grid)) > :where([class*="wp-block-"]:not(.alignfull):not([class*="__"]),p,h1,h2,h3,h4,h5,h6,ul,ol) { padding-right: var(--wp--style--root--padding-right); padding-left: var(--wp--style--root--padding-left); }.has-global-padding :where(.has-global-padding) > .alignfull:where(:not(.has-global-padding)) > :where([class*="wp-block-"]:not(.alignfull):not([class*="__"]),p,h1,h2,h3,h4,h5,h6,ul,ol) { padding-right: 0; padding-left: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 1.2rem; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child:first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child:last-child { margin-block-end: 0; }body { --wp--style--block-gap: 1.2rem; }:where(body .is-layout-flow)  > :first-child:first-child{margin-block-start: 0;}:where(body .is-layout-flow)  > :last-child:last-child{margin-block-end: 0;}:where(body .is-layout-flow)  > *{margin-block-start: 1.2rem;margin-block-end: 0;}:where(body .is-layout-constrained)  > :first-child:first-child{margin-block-start: 0;}:where(body .is-layout-constrained)  > :last-child:last-child{margin-block-end: 0;}:where(body .is-layout-constrained)  > *{margin-block-start: 1.2rem;margin-block-end: 0;}:where(body .is-layout-flex) {gap: 1.2rem;}:where(body .is-layout-grid) {gap: 1.2rem;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}body{background-color: var(--wp--preset--color--base);color: var(--wp--preset--color--contrast);font-family: var(--wp--preset--font-family--body);font-size: var(--wp--preset--font-size--medium);font-style: normal;font-weight: 400;line-height: 1.55;--wp--style--root--padding-top: 0px;--wp--style--root--padding-right: var(--wp--preset--spacing--50);--wp--style--root--padding-bottom: 0px;--wp--style--root--padding-left: var(--wp--preset--spacing--50);}a:where(:not(.wp-element-button)){color: var(--wp--preset--color--contrast);text-decoration: underline;}a:where(:not(.wp-element-button)):hover{text-decoration: none;}h1, h2, h3, h4, h5, h6{color: var(--wp--preset--color--contrast);font-family: var(--wp--preset--font-family--heading);font-weight: 400;line-height: 1.2;}h1{font-size: var(--wp--preset--font-size--xx-large);line-height: 1.15;}h2{font-size: var(--wp--preset--font-size--x-large);}h3{font-size: var(--wp--preset--font-size--large);}h4{font-size: clamp(1.1rem, 1.1rem + ((1vw - 0.2rem) * 0.767), 1.5rem);}h5{font-size: var(--wp--preset--font-size--medium);}h6{font-size: var(--wp--preset--font-size--small);}.wp-element-button, .wp-block-button__link{background-color: var(--wp--preset--color--contrast);border-radius: .33rem;border-color: var(--wp--preset--color--contrast);border-width: 0;color: var(--wp--preset--color--base);font-family: inherit;font-size: var(--wp--preset--font-size--small);font-style: normal;font-weight: 500;line-height: inherit;padding-top: 0.6rem;padding-right: 1rem;padding-bottom: 0.6rem;padding-left: 1rem;text-decoration: none;}.wp-element-button:hover, .wp-block-button__link:hover{background-color: var(--wp--preset--color--contrast-2);border-color: var(--wp--preset--color--contrast-2);color: var(--wp--preset--color--base);}.wp-element-button:focus, .wp-block-button__link:focus{background-color: var(--wp--preset--color--contrast-2);border-color: var(--wp--preset--color--contrast-2);color: var(--wp--preset--color--base);outline-color: var(--wp--preset--color--contrast);outline-offset: 2px;outline-style: dotted;outline-width: 1px;}.wp-element-button:active, .wp-block-button__link:active{background-color: var(--wp--preset--color--contrast);color: var(--wp--preset--color--base);}.wp-element-caption, .wp-block-audio figcaption, .wp-block-embed figcaption, .wp-block-gallery figcaption, .wp-block-image figcaption, .wp-block-table figcaption, .wp-block-video figcaption{color: var(--wp--preset--color--contrast-2);font-family: var(--wp--preset--font-family--body);font-size: 0.8rem;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-base-color{color: var(--wp--preset--color--base) !important;}.has-base-2-color{color: var(--wp--preset--color--base-2) !important;}.has-contrast-color{color: var(--wp--preset--color--contrast) !important;}.has-contrast-2-color{color: var(--wp--preset--color--contrast-2) !important;}.has-contrast-3-color{color: var(--wp--preset--color--contrast-3) !important;}.has-accent-color{color: var(--wp--preset--color--accent) !important;}.has-accent-2-color{color: var(--wp--preset--color--accent-2) !important;}.has-accent-3-color{color: var(--wp--preset--color--accent-3) !important;}.has-accent-4-color{color: var(--wp--preset--color--accent-4) !important;}.has-accent-5-color{color: var(--wp--preset--color--accent-5) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-base-background-color{background-color: var(--wp--preset--color--base) !important;}.has-base-2-background-color{background-color: var(--wp--preset--color--base-2) !important;}.has-contrast-background-color{background-color: var(--wp--preset--color--contrast) !important;}.has-contrast-2-background-color{background-color: var(--wp--preset--color--contrast-2) !important;}.has-contrast-3-background-color{background-color: var(--wp--preset--color--contrast-3) !important;}.has-accent-background-color{background-color: var(--wp--preset--color--accent) !important;}.has-accent-2-background-color{background-color: var(--wp--preset--color--accent-2) !important;}.has-accent-3-background-color{background-color: var(--wp--preset--color--accent-3) !important;}.has-accent-4-background-color{background-color: var(--wp--preset--color--accent-4) !important;}.has-accent-5-background-color{background-color: var(--wp--preset--color--accent-5) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-base-border-color{border-color: var(--wp--preset--color--base) !important;}.has-base-2-border-color{border-color: var(--wp--preset--color--base-2) !important;}.has-contrast-border-color{border-color: var(--wp--preset--color--contrast) !important;}.has-contrast-2-border-color{border-color: var(--wp--preset--color--contrast-2) !important;}.has-contrast-3-border-color{border-color: var(--wp--preset--color--contrast-3) !important;}.has-accent-border-color{border-color: var(--wp--preset--color--accent) !important;}.has-accent-2-border-color{border-color: var(--wp--preset--color--accent-2) !important;}.has-accent-3-border-color{border-color: var(--wp--preset--color--accent-3) !important;}.has-accent-4-border-color{border-color: var(--wp--preset--color--accent-4) !important;}.has-accent-5-border-color{border-color: var(--wp--preset--color--accent-5) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-gradient-1-gradient-background{background: var(--wp--preset--gradient--gradient-1) !important;}.has-gradient-2-gradient-background{background: var(--wp--preset--gradient--gradient-2) !important;}.has-gradient-3-gradient-background{background: var(--wp--preset--gradient--gradient-3) !important;}.has-gradient-4-gradient-background{background: var(--wp--preset--gradient--gradient-4) !important;}.has-gradient-5-gradient-background{background: var(--wp--preset--gradient--gradient-5) !important;}.has-gradient-6-gradient-background{background: var(--wp--preset--gradient--gradient-6) !important;}.has-gradient-7-gradient-background{background: var(--wp--preset--gradient--gradient-7) !important;}.has-gradient-8-gradient-background{background: var(--wp--preset--gradient--gradient-8) !important;}.has-gradient-9-gradient-background{background: var(--wp--preset--gradient--gradient-9) !important;}.has-gradient-10-gradient-background{background: var(--wp--preset--gradient--gradient-10) !important;}.has-gradient-11-gradient-background{background: var(--wp--preset--gradient--gradient-11) !important;}.has-gradient-12-gradient-background{background: var(--wp--preset--gradient--gradient-12) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-xx-large-font-size{font-size: var(--wp--preset--font-size--xx-large) !important;}.has-body-font-family{font-family: var(--wp--preset--font-family--body) !important;}.has-heading-font-family{font-family: var(--wp--preset--font-family--heading) !important;}.has-system-sans-serif-font-family{font-family: var(--wp--preset--font-family--system-sans-serif) !important;}.has-system-serif-font-family{font-family: var(--wp--preset--font-family--system-serif) !important;}
+.wp-block-calendar.wp-block-calendar table:where(:not(.has-text-color)) th{background-color:var(--wp--preset--color--contrast-2);color:var(--wp--preset--color--base);border-color:var(--wp--preset--color--contrast-2)}.wp-block-calendar table:where(:not(.has-text-color)) td{border-color:var(--wp--preset--color--contrast-2)}.wp-block-categories{}.wp-block-categories{list-style-type:none;}.wp-block-categories li{margin-bottom: 0.5rem;}.wp-block-post-comments-form{}.wp-block-post-comments-form textarea, .wp-block-post-comments-form input{border-radius:.33rem}.wp-block-loginout{}.wp-block-loginout input{border-radius:.33rem;padding:calc(0.667em + 2px);border:1px solid #949494;}.wp-block-post-terms{}.wp-block-post-terms .wp-block-post-terms__prefix{color: var(--wp--preset--color--contrast-2);}.wp-block-query-title{}.wp-block-query-title span{font-style: italic;}.wp-block-quote{}.wp-block-quote :where(p){margin-block-start:0;margin-block-end:calc(var(--wp--preset--spacing--10) + 0.5rem);}.wp-block-quote :where(:last-child){margin-block-end:0;}.wp-block-quote.has-text-align-right.is-style-plain, .rtl .is-style-plain.wp-block-quote:not(.has-text-align-center):not(.has-text-align-left){border-width: 0 2px 0 0;padding-left:calc(var(--wp--preset--spacing--20) + 0.5rem);padding-right:calc(var(--wp--preset--spacing--20) + 0.5rem);}.wp-block-quote.has-text-align-left.is-style-plain, body:not(.rtl) .is-style-plain.wp-block-quote:not(.has-text-align-center):not(.has-text-align-right){border-width: 0 0 0 2px;padding-left:calc(var(--wp--preset--spacing--20) + 0.5rem);padding-right:calc(var(--wp--preset--spacing--20) + 0.5rem)}.wp-block-search{}.wp-block-search .wp-block-search__input{border-radius:.33rem}.wp-block-separator{}.wp-block-separator:not(.is-style-wide):not(.is-style-dots):not(.alignwide):not(.alignfull){width: var(--wp--preset--spacing--60)}</style>
+<style id="core-block-supports-inline-css">.wp-container-core-group-layout-1.wp-container-core-group-layout-1 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-layout-1.wp-container-core-group-layout-1.wp-container-core-group-layout-1.wp-container-core-group-layout-1 > * + *{margin-block-start:0px;margin-block-end:0;}.wp-container-core-group-layout-2.wp-container-core-group-layout-2{gap:var(--wp--preset--spacing--20);}.wp-container-core-navigation-layout-1.wp-container-core-navigation-layout-1{gap:var(--wp--preset--spacing--20);justify-content:flex-end;}.wp-container-core-group-layout-3.wp-container-core-group-layout-3{justify-content:space-between;}.wp-container-core-group-layout-5.wp-container-core-group-layout-5{gap:0.3em;justify-content:flex-start;}.wp-container-core-group-layout-7.wp-container-core-group-layout-7{gap:var(--wp--preset--spacing--10);flex-direction:column;align-items:stretch;}.wp-container-core-group-layout-10.wp-container-core-group-layout-10{flex-wrap:nowrap;gap:0.5em;}.wp-container-core-group-layout-11.wp-container-core-group-layout-11{flex-wrap:nowrap;}.wp-container-core-group-layout-14.wp-container-core-group-layout-14{flex-wrap:nowrap;gap:0.5em;}.wp-container-core-group-layout-15.wp-container-core-group-layout-15{flex-wrap:nowrap;}.wp-container-core-group-layout-18.wp-container-core-group-layout-18{flex-wrap:nowrap;gap:0.5em;}.wp-container-core-group-layout-19.wp-container-core-group-layout-19{flex-wrap:nowrap;}.wp-container-core-group-layout-22.wp-container-core-group-layout-22{flex-wrap:nowrap;gap:0.5em;}.wp-container-core-group-layout-23.wp-container-core-group-layout-23{flex-wrap:nowrap;}.wp-container-core-group-layout-26.wp-container-core-group-layout-26{flex-wrap:nowrap;gap:0.5em;}.wp-container-core-group-layout-27.wp-container-core-group-layout-27{flex-wrap:nowrap;}.wp-container-core-group-layout-30.wp-container-core-group-layout-30{flex-wrap:nowrap;gap:0.5em;}.wp-container-core-group-layout-31.wp-container-core-group-layout-31{flex-wrap:nowrap;}.wp-container-core-group-layout-34.wp-container-core-group-layout-34{flex-wrap:nowrap;gap:0.5em;}.wp-container-core-group-layout-35.wp-container-core-group-layout-35{flex-wrap:nowrap;}.wp-container-core-group-layout-38.wp-container-core-group-layout-38{flex-wrap:nowrap;gap:0.5em;}.wp-container-core-group-layout-39.wp-container-core-group-layout-39{flex-wrap:nowrap;}.wp-container-core-group-layout-42.wp-container-core-group-layout-42{flex-wrap:nowrap;gap:0.5em;}.wp-container-core-group-layout-43.wp-container-core-group-layout-43{flex-wrap:nowrap;}.wp-container-core-group-layout-46.wp-container-core-group-layout-46{flex-wrap:nowrap;gap:0.5em;}.wp-container-core-group-layout-47.wp-container-core-group-layout-47{flex-wrap:nowrap;}.wp-container-core-group-layout-50.wp-container-core-group-layout-50{flex-wrap:nowrap;gap:0.5em;}.wp-container-core-group-layout-51.wp-container-core-group-layout-51{flex-wrap:nowrap;}.wp-container-core-group-layout-54.wp-container-core-group-layout-54{flex-wrap:nowrap;gap:0.5em;}.wp-container-core-group-layout-55.wp-container-core-group-layout-55{flex-wrap:nowrap;}.wp-container-core-group-layout-58.wp-container-core-group-layout-58{flex-wrap:nowrap;gap:0.5em;}.wp-container-core-group-layout-59.wp-container-core-group-layout-59{flex-wrap:nowrap;}.wp-container-core-group-layout-61.wp-container-core-group-layout-61{flex-wrap:nowrap;justify-content:space-between;}</style>
+<style id="wp-block-template-skip-link-inline-css">.skip-link.screen-reader-text {
+			border: 0;
+			clip: rect(1px,1px,1px,1px);
+			clip-path: inset(50%);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute !important;
+			width: 1px;
+			word-wrap: normal !important;
+		}
+
+		.skip-link.screen-reader-text:focus {
+			background-color: #eee;
+			clip: auto !important;
+			clip-path: none;
+			color: #444;
+			display: block;
+			font-size: 1em;
+			height: auto;
+			left: 5px;
+			line-height: normal;
+			padding: 15px 23px 14px;
+			text-decoration: none;
+			top: 5px;
+			width: auto;
+			z-index: 100000;
+		}</style>
+<script src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2" id="wp-interactivity-js" defer data-wp-strategy="defer"></script>
+<script src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831" id="wp-block-navigation-view-js" defer data-wp-strategy="defer"></script>
+<link rel="https://api.w.org/" href="/wp-json/">
+<link rel="alternate" type="application/json" href="/wp-json/wp/v2/posts/628">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 6.4.2">
+<link rel="canonical" href="/2010/06/05/pythons-innards-naming/">
+<link rel="shortlink" href="/?p=628">
+<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F06%2F05%2Fpythons-innards-naming%2F">
+<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F06%2F05%2Fpythons-innards-naming%2F#038;format=xml">
+<style id="wp-fonts-local">@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
+@font-face{font-family:Cardo;font-style:italic;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_italic_400.woff2') format('woff2');}
+@font-face{font-family:Cardo;font-style:normal;font-weight:700;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}</style>
+</head>
+
+<body class="post-template-default single single-post postid-628 single-format-standard wp-embed-responsive">
+
+<div class="wp-site-blocks">
+<header class="wp-block-template-part">
+<div class="wp-block-group alignwide has-base-background-color has-background has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:20px;padding-bottom:20px">
+	
+	<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
+		
+		<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
+			
+
+			
+			<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
+				<p class="wp-block-site-title"><a href="/" target="_self" rel="home">NIL: .to write(1) ~ help:about</a></p>
+			</div>
+			
+		</div>
+		
+
+		<nav class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" aria-label="" data-wp-interactive data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}'><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open " data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
+			<div class="wp-block-navigation__responsive-container  " id="modal-1" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" tabindex="-1">
+				<div class="wp-block-navigation__responsive-close" tabindex="-1">
+					<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
+							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
+						<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
+							<ul class="wp-block-page-list">
+<li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click menu-item-home"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/">About</a></li>
+<li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/all-posts/">All Posts</a></li>
+</ul>
+						</div>
+					</div>
+				</div>
+			</div></nav>
+	</div>
+	
+</div>
+</header>
+
+
+<main class="wp-block-group alignfull is-layout-flow wp-block-group-is-layout-flow">
+	
+	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
+		
+
+		
+		<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
+			<h1 class="wp-block-post-title has-x-large-font-size">Python&#8217;s Innards: Naming</h1>
+
+			<div class="wp-block-template-part">
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+	
+	<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
+		<div class="wp-block-post-date"><time datetime="2010-06-05T18:12:04+00:00"><a href="/2010/06/05/pythons-innards-naming/">Jun 5, 2010</a></time></div>
+
+		
+		<p class="has-contrast-2-color has-text-color">—</p>
+		
+
+		
+		<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
+		
+
+		<div class="wp-block-post-author-name"><a href="/author/yanivaknin/" target="_self" class="wp-block-post-author-name__link">Yaniv Aknin</a></div>
+
+		<div class="taxonomy-category wp-block-post-terms">
+<span class="wp-block-post-terms__prefix">in </span><a href="/category/my-projects/pythons-innards/" rel="tag">Python&#8217;s Innards</a>
+</div>
+
+	</div>
+	
+</div>
+
+
+</div>
+		</div>
+		
+	</div>
+	
+
+	<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
+<p>Today&#8217;s article in our <a href="http://tech.blog.aknin.name/tag/pythons-innards/">series</a> of articles about Python internals&#8217; will discuss naming, which is the ability to bind names to an object, like we can see in the statement <tt>a = 1</tt> (in other words, this article is roughly about what many languages call <em>variables</em>). Naturally, naming is central to Python&#039;s behaviour and understanding both its semantics and mechanics are important precursors to our quickly approaching discussions of code evaluation, code objects and stack frames. That said, it is also a delicate subject because anyone with some programming experience knows <em>something</em> about it, at least instinctively (you&#8217;ve done something like <tt>a = 1</tt> before, now haven&#8217;t you?). This rarely-formally-learned familiarity laden with language-specific nuances might lead to false assumptions and gut-feeling-led vagueness, and while Python aims not to surprise, some subtle details which you weren&#8217;t aware of might turn out to be surprising nonetheless. So to solidify our foundations, we&#8217;ll begin with some formality and terminology.</p>
+<p>When we evaluate <tt>a = b = c = []</tt>, we create one list and give it three different names. In formal terms, we&#8217;d say that the newly instantiated list object is now <strong>bound</strong> to three <strong>identifiers</strong> that <strong>refer</strong> to it (I also saw and liked the word <em>referent</em> used for the now-referred-to object in the <a href="http://docs.python.org/py3k/library/weakref.html" class="code">weakref</a> module&#8217;s documentation). This distinction between names and the objects bound to them is important. If we evaluate <tt>a.append(1)</tt>, we will see that <tt>b</tt> and <tt>c</tt> are also affected; we didn&#8217;t mutate <tt>a</tt>, we mutated its referent, so the mutation is uniformly visible via any name the object was referred to. On the other hand, if we will now do a <tt>b = []</tt>, <tt>a</tt> and <tt>c</tt> will <em>not</em> change, since we didn&#8217;t actually change the object which <tt>b</tt> referred to but rather did a <strong>re-binding</strong> of the name <tt>b</tt> to a (newly created and empty) list object. Also recall that binding is one of the ways to increase the referent&#8217;s reference count, this is worthy of noting even though reference counting isn&#8217;t our subject at the moment.</p>
+<p>A name binding is commonly created by use of the <strong>assignment statement</strong>, which is a statement that has an &#8216;equals&#8217; symbol (<tt>=</tt>) in the middle, &#8220;stuff to assign to&#8221; or <strong>targets</strong> on the left, and &#8220;stuff to be assigned&#8221; (an expression) on the right. A <a href="http://docs.python.org/py3k/reference/simple_stmts.html#grammar-token-target">target</a> can be a name (more formally called an <em>identifier</em>) or a more complex construct, like a sequence of names, an attribute reference (<tt>primary_name.attribute</tt>) or a subscript (<tt>primary_name[subscript]</tt>). The highly recommended formal definition of assignment is <a href="http://docs.python.org/py3k/reference/simple_stmts.html#assignment-statements">here</a>, what I present here is a coarse simplification aimed to suit our bare minimum needs for the article. Name binding is undone with the <strong>deletion statement</strong> <tt>del</tt>, which is roughly &#8220;<tt>del</tt> followed by comma-separated targets to unbind&#8221; (formal specification <a href="http://docs.python.org/py3k/reference/simple_stmts.html#the-del-statement">here</a>). Naturally, much like binding a name to an object increases that object&#8217;s reference count, so does deletion decrease it. Finally, note that name binding can be done without an assignment as bindings are also created by <tt>def</tt>, <tt>class</tt>, <tt>import</tt> (and others), this is also of less importance to us now.</p>
+<p><strong>Scope</strong> is a term relating to the <strong>visibility</strong> of an identifier throughout a <strong>block</strong>, or a piece of Python code executed as a unit: a module, a function body and a class definition are blocks (control-blocks like those of <tt>if</tt> and <tt>while</tt> are <em>not</em> code blocks in Python). A <strong>namespace</strong> is an abstract environment where the mapping between names and the objects they refer to is made (incidentally, in current CPython, this is indeed implemented with the <tt>dict</tt> mapping type). The rules of scoping determine in which namespace will a name be sought after when it is used, or rather <strong>resolved</strong>. You probably know instinctively that a name bound in function <tt>foo</tt> isn&#8217;t visible in an unrelated function <tt>bar</tt>, this is because by default names created in a function will be stored in a namespace that will not be looked at when name resolution happens in another, unrelated function. Scope determines not just when a name will be visible as it is resolved or &#8216;read&#8217; (i.e., if you do <tt>spam = eggs</tt>, where will <tt>eggs</tt> come from) but also as it is bound or &#8216;written&#8217; (i.e., in the same example, where will <tt>spam</tt> go to).  When a namespace will no longer be used (for example, the private namespace of a function which returns) all the names in it are unbound (this triggers reference count decrease and possibly deallocation, but this doesn&#8217;t concern us now).</p>
+<p>Scoping rules change based on the lexical context in which code is compiled. For example, in simpler terms, code compiled as a plain function&#8217;s body will resolve names slightly differently when evaluated when compared with code compiled as part of a module&#8217;s initialization code (the module top-level code). Special statements like <a href="http://docs.python.org/py3k/reference/simple_stmts.html#the-global-statement" class="code">global</a> and <a href="http://docs.python.org/py3k/reference/simple_stmts.html#the-nonlocal-statement" class="code">nonlocal</a> exist and can be applied to names thus that resolution rules for these names will change in the current code block, we&#8217;ll look into that later. There are many subtleties to the formal rules of scoping and this text <em>does not</em> aim to explain them fully. It&#8217;s not that I think that scoping isn&#8217;t important enough, but because I&#8217;d like us to talk more about the mechanics of scoping (how does it behave like it does) rather than its semantics (what should it behave like). If you want to learn more about the semantics of scoping then by all means <a href="http://docs.python.org/py3k/reference/executionmodel.html#naming-and-binding">read the fine material</a>.</p>
+<p>This (important) disclaimer in place, the crash course to scoping is like so: when Python code is evaluated, it is evaluated within three namespaces: <strong>locals</strong>, <strong>globals</strong> and <strong>builtins</strong>. When we resolve a name, it will be sought after in the local scope, then the global scope, then the builtin scope (then a <tt>NameError</tt> will be raised). When we bind a name with a name binding statement (i.e., an assignment, an <tt>import</tt>, a <tt>def</tt>, etc) the name will be bound in the local scope, and hide any existing names in the global or builtin scope. This hiding does not mean the hidden name was changed (formally: the hidden name was not <em>re-bound</em>), it just means it is no longer visible in the current block&#8217;s scope because the newly created binding in the local namespace overshadows it. We said scoping changes according to context, and one such case is when functions are <em>lexically nested</em> within one another (that is, a function defined inside the body of another function): resolution of a name from within a nested function will first search in that function&#8217;s scope, then in the local scopes of its outer function(s) and only then proceed normally (in the globals and builtins) scope.</p>
+<p>Lexical scoping is an interesting behaviour, let&#8217;s look at it closely. Imagine a file called <tt>scoping.py</tt>:<br>
+<pre><code class="lang-py">def outer():<br>
+    a = 1<br>
+    # creating a lexically nested function bar<br>
+    def inner():<br>
+        # a is visible from outer&#8217;s locals<br>
+        return a<br>
+    b = 2 # b is here for an example later on<br>
+    return inner
+# inner_nonlexical will be called from within<br>
+#  outer_nonlexical but it is not lexically nested<br>
+def inner_nonlexical():<br>
+    return a # a is not visible<br>
+def outer_nonlexical():<br>
+    a = 1<br>
+    inner = inner_nonlexical<br>
+    b = 2 # b is here for an example later on<br>
+    return inner_nonlexical<br>
+</code></pre>
+<p>We now import this file:</p>
+<pre><code class="lang-pycon">&gt;&gt;&gt; from scoping import *<br>
+&gt;&gt;&gt; outer()()<br>
+1<br>
+&gt;&gt;&gt; outer_nonlexical()()<br>
+Traceback (most recent call last):<br>
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;<br>
+  File &quot;scoping.py&quot;, line 13, in inner_nonlexical<br>
+    return a # a is not visible<br>
+&gt;&gt;&gt;<br>
+</code></pre>
+<p>As the example demonstrates, <tt>a</tt> is visible in the lexically nested <tt>inner</tt> but not in the call-stack nested but not lexically nested <tt>inner_nonlexical</tt>. This is interesting. How is this implemented? I mean, Python is dynamic, everything is runtime, how does <tt>inner_nonlexical</tt> fail if it has the same Python code and is called in a similar fashion from within a similar environment as the original <tt>inner</tt> was called? What&#8217;s the difference between these two seemingly identical functions? Further more, we can see that <tt>inner</tt> is actually called <em>after</em> <tt>outer</tt> has terminated: how can it use a value from a namespace that was already destroyed? These are terrific questions. To answer them, let&#8217;s put aside our formal and semantic hat for now, and think about implementation for a bit.</p>
+<p>Once again, let&#8217;s look at the bytecode emitted for the simple statement <tt>spam = eggs - 1</tt>:<br>
+<pre><code class="lang-pycon">
+&gt;&gt;&gt; diss(&quot;spam = eggs &#8211; 1&quot;)<br>
+  1           0 LOAD_NAME                0 (eggs)<br>
+              3 LOAD_CONST               0 (1)<br>
+              6 BINARY_SUBTRACT<br>
+              7 STORE_NAME               1 (spam)<br>
+             10 LOAD_CONST               1 (None)<br>
+             13 RETURN_VALUE<br>
+&gt;&gt;&gt;<br>
+</code></pre>
+<p>Recall that <tt>BINARY_SUBTRACT</tt> will pop two arguments from the value-stack and feed them to <tt>PyNumber_Subtract</tt>, which is a C function that accepts two <tt>PyObject *</tt> pointers and certainly doesn&#8217;t know anything about scoping. What gets the arguments onto the stack are the <tt>LOAD_NAME</tt> and <tt>LOAD_CONST</tt> opcodes, and what will take the result out of the stack and into wherever it is heading is the <tt>STORE_NAME</tt> ocopde. It is opcodes like this that implement the rules of naming and scoping, since the C code implementing them is what will actually look into the dictionaries representing the relevant namespaces trying to resolve the name and bring the resulting object unto the stack, or store whatever object is to be stored into the relevant namespace. </p>
+<p>Not every opcode which loads a value into the value stack necessarily has to do with scoping. For example, take <tt>LOAD_CONST</tt>; this opcode loads a constant value unto the value stack, but it isn&#8217;t about scoping (constants don&#8217;t have a scope, by definition they aren&#8217;t variables and they&#8217;re never &#8216;hidden&#8217;). Fortunately for you, I&#8217;ve already grepped the sources for &#8216;suspect&#8217; opcodes (<kbd>$ egrep -o '(LOAD|STORE)(_[A-Z]+)+' Include/opcode.h | sort</kbd>) and believe I&#8217;ve mapped out the opcodes that actually implement scoping, so we can concentrate on the ones that really implement scoping (if you think I missed something, by all means let me know). Note that among the list of opcodes I chose not to address are the ones that handles attribute reference and subscripting; I chose so since these opcodes rely on a different opcode to get the primary reference (the name before the dot or the square brackets) on the value stack and thus aren&#8217;t really about scoping. So, as far as I could see, we should discuss four pairs of opcode:</p>
+<ul>
+<li>
+<tt>LOAD_NAME</tt> and <tt>STORE_NAME</tt>
+</li>
+<li>
+<tt>LOAD_FAST</tt> and <tt>STORE_FAST</tt>
+</li>
+<li>
+<tt>LOAD_GLOBAL</tt> and <tt>STORE_GLOBAL</tt>
+</li>
+<li>
+<tt>LOAD_DEREF</tt> and <tt>STORE_DEREF</tt>
+</li>
+</ul>
+<p>To save me some typing, we can refer to each of these pairs by their suffix, i.e., <tt>*_NAME</tt> or <tt>*_GLOBAL</tt>. I suggest we discuss each pair along with the situations in which the compiler chooses to emit an opcode of that pair in order to satisfy the semantics of scoping. This is <em>not</em> necessarily an exhaustive listing of these opcodes&#8217; uses (it might be, I&#8217;m not checking if it is or isn&#8217;t), but it should develop an understanding of these opcodes&#8217; behaviour and allow us to figure out other cases where the compiler chooses the emit them on our own; so if you ever see any of these in a disassembly, you&#8217;ll be covered.</p>
+<p>I&#8217;d like to begin with the obvious pair, <tt>*_NAME</tt>; it is simple to understand (and I suspect it was the first to be implemented). Explaining the <tt>*_NAME</tt> pair of opcodes is easiest by writing rough versions of them in Python-like psuedocode (you can and should read the actual implementation in <tt>./Python/ceval.c: PyEval_EvalFrameEx</tt>):<br>
+<pre><code class="lang-py">
+def LOAD_NAME(name):<br>
+    try:<br>
+        return current_stack_frame.locals[name]<br>
+    except KeyError:<br>
+        try:<br>
+            return current_stack_frame.globals[name]<br>
+        except KeyError:<br>
+            try:<br>
+                return current_stack_frame.builtins[name]<br>
+            except KeyError:<br>
+                raise NameError(&#8216;name %r is not defined&#8217;<br>
+                                 % name)
+
+def STORE_NAME(name, value):<br>
+    current_stack_frame.locals[name] = value<br>
+</code></pre>
+<p>It&#8217;s easy to see that this is pretty much the vanilla case of scoping as we described it earlier, so there should be no surprises here (precisely when and how are the locals, globals and builtins namespaces created and set on the current stack frame will be covered when we talk about stack frames or code evaluation). While they are the &#8216;vanilla&#8217; case, <tt>*_NAME</tt>, in some cases they are not emitted at all as more specialized opcodes can achieve the same functionality in a faster manner. As we explore the other scoping-related opcodes, we will see why.</p>
+<p>A commonly used pair of scoping related opcodes is the <tt>*_FAST</tt> pair, which were originally implemented a long time ago as a speed enhancement over the <tt>*_NAME</tt> pair. These opcodes are used in cases where compile time analysis can infer that a variable is used strictly in the local namespace. This is possible when compiling code which is a part of a function, rather than, say, at the module level (some subtleties apply about the meaning of &#8216;function&#8217; in this context, a class&#8217; body may also use these opcodes under some circumstances, but this is of no interest to us at the moment; also see the comments below). If we can decide at compile time which names are used in precisely one namespace, and that namespace is private to one code block, it may be easy to implement a namespace with cheaper machinery than dictionaries. Indeed, these opcodes rely on a local namespace implemented with a statically sized array, which is far faster than a dictionary lookup as in the global namespace and other namespaces. In Python 2.x it was possible to confuse the compiler thus that it will not be able to use these opcodes in a particular function and have to revert to <tt>*_NAME</tt>, this is no longer possible in Python 3.x (also see the comments).</p>
+<p>Let&#8217;s look at the two <tt>*_GLOBAL</tt> opcodes. <tt>LOAD_GLOBAL</tt> (but not <tt>STORE_GLOBAL</tt>) is also generated when the compiler can infer that a name is resolved in a function&#8217;s body but was never bound inside that body. This behaviour is conceptually similar to the ability to decide when a name is both bound and resolved in a function&#8217;s body, causing the generation of the <tt>*_FAST</tt> opcodes as we&#8217;ve seen above. This may become more apparant with a quick (slightly edited for brevity) disassembly:<br>
+<pre><code class="lang-pycon">&gt;&gt;&gt; def func():<br>
+...     a = 1<br>
+...     a = b<br>
+...     return a<br>
+...<br>
+&gt;&gt;&gt; diss(func)<br>
+  2           0 LOAD_CONST               1 (1)<br>
+              3 STORE_FAST               0 (a)<br>
+  3           6 LOAD_GLOBAL              0 (b)<br>
+              9 STORE_FAST               0 (a)<br>
+  4          12 LOAD_FAST                0 (a)<br>
+             15 RETURN_VALUE<br>
+&gt;&gt;&gt;<br>
+</code></pre>
+<p>As described for <tt>*_FAST</tt>, we can see that <tt>a</tt> was bound within the function, which places it in the local scope private to this function, which means the <tt>*_FAST</tt> opcodes can and are used for <tt>a</tt>. On the other hand, we can see (and the compiler could also see&#8230;) that <tt>b</tt> was resolved before it was ever bound in the function. The compiler figured it must either exist elsewhere or not exist at all, which is exactly what <tt>LOAD_GLOBAL</tt> does: it bypasses the local namespace and searches only the global and builtin namespaces (and then raises a <tt>NameError</tt>). </p>
+<p>This explanation leaves us with missing functionality: what if you&#8217;d like to re-bind a variable in the global scope? Recall that binding a new name normally binds it locally, so if you have a module defining <tt>foo = 1</tt>, a function setting <tt>foo = 2</tt> locally &#8220;hides&#8221; the global <tt>foo</tt>. But what if you want to re-bind the global <tt>foo</tt>? Note this is <em>not</em> to mutate object referred to by <tt>foo</tt> but rather to bind the name <tt>foo</tt> in the global scope to a different referent; if you&#8217;re not clear on the distinction between the two, skim back in this post until we&#8217;re on the same page. To do so, we can use the <a href="http://docs.python.org/py3k/reference/simple_stmts.html#the-global-statement" class="code">global</a> statement which we mentioned in passing before; this statement lets you tell the compiler to treat a name always as a global both for resolving and for binding within a particular code block, generating only <tt>*_GLOBAL</tt> opcodes for manipulation of that name. When binding is required, <tt>STORE_GLOBAL</tt> performs the new binding (or a re-binding) in the global namespace, thus allowing Python code to explicitly state which variables should be stored and manipulated in the global scope. What happens if you use a variable locally, and then use the <tt>global</tt> statement to make it global? Let&#8217;s look (slightly edited):<br>
+<pre><code class="lang-pycon">
+&gt;&gt;&gt; def func():<br>
+...     a = 1<br>
+...     global a<br>
+...<br>
+&lt;stdin&gt;:3: SyntaxWarning: name &#8216;a&#8217; is assigned to before global declaration<br>
+&gt;&gt;&gt; diss(func)<br>
+  2           0 LOAD_CONST               1 (1)<br>
+              3 STORE_GLOBAL             0 (a)<br>
+  3           6 LOAD_CONST               0 (None)<br>
+              9 RETURN_VALUE<br>
+&gt;&gt;&gt;<br>
+</code></pre>
+<p>&#8230;the compiler still treats the name as a global all through the code block, but warns you not to shoot yourself (and other maintainers of the code) in the foot. Sensible.</p>
+<p>We are left only with <tt>LOAD_DEREF</tt> and <tt>STORE_DEREF</tt>. To explain these, we have to revisit the notion of lexical scoping, which is what started our inspection of the implementation. Recall that we said that nested functions&#8217; resolution of names tries the namespaces&#8217; of all lexically enclosing functions (in order, innermost outwards) before it hits the global namespace, we also saw an example of that in code. So how <em>did</em> <tt>inner</tt> return a value resolved from this no-longer-existing namespace of <tt>outer</tt>? When resolution of names is attempted in the global namespace (or in builtins), the name may or may not be there, but for sure we know that the scope is still there! How do we resolve a name in a scope which doesn&#8217;t exist?</p>
+<p>The answer is quite nifty, and becomes apparent with a disassembly (slightly edited) of both functions:<br></p>
+<pre><code class="lang-pycon">
+# see the example above for the contents of scoping.py<br>
+&gt;&gt;&gt; from scoping import *<br>
+# recursion added to &#8216;diss&#8217;; you can see metablogging-&gt;tools above<br>
+&gt;&gt;&gt; diss(outer, recurse=True)<br>
+  2           0 LOAD_CONST               1 (1)<br>
+              3 STORE_DEREF              0 (a)<br>
+  3           6 LOAD_CLOSURE             0 (a)<br>
+              9 BUILD_TUPLE              1<br>
+             12 LOAD_CONST               2 (&lt;code object inner ...)<br>
+             15 MAKE_CLOSURE             0<br>
+             18 STORE_FAST               0 (inner)<br>
+  5          21 LOAD_CONST               3 (2)<br>
+             24 STORE_FAST               1 (b)<br>
+  6          27 LOAD_FAST                0 (inner)<br>
+             30 RETURN_VALUE
+recursing into &lt;code object inner ...&gt;:<br>
+  4           0 LOAD_DEREF               0 (a)<br>
+              3 RETURN_VALUE<br>
+&gt;&gt;&gt;<br>
+</code></pre>
+<p>Sweet. We can see that <tt>outer</tt> (the outer function!) already treats <tt>a</tt>, the variable which will be used outside of its scope, differently than it treats <tt>b</tt>, a &#8216;simple&#8217; variable in its local scope. <tt>a</tt> is loaded and stored using the <tt>*_DEREF</tt> variants of the loading and storing opcodes, in both the outer and inner functions. The secret sauce here is that at compilation time, if a variable is seen to be resolved from a lexically nested function, it will not be stored and will not be accessed using the regular naming opcodes. Instead, a special object called a <a href="http://docs.python.org/py3k/c-api/cell.html#cell-objects" class="code">cell</a> is created to store the value of the object. When various code objects (the outer function, the inner function, etc) will access this variable, the use of the <tt>*_DEREF</tt> opcodes will cause the cell to be accessed rather than the namespace of the accessing code object. Since the cell is actually accessed only after <tt>outer</tt> has finished executing, you could even define <tt>inner</tt> <em>before</em> <tt>a</tt> was defined, and it would still work just the same (!).</p>
+<p>This is automagical for name resolution, but for outer scope rebinding the <a href="http://docs.python.org/py3k/reference/simple_stmts.html#the-nonlocal-statement" class="code">nonlocal</a> statement exists. <tt>nonlocal</tt> was decreed by <a href="http://www.python.org/dev/peps/pep-3104">PEP 3014</a> and it is somewhat similar to the <tt>global</tt> statement. <tt>nonlocal</tt> explicitly declares a variable to be used from an outer scope rather than locally, both for resolution and re-binding. It is illegal to use <tt>nonlocal</tt> outside of a lexically nested function, and it must be nested inside a function that defines the identifiers listed by <tt>nonlocal</tt>. There are several small gotchas about lexical scoping, but overall things behave as you would probably expect (for example, you can&#8217;t cause a name to be used locally and as a lexically nested name in the same code block, as the collapsed snippet below demonstrates).<br>
+<pre><code class="lang-pycon">
+&gt;&gt;&gt; def outer():<br>
+...     a = 1<br>
+...     def inner():<br>
+...             b = a<br>
+...             a = 1<br>
+...             return a,b<br>
+...     return inner<br>
+...<br>
+&gt;&gt;&gt; outer()()<br>
+Traceback (most recent call last):<br>
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;<br>
+  File &quot;&lt;stdin&gt;&quot;, line 4, in inner<br>
+UnboundLocalError: local variable &#8216;a&#8217; referenced before assignment<br>
+&gt;&gt;&gt;<br>
+</code></pre>
+<p>This sums up the mechanics of naming and scoping, I hope you enjoyed the ride. As I warned, the formal description of the semantics is rather sketchy here and shouldn&#8217;t be relied upon, though I hope the description of the mechanics was useful to you. If you feel your brain is melting, that&#8217;s normal, drink a glass of cold water and be thankful that at least you didn&#8217;t have to write this article (not to mention write the implementation of scoping&#8230;). Our next article will discuss code objects, revisiting some of the terms we saw today and further beefing us up towards tackling the frame object and the actual evaluation function. For great justice.</p>
+<hr>
+<p><em>I would like to thank <strong>Nick Coghlan</strong> and <strong>Thomas Wouters</strong> for reviewing this article; any mistakes that slipped through are my own.</em></p>
+</div>
+
+	
+	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
+		<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
+<a href="/tag/binding/" rel="tag">binding</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/internals/" rel="tag">internals</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/names/" rel="tag">names</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/namespaces/" rel="tag">namespaces</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/python/" rel="tag">python</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/scope/" rel="tag">scope</a>
+</div>
+
+		
+		<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+			
+			<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer">
+			</div>
+			
+
+			
+			<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)">
+			
+
+			
+
+<div class="wp-block-comments wp-block-comments-query-loop">
+	
+	<h2 class="wp-block-heading">Comments</h2>
+	
+	<h3 id="comments" class="wp-block-comments-title">13 responses to &#8220;Python&#8217;s Innards: Naming&#8221;</h3>
+	<ol class="wp-block-comment-template">
+<li id="comment-175" class="comment even thread-even depth-1">
+	
+	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
+			<div class="wp-block-avatar"><img alt="Nick Coghlan Avatar" src="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
+			
+			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+				<div class="wp-block-comment-author-name">Nick Coghlan</div>
+				<div class="wp-block-comment-date"><time datetime="2010-06-06T06:20:25+00:00"><a href="/2010/06/05/pythons-innards-naming/#comment-175">June 6, 2010</a></time></div>
+			</div>
+			
+		</div>
+		
+		<div class="wp-block-comment-content">
+<p>Another good write-up, but I missed a couple of things on my earlier review.</p>
+<p>Firstly, I wouldn&#8217;t call the *_NAME opcodes uncommon &#8211; they&#8217;re what module level code uses, and with Python often being used as a scripting language, there&#8217;s a lot of top level code out there. Even in library code, most class definitions will involve a lot of STORE_NAME opcodes to bind method names.</p>
+<p>Now, *inside function definitions* you&#8217;re correct that the *_NAME opcodes are rare &#8211; almost everything will be *_FAST, *_GLOBAL or *_DEREF. (Random fact: you can sometimes significantly speed up a Python algorithm just by moving it into a function to take advantage of the optimised locals access)</p>
+<p>Also, the assertion that classes and functions are the same for assignment opcode purposes is incorrect. They both generate a &#8220;MAKE_FUNCTION&#8221; opcode, but the compiler assembles the code objects differently (for top-level code, using *_NAME inside the class, but *_FAST inside the function). The code inside the class body actually executes as if it was in the same scope as the block containing the class definition. The compiler does a fair bit of tapdancing to make sure this still works properly when a class is defined *inside* a function 🙂</p>
+<p>(I suspect this comment form will mangle any session details I post, so I&#8217;ll also email you the relevant disassembly directly)</p>
+<p>As far as disabling function local optimisations goes, there are two ways to do it in 2.x: using &#8220;from  import *&#8221; and using an &#8220;exec&#8221; statement without supplying an explicit namespace. Using either of these means the compiler can no longer assume it knows the name of all local variables, so it disables the optimisations that rely on that assumption. With exec becoming a normal function in 3.x and &#8220;import *&#8221; syntax allowed only at module level, the assumption of complete knowledge of local variable names always holds and the optimisations are always enabled.</p>
+</div>
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
+			
+			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/06/05/pythons-innards-naming/?replytocom=175#respond" data-commentid="175" data-postid="628" data-belowelement="comment-175" data-respondelement="respond" data-replyto="Reply to Nick Coghlan" aria-label="Reply to Nick Coghlan">Reply</a></div>
+		</div>
+		
+	</div>
+	
+	<ol><li id="comment-177" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
+	
+	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
+			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
+			
+			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
+				<div class="wp-block-comment-date"><time datetime="2010-06-06T07:18:58+00:00"><a href="/2010/06/05/pythons-innards-naming/#comment-177">June 6, 2010</a></time></div>
+			</div>
+			
+		</div>
+		
+		<div class="wp-block-comment-content">
+<p>Again, I&#8217;m indebted to you for the great insights.</p>
+<p>The <tt>*_NAME</tt> mistake was purely mine, I added it after your review (*sheepish grin*). I&#8217;ve amended the article to fix this and the other issues you raised, I think this doesn&#8217;t warrant a separate &#8216;errata post&#8217;.</p>
+<p>Thank you!</p>
+</div>
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
+			
+			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/06/05/pythons-innards-naming/?replytocom=177#respond" data-commentid="177" data-postid="628" data-belowelement="comment-177" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
+		</div>
+		
+	</div>
+	
+	<ol><li id="comment-178" class="comment even depth-3">
+	
+	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
+			<div class="wp-block-avatar"><img alt="Nick Coghlan Avatar" src="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
+			
+			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+				<div class="wp-block-comment-author-name">Nick Coghlan</div>
+				<div class="wp-block-comment-date"><time datetime="2010-06-06T09:11:23+00:00"><a href="/2010/06/05/pythons-innards-naming/#comment-178">June 6, 2010</a></time></div>
+			</div>
+			
+		</div>
+		
+		<div class="wp-block-comment-content">
+<p>Yep, updated version looks good to me 🙂</p>
+</div>
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
+			
+			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/06/05/pythons-innards-naming/?replytocom=178#respond" data-commentid="178" data-postid="628" data-belowelement="comment-178" data-respondelement="respond" data-replyto="Reply to Nick Coghlan" aria-label="Reply to Nick Coghlan">Reply</a></div>
+		</div>
+		
+	</div>
+	
+	</li></ol>
+</li></ol>
+</li>
+<li id="comment-176" class="comment odd alt thread-odd thread-alt depth-1">
+	
+	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
+			<div class="wp-block-avatar"><img alt="Nick Coghlan Avatar" src="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
+			
+			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+				<div class="wp-block-comment-author-name">Nick Coghlan</div>
+				<div class="wp-block-comment-date"><time datetime="2010-06-06T06:22:48+00:00"><a href="/2010/06/05/pythons-innards-naming/#comment-176">June 6, 2010</a></time></div>
+			</div>
+			
+		</div>
+		
+		<div class="wp-block-comment-content">
+<p>A pair of interactive sessions that show the differences between class and function scoping for module level code (probably mangled in posting, but may as well try it).</p>
+<p>Module level class definition:<br>
+<pre><code class="lang-pycon">
+&gt;&gt;&gt; source = &quot;&quot;&quot;\<br>
+... class C(object):<br>
+...   x = 1<br>
+...   def f(): pass<br>
+... &quot;&quot;&quot;<br>
+&gt;&gt;&gt; code = compile(source, &quot;&lt;example&gt;&quot;, &quot;exec&quot;)<br>
+&gt;&gt;&gt; dis(code)<br>
+ 1           0 LOAD_CONST               0 (&#8216;C&#8217;)<br>
+             3 LOAD_NAME                0 (object)<br>
+             6 BUILD_TUPLE              1<br>
+             9 LOAD_CONST               1 (&lt;code object C at 0x10f7c60, file &quot;&lt;example&gt;&quot;, line 1&gt;)<br>
+            12 MAKE_FUNCTION            0<br>
+            15 CALL_FUNCTION            0<br>
+            18 BUILD_CLASS<br>
+            19 STORE_NAME               1 (C)<br>
+            22 LOAD_CONST               2 (None)<br>
+            25 RETURN_VALUE<br>
+&gt;&gt;&gt; dis(code.co_consts[1])<br>
+ 1           0 LOAD_NAME                0 (__name__)<br>
+             3 STORE_NAME               1 (__module__)
+ 2           6 LOAD_CONST               0 (1)<br>
+             9 STORE_NAME               2 (x)
+ 3          12 LOAD_CONST               1 (&lt;code object f at 0x10e9300, file &quot;&lt;example&gt;&quot;, line 3&gt;)<br>
+            15 MAKE_FUNCTION            0<br>
+            18 STORE_NAME               3 (f)<br>
+            21 LOAD_LOCALS<br>
+            22 RETURN_VALUE
+Module level function definition:
+&gt;&gt;&gt; source = &quot;&quot;&quot;\<br>
+... def F():<br>
+...   x = 1<br>
+...   def f(): pass<br>
+... &quot;&quot;&quot;<br>
+&gt;&gt;&gt; code = compile(source, &quot;&lt;example&gt;&quot;, &quot;exec&quot;)<br>
+&gt;&gt;&gt; dis(code)<br>
+ 1           0 LOAD_CONST               0 (&lt;code object F at 0x10f7e40, file &quot;&lt;example&gt;&quot;, line 1&gt;)<br>
+             3 MAKE_FUNCTION            0<br>
+             6 STORE_NAME               0 (F)<br>
+             9 LOAD_CONST               1 (None)<br>
+            12 RETURN_VALUE<br>
+&gt;&gt;&gt; dis(code.co_consts[0])<br>
+ 2           0 LOAD_CONST               1 (1)<br>
+             3 STORE_FAST               0 (x)
+ 3           6 LOAD_CONST               2 (&lt;code object f at 0x7f4a81421378, file &quot;&lt;example&gt;&quot;, line 3&gt;)<br>
+             9 MAKE_FUNCTION            0<br>
+            12 STORE_FAST               1 (f)<br>
+            15 LOAD_CONST               0 (None)<br>
+            18 RETURN_VALUE<br>
+</code></pre>
+<p>(<strong>Note</strong>: I&#8217;ve edited Nick&#8217;s comment to fix formatting &#8211; Yaniv)</p>
+</div>
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
+			
+			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/06/05/pythons-innards-naming/?replytocom=176#respond" data-commentid="176" data-postid="628" data-belowelement="comment-176" data-respondelement="respond" data-replyto="Reply to Nick Coghlan" aria-label="Reply to Nick Coghlan">Reply</a></div>
+		</div>
+		
+	</div>
+	
+	</li>
+<li id="comment-179" class="comment even thread-even depth-1">
+	
+	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
+			<div class="wp-block-avatar"><img alt="Jeff Avatar" src="http://2.gravatar.com/avatar/e40b95b3c4818b8da9c2de58146f4cd4?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/e40b95b3c4818b8da9c2de58146f4cd4?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
+			
+			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://www.jmcneil.net/" target="_self">Jeff</a></div>
+				<div class="wp-block-comment-date"><time datetime="2010-06-07T22:51:15+00:00"><a href="/2010/06/05/pythons-innards-naming/#comment-179">June 7, 2010</a></time></div>
+			</div>
+			
+		</div>
+		
+		<div class="wp-block-comment-content">
+<p>This is a wonderful series of articles.  I&#8217;ve hunted a bit of this stuff down in the past and subsequently forgot it all.  You&#8217;ve done a wonderful job of putting all of the gory details in one easy-to-access place. Keep them coming!</p>
+</div>
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
+			
+			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/06/05/pythons-innards-naming/?replytocom=179#respond" data-commentid="179" data-postid="628" data-belowelement="comment-179" data-respondelement="respond" data-replyto="Reply to Jeff" aria-label="Reply to Jeff">Reply</a></div>
+		</div>
+		
+	</div>
+	
+	<ol><li id="comment-180" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
+	
+	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
+			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
+			
+			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
+				<div class="wp-block-comment-date"><time datetime="2010-06-08T01:02:19+00:00"><a href="/2010/06/05/pythons-innards-naming/#comment-180">June 8, 2010</a></time></div>
+			</div>
+			
+		</div>
+		
+		<div class="wp-block-comment-content">
+<p>Promise to do my best, thanks for the encouragement.</p>
+</div>
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
+			
+			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/06/05/pythons-innards-naming/?replytocom=180#respond" data-commentid="180" data-postid="628" data-belowelement="comment-180" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
+		</div>
+		
+	</div>
+	
+	</li></ol>
+</li>
+<li id="comment-181" class="comment even thread-odd thread-alt depth-1">
+	
+	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
+			<div class="wp-block-avatar"><img alt="matelot Avatar" src="http://1.gravatar.com/avatar/a7c6be153e35be82679af30c356b75db?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/a7c6be153e35be82679af30c356b75db?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
+			
+			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+				<div class="wp-block-comment-author-name">matelot</div>
+				<div class="wp-block-comment-date"><time datetime="2010-06-24T00:23:45+00:00"><a href="/2010/06/05/pythons-innards-naming/#comment-181">June 24, 2010</a></time></div>
+			</div>
+			
+		</div>
+		
+		<div class="wp-block-comment-content">
+<p>hi are you aware that the print-out from this blog is real shitty ?</p>
+</div>
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-35 wp-block-group-is-layout-flex">
+			
+			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/06/05/pythons-innards-naming/?replytocom=181#respond" data-commentid="181" data-postid="628" data-belowelement="comment-181" data-respondelement="respond" data-replyto="Reply to matelot" aria-label="Reply to matelot">Reply</a></div>
+		</div>
+		
+	</div>
+	
+	<ol><li id="comment-182" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
+	
+	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-38 wp-block-group-is-layout-flex">
+			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
+			
+			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
+				<div class="wp-block-comment-date"><time datetime="2010-06-25T10:25:22+00:00"><a href="/2010/06/05/pythons-innards-naming/#comment-182">June 25, 2010</a></time></div>
+			</div>
+			
+		</div>
+		
+		<div class="wp-block-comment-content">
+<p>It prints fine to PDF on Google Chrome 5.0.375.70 on Ubuntu 10.04. Possibly you&#8217;re using a real shitty browser? 🙂</p>
+</div>
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-39 wp-block-group-is-layout-flex">
+			
+			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/06/05/pythons-innards-naming/?replytocom=182#respond" data-commentid="182" data-postid="628" data-belowelement="comment-182" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
+		</div>
+		
+	</div>
+	
+	<ol><li id="comment-184" class="comment even depth-3">
+	
+	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-42 wp-block-group-is-layout-flex">
+			<div class="wp-block-avatar"><img alt="matelot Avatar" src="http://1.gravatar.com/avatar/a7c6be153e35be82679af30c356b75db?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/a7c6be153e35be82679af30c356b75db?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
+			
+			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+				<div class="wp-block-comment-author-name">matelot</div>
+				<div class="wp-block-comment-date"><time datetime="2010-07-05T06:13:34+00:00"><a href="/2010/06/05/pythons-innards-naming/#comment-184">July 5, 2010</a></time></div>
+			</div>
+			
+		</div>
+		
+		<div class="wp-block-comment-content">
+<p>yes FireFox can&#8217;t seem to handle this page right</p>
+</div>
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-43 wp-block-group-is-layout-flex">
+			
+			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/06/05/pythons-innards-naming/?replytocom=184#respond" data-commentid="184" data-postid="628" data-belowelement="comment-184" data-respondelement="respond" data-replyto="Reply to matelot" aria-label="Reply to matelot">Reply</a></div>
+		</div>
+		
+	</div>
+	
+	<ol><li id="comment-185" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-4">
+	
+	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-46 wp-block-group-is-layout-flex">
+			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
+			
+			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
+				<div class="wp-block-comment-date"><time datetime="2010-07-06T15:47:32+00:00"><a href="/2010/06/05/pythons-innards-naming/#comment-185">July 6, 2010</a></time></div>
+			</div>
+			
+		</div>
+		
+		<div class="wp-block-comment-content">
+<p>Ugh, yes, I see this too now. I&#8217;ll try to look into this later, I&#8217;m not sure if it&#8217;s my fault or WordPress.com&#8217;s or Firefox&#8217;s&#8230;</p>
+</div>
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-47 wp-block-group-is-layout-flex">
+			
+			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/06/05/pythons-innards-naming/?replytocom=185#respond" data-commentid="185" data-postid="628" data-belowelement="comment-185" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
+		</div>
+		
+	</div>
+	
+	</li></ol>
+</li></ol>
+</li></ol>
+</li>
+<li id="comment-183" class="comment even thread-even depth-1">
+	
+	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-50 wp-block-group-is-layout-flex">
+			<div class="wp-block-avatar"><img alt="ilya Avatar" src="http://2.gravatar.com/avatar/e31b7aa6a8af067860c742c1f2a94ec1?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/e31b7aa6a8af067860c742c1f2a94ec1?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
+			
+			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+				<div class="wp-block-comment-author-name">ilya</div>
+				<div class="wp-block-comment-date"><time datetime="2010-06-30T18:50:20+00:00"><a href="/2010/06/05/pythons-innards-naming/#comment-183">June 30, 2010</a></time></div>
+			</div>
+			
+		</div>
+		
+		<div class="wp-block-comment-content">
+<p>Thank you very much for this series of articles!</p>
+<p>I am a Python newbie (but have spent few years programming in other languages) and this a really great explanation of what&#8217;s going on under the hood.</p>
+</div>
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-51 wp-block-group-is-layout-flex">
+			
+			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/06/05/pythons-innards-naming/?replytocom=183#respond" data-commentid="183" data-postid="628" data-belowelement="comment-183" data-respondelement="respond" data-replyto="Reply to ilya" aria-label="Reply to ilya">Reply</a></div>
+		</div>
+		
+	</div>
+	
+	</li>
+<li id="comment-186" class="comment odd alt thread-odd thread-alt depth-1">
+	
+	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-54 wp-block-group-is-layout-flex">
+			<div class="wp-block-avatar"><img alt="Lonny Landres Avatar" src="http://2.gravatar.com/avatar/ea17bba2010a0fd6e8b5f0eda21a90d5?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/ea17bba2010a0fd6e8b5f0eda21a90d5?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
+			
+			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://www.gjsentinel.com/members/72681" target="_self">Lonny Landres</a></div>
+				<div class="wp-block-comment-date"><time datetime="2011-04-26T04:22:01+00:00"><a href="/2010/06/05/pythons-innards-naming/#comment-186">April 26, 2011</a></time></div>
+			</div>
+			
+		</div>
+		
+		<div class="wp-block-comment-content">
+<p>I have been browsing online more than three hours these days, yet I never discovered any interesting article like yours. It¡¦s pretty worth sufficient for me. In my view, if all webmasters and bloggers made just right content material as you probably did, the web will probably be much more helpful than ever before.</p>
+</div>
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-55 wp-block-group-is-layout-flex">
+			
+			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/06/05/pythons-innards-naming/?replytocom=186#respond" data-commentid="186" data-postid="628" data-belowelement="comment-186" data-respondelement="respond" data-replyto="Reply to Lonny Landres" aria-label="Reply to Lonny Landres">Reply</a></div>
+		</div>
+		
+	</div>
+	
+	<ol><li id="comment-187" class="comment byuser comment-author-yanivaknin bypostauthor even depth-2">
+	
+	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-58 wp-block-group-is-layout-flex">
+			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
+			
+			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
+				<div class="wp-block-comment-date"><time datetime="2011-04-26T07:35:14+00:00"><a href="/2010/06/05/pythons-innards-naming/#comment-187">April 26, 2011</a></time></div>
+			</div>
+			
+		</div>
+		
+		<div class="wp-block-comment-content">
+<p>Thanks, that&#8217;s exceedingly kind of you.</p>
+</div>
+		
+		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-59 wp-block-group-is-layout-flex">
+			
+			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/06/05/pythons-innards-naming/?replytocom=187#respond" data-commentid="187" data-postid="628" data-belowelement="comment-187" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
+		</div>
+		
+	</div>
+	
+	</li></ol>
+</li>
+</ol>
+
+	
+
+		<div id="respond" style="padding-top:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);" class="comment-respond wp-block-post-comments-form">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2010/06/05/pythons-innards-naming/#respond" style="display:none;">Cancel reply</a></small>
+</h3>
+<form action="http://localhost/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p>
+<p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p>
+<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit wp-block-button"><input name="submit" type="submit" id="submit" class="wp-block-button__link wp-element-button" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="628" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+</form>	</div>
+<!-- #respond -->
+	
+</div>
+
+
+
+			
+
+<nav class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-61 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)" aria-label="Posts">
+	<div class="post-navigation-link-previous wp-block-post-navigation-link">
+<span class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow" aria-hidden="true">←</span><a href="/2010/06/05/correction-for-pythons-innards-pystate/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Correction for &#8216;Python&#8217;s Innards: pystate&#8217;</span></a>
+</div>
+	<div class="post-navigation-link-next wp-block-post-navigation-link">
+<a href="/2010/06/19/gosh-its-hot-here/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Gosh, it&#8217;s hot here</span></a><span class="wp-block-post-navigation-link__arrow-next is-arrow-arrow" aria-hidden="true">→</span>
+</div>
+</nav>
+
+
+
+		</div>
+		
+	</div>
+	
+</main>
+
+
+<footer class="wp-block-template-part"></footer>
+</div>
+<script src="/wp-includes/js/comment-reply.min.js?ver=6.4.2" id="comment-reply-js" async data-wp-strategy="async"></script>
+<script id="wp-block-template-skip-link-js-after">( function() {
+		var skipLinkTarget = document.querySelector( 'main' ),
+			sibling,
+			skipLinkTargetID,
+			skipLink;
+
+		// Early exit if a skip-link target can't be located.
+		if ( ! skipLinkTarget ) {
+			return;
+		}
+
+		/*
+		 * Get the site wrapper.
+		 * The skip-link will be injected in the beginning of it.
+		 */
+		sibling = document.querySelector( '.wp-site-blocks' );
+
+		// Early exit if the root element was not found.
+		if ( ! sibling ) {
+			return;
+		}
+
+		// Get the skip-link target's ID, and generate one if it doesn't exist.
+		skipLinkTargetID = skipLinkTarget.id;
+		if ( ! skipLinkTargetID ) {
+			skipLinkTargetID = 'wp--skip-link--target';
+			skipLinkTarget.id = skipLinkTargetID;
+		}
+
+		// Create the skip link.
+		skipLink = document.createElement( 'a' );
+		skipLink.classList.add( 'skip-link', 'screen-reader-text' );
+		skipLink.href = '#' + skipLinkTargetID;
+		skipLink.innerHTML = 'Skip to content';
+
+		// Inject the skip link.
+		sibling.parentElement.insertBefore( skipLink, sibling );
+	}() );</script>
+<!-- start Simple Custom CSS and JS -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
+<script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VJKKHDVY2P');</script>
+<!-- end Simple Custom CSS and JS -->
+</body>
+</html>
