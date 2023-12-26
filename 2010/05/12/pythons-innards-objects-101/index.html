@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="max-image-preview:large">
-<title>Python&#8217;s Innards: Objects 101 &#8211; NIL: .to write(1) ~ help:about</title>
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Feed" href="/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Comments Feed" href="/comments/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Python&#8217;s Innards: Objects 101 Comments Feed" href="/2010/05/12/pythons-innards-objects-101/feed/">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="max-image-preview:large" name="robots"/>
+<title>Python’s Innards: Objects 101 – NIL: .to write(1) ~ help:about</title>
+<link href="/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Feed" type="application/rss+xml"/>
+<link href="/comments/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Comments Feed" type="application/rss+xml"/>
+<link href="/2010/05/12/pythons-innards-objects-101/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Python’s Innards: Objects 101 Comments Feed" type="application/rss+xml"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 <script>
@@ -23,7 +24,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 .wp-block-site-title a:where(:not(.wp-element-button)):hover{text-decoration: none;}</style>
 <style id="wp-block-group-inline-css">.wp-block-group{box-sizing:border-box}</style>
 <style id="wp-block-page-list-inline-css">.wp-block-navigation .wp-block-page-list{align-items:var(--navigation-layout-align,initial);background-color:inherit;display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation .wp-block-navigation-item{background-color:inherit}</style>
-<link rel="stylesheet" id="wp-block-navigation-css" href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" media="all">
+<link href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" id="wp-block-navigation-css" media="all" rel="stylesheet"/>
 <style id="wp-block-navigation-inline-css">.wp-block-navigation{font-weight: 500;}
 .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;text-decoration: none;}
 .wp-block-navigation a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
@@ -162,656 +163,434 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 			width: auto;
 			z-index: 100000;
 		}</style>
-<script src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2" id="wp-interactivity-js" defer data-wp-strategy="defer"></script>
-<script src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831" id="wp-block-navigation-view-js" defer data-wp-strategy="defer"></script>
-<link rel="https://api.w.org/" href="/wp-json/">
-<link rel="alternate" type="application/json" href="/wp-json/wp/v2/posts/62">
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 6.4.2">
-<link rel="canonical" href="/2010/05/12/pythons-innards-objects-101/">
-<link rel="shortlink" href="/?p=62">
-<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F12%2Fpythons-innards-objects-101%2F">
-<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F12%2Fpythons-innards-objects-101%2F#038;format=xml">
+<script data-wp-strategy="defer" defer="" id="wp-interactivity-js" src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2"></script>
+<script data-wp-strategy="defer" defer="" id="wp-block-navigation-view-js" src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831"></script>
+<link href="/wp-json/" rel="https://api.w.org/"/>
+<link href="/wp-json/wp/v2/posts/62" rel="alternate" type="application/json"/>
+<link href="/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
+<meta content="WordPress 6.4.2" name="generator"/>
+<link href="/2010/05/12/pythons-innards-objects-101/" rel="canonical"/>
+<link href="/?p=62" rel="shortlink"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F12%2Fpythons-innards-objects-101%2F" rel="alternate" type="application/json+oembed"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F12%2Fpythons-innards-objects-101%2F#038;format=xml" rel="alternate" type="text/xml+oembed"/>
 <style id="wp-fonts-local">@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
 @font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:italic;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_italic_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:normal;font-weight:700;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}</style>
 </head>
-
 <body class="post-template-default single single-post postid-62 single-format-standard wp-embed-responsive">
-
 <div class="wp-site-blocks">
 <header class="wp-block-template-part">
 <div class="wp-block-group alignwide has-base-background-color has-background has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:20px;padding-bottom:20px">
-	
-	<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
-		
-		<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
-			
-
-			
-			<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
-				<p class="wp-block-site-title"><a href="/" target="_self" rel="home">NIL: .to write(1) ~ help:about</a></p>
-			</div>
-			
-		</div>
-		
-
-		<nav class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" aria-label="" data-wp-interactive data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}'><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open " data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
-			<div class="wp-block-navigation__responsive-container  " id="modal-1" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" tabindex="-1">
-				<div class="wp-block-navigation__responsive-close" tabindex="-1">
-					<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
-							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
-						<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
-							<ul class="wp-block-page-list">
+<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
+<p class="wp-block-site-title"><a href="/" rel="home" target="_self">NIL: .to write(1) ~ help:about</a></p>
+</div>
+</div>
+<nav aria-label="" class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}' data-wp-interactive=""><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="1.5" width="16" x="4" y="7.5"></rect><rect height="1.5" width="16" x="4" y="15"></rect></svg></button>
+<div class="wp-block-navigation__responsive-container" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" id="modal-1" tabindex="-1">
+<div class="wp-block-navigation__responsive-close" tabindex="-1">
+<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
+<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
+<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
+<ul class="wp-block-page-list">
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click menu-item-home"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/">About</a></li>
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/all-posts/">All Posts</a></li>
 </ul>
-						</div>
-					</div>
-				</div>
-			</div></nav>
-	</div>
-	
+</div>
+</div>
+</div>
+</div></nav>
+</div>
 </div>
 </header>
-
-
 <main class="wp-block-group alignfull is-layout-flow wp-block-group-is-layout-flow">
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
-		
-
-		
-		<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
-			<h1 class="wp-block-post-title has-x-large-font-size">Python&#8217;s Innards: Objects 101</h1>
-
-			<div class="wp-block-template-part">
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
+<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
+<h1 class="wp-block-post-title has-x-large-font-size">Python’s Innards: Objects 101</h1>
+<div class="wp-block-template-part">
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-	
-	<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
-		<div class="wp-block-post-date"><time datetime="2010-05-12T03:52:27+00:00"><a href="/2010/05/12/pythons-innards-objects-101/">May 12, 2010</a></time></div>
-
-		
-		<p class="has-contrast-2-color has-text-color">—</p>
-		
-
-		
-		<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
-		
-
-		<div class="wp-block-post-author-name"><a href="/author/yanivaknin/" target="_self" class="wp-block-post-author-name__link">Yaniv Aknin</a></div>
-
-		<div class="taxonomy-category wp-block-post-terms">
-<span class="wp-block-post-terms__prefix">in </span><a href="/category/my-projects/pythons-innards/" rel="tag">Python&#8217;s Innards</a>
+<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
+<div class="wp-block-post-date"><time datetime="2010-05-12T03:52:27+00:00"><a href="/2010/05/12/pythons-innards-objects-101/">May 12, 2010</a></time></div>
+<p class="has-contrast-2-color has-text-color">—</p>
+<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
+<div class="wp-block-post-author-name"><a class="wp-block-post-author-name__link" href="/author/yanivaknin/" target="_self">Yaniv Aknin</a></div>
+<div class="taxonomy-category wp-block-post-terms">
+<span class="wp-block-post-terms__prefix">in </span><a href="/category/my-projects/pythons-innards/" rel="tag">Python’s Innards</a>
 </div>
-
-	</div>
-	
 </div>
-
-
 </div>
-		</div>
-		
-	</div>
-	
-
-	<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
-<p>As I said in the <a href="http://tech.blog.aknin.name/2010/04/02/pythons-innards-introduction/">introduction</a> to this series (which was rather successful; thank you everyone, your hits and comments literally keep me going!) &#8211; today&#8217;s post will be about Python 3.x&#8217;s implementation of <strong>objects</strong>. When I set out to write this post, I thought we&#8217;ll start with objects because it would be a gentle start for our series. After reading all the code I had to read to write this post, I can hardly say Python&#8217;s object system is, uhm, &#8216;gentle&#8217; (and I definitely can&#8217;t say I grokked it). However, if anything, I was only further convinced that the implementation of objects is a good place for us to start because as we&#8217;ll see in later posts it&#8217;s so fundamental to the innards of Python, yet I suspect it&#8217;s not very often understood in its full glory even among Python veterans. Objects are not very tightly coupled with anything else in Python (I hardly visited <tt>./Python</tt> for this post, I frequented mostly <tt>./Objects</tt> and <tt>./Include</tt>), so I found it easiest to look at the implementation of objects as if they&#8217;re unrelated to the &#8216;rest&#8217;, as if they&#8217;re a general purpose C API for creating an object subsystem. Maybe you will benefit from that line of thought, too: remember these are just a bunch of structures and some functions to manipulate them.</p>
-<p>Without further ado, let&#8217;s start. Mostly everything in Python is an object, from integer to dictionaries, from user defined classes to built-in ones, from stack frames to code objects. Given a pointer to a piece of memory, the very least you must expect of it to treat it as an object are just a couple of fields defined in a C structure called <a href="http://docs.python.org/py3k/c-api/structures.html#PyObject" class="code">./Include/object.h: PyObject</a>:<br>
-<pre><code class="lang-c">typedef struct _object {<br>
-    Py_ssize_t ob_refcnt;<br>
-    struct _typeobject *ob_type;<br>
-} PyObject;<br>
+</div>
+</div>
+</div>
+<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
+<p>As I said in the <a href="http://tech.blog.aknin.name/2010/04/02/pythons-innards-introduction/">introduction</a> to this series (which was rather successful; thank you everyone, your hits and comments literally keep me going!) – today’s post will be about Python 3.x’s implementation of <strong>objects</strong>. When I set out to write this post, I thought we’ll start with objects because it would be a gentle start for our series. After reading all the code I had to read to write this post, I can hardly say Python’s object system is, uhm, ‘gentle’ (and I definitely can’t say I grokked it). However, if anything, I was only further convinced that the implementation of objects is a good place for us to start because as we’ll see in later posts it’s so fundamental to the innards of Python, yet I suspect it’s not very often understood in its full glory even among Python veterans. Objects are not very tightly coupled with anything else in Python (I hardly visited <tt>./Python</tt> for this post, I frequented mostly <tt>./Objects</tt> and <tt>./Include</tt>), so I found it easiest to look at the implementation of objects as if they’re unrelated to the ‘rest’, as if they’re a general purpose C API for creating an object subsystem. Maybe you will benefit from that line of thought, too: remember these are just a bunch of structures and some functions to manipulate them.</p>
+<p>Without further ado, let’s start. Mostly everything in Python is an object, from integer to dictionaries, from user defined classes to built-in ones, from stack frames to code objects. Given a pointer to a piece of memory, the very least you must expect of it to treat it as an object are just a couple of fields defined in a C structure called <a class="code" href="http://docs.python.org/py3k/c-api/structures.html#PyObject">./Include/object.h: PyObject</a>:<br/>
+<pre><code class="lang-c">typedef struct _object {<br/>
+    Py_ssize_t ob_refcnt;<br/>
+    struct _typeobject *ob_type;<br/>
+} PyObject;<br/>
 </code></pre>
-<p>Many objects extend this structure to accommodate other variables required to represent the object&#8217;s value, but these two fields must always exist: a <strong>reference count</strong> and <strong>type</strong> (in special debug builds, a couple other esoteric fields are added to track references). </p>
-<p>The reference count is an integer which counts how many times the object is <strong>referenced</strong>. <kbd>&gt;&gt;&gt; a = b = c = object()</kbd> instantiates an empty object and binds it to three different names: <tt>a</tt>, <tt>b</tt> and <tt>c</tt>. Each of these names creates another <em>reference</em> to it even though the object is <em>allocated</em> only once. Binding the object to yet another name or adding the object to a list will create another reference &#8211; but will not create another object! There is much <a href="http://docs.python.org/c-api/intro.html#reference-counts">more</a> to say about reference counting, but that&#8217;s less central to the overall object system and more related to Garbage Collection. I&#8217;d rather consider writing a separate post about that later than elaborate here, we&#8217;ve a heady post ahead of us. However, before we leave this subject for now, I&#8217;d just like to note that we can now better understand the <a href="http://docs.python.org/c-api/refcounting.html#Py_DECREF" class="code">./Include/object.h: Py_DECREF</a> macro we&#8217;ve seen used in the introduction and didn&#8217;t know how to explain: It simply decrements <tt>ob_refcnt</tt> (and initiates deallocation, if <tt>ob_refcnt</tt> hit zero). That&#8217;s all we&#8217;ll say about reference counting for now.</p>
-<p>Which leaves us with <tt>ob_type</tt>, a pointer to an object&#8217;s <strong>type</strong>, a central piece of Python&#8217;s object model (bear this deep in mind: in Python 3, <em>type</em> and <em>class</em> effectively mean the same thing; <a href="http://www.python.org/download/releases/2.2/descrintro/#introduction">historic reasons</a> lead to the usage of one name over the other depending on context). Every object has exactly one type, which never changes during the lifetime of the object (under extremely unusual conditions it can be changed, no API exists for that and if you handle type-changing objects you&#8217;re not likely to be reading this). Possibly most importantly, the type of an object (and <em>only</em> the type of an object) determines what can be done with an object (see the collapsed snippet at the end of this paragraph for a demonstration in code). Recall from the introduction that when the interpreter evaluates the subtraction opcode, a single C function (<tt>PyNumber_Subtract</tt>) will be called regardless of whether its operands are an integer and an integer, an integer and a float or even something nonsensical (subtract an exception from a dictionary).<br></p>
-<pre><code class="lang-pycon"># n2w: the type, not the instance, determines what can be done with an instance<br>
-&gt;&gt;&gt; class Foo(object):<br>
-&#8230;     &quot;I don&#8217;t have __call__, so I can&#8217;t be called&quot;<br>
-&#8230;<br>
-&gt;&gt;&gt; class Bar(object):<br>
-&#8230;     __call__ = lambda *a, **kw: 42<br>
-&#8230;<br>
-&gt;&gt;&gt; foo = Foo()<br>
-&gt;&gt;&gt; bar = Bar()<br>
-&gt;&gt;&gt; foo()<br>
-Traceback (most recent call last):<br>
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;<br>
-TypeError: &#8216;Foo&#8217; object is not callable<br>
-&gt;&gt;&gt; bar()<br>
-42<br>
-# will adding __call__ to foo help?<br>
-&gt;&gt;&gt; foo.__call__ = lambda *a, **kw: 42<br>
-&gt;&gt;&gt; foo()<br>
-Traceback (most recent call last):<br>
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;<br>
-TypeError: &#8216;Foo&#8217; object is not callable<br>
-# how about adding it to Foo?<br>
-&gt;&gt;&gt; Foo.__call__ = lambda *a, **kw: 42<br>
-&gt;&gt;&gt; foo()<br>
-42<br>
-&gt;&gt;&gt;<br>
+<p>Many objects extend this structure to accommodate other variables required to represent the object’s value, but these two fields must always exist: a <strong>reference count</strong> and <strong>type</strong> (in special debug builds, a couple other esoteric fields are added to track references). </p>
+<p>The reference count is an integer which counts how many times the object is <strong>referenced</strong>. <kbd>&gt;&gt;&gt; a = b = c = object()</kbd> instantiates an empty object and binds it to three different names: <tt>a</tt>, <tt>b</tt> and <tt>c</tt>. Each of these names creates another <em>reference</em> to it even though the object is <em>allocated</em> only once. Binding the object to yet another name or adding the object to a list will create another reference – but will not create another object! There is much <a href="http://docs.python.org/c-api/intro.html#reference-counts">more</a> to say about reference counting, but that’s less central to the overall object system and more related to Garbage Collection. I’d rather consider writing a separate post about that later than elaborate here, we’ve a heady post ahead of us. However, before we leave this subject for now, I’d just like to note that we can now better understand the <a class="code" href="http://docs.python.org/c-api/refcounting.html#Py_DECREF">./Include/object.h: Py_DECREF</a> macro we’ve seen used in the introduction and didn’t know how to explain: It simply decrements <tt>ob_refcnt</tt> (and initiates deallocation, if <tt>ob_refcnt</tt> hit zero). That’s all we’ll say about reference counting for now.</p>
+<p>Which leaves us with <tt>ob_type</tt>, a pointer to an object’s <strong>type</strong>, a central piece of Python’s object model (bear this deep in mind: in Python 3, <em>type</em> and <em>class</em> effectively mean the same thing; <a href="http://www.python.org/download/releases/2.2/descrintro/#introduction">historic reasons</a> lead to the usage of one name over the other depending on context). Every object has exactly one type, which never changes during the lifetime of the object (under extremely unusual conditions it can be changed, no API exists for that and if you handle type-changing objects you’re not likely to be reading this). Possibly most importantly, the type of an object (and <em>only</em> the type of an object) determines what can be done with an object (see the collapsed snippet at the end of this paragraph for a demonstration in code). Recall from the introduction that when the interpreter evaluates the subtraction opcode, a single C function (<tt>PyNumber_Subtract</tt>) will be called regardless of whether its operands are an integer and an integer, an integer and a float or even something nonsensical (subtract an exception from a dictionary).<br/></p>
+<pre><code class="lang-pycon"># n2w: the type, not the instance, determines what can be done with an instance<br/>
+&gt;&gt;&gt; class Foo(object):<br/>
+…     "I don’t have __call__, so I can’t be called"<br/>
+…<br/>
+&gt;&gt;&gt; class Bar(object):<br/>
+…     __call__ = lambda *a, **kw: 42<br/>
+…<br/>
+&gt;&gt;&gt; foo = Foo()<br/>
+&gt;&gt;&gt; bar = Bar()<br/>
+&gt;&gt;&gt; foo()<br/>
+Traceback (most recent call last):<br/>
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;<br/>
+TypeError: ‘Foo’ object is not callable<br/>
+&gt;&gt;&gt; bar()<br/>
+42<br/>
+# will adding __call__ to foo help?<br/>
+&gt;&gt;&gt; foo.__call__ = lambda *a, **kw: 42<br/>
+&gt;&gt;&gt; foo()<br/>
+Traceback (most recent call last):<br/>
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;<br/>
+TypeError: ‘Foo’ object is not callable<br/>
+# how about adding it to Foo?<br/>
+&gt;&gt;&gt; Foo.__call__ = lambda *a, **kw: 42<br/>
+&gt;&gt;&gt; foo()<br/>
+42<br/>
+&gt;&gt;&gt;<br/>
 </code></pre>
-<p>Initially, this is a peculiar thing. How can a single C function be used to handle <em>any</em> kind of object that is thrown at it? It can receive a <tt>void *</tt> pointer (actually it receives a <tt>PyObject *</tt> pointer, which is also opaque insofar as the object&#8217;s data is concerned), but how will it know <em>how</em> to manipulate the object it is given? In the object&#8217;s type lies the answer. A type is in itself a Python object (it also has a reference count and a type of its own, the type of almost all types is <tt>type</tt>), but in addition to the refcount and the type of the type, there are many more fields in the C structure describing type objects. <a href="http://docs.python.org/c-api/typeobj.html#type-objects">This</a> page has some information about types as well as <tt>type</tt>&#8216;s  structure&#8217;s definition, which you can also find it at <tt>./Include/object.h: PyTypeObject</tt>, I suggest you refer to the definition occasionally as you read this post. Many of the fields a type object has are called <strong>slots</strong> and they point to functions (or to structures that point to a bunch of related functions). These functions are what will actually be called when Python C-API functions are invoked to operate on an object instantiated from that type. So while you think you&#8217;re calling <tt>PyNumber_Subtract</tt> on both a, say, <tt>int</tt> and a <tt>float</tt>, in reality what happens is that the types of it operands are dereferenced and the type-specific subtraction function in the &#8216;subtraction&#8217; slot is used. So we see that the C-API functions aren&#8217;t generic, but rather rely on types to abstract the details away and appear as if they can work on anything (valid work is also just to raise a <tt>TypeError</tt>).</p>
-<p>Let&#8217;s see this play out in detail: <tt>PyNumber_Subtract</tt> calls a generic two-argument function called <tt>./Object/abstract.c: binary_op</tt>, and tells it to operate on the number-like slot <tt>nb_subtract</tt> (similar slots exists for other functionality, like, say, the number-like slot <tt>nb_negative</tt> or the sequence-like slot <tt>sq_length</tt>). <tt>binary_op</tt> is an error-checking wrapper around <tt>binary_op1</tt>, the real &#8216;do work&#8217; function. <tt>./Objects/abstract.c: binary_op1</tt> (an eye-opening read in itself) receives <tt>BINARY_SUBTRACT</tt>&#8216;s operands as <tt>v</tt> and <tt>w</tt>, and then tries to dereference <tt>v-&gt;ob_type-&gt;tp_as_number</tt>, a <a href="http://docs.python.org/py3k/c-api/typeobj.html#PyNumberMethods">structure</a> pointing to many numeric slots which represents how <tt>v</tt> can be used as a number. <tt>binary_op1</tt> will expect to find at <tt>tp_as_number-&gt;nb_subtract</tt> a C function that will either do the subtraction or return the special value <tt>Py_NotImplemented</tt>, to signal that these operands are &#8216;insubtracticable&#8217; in relation to one another (this will cause a TypeError exception to be raised).</p>
-<p>If you want to change how objects behave, you can write an extension in C which will statically define its own <tt>PyObjectType</tt> structure in code and fill the slots away as you see fit. But when we create our own types in Python (make no mistake, <kbd>&gt;&gt;&gt; class Foo(list): pass</kbd> creates a new <em>type</em>, class and type are the same thing), we don&#8217;t manually allocate a C structure and we don&#8217;t fill up its slots. How come these types behave just like built-in types? The answer is inheritance, where typing plays a significant role. See, Python arrives with some built-in types, like <tt>list</tt> or <tt>dict</tt>. As we said, these types have a certain set of functions populating their slots and thus objects instantiated from them behave in a certain way, like a mutable sequence of values or like a mapping of keys to values. When you define a new type in Python, a new C structure for that type is dynamically allocated on the heap (like any other object) and its slots are filled from whichever type it is inheriting, which is also called its <em>base</em> (<em>what about multiple inheritance</em>, you may ask? <em>some other post</em>, I might answer). Since the slots are copied over, the newly created sub-type has mostly identical functionality to its base. Python also arrives with a featureless base object type called <tt>object</tt> (<tt>PyBaseObject_Type</tt> in C), which has mostly <tt>null</tt> slots and which you can extend without inheriting any particular functionality.</p>
-<p>So you never really &#8216;create&#8217; a type in pure Python, you always inherit one (if you define a class without inheriting anything explicitly, you will implicitly inherit <tt>object</tt>; in Python 2.x, not inheriting anything explicitly leads to the creation of a so called &#8216;classic class&#8217;, which is out of our scope). Of course, you don&#8217;t have to inherit <em>everything</em>. You can, obviously, mutate the behaviour of a type created in pure Python, as I&#8217;ve demonstrated in the code snippet earlier in this post. By setting the special method <a class="code" href="http://docs.python.org/py3k/reference/datamodel.html#object.__call__">__call__</a> on our class <tt>Bar</tt>, I made instances of that class callable. Someone, sometime during the creation of our class, noticed this <tt>__call__</tt> method exists and wired it into our newly created type&#8217;s <tt>tp_call</tt> slot. <tt>./Objects/typeobject.c: type_new</tt>, an elaborate and central function, is that function. We shall revisit that function, at length, in &#8220;Objects 102&#8221; (or 103, or 104&#8230;), but for now, let&#8217;s look at a small line right at the end, after the new type has been fully created and just before returning: <tt>fixup_slot_dispatchers(type);</tt>. This function iterates over the correctly named methods defined for the newly created type and wires them to the correct slots in the type&#8217;s structure, based on their particular name (where are these methods stored? later!).</p>
-<p>Another thing remains unanswered in the sea of small details: we&#8217;ve demonstrated already that setting the method <tt>__call__</tt> on a type <em>after it&#8217;s created</em> will also make objects instantiated from that type callable (even objects already instantiated from that type). How come? With elegance, my friends. Recall that a type is an object, and that the type of a type is <tt>type</tt> (if your head is spinning, try: <kbd>&gt;&gt;&gt; class Foo(list): pass ; type(Foo)</kbd>). So when we do stuff to a class (I could use the word <em>type</em> instead of <em>class</em> just as well, but since we use the word &#8216;type&#8217; so much in different context, I&#8217;ll call our type a class for a bit), like calling a class, or subtracting a class, or, indeed, setting an attribute on a class, what happens is that the class&#8217; object&#8217;s <tt>ob_type</tt> member is dereferenced, finding that the class&#8217; type is <tt>type</tt>. Then the <tt>type-&gt;tp_setattro</tt> slot is used to do the actual attribute setting. So a class, like an integer or a list can have its own attribute-setting function. And the type-specific attribute-setting function (<tt>./Objects/typeobject.c: type_setattro</tt>, if you didn&#8217;t know its name and want to befriend it in Facebook) calls the very same function that <tt>fixup_slot_dispatchers</tt> uses to actually do the fixup work (<tt>update_one_slot</tt>) after it has set a new attribute on a class. Another details sussed out!</p>
-<p>This is it as far as our introduction to Python objects is concerned. I hope you enjoyed the ride and that you&#8217;re still with me. I have to admit this post was far harder to write than I initially imagined (and without <em>Antoine Pitrou</em>&#8216;s and <em>Mark Dickins</em>&#8216;s jolly help late at night in <tt>#python-dev</tt>, I might have given up!). I&#8217;ve left so much out that I&#8217;m appalled: which operand&#8217;s slot is used in binary opcodes? what happens in multiple inheritance and all the <del>gory</del>minute details it entails? what about this thing called <tt>metaclass</tt>? what about <tt>__slots__</tt> and weak references? what about the actual implementation of all the built-in objects, how do the <em>dictionary</em>, the <em>list</em>, the <em>set</em> and their friends actually do their functional work? And finally, how about this little gem:<br></p>
-<pre><code class="lang-pycon">&gt;&gt;&gt; a = object()<br>
-&gt;&gt;&gt; class C(object): pass<br>
-&#8230;<br>
-&gt;&gt;&gt; b = C()<br>
-&gt;&gt;&gt; a.foo = 5<br>
-Traceback (most recent call last):<br>
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;<br>
-AttributeError: &#8216;object&#8217; object has no attribute &#8216;foo&#8217;<br>
-&gt;&gt;&gt; b.foo = 5<br>
-&gt;&gt;&gt;<br>
+<p>Initially, this is a peculiar thing. How can a single C function be used to handle <em>any</em> kind of object that is thrown at it? It can receive a <tt>void *</tt> pointer (actually it receives a <tt>PyObject *</tt> pointer, which is also opaque insofar as the object’s data is concerned), but how will it know <em>how</em> to manipulate the object it is given? In the object’s type lies the answer. A type is in itself a Python object (it also has a reference count and a type of its own, the type of almost all types is <tt>type</tt>), but in addition to the refcount and the type of the type, there are many more fields in the C structure describing type objects. <a href="http://docs.python.org/c-api/typeobj.html#type-objects">This</a> page has some information about types as well as <tt>type</tt>‘s  structure’s definition, which you can also find it at <tt>./Include/object.h: PyTypeObject</tt>, I suggest you refer to the definition occasionally as you read this post. Many of the fields a type object has are called <strong>slots</strong> and they point to functions (or to structures that point to a bunch of related functions). These functions are what will actually be called when Python C-API functions are invoked to operate on an object instantiated from that type. So while you think you’re calling <tt>PyNumber_Subtract</tt> on both a, say, <tt>int</tt> and a <tt>float</tt>, in reality what happens is that the types of it operands are dereferenced and the type-specific subtraction function in the ‘subtraction’ slot is used. So we see that the C-API functions aren’t generic, but rather rely on types to abstract the details away and appear as if they can work on anything (valid work is also just to raise a <tt>TypeError</tt>).</p>
+<p>Let’s see this play out in detail: <tt>PyNumber_Subtract</tt> calls a generic two-argument function called <tt>./Object/abstract.c: binary_op</tt>, and tells it to operate on the number-like slot <tt>nb_subtract</tt> (similar slots exists for other functionality, like, say, the number-like slot <tt>nb_negative</tt> or the sequence-like slot <tt>sq_length</tt>). <tt>binary_op</tt> is an error-checking wrapper around <tt>binary_op1</tt>, the real ‘do work’ function. <tt>./Objects/abstract.c: binary_op1</tt> (an eye-opening read in itself) receives <tt>BINARY_SUBTRACT</tt>‘s operands as <tt>v</tt> and <tt>w</tt>, and then tries to dereference <tt>v-&gt;ob_type-&gt;tp_as_number</tt>, a <a href="http://docs.python.org/py3k/c-api/typeobj.html#PyNumberMethods">structure</a> pointing to many numeric slots which represents how <tt>v</tt> can be used as a number. <tt>binary_op1</tt> will expect to find at <tt>tp_as_number-&gt;nb_subtract</tt> a C function that will either do the subtraction or return the special value <tt>Py_NotImplemented</tt>, to signal that these operands are ‘insubtracticable’ in relation to one another (this will cause a TypeError exception to be raised).</p>
+<p>If you want to change how objects behave, you can write an extension in C which will statically define its own <tt>PyObjectType</tt> structure in code and fill the slots away as you see fit. But when we create our own types in Python (make no mistake, <kbd>&gt;&gt;&gt; class Foo(list): pass</kbd> creates a new <em>type</em>, class and type are the same thing), we don’t manually allocate a C structure and we don’t fill up its slots. How come these types behave just like built-in types? The answer is inheritance, where typing plays a significant role. See, Python arrives with some built-in types, like <tt>list</tt> or <tt>dict</tt>. As we said, these types have a certain set of functions populating their slots and thus objects instantiated from them behave in a certain way, like a mutable sequence of values or like a mapping of keys to values. When you define a new type in Python, a new C structure for that type is dynamically allocated on the heap (like any other object) and its slots are filled from whichever type it is inheriting, which is also called its <em>base</em> (<em>what about multiple inheritance</em>, you may ask? <em>some other post</em>, I might answer). Since the slots are copied over, the newly created sub-type has mostly identical functionality to its base. Python also arrives with a featureless base object type called <tt>object</tt> (<tt>PyBaseObject_Type</tt> in C), which has mostly <tt>null</tt> slots and which you can extend without inheriting any particular functionality.</p>
+<p>So you never really ‘create’ a type in pure Python, you always inherit one (if you define a class without inheriting anything explicitly, you will implicitly inherit <tt>object</tt>; in Python 2.x, not inheriting anything explicitly leads to the creation of a so called ‘classic class’, which is out of our scope). Of course, you don’t have to inherit <em>everything</em>. You can, obviously, mutate the behaviour of a type created in pure Python, as I’ve demonstrated in the code snippet earlier in this post. By setting the special method <a class="code" href="http://docs.python.org/py3k/reference/datamodel.html#object.__call__">__call__</a> on our class <tt>Bar</tt>, I made instances of that class callable. Someone, sometime during the creation of our class, noticed this <tt>__call__</tt> method exists and wired it into our newly created type’s <tt>tp_call</tt> slot. <tt>./Objects/typeobject.c: type_new</tt>, an elaborate and central function, is that function. We shall revisit that function, at length, in “Objects 102” (or 103, or 104…), but for now, let’s look at a small line right at the end, after the new type has been fully created and just before returning: <tt>fixup_slot_dispatchers(type);</tt>. This function iterates over the correctly named methods defined for the newly created type and wires them to the correct slots in the type’s structure, based on their particular name (where are these methods stored? later!).</p>
+<p>Another thing remains unanswered in the sea of small details: we’ve demonstrated already that setting the method <tt>__call__</tt> on a type <em>after it’s created</em> will also make objects instantiated from that type callable (even objects already instantiated from that type). How come? With elegance, my friends. Recall that a type is an object, and that the type of a type is <tt>type</tt> (if your head is spinning, try: <kbd>&gt;&gt;&gt; class Foo(list): pass ; type(Foo)</kbd>). So when we do stuff to a class (I could use the word <em>type</em> instead of <em>class</em> just as well, but since we use the word ‘type’ so much in different context, I’ll call our type a class for a bit), like calling a class, or subtracting a class, or, indeed, setting an attribute on a class, what happens is that the class’ object’s <tt>ob_type</tt> member is dereferenced, finding that the class’ type is <tt>type</tt>. Then the <tt>type-&gt;tp_setattro</tt> slot is used to do the actual attribute setting. So a class, like an integer or a list can have its own attribute-setting function. And the type-specific attribute-setting function (<tt>./Objects/typeobject.c: type_setattro</tt>, if you didn’t know its name and want to befriend it in Facebook) calls the very same function that <tt>fixup_slot_dispatchers</tt> uses to actually do the fixup work (<tt>update_one_slot</tt>) after it has set a new attribute on a class. Another details sussed out!</p>
+<p>This is it as far as our introduction to Python objects is concerned. I hope you enjoyed the ride and that you’re still with me. I have to admit this post was far harder to write than I initially imagined (and without <em>Antoine Pitrou</em>‘s and <em>Mark Dickins</em>‘s jolly help late at night in <tt>#python-dev</tt>, I might have given up!). I’ve left so much out that I’m appalled: which operand’s slot is used in binary opcodes? what happens in multiple inheritance and all the <del>gory</del>minute details it entails? what about this thing called <tt>metaclass</tt>? what about <tt>__slots__</tt> and weak references? what about the actual implementation of all the built-in objects, how do the <em>dictionary</em>, the <em>list</em>, the <em>set</em> and their friends actually do their functional work? And finally, how about this little gem:<br/></p>
+<pre><code class="lang-pycon">&gt;&gt;&gt; a = object()<br/>
+&gt;&gt;&gt; class C(object): pass<br/>
+…<br/>
+&gt;&gt;&gt; b = C()<br/>
+&gt;&gt;&gt; a.foo = 5<br/>
+Traceback (most recent call last):<br/>
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;<br/>
+AttributeError: ‘object’ object has no attribute ‘foo’<br/>
+&gt;&gt;&gt; b.foo = 5<br/>
+&gt;&gt;&gt;<br/>
 </code></pre>
-<p>How come I can set an arbitrary attribute to <tt>b</tt>, which is an instance of <tt>C</tt>, which is a class inheriting <tt>object</tt> and not changing <em>anything</em>, and yet I can&#8217;t do the same with <tt>a</tt>, an instance of that very same <tt>object</tt>? Some wise crackers can say: <tt>b</tt> has a <tt>__dict__</tt> and <tt>a</tt> doesn&#8217;t, and that&#8217;s true, but where in Guido&#8217;s name did this new (and totally non-trivial!) functionality come from if I didn&#8217;t inherit it?!</p>
-<p>Ha! I&#8217;m delighted you asked! The answers <em>are</em> coming, but at another post.</p>
-<hr>
+<p>How come I can set an arbitrary attribute to <tt>b</tt>, which is an instance of <tt>C</tt>, which is a class inheriting <tt>object</tt> and not changing <em>anything</em>, and yet I can’t do the same with <tt>a</tt>, an instance of that very same <tt>object</tt>? Some wise crackers can say: <tt>b</tt> has a <tt>__dict__</tt> and <tt>a</tt> doesn’t, and that’s true, but where in Guido’s name did this new (and totally non-trivial!) functionality come from if I didn’t inherit it?!</p>
+<p>Ha! I’m delighted you asked! The answers <em>are</em> coming, but at another post.</p>
+<hr/>
 <p><span class="footer">A short reading list on the matter, for those so inclined: Try the documentation of the <a href="http://docs.python.org/py3k/reference/datamodel.html#data-model">data model</a> for an explanation on how to use things from Python; the C-API documentation about <a href="http://docs.python.org/py3k/c-api/abstract.html">abstract</a> and <a href="http://docs.python.org/py3k/c-api/concrete.html">concrete</a> objects for an explanation on using things from C; <a href="http://www.python.org/download/releases/2.2/descrintro/">descrintro</a>, AKA <em>Unifying types and classes in Python 2.2</em>, an archeological finding which is long, mind-boggling and hugely relevant (I argue it should be added as an <a href="http://www.joegrossberg.com/archives/000696.html">easter egg</a> to the interpreter, I suggest <kbd>&gt;&gt;&gt; import THAT</kbd>); but above all else, read <tt>./Objects/typeobject.c</tt>. Read it over and over, until you cry yourself to sleep. Sweet dreams.</span></p>
+</p></div>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
+<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
+<a href="/tag/internals/" rel="tag">internals</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/objects/" rel="tag">objects</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/python/" rel="tag">python</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/types/" rel="tag">types</a>
 </div>
-
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
-		<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
-<a href="/tag/internals/" rel="tag">internals</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/objects/" rel="tag">objects</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/python/" rel="tag">python</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/types/" rel="tag">types</a>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div aria-hidden="true" class="wp-block-spacer" style="height:var(--wp--preset--spacing--40)">
 </div>
-
-		
-		<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-			
-			<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer">
-			</div>
-			
-
-			
-			<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)">
-			
-
-			
-
+<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)"/>
 <div class="wp-block-comments wp-block-comments-query-loop">
-	
-	<h2 class="wp-block-heading">Comments</h2>
-	
-	<h3 id="comments" class="wp-block-comments-title">16 responses to &#8220;Python&#8217;s Innards: Objects 101&#8221;</h3>
-	<ol class="wp-block-comment-template">
-<li id="comment-56" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Tom Swirly Avatar" src="http://1.gravatar.com/avatar/753ef975f85896eabdb64d9aa6ad4cbe?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/753ef975f85896eabdb64d9aa6ad4cbe?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Tom Swirly</div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-12T21:08:48+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-56">May 12, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Really excellent post here &#8211; got me thinking about the internals!</p>
-<p>Minor quibble:  the last code sample is misformatted and has stray, escaped HTML in it&#8230; 😀</p>
-<p>I&#8217;ll follow this whole series, particularly if it keeps getting posted to reddit/r/python.  Thanks for your work!</p>
+<h2 class="wp-block-heading">Comments</h2>
+<h3 class="wp-block-comments-title" id="comments">16 responses to “Python’s Innards: Objects 101”</h3>
+<ol class="wp-block-comment-template">
+<li class="comment even thread-even depth-1" id="comment-56">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Tom Swirly Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://1.gravatar.com/avatar/753ef975f85896eabdb64d9aa6ad4cbe?s=40&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/753ef975f85896eabdb64d9aa6ad4cbe?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Tom Swirly</div>
+<div class="wp-block-comment-date"><time datetime="2010-05-12T21:08:48+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-56">May 12, 2010</a></time></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=56#respond" data-commentid="56" data-postid="62" data-belowelement="comment-56" data-respondelement="respond" data-replyto="Reply to Tom Swirly" aria-label="Reply to Tom Swirly">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-58" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-13T01:21:08+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-58">May 13, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+</div>
+<div class="wp-block-comment-content">
+<p>Really excellent post here – got me thinking about the internals!</p>
+<p>Minor quibble:  the last code sample is misformatted and has stray, escaped HTML in it… 😀</p>
+<p>I’ll follow this whole series, particularly if it keeps getting posted to reddit/r/python.  Thanks for your work!</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2" id="comment-58">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-13T01:21:08+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-58">May 13, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Thanks for the feedback. Fixed the pesky HTML issue 🙂</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=58#respond" data-commentid="58" data-postid="62" data-belowelement="comment-58" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
-</li>
-<li id="comment-57" class="comment even thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="brad dunbar Avatar" src="http://0.gravatar.com/avatar/0168f51cd822a820c606c259b80e253f?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/0168f51cd822a820c606c259b80e253f?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">brad dunbar</div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-13T00:20:37+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-57">May 13, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>*whew!* I feel like I need to read this three or four times to really get it.  Here goes number two&#8230;</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=57#respond" data-commentid="57" data-postid="62" data-belowelement="comment-57" data-respondelement="respond" data-replyto="Reply to brad dunbar" aria-label="Reply to brad dunbar">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-59" class="comment odd alt thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="NicDumZ Avatar" src="http://2.gravatar.com/avatar/22dea59a22ac5b9848d4e805fe1dfc57?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/22dea59a22ac5b9848d4e805fe1dfc57?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://twitter.com/nicdumz" target="_self">NicDumZ</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-13T07:04:20+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-59">May 13, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+</div>
+</li></ol>
+</li>
+<li class="comment even thread-odd thread-alt depth-1" id="comment-57">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="brad dunbar Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/0168f51cd822a820c606c259b80e253f?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/0168f51cd822a820c606c259b80e253f?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">brad dunbar</div>
+<div class="wp-block-comment-date"><time datetime="2010-05-13T00:20:37+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-57">May 13, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>*whew!* I feel like I need to read this three or four times to really get it.  Here goes number two…</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment odd alt thread-even depth-1" id="comment-59">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="NicDumZ Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/22dea59a22ac5b9848d4e805fe1dfc57?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/22dea59a22ac5b9848d4e805fe1dfc57?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://twitter.com/nicdumz" rel="external nofollow ugc" target="_self">NicDumZ</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-13T07:04:20+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-59">May 13, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>The collapsed snippet about types has some unescaped HTML in it 🙂</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=59#respond" data-commentid="59" data-postid="62" data-belowelement="comment-59" data-respondelement="respond" data-replyto="Reply to NicDumZ" aria-label="Reply to NicDumZ">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-60" class="comment byuser comment-author-yanivaknin bypostauthor even depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-13T07:26:21+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-60">May 13, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Sneaky little buggers, now ain&#8217;t they&#8230; Thanks!</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=60#respond" data-commentid="60" data-postid="62" data-belowelement="comment-60" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor even depth-2" id="comment-60">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-13T07:26:21+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-60">May 13, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Sneaky little buggers, now ain’t they… Thanks!</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 </li>
-<li id="comment-61" class="pingback odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar">  </div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://tech.blog.aknin.name/2010/04/02/pythons-innards-introduction/" target="_self">Python&#8217;s Innards: Introduction &laquo; NIL: .to write(1) ~ help:about</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-22T15:41:51+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-61">May 22, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>[&#8230;] to understanding how it works, and I reckon we&#8217;ll cover that &#8211; at length &#8211; in the next post of this series. Stay [&#8230;]</p>
+<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-61">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"> </div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://tech.blog.aknin.name/2010/04/02/pythons-innards-introduction/" rel="external nofollow ugc" target="_self">Python’s Innards: Introduction « NIL: .to write(1) ~ help:about</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-22T15:41:51+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-61">May 22, 2010</a></time></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=61#respond" data-commentid="61" data-postid="62" data-belowelement="comment-61" data-respondelement="respond" data-replyto="Reply to Python&#8217;s Innards: Introduction &laquo; NIL: .to write(1) ~ help:about" aria-label="Reply to Python&#8217;s Innards: Introduction &laquo; NIL: .to write(1) ~ help:about">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-62" class="pingback even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar">  </div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://tech.blog.aknin.name/2010/05/19/pythons-innards-objects-102/" target="_self">Python&#8217;s Innards: Objects 102 &laquo; NIL: .to write(1) ~ help:about</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-22T15:42:21+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-62">May 22, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>[&#8230;] the third post in our series of Python internals and a direct continuation to the earlier post, Objects 101 (reading this post without reading 101 totally voids your warranty, so maybe you should head there [&#8230;]</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-35 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=62#respond" data-commentid="62" data-postid="62" data-belowelement="comment-62" data-respondelement="respond" data-replyto="Reply to Python&#8217;s Innards: Objects 102 &laquo; NIL: .to write(1) ~ help:about" aria-label="Reply to Python&#8217;s Innards: Objects 102 &laquo; NIL: .to write(1) ~ help:about">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-63" class="comment odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-38 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Nick Coghlan Avatar" src="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Nick Coghlan</div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-26T04:17:10+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-63">May 26, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Excellent write-up. I was going to comment on the details you skipped over with the whole &#8220;Py_NotImplemented&#8221; thing (i.e. why a special return value is used instead of raising an exception directly), but that&#8217;s covered by your note later on about skipping the details of how the binary operands are handled.</p>
-<p>And the more I read, the more I think you&#8217;ll find the user reference in the sandbox useful 🙂</p>
+<div class="wp-block-comment-content">
+<p>[…] to understanding how it works, and I reckon we’ll cover that – at length – in the next post of this series. Stay […]</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-39 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=63#respond" data-commentid="63" data-postid="62" data-belowelement="comment-63" data-respondelement="respond" data-replyto="Reply to Nick Coghlan" aria-label="Reply to Nick Coghlan">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-64" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-42 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Naitik Shah Avatar" src="http://1.gravatar.com/avatar/162ba763482bf53ed1d9a4589fad393f?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/162ba763482bf53ed1d9a4589fad393f?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Naitik Shah</div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-29T20:50:36+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-64">May 29, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="pingback even thread-even depth-1" id="comment-62">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"> </div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://tech.blog.aknin.name/2010/05/19/pythons-innards-objects-102/" rel="external nofollow ugc" target="_self">Python’s Innards: Objects 102 « NIL: .to write(1) ~ help:about</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-22T15:42:21+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-62">May 22, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>[…] the third post in our series of Python internals and a direct continuation to the earlier post, Objects 101 (reading this post without reading 101 totally voids your warranty, so maybe you should head there […]</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-35 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-63">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-38 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Nick Coghlan Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Nick Coghlan</div>
+<div class="wp-block-comment-date"><time datetime="2010-05-26T04:17:10+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-63">May 26, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Excellent write-up. I was going to comment on the details you skipped over with the whole “Py_NotImplemented” thing (i.e. why a special return value is used instead of raising an exception directly), but that’s covered by your note later on about skipping the details of how the binary operands are handled.</p>
+<p>And the more I read, the more I think you’ll find the user reference in the sandbox useful 🙂</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-39 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment even thread-even depth-1" id="comment-64">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-42 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Naitik Shah Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://1.gravatar.com/avatar/162ba763482bf53ed1d9a4589fad393f?s=40&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/162ba763482bf53ed1d9a4589fad393f?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Naitik Shah</div>
+<div class="wp-block-comment-date"><time datetime="2010-05-29T20:50:36+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-64">May 29, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Excellent writeup!</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-43 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=64#respond" data-commentid="64" data-postid="62" data-belowelement="comment-64" data-respondelement="respond" data-replyto="Reply to Naitik Shah" aria-label="Reply to Naitik Shah">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-65" class="comment odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-46 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Senthil Avatar" src="http://2.gravatar.com/avatar/21bdb30e0a3bf7517c2a0795c65a20cd?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/21bdb30e0a3bf7517c2a0795c65a20cd?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://uthcode.sarovar.org/" target="_self">Senthil</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-06-06T08:49:02+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-65">June 6, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-43 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-65">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-46 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Senthil Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/21bdb30e0a3bf7517c2a0795c65a20cd?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/21bdb30e0a3bf7517c2a0795c65a20cd?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://uthcode.sarovar.org/" rel="external nofollow ugc" target="_self">Senthil</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-06-06T08:49:02+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-65">June 6, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Good write up. starting it with python -c and leading the way is definitely helpful to many who wonder where to start.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-47 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=65#respond" data-commentid="65" data-postid="62" data-belowelement="comment-65" data-respondelement="respond" data-replyto="Reply to Senthil" aria-label="Reply to Senthil">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-66" class="comment byuser comment-author-yanivaknin bypostauthor even depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-50 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-06-06T09:28:12+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-66">June 6, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-47 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor even depth-2" id="comment-66">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-50 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-06-06T09:28:12+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-66">June 6, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Thanks, glad to see you here.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-51 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=66#respond" data-commentid="66" data-postid="62" data-belowelement="comment-66" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-51 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 </li>
-<li id="comment-67" class="comment odd alt thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-54 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Tulga Avatar" src="http://1.gravatar.com/avatar/dc68ec1db907917f4d69161b420d649e?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/dc68ec1db907917f4d69161b420d649e?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://gravatar.com/melug" target="_self">Tulga</a></div>
-				<div class="wp-block-comment-date"><time datetime="2011-08-31T12:02:52+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-67">August 31, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Don&#8217;t you add next link to next post?</p>
+<li class="comment odd alt thread-even depth-1" id="comment-67">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-54 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Tulga Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://1.gravatar.com/avatar/dc68ec1db907917f4d69161b420d649e?s=40&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/dc68ec1db907917f4d69161b420d649e?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://gravatar.com/melug" rel="external nofollow ugc" target="_self">Tulga</a></div>
+<div class="wp-block-comment-date"><time datetime="2011-08-31T12:02:52+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-67">August 31, 2011</a></time></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-55 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=67#respond" data-commentid="67" data-postid="62" data-belowelement="comment-67" data-respondelement="respond" data-replyto="Reply to Tulga" aria-label="Reply to Tulga">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-68" class="pingback even thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-58 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar">  </div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://www.cyberhades.com/2011/11/16/interesante-listado-de-enlaces-sobre-python/" target="_self">Interesante listado de enlaces sobre Python | CyberHades</a></div>
-				<div class="wp-block-comment-date"><time datetime="2011-11-16T14:27:18+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-68">November 16, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>[&#8230;] Python’s Innards: Objects 101 [&#8230;]</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-59 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=68#respond" data-commentid="68" data-postid="62" data-belowelement="comment-68" data-respondelement="respond" data-replyto="Reply to Interesante listado de enlaces sobre Python | CyberHades" aria-label="Reply to Interesante listado de enlaces sobre Python | CyberHades">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-69" class="pingback odd alt thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-62 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar">  </div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://www.mypython.info/good-to-great-python-reads.html" target="_self">Good to Great Python reads | Pythoners&#039; Home</a></div>
-				<div class="wp-block-comment-date"><time datetime="2011-11-24T12:23:27+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-69">November 24, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>[&#8230;] Python’s Innards: Objects 101 [&#8230;]</p>
+<div class="wp-block-comment-content">
+<p>Don’t you add next link to next post?</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-63 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=69#respond" data-commentid="69" data-postid="62" data-belowelement="comment-69" data-respondelement="respond" data-replyto="Reply to Good to Great Python reads | Pythoners&#039; Home" aria-label="Reply to Good to Great Python reads | Pythoners&#039; Home">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-70" class="comment even thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-66 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="nitin Avatar" src="http://2.gravatar.com/avatar/5272549281d7ea784bb7cc560cab3520?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/5272549281d7ea784bb7cc560cab3520?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">nitin</div>
-				<div class="wp-block-comment-date"><time datetime="2012-06-20T20:46:13+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-70">June 20, 2012</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>defination of PyObject is in Include/object.h<br>
-please correct me if i am wrong<br>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-55 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="pingback even thread-odd thread-alt depth-1" id="comment-68">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-58 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"> </div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://www.cyberhades.com/2011/11/16/interesante-listado-de-enlaces-sobre-python/" rel="external nofollow ugc" target="_self">Interesante listado de enlaces sobre Python | CyberHades</a></div>
+<div class="wp-block-comment-date"><time datetime="2011-11-16T14:27:18+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-68">November 16, 2011</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>[…] Python’s Innards: Objects 101 […]</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-59 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="pingback odd alt thread-even depth-1" id="comment-69">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-62 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"> </div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://www.mypython.info/good-to-great-python-reads.html" rel="external nofollow ugc" target="_self">Good to Great Python reads | Pythoners' Home</a></div>
+<div class="wp-block-comment-date"><time datetime="2011-11-24T12:23:27+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-69">November 24, 2011</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>[…] Python’s Innards: Objects 101 […]</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-63 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment even thread-odd thread-alt depth-1" id="comment-70">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-66 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="nitin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/5272549281d7ea784bb7cc560cab3520?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/5272549281d7ea784bb7cc560cab3520?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">nitin</div>
+<div class="wp-block-comment-date"><time datetime="2012-06-20T20:46:13+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-70">June 20, 2012</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>defination of PyObject is in Include/object.h<br/>
+please correct me if i am wrong<br/>
 and this post is helping me a lot, awesome work</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-67 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=70#respond" data-commentid="70" data-postid="62" data-belowelement="comment-70" data-respondelement="respond" data-replyto="Reply to nitin" aria-label="Reply to nitin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-71" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-70 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2012-06-20T21:14:29+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-71">June 20, 2012</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Of course you&#8217;re right, fixed in the post. Thanks!</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-67 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-71 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/?replytocom=71#respond" data-commentid="71" data-postid="62" data-belowelement="comment-71" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2" id="comment-71">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-70 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2012-06-20T21:14:29+00:00"><a href="/2010/05/12/pythons-innards-objects-101/#comment-71">June 20, 2012</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Of course you’re right, fixed in the post. Thanks!</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-71 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 </li>
 </ol>
 
-	
-
-		<div id="respond" style="padding-top:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);" class="comment-respond wp-block-post-comments-form">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2010/05/12/pythons-innards-objects-101/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="http://localhost/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p>
-<p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p>
-<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit wp-block-button"><input name="submit" type="submit" id="submit" class="wp-block-button__link wp-element-button" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="62" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
 <!-- #respond -->
-	
 </div>
-
-
-
-			
-
-<nav class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-73 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)" aria-label="Posts">
-	<div class="post-navigation-link-previous wp-block-post-navigation-link">
-<span class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow" aria-hidden="true">←</span><a href="/2010/05/07/searching-mailing-list-archives-offline/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Searching mailman archives offline (python-dev, anyone?)</span></a>
+<nav aria-label="Posts" class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-73 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
+<div class="post-navigation-link-previous wp-block-post-navigation-link">
+<span aria-hidden="true" class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow">←</span><a href="/2010/05/07/searching-mailing-list-archives-offline/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Searching mailman archives offline (python-dev, anyone?)</span></a>
 </div>
-	<div class="post-navigation-link-next wp-block-post-navigation-link">
-<a href="/2010/05/14/switching-to-mercurial-taming-zsh/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Switching to mercurial: taming zsh</span></a><span class="wp-block-post-navigation-link__arrow-next is-arrow-arrow" aria-hidden="true">→</span>
+<div class="post-navigation-link-next wp-block-post-navigation-link">
+<a href="/2010/05/14/switching-to-mercurial-taming-zsh/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Switching to mercurial: taming zsh</span></a><span aria-hidden="true" class="wp-block-post-navigation-link__arrow-next is-arrow-arrow">→</span>
 </div>
 </nav>
-
-
-
-		</div>
-		
-	</div>
-	
+</div>
+</div>
 </main>
-
-
 <footer class="wp-block-template-part"></footer>
 </div>
-<script src="/wp-includes/js/comment-reply.min.js?ver=6.4.2" id="comment-reply-js" async data-wp-strategy="async"></script>
+<script async="" data-wp-strategy="async" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js?ver=6.4.2"></script>
 <script id="wp-block-template-skip-link-js-after">( function() {
 		var skipLinkTarget = document.querySelector( 'main' ),
 			sibling,
@@ -851,9 +630,8 @@ and this post is helping me a lot, awesome work</p>
 		sibling.parentElement.insertBefore( skipLink, sibling );
 	}() );</script>
 <!-- start Simple Custom CSS and JS -->
-
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
 <script>window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

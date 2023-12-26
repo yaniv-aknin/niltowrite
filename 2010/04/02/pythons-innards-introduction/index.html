@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="max-image-preview:large">
-<title>Python&#8217;s Innards: Introduction &#8211; NIL: .to write(1) ~ help:about</title>
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Feed" href="/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Comments Feed" href="/comments/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Python&#8217;s Innards: Introduction Comments Feed" href="/2010/04/02/pythons-innards-introduction/feed/">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="max-image-preview:large" name="robots"/>
+<title>Python’s Innards: Introduction – NIL: .to write(1) ~ help:about</title>
+<link href="/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Feed" type="application/rss+xml"/>
+<link href="/comments/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Comments Feed" type="application/rss+xml"/>
+<link href="/2010/04/02/pythons-innards-introduction/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Python’s Innards: Introduction Comments Feed" type="application/rss+xml"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 <script>
@@ -23,7 +24,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 .wp-block-site-title a:where(:not(.wp-element-button)):hover{text-decoration: none;}</style>
 <style id="wp-block-group-inline-css">.wp-block-group{box-sizing:border-box}</style>
 <style id="wp-block-page-list-inline-css">.wp-block-navigation .wp-block-page-list{align-items:var(--navigation-layout-align,initial);background-color:inherit;display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation .wp-block-navigation-item{background-color:inherit}</style>
-<link rel="stylesheet" id="wp-block-navigation-css" href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" media="all">
+<link href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" id="wp-block-navigation-css" media="all" rel="stylesheet"/>
 <style id="wp-block-navigation-inline-css">.wp-block-navigation{font-weight: 500;}
 .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;text-decoration: none;}
 .wp-block-navigation a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
@@ -162,125 +163,90 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 			width: auto;
 			z-index: 100000;
 		}</style>
-<script src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2" id="wp-interactivity-js" defer data-wp-strategy="defer"></script>
-<script src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831" id="wp-block-navigation-view-js" defer data-wp-strategy="defer"></script>
-<link rel="https://api.w.org/" href="/wp-json/">
-<link rel="alternate" type="application/json" href="/wp-json/wp/v2/posts/25">
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 6.4.2">
-<link rel="canonical" href="/2010/04/02/pythons-innards-introduction/">
-<link rel="shortlink" href="/?p=25">
-<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F04%2F02%2Fpythons-innards-introduction%2F">
-<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F04%2F02%2Fpythons-innards-introduction%2F#038;format=xml">
+<script data-wp-strategy="defer" defer="" id="wp-interactivity-js" src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2"></script>
+<script data-wp-strategy="defer" defer="" id="wp-block-navigation-view-js" src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831"></script>
+<link href="/wp-json/" rel="https://api.w.org/"/>
+<link href="/wp-json/wp/v2/posts/25" rel="alternate" type="application/json"/>
+<link href="/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
+<meta content="WordPress 6.4.2" name="generator"/>
+<link href="/2010/04/02/pythons-innards-introduction/" rel="canonical"/>
+<link href="/?p=25" rel="shortlink"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F04%2F02%2Fpythons-innards-introduction%2F" rel="alternate" type="application/json+oembed"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F04%2F02%2Fpythons-innards-introduction%2F#038;format=xml" rel="alternate" type="text/xml+oembed"/>
 <style id="wp-fonts-local">@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
 @font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:italic;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_italic_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:normal;font-weight:700;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}</style>
 </head>
-
 <body class="post-template-default single single-post postid-25 single-format-standard wp-embed-responsive">
-
 <div class="wp-site-blocks">
 <header class="wp-block-template-part">
 <div class="wp-block-group alignwide has-base-background-color has-background has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:20px;padding-bottom:20px">
-	
-	<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
-		
-		<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
-			
-
-			
-			<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
-				<p class="wp-block-site-title"><a href="/" target="_self" rel="home">NIL: .to write(1) ~ help:about</a></p>
-			</div>
-			
-		</div>
-		
-
-		<nav class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" aria-label="" data-wp-interactive data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}'><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open " data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
-			<div class="wp-block-navigation__responsive-container  " id="modal-1" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" tabindex="-1">
-				<div class="wp-block-navigation__responsive-close" tabindex="-1">
-					<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
-							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
-						<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
-							<ul class="wp-block-page-list">
+<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
+<p class="wp-block-site-title"><a href="/" rel="home" target="_self">NIL: .to write(1) ~ help:about</a></p>
+</div>
+</div>
+<nav aria-label="" class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}' data-wp-interactive=""><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="1.5" width="16" x="4" y="7.5"></rect><rect height="1.5" width="16" x="4" y="15"></rect></svg></button>
+<div class="wp-block-navigation__responsive-container" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" id="modal-1" tabindex="-1">
+<div class="wp-block-navigation__responsive-close" tabindex="-1">
+<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
+<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
+<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
+<ul class="wp-block-page-list">
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click menu-item-home"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/">About</a></li>
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/all-posts/">All Posts</a></li>
 </ul>
-						</div>
-					</div>
-				</div>
-			</div></nav>
-	</div>
-	
+</div>
+</div>
+</div>
+</div></nav>
+</div>
 </div>
 </header>
-
-
 <main class="wp-block-group alignfull is-layout-flow wp-block-group-is-layout-flow">
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
-		
-
-		
-		<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
-			<h1 class="wp-block-post-title has-x-large-font-size">Python&#8217;s Innards: Introduction</h1>
-
-			<div class="wp-block-template-part">
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
+<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
+<h1 class="wp-block-post-title has-x-large-font-size">Python’s Innards: Introduction</h1>
+<div class="wp-block-template-part">
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-	
-	<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
-		<div class="wp-block-post-date"><time datetime="2010-04-02T16:04:45+00:00"><a href="/2010/04/02/pythons-innards-introduction/">Apr 2, 2010</a></time></div>
-
-		
-		<p class="has-contrast-2-color has-text-color">—</p>
-		
-
-		
-		<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
-		
-
-		<div class="wp-block-post-author-name"><a href="/author/yanivaknin/" target="_self" class="wp-block-post-author-name__link">Yaniv Aknin</a></div>
-
-		<div class="taxonomy-category wp-block-post-terms">
-<span class="wp-block-post-terms__prefix">in </span><a href="/category/my-projects/pythons-innards/" rel="tag">Python&#8217;s Innards</a>
+<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
+<div class="wp-block-post-date"><time datetime="2010-04-02T16:04:45+00:00"><a href="/2010/04/02/pythons-innards-introduction/">Apr 2, 2010</a></time></div>
+<p class="has-contrast-2-color has-text-color">—</p>
+<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
+<div class="wp-block-post-author-name"><a class="wp-block-post-author-name__link" href="/author/yanivaknin/" target="_self">Yaniv Aknin</a></div>
+<div class="taxonomy-category wp-block-post-terms">
+<span class="wp-block-post-terms__prefix">in </span><a href="/category/my-projects/pythons-innards/" rel="tag">Python’s Innards</a>
 </div>
-
-	</div>
-	
 </div>
-
-
 </div>
-		</div>
-		
-	</div>
-	
-
-	<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
-<p>A friend once said to me: <q>You know, to some people, C is just a bunch of macros that expand to assembly</q>. It&#8217;s been years ago (smartasses: it was also before <tt>llvm</tt>, ok?), but the sentence stuck with me. Do <em>Kernighan and Ritchie</em> really look at a C program and see assembly code? Does <em>Tim Berners-Lee</em> surf the Web any differently than you and me? And what on earth <em>did</em> <em>Keanu Reeves</em> see when he looked at all of that funky green gibberish soup, anyway? No, seriously, what the heck <em>did</em> he see there?! Uhm, back to the program. Anyway, what does Python look like in <em>Guido van Rossum</em>&#8216;s<sup>1</sup> eyes?</p>
-<p>This post marks the beginning of what should develop to a <a href="http://tech.blog.aknin.name/tag/pythons-innards/">series</a> on Python&#8217;s internals, I&#8217;m writing it since I believe that explaining something is the best way to grok it, and I&#8217;d very much like to be able to visualize more of Python&#8217;s &#8216;funky green gibberish soup&#8217; as I read Python code. On the curriculum is mainly <em>CPython</em>, mainly <em>py3k</em>, mainly <em>bytecode evaluation</em> (I&#8217;m not a big compilation fan) &#8211; but practically everything around executing Python and Python-like code (<em>Unladen Swallow</em>, <em>Jython</em>, <em>Cython</em>, etc) might turn out to be fair game in this series. For the sake of brevity and my sanity, when I say <em>Python</em>, I mean <em>CPython</em> unless noted otherwise. I also assume a POSIX-like OS or (if and where it matters) Linux, unless otherwise noted. You should read this if you want to know how Python works. You should read this if you want to contribute to CPython. You should read this to find all the mistakes I&#8217;ll make and snicker at me behind me back or write snide comments. I realize it&#8217;s just <em>your</em> particular way to show affection.</p>
-<p>I gather I&#8217;ll glean pretty much everything I write about from Python&#8217;s source or, occasionally, other fine materials (documentation, especially <a href="http://docs.python.org/py3k/c-api/index.html">this</a> and <a href="http://docs.python.org/py3k/extending/index.html">that</a>, certain PyCon lectures, <a href="http://tech.blog.aknin.name/2010/05/07/searching-mailing-list-archives-offline/">searching</a> <a href="http://mail.python.org/mailman/listinfo/python-dev">python-dev</a>, etc). Everything is out there, but I do hope my efforts at putting it all in one place to which you can RSS-subscribe will make your journey easier. I assume the reader knows some C, some OS theory, a bit less than some assembly (any architecture), a bit more than some Python and has reasonable UNIX fitness (i.e., feels comfortable installing something from source). Don&#8217;t be afraid if you&#8217;re not reasonably conversant in one (or more) of these, but I can&#8217;t promise smooth sailing, either. Also, if you don&#8217;t have a working toolchain to do Python development, maybe you&#8217;d like to head over <a href="http://tech.blog.aknin.name/2010/04/08/contributing-to-python/">here</a> and do as it says on the second paragraph (and onwards, as relevant).</p>
-<p>Let&#8217;s start with something which I assume you already know, but I think is important, at least to the main way I understand&#8230; well, everything that I do understand. I look at it as if I&#8217;m looking at a machine. It&#8217;s easy in Python&#8217;s case, since Python relies on a Virtual Machine to do what it does (like many other interpreted languages). Be certain you understand &#8220;<a href="http://en.wikipedia.org/wiki/Virtual_machine#Process_virtual_machines">Virtual Machine</a>&#8221; correctly in this context: think more like JVM and less like VirtualBox (very technically, they&#8217;re the same, but in the real world we usually differentiate these two kinds of VMs). I find it easiest to understand &#8220;Virtual Machine&#8221; literally &#8211; it&#8217;s a machine built from software. Your CPU is just a complex electronic machine which receives all input (machine code, data), it has a state (registers), and based on the input and its state it will output stuff (to RAM or a Bus), right? Well, CPython is a machine built from software components that has a state and processes instructions (different implementations may use rather different instructions). This software machine operates in the process hosting the Python interpreter. Keep this in mind; I like the <a href="http://en.wikipedia.org/wiki/Turing_machine">machine</a> metaphor (as I explain in minute details <a href="http://tech.blog.aknin.name/2010/07/04/pythons-innards-for-my-wife/">here</a>).</p>
-<p>That said, let&#8217;s start with a bird&#8217;s eye overview of what happens when you do this: <kbd>$ python -c 'print("Hello, world!")'</kbd>. Python&#8217;s binary is executed, the standard C library initialization which pretty much any process does happens and then the main function starts executing (see its source, <kbd>./Modules/python.c: main</kbd>, which soon calls <kbd>./Modules/main.c: Py_Main</kbd>). After some mundane initialization stuff (parse arguments, see if environment variables should affect behaviour, assess the situation of the standard streams and act accordingly, etc), <a href="http://docs.python.org/c-api/init.html#Py_Initialize" class="code">./Python/pythonrun.c: Py_Initialize</a> is called. In many ways, this function is what &#8216;builds&#8217; and assembles together the pieces needed to run the CPython machine and makes &#8216;a process&#8217; into &#8216;a process with a Python interpreter in it&#8217;. Among other things, it creates two very important Python data-structures: the <strong>interpreter state</strong> and <strong>thread state</strong>. It also creates the built-in <strong>module</strong> <a href="http://docs.python.org/library/sys.html" class="code">sys</a> and the module which hosts all <a href="http://docs.python.org/library/functions.html#built-in-functions">builtins</a>. At a later post(s) we will cover all these in depth.</p>
-<p>With these in place, Python will do one of several things based on how it was executed. Roughly, it will either execute a string (the <kbd>-c</kbd> option), execute a module as an executable (the <kbd>-m</kbd> option), or execute a file (passed explicitly on the commandline or passed by the kernel when used as an interpreter for a script) or run its <a href="http://en.wikipedia.org/wiki/Read-eval-print_loop">REPL</a> loop (this is more a special case of the file to execute being an interactive device). In the case we&#8217;re currently following, it will execute a single string, since we invoked it with <kbd>-c</kbd>. To execute this single string, <kbd>./Python/pythonrun.c: PyRun_SimpleStringFlags</kbd> is called. This function creates the <kbd>__main__</kbd> <strong>namespace</strong>, which is &#8216;where&#8217; our string will be executed (if you run <kbd>$ python -c 'a=1; print(a)'</kbd>, where is <kbd>a</kbd> stored? in this namespace). After the namespace is created, the string is executed in it (or rather, interpreted or <em>evaluated</em> in it). To do that, you must first transform the string into something that machine can work on.</p>
-<p>As I said, I&#8217;d rather not focus on the innards of Python&#8217;s parser/compiler at this time. I&#8217;m not a compilation expert, I&#8217;m not entirely interested in it, and as far as I know, Python doesn&#8217;t have significant Compiler-Fu beyond the basic CS compilation course. We&#8217;ll do a (very) fast overview of what goes on here, and may return to it later only to inspect visible CPython behaviour (see the <a class="code" href="http://docs.python.org/reference/simple_stmts.html#the-global-statement">global</a> statement, which is said to affect parsing, for instance). So, the parser/compiler stage of <kbd>PyRun_SimpleStringFlags</kbd> goes largely like this: tokenize and create a <a href="http://en.wikipedia.org/wiki/Concrete_syntax_tree">Concrete Syntax Tree</a> (CST) from the code, transorm the CST into an <a href="http://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Tree</a> (AST) and finally compile the AST into a <strong>code object</strong> using <kbd>./Python/ast.c: PyAST_FromNode</kbd>. For now, think of the code object as a binary string of machine code that Python VM&#8217;s &#8216;machinary&#8217; can operate on &#8211; so now we&#8217;re ready to do interpretation (again, <em>evaluation</em> in Python&#8217;s parlance).</p>
-<p>We have an (almost) empty <kbd>__main__</kbd>, we have a code object, we want to evaluate it. Now what? Now this line: <kbd>Python/pythonrun.c: run_mod, v = PyEval_EvalCode(co, globals, locals);</kbd> does the trick. It receives a code object and a namespace for <strong>globals</strong> and for <strong>locals</strong> (in this case, both of them will be the newly created <kbd>__main__</kbd> namespace), creates a <strong>frame object</strong> from these and executes it. You remember previously that I mentioned that <kbd>Py_Initialize</kbd> creates a thread state, and that we&#8217;ll talk about it later? Well, back to that for a bit: each Python thread is represented by its own thread state, which (among other things) points to the stack of currently executing frames. After the frame object is created and placed at the top of the thread state stack, it (or rather, the byte code pointed by it) is evaluated, opcode by opcode, by means of the (rather lengthy) <kbd>./Python/ceval.c: PyEval_EvalFrameEx</kbd>.</p>
-<p><kbd>PyEval_EvalFrameEx</kbd> takes the frame, extracts opcode (and operands, if any, we&#8217;ll get to that) after opcode, and executes a short piece of C code matching the opcode. Let&#8217;s take a closer look at what these &#8220;opcodes&#8221; look like by disassembling a bit of compiled Python code:<br>
-<pre><code class="lang-pycon">>>> from dis import dis # ooh! a handy disassembly function!
->>> co = compile("spam = eggs - 1", "<string>", "exec")
->>> dis(co)
+</div>
+</div>
+</div>
+<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
+<p>A friend once said to me: <q>You know, to some people, C is just a bunch of macros that expand to assembly</q>. It’s been years ago (smartasses: it was also before <tt>llvm</tt>, ok?), but the sentence stuck with me. Do <em>Kernighan and Ritchie</em> really look at a C program and see assembly code? Does <em>Tim Berners-Lee</em> surf the Web any differently than you and me? And what on earth <em>did</em> <em>Keanu Reeves</em> see when he looked at all of that funky green gibberish soup, anyway? No, seriously, what the heck <em>did</em> he see there?! Uhm, back to the program. Anyway, what does Python look like in <em>Guido van Rossum</em>‘s<sup>1</sup> eyes?</p>
+<p>This post marks the beginning of what should develop to a <a href="http://tech.blog.aknin.name/tag/pythons-innards/">series</a> on Python’s internals, I’m writing it since I believe that explaining something is the best way to grok it, and I’d very much like to be able to visualize more of Python’s ‘funky green gibberish soup’ as I read Python code. On the curriculum is mainly <em>CPython</em>, mainly <em>py3k</em>, mainly <em>bytecode evaluation</em> (I’m not a big compilation fan) – but practically everything around executing Python and Python-like code (<em>Unladen Swallow</em>, <em>Jython</em>, <em>Cython</em>, etc) might turn out to be fair game in this series. For the sake of brevity and my sanity, when I say <em>Python</em>, I mean <em>CPython</em> unless noted otherwise. I also assume a POSIX-like OS or (if and where it matters) Linux, unless otherwise noted. You should read this if you want to know how Python works. You should read this if you want to contribute to CPython. You should read this to find all the mistakes I’ll make and snicker at me behind me back or write snide comments. I realize it’s just <em>your</em> particular way to show affection.</p>
+<p>I gather I’ll glean pretty much everything I write about from Python’s source or, occasionally, other fine materials (documentation, especially <a href="http://docs.python.org/py3k/c-api/index.html">this</a> and <a href="http://docs.python.org/py3k/extending/index.html">that</a>, certain PyCon lectures, <a href="http://tech.blog.aknin.name/2010/05/07/searching-mailing-list-archives-offline/">searching</a> <a href="http://mail.python.org/mailman/listinfo/python-dev">python-dev</a>, etc). Everything is out there, but I do hope my efforts at putting it all in one place to which you can RSS-subscribe will make your journey easier. I assume the reader knows some C, some OS theory, a bit less than some assembly (any architecture), a bit more than some Python and has reasonable UNIX fitness (i.e., feels comfortable installing something from source). Don’t be afraid if you’re not reasonably conversant in one (or more) of these, but I can’t promise smooth sailing, either. Also, if you don’t have a working toolchain to do Python development, maybe you’d like to head over <a href="http://tech.blog.aknin.name/2010/04/08/contributing-to-python/">here</a> and do as it says on the second paragraph (and onwards, as relevant).</p>
+<p>Let’s start with something which I assume you already know, but I think is important, at least to the main way I understand… well, everything that I do understand. I look at it as if I’m looking at a machine. It’s easy in Python’s case, since Python relies on a Virtual Machine to do what it does (like many other interpreted languages). Be certain you understand “<a href="http://en.wikipedia.org/wiki/Virtual_machine#Process_virtual_machines">Virtual Machine</a>” correctly in this context: think more like JVM and less like VirtualBox (very technically, they’re the same, but in the real world we usually differentiate these two kinds of VMs). I find it easiest to understand “Virtual Machine” literally – it’s a machine built from software. Your CPU is just a complex electronic machine which receives all input (machine code, data), it has a state (registers), and based on the input and its state it will output stuff (to RAM or a Bus), right? Well, CPython is a machine built from software components that has a state and processes instructions (different implementations may use rather different instructions). This software machine operates in the process hosting the Python interpreter. Keep this in mind; I like the <a href="http://en.wikipedia.org/wiki/Turing_machine">machine</a> metaphor (as I explain in minute details <a href="http://tech.blog.aknin.name/2010/07/04/pythons-innards-for-my-wife/">here</a>).</p>
+<p>That said, let’s start with a bird’s eye overview of what happens when you do this: <kbd>$ python -c 'print("Hello, world!")'</kbd>. Python’s binary is executed, the standard C library initialization which pretty much any process does happens and then the main function starts executing (see its source, <kbd>./Modules/python.c: main</kbd>, which soon calls <kbd>./Modules/main.c: Py_Main</kbd>). After some mundane initialization stuff (parse arguments, see if environment variables should affect behaviour, assess the situation of the standard streams and act accordingly, etc), <a class="code" href="http://docs.python.org/c-api/init.html#Py_Initialize">./Python/pythonrun.c: Py_Initialize</a> is called. In many ways, this function is what ‘builds’ and assembles together the pieces needed to run the CPython machine and makes ‘a process’ into ‘a process with a Python interpreter in it’. Among other things, it creates two very important Python data-structures: the <strong>interpreter state</strong> and <strong>thread state</strong>. It also creates the built-in <strong>module</strong> <a class="code" href="http://docs.python.org/library/sys.html">sys</a> and the module which hosts all <a href="http://docs.python.org/library/functions.html#built-in-functions">builtins</a>. At a later post(s) we will cover all these in depth.</p>
+<p>With these in place, Python will do one of several things based on how it was executed. Roughly, it will either execute a string (the <kbd>-c</kbd> option), execute a module as an executable (the <kbd>-m</kbd> option), or execute a file (passed explicitly on the commandline or passed by the kernel when used as an interpreter for a script) or run its <a href="http://en.wikipedia.org/wiki/Read-eval-print_loop">REPL</a> loop (this is more a special case of the file to execute being an interactive device). In the case we’re currently following, it will execute a single string, since we invoked it with <kbd>-c</kbd>. To execute this single string, <kbd>./Python/pythonrun.c: PyRun_SimpleStringFlags</kbd> is called. This function creates the <kbd>__main__</kbd> <strong>namespace</strong>, which is ‘where’ our string will be executed (if you run <kbd>$ python -c 'a=1; print(a)'</kbd>, where is <kbd>a</kbd> stored? in this namespace). After the namespace is created, the string is executed in it (or rather, interpreted or <em>evaluated</em> in it). To do that, you must first transform the string into something that machine can work on.</p>
+<p>As I said, I’d rather not focus on the innards of Python’s parser/compiler at this time. I’m not a compilation expert, I’m not entirely interested in it, and as far as I know, Python doesn’t have significant Compiler-Fu beyond the basic CS compilation course. We’ll do a (very) fast overview of what goes on here, and may return to it later only to inspect visible CPython behaviour (see the <a class="code" href="http://docs.python.org/reference/simple_stmts.html#the-global-statement">global</a> statement, which is said to affect parsing, for instance). So, the parser/compiler stage of <kbd>PyRun_SimpleStringFlags</kbd> goes largely like this: tokenize and create a <a href="http://en.wikipedia.org/wiki/Concrete_syntax_tree">Concrete Syntax Tree</a> (CST) from the code, transorm the CST into an <a href="http://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Tree</a> (AST) and finally compile the AST into a <strong>code object</strong> using <kbd>./Python/ast.c: PyAST_FromNode</kbd>. For now, think of the code object as a binary string of machine code that Python VM’s ‘machinary’ can operate on – so now we’re ready to do interpretation (again, <em>evaluation</em> in Python’s parlance).</p>
+<p>We have an (almost) empty <kbd>__main__</kbd>, we have a code object, we want to evaluate it. Now what? Now this line: <kbd>Python/pythonrun.c: run_mod, v = PyEval_EvalCode(co, globals, locals);</kbd> does the trick. It receives a code object and a namespace for <strong>globals</strong> and for <strong>locals</strong> (in this case, both of them will be the newly created <kbd>__main__</kbd> namespace), creates a <strong>frame object</strong> from these and executes it. You remember previously that I mentioned that <kbd>Py_Initialize</kbd> creates a thread state, and that we’ll talk about it later? Well, back to that for a bit: each Python thread is represented by its own thread state, which (among other things) points to the stack of currently executing frames. After the frame object is created and placed at the top of the thread state stack, it (or rather, the byte code pointed by it) is evaluated, opcode by opcode, by means of the (rather lengthy) <kbd>./Python/ceval.c: PyEval_EvalFrameEx</kbd>.</p>
+<p><kbd>PyEval_EvalFrameEx</kbd> takes the frame, extracts opcode (and operands, if any, we’ll get to that) after opcode, and executes a short piece of C code matching the opcode. Let’s take a closer look at what these “opcodes” look like by disassembling a bit of compiled Python code:<br/>
+<pre><code class="lang-pycon">&gt;&gt;&gt; from dis import dis # ooh! a handy disassembly function!
+&gt;&gt;&gt; co = compile("spam = eggs - 1", "<string>", "exec")
+&gt;&gt;&gt; dis(co)
   1           0 LOAD_NAME                0 (eggs)
               3 LOAD_CONST               0 (1)
               6 BINARY_SUBTRACT     
               7 STORE_NAME               1 (spam)
              10 LOAD_CONST               1 (None)
              13 RETURN_VALUE        
->>>
-</code></pre>
-<p>&#8230;even without knowing much about Python&#8217;s bytecode, this is reasonably readable. You &#8220;load&#8221; the name <kbd>eggs</kbd> (where do you load it from? where do you load it to? soon), and also load a constant value (<kbd>1</kbd>), then you do a &#8220;binary subtract&#8221; (what do you mean &#8216;binary&#8217; in this context? between which operands?), and so on and so forth. As you might have guessed, the names are &#8220;loaded&#8221; from the <kbd>globals</kbd> and <kbd>locals</kbd> namespaces we&#8217;ve seen earlier, and they&#8217;re loaded onto an operand stack (not to be confused with the stack of running frames), which is exactly where the binary subtract will pop them from, subtract one from the other, and put the result back on that stack. &#8220;Binary subtract&#8221; just means this is a subtraction opcode that has two operands (hence it is &#8220;binary&#8221;, this is not to say the operands are binary numbers made of &#8216;0&#8217;s and &#8216;1&#8217;s).</p>
-<p>You can go look at <kbd>PyEval_EvalFrameEx</kbd> at <kbd>./Python/ceval.c</kbd> yourself, it&#8217;s not a small function by any means. For practical reasons I can&#8217;t paste too much code from there in here, but I will just paste the code that runs when a <kbd>BINARY_SUBTRACT</kbd> opcode is found, I think it really illustrates things:<br>
+&gt;&gt;&gt;
+</string></code></pre>
+<p>…even without knowing much about Python’s bytecode, this is reasonably readable. You “load” the name <kbd>eggs</kbd> (where do you load it from? where do you load it to? soon), and also load a constant value (<kbd>1</kbd>), then you do a “binary subtract” (what do you mean ‘binary’ in this context? between which operands?), and so on and so forth. As you might have guessed, the names are “loaded” from the <kbd>globals</kbd> and <kbd>locals</kbd> namespaces we’ve seen earlier, and they’re loaded onto an operand stack (not to be confused with the stack of running frames), which is exactly where the binary subtract will pop them from, subtract one from the other, and put the result back on that stack. “Binary subtract” just means this is a subtraction opcode that has two operands (hence it is “binary”, this is not to say the operands are binary numbers made of ‘0’s and ‘1’s).</p>
+<p>You can go look at <kbd>PyEval_EvalFrameEx</kbd> at <kbd>./Python/ceval.c</kbd> yourself, it’s not a small function by any means. For practical reasons I can’t paste too much code from there in here, but I will just paste the code that runs when a <kbd>BINARY_SUBTRACT</kbd> opcode is found, I think it really illustrates things:<br/>
 <pre><code class="language-c"> TARGET(BINARY_SUBTRACT)
             w = POP();
             v = TOP();
@@ -291,718 +257,458 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
             if (x != NULL) DISPATCH();
             break;
 </code></pre>
-<p>&#8230;pop something, take the top (of the operand stack), call a C function called PyNumber_Subtract() on these things, do something we still don&#8217;t understand (but will in due time) called &#8220;Py_DECREF&#8221; on both, set the top of the stack to the result of the subtraction (overwriting the previous top) and then do something else we don&#8217;t understand if x is not null, which is to do a &#8220;DISPATCH&#8221;. So while we have some stuff we don&#8217;t understand, I think it&#8217;s very apparent how two numbers are subtracted in Python, at the lowest possible level. And it took us just about 1,500 words to reach here, too!</p>
-<p>After the frame is executed and <kbd>PyRun_SimpleStringFlags</kbd> returns, the main function does some cleanup (notably, <a href="http://docs.python.org/c-api/init.html#Py_Finalize" class="code">Py_Finalize</a>, which we&#8217;ll discuss), the standard C library deinitialization stuff is done (<tt>atexit</tt>, et al), and the process exits.</p>
-<p>I hope this gives us a &#8220;good enough&#8221; overview that we can later use as scaffolding on which, in later posts, we&#8217;ll hang the more specific discussions of various areas of Python. We have quite a few terms I promised to get back to: interpreter and thread state, namespaces, modules and builtins, code and frame objects as well as those DECREF and DISPATCH lines we didn&#8217;t understand inside <kbd>BINARY_SUBTRACT</kbd>&#8216;s implementation. There&#8217;s also a very crucial &#8216;phantom&#8217; term that we&#8217;ve danced around all over this article but didn&#8217;t call by name &#8211; <strong>objects</strong>. CPython&#8217;s object system is central to understanding how it works, and I reckon we&#8217;ll cover that &#8211; at length &#8211; in the <a href="http://tech.blog.aknin.name/2010/05/12/pythons-innards-objects-101/">next post</a> of this series. Stay tuned.</p>
-<hr>
-
-<p><span class="footer"><sup>1</sup> Do note that this series isn&#8217;t endorsed nor affiliated with anyone unless explicitly stated. Also, note that though Python was initiated by <a href="http://en.wikipedia.org/wiki/Guido_van_Rossum">Guido van Rossum</a>, many people have <a href="http://en.wikipedia.org/wiki/History_of_Python">contributed</a> to it and to derivative projects over the years. I never checked with Guido nor with them, but I&#8217;m certain Python is no less clear to many of these contributors&#8217; eyes than it is to Guido&#8217;s.</span></p>
+<p>…pop something, take the top (of the operand stack), call a C function called PyNumber_Subtract() on these things, do something we still don’t understand (but will in due time) called “Py_DECREF” on both, set the top of the stack to the result of the subtraction (overwriting the previous top) and then do something else we don’t understand if x is not null, which is to do a “DISPATCH”. So while we have some stuff we don’t understand, I think it’s very apparent how two numbers are subtracted in Python, at the lowest possible level. And it took us just about 1,500 words to reach here, too!</p>
+<p>After the frame is executed and <kbd>PyRun_SimpleStringFlags</kbd> returns, the main function does some cleanup (notably, <a class="code" href="http://docs.python.org/c-api/init.html#Py_Finalize">Py_Finalize</a>, which we’ll discuss), the standard C library deinitialization stuff is done (<tt>atexit</tt>, et al), and the process exits.</p>
+<p>I hope this gives us a “good enough” overview that we can later use as scaffolding on which, in later posts, we’ll hang the more specific discussions of various areas of Python. We have quite a few terms I promised to get back to: interpreter and thread state, namespaces, modules and builtins, code and frame objects as well as those DECREF and DISPATCH lines we didn’t understand inside <kbd>BINARY_SUBTRACT</kbd>‘s implementation. There’s also a very crucial ‘phantom’ term that we’ve danced around all over this article but didn’t call by name – <strong>objects</strong>. CPython’s object system is central to understanding how it works, and I reckon we’ll cover that – at length – in the <a href="http://tech.blog.aknin.name/2010/05/12/pythons-innards-objects-101/">next post</a> of this series. Stay tuned.</p>
+<hr/>
+<p><span class="footer"><sup>1</sup> Do note that this series isn’t endorsed nor affiliated with anyone unless explicitly stated. Also, note that though Python was initiated by <a href="http://en.wikipedia.org/wiki/Guido_van_Rossum">Guido van Rossum</a>, many people have <a href="http://en.wikipedia.org/wiki/History_of_Python">contributed</a> to it and to derivative projects over the years. I never checked with Guido nor with them, but I’m certain Python is no less clear to many of these contributors’ eyes than it is to Guido’s.</span></p>
+</p></p></div>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
+<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
+<a href="/tag/internals/" rel="tag">internals</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/python/" rel="tag">python</a>
 </div>
-
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
-		<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
-<a href="/tag/internals/" rel="tag">internals</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/python/" rel="tag">python</a>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div aria-hidden="true" class="wp-block-spacer" style="height:var(--wp--preset--spacing--40)">
 </div>
-
-		
-		<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-			
-			<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer">
-			</div>
-			
-
-			
-			<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)">
-			
-
-			
-
+<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)"/>
 <div class="wp-block-comments wp-block-comments-query-loop">
-	
-	<h2 class="wp-block-heading">Comments</h2>
-	
-	<h3 id="comments" class="wp-block-comments-title">24 responses to &#8220;Python&#8217;s Innards: Introduction&#8221;</h3>
-	<ol class="wp-block-comment-template">
-<li id="comment-5" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Eli Bendersky Avatar" src="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://eli.thegreenplace.net/" target="_self">Eli Bendersky</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-08T07:45:17+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-5">May 8, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Excellent post &#8211; very well written, and the topic is fascinating. The promise of a series on Python&#8217;s internals made me immediately add your blog to my RSS reader 🙂</p>
-<p>I&#8217;ve also written a little on Python&#8217;s internals (<a href="http://eli.thegreenplace.net/2009/11/28/python-internals-working-with-python-asts/" rel="nofollow ugc">http://eli.thegreenplace.net/2009/11/28/python-internals-working-with-python-asts/</a>) and planned to write more &#8211; focusing on the compilation side, which I really like, so our material may become complementary.</p>
+<h2 class="wp-block-heading">Comments</h2>
+<h3 class="wp-block-comments-title" id="comments">24 responses to “Python’s Innards: Introduction”</h3>
+<ol class="wp-block-comment-template">
+<li class="comment even thread-even depth-1" id="comment-5">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Eli Bendersky Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://eli.thegreenplace.net/" rel="external nofollow ugc" target="_self">Eli Bendersky</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-08T07:45:17+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-5">May 8, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Excellent post – very well written, and the topic is fascinating. The promise of a series on Python’s internals made me immediately add your blog to my RSS reader 🙂</p>
+<p>I’ve also written a little on Python’s internals (<a href="http://eli.thegreenplace.net/2009/11/28/python-internals-working-with-python-asts/" rel="nofollow ugc">http://eli.thegreenplace.net/2009/11/28/python-internals-working-with-python-asts/</a>) and planned to write more – focusing on the compilation side, which I really like, so our material may become complementary.</p>
 <p>Anyway, great job and keep this up.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=5#respond" data-commentid="5" data-postid="25" data-belowelement="comment-5" data-respondelement="respond" data-replyto="Reply to Eli Bendersky" aria-label="Reply to Eli Bendersky">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-6" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-08T08:32:41+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-6">May 8, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Thanks for your kind words! I&#8217;ll be happy to read what you wrote/will write about the compilation phase.</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=6#respond" data-commentid="6" data-postid="25" data-belowelement="comment-6" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2" id="comment-6">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-08T08:32:41+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-6">May 8, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Thanks for your kind words! I’ll be happy to read what you wrote/will write about the compilation phase.</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 </li>
-<li id="comment-7" class="comment even thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="karl Avatar" src="http://0.gravatar.com/avatar/c51d39fe0d256f16e0d743cde9f71cc2?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/c51d39fe0d256f16e0d743cde9f71cc2?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://www.la-grange.net/karl/" target="_self">karl</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-09T00:37:33+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-7">May 9, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>For Tim&#8217;s view on the Web, good news, it is accessible on the Web. 🙂 Tim has kept for a long time a kind of diary behind the architecture and philosophy of the Web.</p>
+<li class="comment even thread-odd thread-alt depth-1" id="comment-7">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="karl Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/c51d39fe0d256f16e0d743cde9f71cc2?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/c51d39fe0d256f16e0d743cde9f71cc2?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://www.la-grange.net/karl/" rel="external nofollow ugc" target="_self">karl</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-09T00:37:33+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-7">May 9, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>For Tim’s view on the Web, good news, it is accessible on the Web. 🙂 Tim has kept for a long time a kind of diary behind the architecture and philosophy of the Web.</p>
 <p><a href="http://www.w3.org/DesignIssues/" rel="nofollow ugc">http://www.w3.org/DesignIssues/</a></p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=7#respond" data-commentid="7" data-postid="25" data-belowelement="comment-7" data-respondelement="respond" data-replyto="Reply to karl" aria-label="Reply to karl">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-8" class="comment odd alt thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Antonio Avatar" src="http://0.gravatar.com/avatar/c55cc30bef360b972a8e593c02fe94d1?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/c55cc30bef360b972a8e593c02fe94d1?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://gnrfan.org/" target="_self">Antonio</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-09T07:41:13+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-8">May 9, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment odd alt thread-even depth-1" id="comment-8">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Antonio Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/c55cc30bef360b972a8e593c02fe94d1?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/c55cc30bef360b972a8e593c02fe94d1?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://gnrfan.org/" rel="external nofollow ugc" target="_self">Antonio</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-09T07:41:13+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-8">May 9, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Very cool stuff and yes, quite a few people should learn a bit from this kind of article.</p>
 <p>I will also stay tunned for more 🙂</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=8#respond" data-commentid="8" data-postid="25" data-belowelement="comment-8" data-respondelement="respond" data-replyto="Reply to Antonio" aria-label="Reply to Antonio">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-9" class="comment even thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="orip Avatar" src="http://0.gravatar.com/avatar/9c52ad00ba2f2602661c49f896733229?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9c52ad00ba2f2602661c49f896733229?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://orip.org/" target="_self">orip</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-09T18:23:19+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-9">May 9, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment even thread-odd thread-alt depth-1" id="comment-9">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="orip Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9c52ad00ba2f2602661c49f896733229?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9c52ad00ba2f2602661c49f896733229?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://orip.org/" rel="external nofollow ugc" target="_self">orip</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-09T18:23:19+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-9">May 9, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Nice 🙂</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=9#respond" data-commentid="9" data-postid="25" data-belowelement="comment-9" data-respondelement="respond" data-replyto="Reply to orip" aria-label="Reply to orip">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-10" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-09T18:29:23+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-10">May 9, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2" id="comment-10">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-09T18:29:23+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-10">May 9, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Thank you, oh venerable Python-Fu master 🙂</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=10#respond" data-commentid="10" data-postid="25" data-belowelement="comment-10" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
-</li>
-<li id="comment-11" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Dan Powell Avatar" src="http://0.gravatar.com/avatar/cf8e49ed6fb410e1b585b979569339ab?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/cf8e49ed6fb410e1b585b979569339ab?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://denova.com/" target="_self">Dan Powell</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-10T01:10:02+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-11">May 10, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>This is the best overview of python internals I&#8217;ve seen.</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-35 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=11#respond" data-commentid="11" data-postid="25" data-belowelement="comment-11" data-respondelement="respond" data-replyto="Reply to Dan Powell" aria-label="Reply to Dan Powell">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-12" class="comment odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-38 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Alex Conrad Avatar" src="http://2.gravatar.com/avatar/e15d3d9be8b73ea7d04a586c34730f90?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/e15d3d9be8b73ea7d04a586c34730f90?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://twitter.com/alexconrad" target="_self">Alex Conrad</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-10T13:09:47+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-12">May 10, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Great and fascinating post! Thanks!</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-39 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=12#respond" data-commentid="12" data-postid="25" data-belowelement="comment-12" data-respondelement="respond" data-replyto="Reply to Alex Conrad" aria-label="Reply to Alex Conrad">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-13" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-42 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Tobias Avatar" src="http://2.gravatar.com/avatar/2583896ee73df54adcf891ce4f7b389b?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/2583896ee73df54adcf891ce4f7b389b?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Tobias</div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-10T18:49:24+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-13">May 10, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Great post, but since the ret of the series will be just as long, please stop using low-contrast grey type.</p>
-</div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-43 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=13#respond" data-commentid="13" data-postid="25" data-belowelement="comment-13" data-respondelement="respond" data-replyto="Reply to Tobias" aria-label="Reply to Tobias">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-14" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-46 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-11T01:35:06+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-14">May 11, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Thanks for the input!</p>
-<p>I&#8217;m not really a CSS expert and I&#8217;m not sure my taste in design is always to my taste [sic], but I&#8217;ve hacked at the CSS a bit to make text, hyperlinks and headings twice as dark.</p>
-<p>If you (or anyone) finds any visual bugs because of this, I&#8217;ll be happy to know.</p>
-</div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-47 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=14#respond" data-commentid="14" data-postid="25" data-belowelement="comment-14" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-15" class="comment even depth-3">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-50 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Tobias Avatar" src="http://2.gravatar.com/avatar/2583896ee73df54adcf891ce4f7b389b?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/2583896ee73df54adcf891ce4f7b389b?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Tobias</div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-11T12:28:42+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-15">May 11, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Much easier to read. Thanks!</p>
-</div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-51 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=15#respond" data-commentid="15" data-postid="25" data-belowelement="comment-15" data-respondelement="respond" data-replyto="Reply to Tobias" aria-label="Reply to Tobias">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
 </li></ol>
 </li>
-<li id="comment-16" class="comment odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-54 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Nick Coghlan Avatar" src="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Nick Coghlan</div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-26T03:57:57+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-16">May 26, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Excellent start, and I really do recommend that manuscript I linked on python-dev.</p>
-<p>You&#8217;re including a lot more implementation-specific detail than I did (which is obviously part of the point), but I think many of the core concepts will be common (and important).</p>
+<li class="comment even thread-even depth-1" id="comment-11">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Dan Powell Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/cf8e49ed6fb410e1b585b979569339ab?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/cf8e49ed6fb410e1b585b979569339ab?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://denova.com/" rel="external nofollow ugc" target="_self">Dan Powell</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-10T01:10:02+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-11">May 10, 2010</a></time></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-55 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=16#respond" data-commentid="16" data-postid="25" data-belowelement="comment-16" data-respondelement="respond" data-replyto="Reply to Nick Coghlan" aria-label="Reply to Nick Coghlan">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-17" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-58 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Snake Avatar" src="http://1.gravatar.com/avatar/ac531570c6a876edc359a889a7ca3cb0?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/ac531570c6a876edc359a889a7ca3cb0?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Snake</div>
-				<div class="wp-block-comment-date"><time datetime="2010-06-29T14:48:04+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-17">June 29, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+</div>
+<div class="wp-block-comment-content">
+<p>This is the best overview of python internals I’ve seen.</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-35 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-12">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-38 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Alex Conrad Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/e15d3d9be8b73ea7d04a586c34730f90?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/e15d3d9be8b73ea7d04a586c34730f90?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://twitter.com/alexconrad" rel="external nofollow ugc" target="_self">Alex Conrad</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-10T13:09:47+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-12">May 10, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Great and fascinating post! Thanks!</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-39 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment even thread-even depth-1" id="comment-13">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-42 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Tobias Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/2583896ee73df54adcf891ce4f7b389b?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/2583896ee73df54adcf891ce4f7b389b?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Tobias</div>
+<div class="wp-block-comment-date"><time datetime="2010-05-10T18:49:24+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-13">May 10, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Great post, but since the ret of the series will be just as long, please stop using low-contrast grey type.</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-43 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2" id="comment-14">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-46 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-11T01:35:06+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-14">May 11, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Thanks for the input!</p>
+<p>I’m not really a CSS expert and I’m not sure my taste in design is always to my taste [sic], but I’ve hacked at the CSS a bit to make text, hyperlinks and headings twice as dark.</p>
+<p>If you (or anyone) finds any visual bugs because of this, I’ll be happy to know.</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-47 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment even depth-3" id="comment-15">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-50 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Tobias Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/2583896ee73df54adcf891ce4f7b389b?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/2583896ee73df54adcf891ce4f7b389b?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Tobias</div>
+<div class="wp-block-comment-date"><time datetime="2010-05-11T12:28:42+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-15">May 11, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Much easier to read. Thanks!</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-51 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
+</li></ol>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-16">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-54 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Nick Coghlan Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Nick Coghlan</div>
+<div class="wp-block-comment-date"><time datetime="2010-05-26T03:57:57+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-16">May 26, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Excellent start, and I really do recommend that manuscript I linked on python-dev.</p>
+<p>You’re including a lot more implementation-specific detail than I did (which is obviously part of the point), but I think many of the core concepts will be common (and important).</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-55 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment even thread-even depth-1" id="comment-17">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-58 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Snake Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://1.gravatar.com/avatar/ac531570c6a876edc359a889a7ca3cb0?s=40&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/ac531570c6a876edc359a889a7ca3cb0?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Snake</div>
+<div class="wp-block-comment-date"><time datetime="2010-06-29T14:48:04+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-17">June 29, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>would be so nice to have a print view of your postings!</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-59 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=17#respond" data-commentid="17" data-postid="25" data-belowelement="comment-17" data-respondelement="respond" data-replyto="Reply to Snake" aria-label="Reply to Snake">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-18" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-62 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-06-29T15:45:02+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-18">June 29, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Hmm&#8230; You&#8217;re the second person to complain, but I&#8217;m not sure what to fix. The posts print nicely for me (Chrome, Ubuntu, to PDF). I&#8217;m not sure I can help, since the blog is hosted, but can you please describe exactly what are you expecting from a print which you currently don&#8217;t get?</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-59 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-63 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=18#respond" data-commentid="18" data-postid="25" data-belowelement="comment-18" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2" id="comment-18">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-62 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-06-29T15:45:02+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-18">June 29, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Hmm… You’re the second person to complain, but I’m not sure what to fix. The posts print nicely for me (Chrome, Ubuntu, to PDF). I’m not sure I can help, since the blog is hosted, but can you please describe exactly what are you expecting from a print which you currently don’t get?</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-63 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 </li>
-<li id="comment-19" class="comment even thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-66 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Mike Avatar" src="http://1.gravatar.com/avatar/745aaf5e0f5ae66dec0ebf6b6827b74f?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/745aaf5e0f5ae66dec0ebf6b6827b74f?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://www.publicstatic.net/" target="_self">Mike</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-12-08T20:23:54+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-19">December 8, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>PyString_FromString(&#8220;very cool :-)&#8221;);</p>
+<li class="comment even thread-odd thread-alt depth-1" id="comment-19">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-66 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Mike Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://1.gravatar.com/avatar/745aaf5e0f5ae66dec0ebf6b6827b74f?s=40&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/745aaf5e0f5ae66dec0ebf6b6827b74f?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://www.publicstatic.net/" rel="external nofollow ugc" target="_self">Mike</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-12-08T20:23:54+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-19">December 8, 2010</a></time></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-67 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=19#respond" data-commentid="19" data-postid="25" data-belowelement="comment-19" data-respondelement="respond" data-replyto="Reply to Mike" aria-label="Reply to Mike">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-20" class="comment odd alt thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-70 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="transfinite Avatar" src="http://0.gravatar.com/avatar/09e8291e356fc9cd98b84ed18e8e2b1a?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/09e8291e356fc9cd98b84ed18e8e2b1a?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">transfinite</div>
-				<div class="wp-block-comment-date"><time datetime="2011-01-25T00:10:50+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-20">January 25, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Great, thanks for this, it&#8217;s just the material I wanted at the depth &amp; pace I&#8217;ve been looking for.  </p>
-<p>I&#8217;ve taken the liberty of converting it to Kindle format at <a href="http://www.zinepal.com/user/benm" rel="nofollow ugc">http://www.zinepal.com/user/benm</a> , hope that you don&#8217;t object.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-71 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=20#respond" data-commentid="20" data-postid="25" data-belowelement="comment-20" data-respondelement="respond" data-replyto="Reply to transfinite" aria-label="Reply to transfinite">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-21" class="pingback even thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-74 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar">  </div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://topsy.com/trackback?url=http%3A%2F%2Ftech.blog.aknin.name%2F2010%2F04%2F02%2Fpythons-innards-introduction%2F%23comment-1074&#038;utm_source=pingback&#038;utm_campaign=L2" target="_self">Tweets that mention Python’s Innards: Introduction « NIL: .to write(1) ~ help:about &#8212; Topsy.com</a></div>
-				<div class="wp-block-comment-date"><time datetime="2011-01-25T01:59:54+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-21">January 25, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>[&#8230;] This post was mentioned on Twitter by Andrew Gleave, Frank Worsley and Ben Moran, Christophe Lalanne. Christophe Lalanne said: RT @benm: Here is a nice series of blogs by Yaniv Aknin on the innards of Python <a href="http://bit.ly/hmEJvy" rel="nofollow ugc">http://bit.ly/hmEJvy</a> , as eBooks for Kindle: <a href="http://b/" rel="nofollow ugc">http://b</a> &#8230; [&#8230;]</p>
+<div class="wp-block-comment-content">
+<p>PyString_FromString(“very cool :-)”);</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-75 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=21#respond" data-commentid="21" data-postid="25" data-belowelement="comment-21" data-respondelement="respond" data-replyto="Reply to Tweets that mention Python’s Innards: Introduction « NIL: .to write(1) ~ help:about -- Topsy.com" aria-label="Reply to Tweets that mention Python’s Innards: Introduction « NIL: .to write(1) ~ help:about -- Topsy.com">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-22" class="pingback odd alt thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-78 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar">  </div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://www.mypython.info/good-to-great-python-reads.html" target="_self">Good to Great Python reads | Pythoners&#039; Home</a></div>
-				<div class="wp-block-comment-date"><time datetime="2011-11-16T06:50:55+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-22">November 16, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>[&#8230;] Python’s Innards: Introduction [&#8230;]</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-67 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-79 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=22#respond" data-commentid="22" data-postid="25" data-belowelement="comment-22" data-respondelement="respond" data-replyto="Reply to Good to Great Python reads | Pythoners&#039; Home" aria-label="Reply to Good to Great Python reads | Pythoners&#039; Home">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-23" class="pingback even thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-82 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar">  </div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://www.cyberhades.com/2011/11/16/interesante-listado-de-enlaces-sobre-python/" target="_self">Interesante listado de enlaces sobre Python | CyberHades</a></div>
-				<div class="wp-block-comment-date"><time datetime="2011-11-16T14:27:14+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-23">November 16, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>[&#8230;] Python’s Innards: Introduction [&#8230;]</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-83 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=23#respond" data-commentid="23" data-postid="25" data-belowelement="comment-23" data-respondelement="respond" data-replyto="Reply to Interesante listado de enlaces sobre Python | CyberHades" aria-label="Reply to Interesante listado de enlaces sobre Python | CyberHades">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-24" class="pingback odd alt thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-86 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar">  </div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://www.quora.com/Python-programming-language-1/What-is-the-best-resource-for-understanding-what-goes-on-under-the-hood-in-the-interpretation-of-Python-programs#ans1662897" target="_self">Python (programming language): What is the best resource for understanding what goes on &quot;under the hood&quot; in the interpretation of Python programs? &#8211; Quora</a></div>
-				<div class="wp-block-comment-date"><time datetime="2012-10-26T21:54:21+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-24">October 26, 2012</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>[&#8230;] work at the interpreter level, please read through the whole &quot;python innards&quot; serieshttp://tech.blog.aknin.name/2010&#8230;Embed QuoteComment Loading&#8230; &bull; Share &bull; Embed &bull; Just now &nbsp;&nbsp; Ankur Gupta, [&#8230;]</p>
+</li>
+<li class="comment odd alt thread-even depth-1" id="comment-20">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-70 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="transfinite Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/09e8291e356fc9cd98b84ed18e8e2b1a?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/09e8291e356fc9cd98b84ed18e8e2b1a?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">transfinite</div>
+<div class="wp-block-comment-date"><time datetime="2011-01-25T00:10:50+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-20">January 25, 2011</a></time></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-87 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=24#respond" data-commentid="24" data-postid="25" data-belowelement="comment-24" data-respondelement="respond" data-replyto="Reply to Python (programming language): What is the best resource for understanding what goes on &quot;under the hood&quot; in the interpretation of Python programs? - Quora" aria-label="Reply to Python (programming language): What is the best resource for understanding what goes on &quot;under the hood&quot; in the interpretation of Python programs? - Quora">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-25" class="pingback even thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-90 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar">  </div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://www.quora.com/Python-programming-language-1/What-is-the-best-resource-for-understanding-what-goes-on-under-the-hood-in-the-interpretation-of-Python-programs#ans1663941" target="_self">Python (programming language): What is the best resource for understanding what goes on &quot;under the hood&quot; in the interpretation of Python programs? &#8211; Quora</a></div>
-				<div class="wp-block-comment-date"><time datetime="2012-10-27T07:02:36+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-25">October 27, 2012</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>[&#8230;] work at the interpreter level, please read through the whole &quot;python innards&quot; serieshttp://tech.blog.aknin.name/2010&#8230;Embed QuoteComment Loading&#8230; &bull; Share &bull; Embed &bull; 9h ago &nbsp;&nbsp; Ankur Gupta, [&#8230;]</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-91 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=25#respond" data-commentid="25" data-postid="25" data-belowelement="comment-25" data-respondelement="respond" data-replyto="Reply to Python (programming language): What is the best resource for understanding what goes on &quot;under the hood&quot; in the interpretation of Python programs? - Quora" aria-label="Reply to Python (programming language): What is the best resource for understanding what goes on &quot;under the hood&quot; in the interpretation of Python programs? - Quora">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-26" class="pingback odd alt thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-94 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar">  </div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://tech.blog.aknin.name/2010/07/04/pythons-innards-for-my-wife/" target="_self">Python&#8217;s Innards: for my wife &laquo; NIL: .to write(1) ~ help:about</a></div>
-				<div class="wp-block-comment-date"><time datetime="2013-02-02T18:43:40+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-26">February 2, 2013</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>[&#8230;] something to put her to sleep. Since she&#8217;s not quite a hacker, I figured some discussion of what I usually write about may do the trick (okay, maybe &#8216;not quite a hacker&#8217; is an understatement, she&#8217;s an [&#8230;]</p>
+<div class="wp-block-comment-content">
+<p>Great, thanks for this, it’s just the material I wanted at the depth &amp; pace I’ve been looking for.  </p>
+<p>I’ve taken the liberty of converting it to Kindle format at <a href="http://www.zinepal.com/user/benm" rel="nofollow ugc">http://www.zinepal.com/user/benm</a> , hope that you don’t object.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-95 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=26#respond" data-commentid="26" data-postid="25" data-belowelement="comment-26" data-respondelement="respond" data-replyto="Reply to Python&#8217;s Innards: for my wife &laquo; NIL: .to write(1) ~ help:about" aria-label="Reply to Python&#8217;s Innards: for my wife &laquo; NIL: .to write(1) ~ help:about">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-49" class="comment even thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-98 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Голова два уха (@agitprop4) Avatar" src="http://1.gravatar.com/avatar/1929b4997f80faca4a606ae694eb7d23?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/1929b4997f80faca4a606ae694eb7d23?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://twitter.com/agitprop4" target="_self">Голова два уха (@agitprop4)</a></div>
-				<div class="wp-block-comment-date"><time datetime="2017-10-20T16:38:47+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-49">October 20, 2017</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Nice article, thank you a lot! But, where can I get index of all you posts on this theme? I found this page: <a href="https://tech.blog.aknin.name/category/my-projects/pythons-innards/" rel="nofollow ugc">https://tech.blog.aknin.name/category/my-projects/pythons-innards/</a> , but this &#8220;Introduction&#8221; isn&#8217;t presented there. Maybe, some other articles missed, too?</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-71 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-99 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=49#respond" data-commentid="49" data-postid="25" data-belowelement="comment-49" data-respondelement="respond" data-replyto="Reply to Голова два уха (@agitprop4)" aria-label="Reply to Голова два уха (@agitprop4)">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-55" class="comment odd alt thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-102 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Mike Avatar" src="http://1.gravatar.com/avatar/ac7806705e070100e557fc48e0afe9bc?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/ac7806705e070100e557fc48e0afe9bc?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Mike</div>
-				<div class="wp-block-comment-date"><time datetime="2022-03-23T15:44:07+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-55">March 23, 2022</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>That&#8217;s the best introduction of CPython for the beginners. Thank you!</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-103 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/04/02/pythons-innards-introduction/?replytocom=55#respond" data-commentid="55" data-postid="25" data-belowelement="comment-55" data-respondelement="respond" data-replyto="Reply to Mike" aria-label="Reply to Mike">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
+</li>
+<li class="pingback even thread-odd thread-alt depth-1" id="comment-21">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-74 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"> </div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://topsy.com/trackback?url=http%3A%2F%2Ftech.blog.aknin.name%2F2010%2F04%2F02%2Fpythons-innards-introduction%2F%23comment-1074&amp;utm_source=pingback&amp;utm_campaign=L2" rel="external nofollow ugc" target="_self">Tweets that mention Python’s Innards: Introduction « NIL: .to write(1) ~ help:about — Topsy.com</a></div>
+<div class="wp-block-comment-date"><time datetime="2011-01-25T01:59:54+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-21">January 25, 2011</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>[…] This post was mentioned on Twitter by Andrew Gleave, Frank Worsley and Ben Moran, Christophe Lalanne. Christophe Lalanne said: RT @benm: Here is a nice series of blogs by Yaniv Aknin on the innards of Python <a href="http://bit.ly/hmEJvy" rel="nofollow ugc">http://bit.ly/hmEJvy</a> , as eBooks for Kindle: <a href="http://b/" rel="nofollow ugc">http://b</a> … […]</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-75 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="pingback odd alt thread-even depth-1" id="comment-22">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-78 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"> </div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://www.mypython.info/good-to-great-python-reads.html" rel="external nofollow ugc" target="_self">Good to Great Python reads | Pythoners' Home</a></div>
+<div class="wp-block-comment-date"><time datetime="2011-11-16T06:50:55+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-22">November 16, 2011</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>[…] Python’s Innards: Introduction […]</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-79 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="pingback even thread-odd thread-alt depth-1" id="comment-23">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-82 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"> </div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://www.cyberhades.com/2011/11/16/interesante-listado-de-enlaces-sobre-python/" rel="external nofollow ugc" target="_self">Interesante listado de enlaces sobre Python | CyberHades</a></div>
+<div class="wp-block-comment-date"><time datetime="2011-11-16T14:27:14+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-23">November 16, 2011</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>[…] Python’s Innards: Introduction […]</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-83 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="pingback odd alt thread-even depth-1" id="comment-24">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-86 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"> </div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://www.quora.com/Python-programming-language-1/What-is-the-best-resource-for-understanding-what-goes-on-under-the-hood-in-the-interpretation-of-Python-programs#ans1662897" rel="external nofollow ugc" target="_self">Python (programming language): What is the best resource for understanding what goes on "under the hood" in the interpretation of Python programs? – Quora</a></div>
+<div class="wp-block-comment-date"><time datetime="2012-10-26T21:54:21+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-24">October 26, 2012</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>[…] work at the interpreter level, please read through the whole "python innards" serieshttp://tech.blog.aknin.name/2010…Embed QuoteComment Loading… • Share • Embed • Just now    Ankur Gupta, […]</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-87 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="pingback even thread-odd thread-alt depth-1" id="comment-25">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-90 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"> </div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://www.quora.com/Python-programming-language-1/What-is-the-best-resource-for-understanding-what-goes-on-under-the-hood-in-the-interpretation-of-Python-programs#ans1663941" rel="external nofollow ugc" target="_self">Python (programming language): What is the best resource for understanding what goes on "under the hood" in the interpretation of Python programs? – Quora</a></div>
+<div class="wp-block-comment-date"><time datetime="2012-10-27T07:02:36+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-25">October 27, 2012</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>[…] work at the interpreter level, please read through the whole "python innards" serieshttp://tech.blog.aknin.name/2010…Embed QuoteComment Loading… • Share • Embed • 9h ago    Ankur Gupta, […]</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-91 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="pingback odd alt thread-even depth-1" id="comment-26">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-94 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"> </div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://tech.blog.aknin.name/2010/07/04/pythons-innards-for-my-wife/" rel="external nofollow ugc" target="_self">Python’s Innards: for my wife « NIL: .to write(1) ~ help:about</a></div>
+<div class="wp-block-comment-date"><time datetime="2013-02-02T18:43:40+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-26">February 2, 2013</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>[…] something to put her to sleep. Since she’s not quite a hacker, I figured some discussion of what I usually write about may do the trick (okay, maybe ‘not quite a hacker’ is an understatement, she’s an […]</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-95 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment even thread-odd thread-alt depth-1" id="comment-49">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-98 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Голова два уха (@agitprop4) Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://1.gravatar.com/avatar/1929b4997f80faca4a606ae694eb7d23?s=40&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/1929b4997f80faca4a606ae694eb7d23?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://twitter.com/agitprop4" rel="external nofollow ugc" target="_self">Голова два уха (@agitprop4)</a></div>
+<div class="wp-block-comment-date"><time datetime="2017-10-20T16:38:47+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-49">October 20, 2017</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Nice article, thank you a lot! But, where can I get index of all you posts on this theme? I found this page: <a href="https://tech.blog.aknin.name/category/my-projects/pythons-innards/" rel="nofollow ugc">https://tech.blog.aknin.name/category/my-projects/pythons-innards/</a> , but this “Introduction” isn’t presented there. Maybe, some other articles missed, too?</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-99 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment odd alt thread-even depth-1" id="comment-55">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-102 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Mike Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://1.gravatar.com/avatar/ac7806705e070100e557fc48e0afe9bc?s=40&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/ac7806705e070100e557fc48e0afe9bc?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Mike</div>
+<div class="wp-block-comment-date"><time datetime="2022-03-23T15:44:07+00:00"><a href="/2010/04/02/pythons-innards-introduction/#comment-55">March 23, 2022</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>That’s the best introduction of CPython for the beginners. Thank you!</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-103 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
 </ol>
 
-	
-
-		<div id="respond" style="padding-top:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);" class="comment-respond wp-block-post-comments-form">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2010/04/02/pythons-innards-introduction/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="http://localhost/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p>
-<p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p>
-<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit wp-block-button"><input name="submit" type="submit" id="submit" class="wp-block-button__link wp-element-button" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="25" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
 <!-- #respond -->
-	
 </div>
-
-
-
-			
-
-<nav class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-105 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)" aria-label="Posts">
-	<div class="post-navigation-link-previous wp-block-post-navigation-link">
-<span class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow" aria-hidden="true">←</span><a href="/2010/04/02/labour-updated/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Labour updated</span></a>
+<nav aria-label="Posts" class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-105 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
+<div class="post-navigation-link-previous wp-block-post-navigation-link">
+<span aria-hidden="true" class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow">←</span><a href="/2010/04/02/labour-updated/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Labour updated</span></a>
 </div>
-	<div class="post-navigation-link-next wp-block-post-navigation-link">
-<a href="/2010/04/08/contributing-to-python/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Contributing to Python</span></a><span class="wp-block-post-navigation-link__arrow-next is-arrow-arrow" aria-hidden="true">→</span>
+<div class="post-navigation-link-next wp-block-post-navigation-link">
+<a href="/2010/04/08/contributing-to-python/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Contributing to Python</span></a><span aria-hidden="true" class="wp-block-post-navigation-link__arrow-next is-arrow-arrow">→</span>
 </div>
 </nav>
-
-
-
-		</div>
-		
-	</div>
-	
+</div>
+</div>
 </main>
-
-
 <footer class="wp-block-template-part"></footer>
 </div>
-<script src="/wp-includes/js/comment-reply.min.js?ver=6.4.2" id="comment-reply-js" async data-wp-strategy="async"></script>
+<script async="" data-wp-strategy="async" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js?ver=6.4.2"></script>
 <script id="wp-block-template-skip-link-js-after">( function() {
 		var skipLinkTarget = document.querySelector( 'main' ),
 			sibling,
@@ -1042,9 +748,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 		sibling.parentElement.insertBefore( skipLink, sibling );
 	}() );</script>
 <!-- start Simple Custom CSS and JS -->
-
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
 <script>window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

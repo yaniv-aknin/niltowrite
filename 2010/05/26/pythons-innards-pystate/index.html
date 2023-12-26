@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="max-image-preview:large">
-<title>Python&#8217;s Innards: pystate &#8211; NIL: .to write(1) ~ help:about</title>
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Feed" href="/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Comments Feed" href="/comments/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Python&#8217;s Innards: pystate Comments Feed" href="/2010/05/26/pythons-innards-pystate/feed/">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="max-image-preview:large" name="robots"/>
+<title>Python’s Innards: pystate – NIL: .to write(1) ~ help:about</title>
+<link href="/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Feed" type="application/rss+xml"/>
+<link href="/comments/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Comments Feed" type="application/rss+xml"/>
+<link href="/2010/05/26/pythons-innards-pystate/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Python’s Innards: pystate Comments Feed" type="application/rss+xml"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 <script>
@@ -23,7 +24,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 .wp-block-site-title a:where(:not(.wp-element-button)):hover{text-decoration: none;}</style>
 <style id="wp-block-group-inline-css">.wp-block-group{box-sizing:border-box}</style>
 <style id="wp-block-page-list-inline-css">.wp-block-navigation .wp-block-page-list{align-items:var(--navigation-layout-align,initial);background-color:inherit;display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation .wp-block-navigation-item{background-color:inherit}</style>
-<link rel="stylesheet" id="wp-block-navigation-css" href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" media="all">
+<link href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" id="wp-block-navigation-css" media="all" rel="stylesheet"/>
 <style id="wp-block-navigation-inline-css">.wp-block-navigation{font-weight: 500;}
 .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;text-decoration: none;}
 .wp-block-navigation a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
@@ -162,507 +163,330 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 			width: auto;
 			z-index: 100000;
 		}</style>
-<script src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2" id="wp-interactivity-js" defer data-wp-strategy="defer"></script>
-<script src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831" id="wp-block-navigation-view-js" defer data-wp-strategy="defer"></script>
-<link rel="https://api.w.org/" href="/wp-json/">
-<link rel="alternate" type="application/json" href="/wp-json/wp/v2/posts/501">
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 6.4.2">
-<link rel="canonical" href="/2010/05/26/pythons-innards-pystate/">
-<link rel="shortlink" href="/?p=501">
-<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F26%2Fpythons-innards-pystate%2F">
-<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F26%2Fpythons-innards-pystate%2F#038;format=xml">
+<script data-wp-strategy="defer" defer="" id="wp-interactivity-js" src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2"></script>
+<script data-wp-strategy="defer" defer="" id="wp-block-navigation-view-js" src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831"></script>
+<link href="/wp-json/" rel="https://api.w.org/"/>
+<link href="/wp-json/wp/v2/posts/501" rel="alternate" type="application/json"/>
+<link href="/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
+<meta content="WordPress 6.4.2" name="generator"/>
+<link href="/2010/05/26/pythons-innards-pystate/" rel="canonical"/>
+<link href="/?p=501" rel="shortlink"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F26%2Fpythons-innards-pystate%2F" rel="alternate" type="application/json+oembed"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F26%2Fpythons-innards-pystate%2F#038;format=xml" rel="alternate" type="text/xml+oembed"/>
 <style id="wp-fonts-local">@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
 @font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:italic;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_italic_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:normal;font-weight:700;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}</style>
 </head>
-
 <body class="post-template-default single single-post postid-501 single-format-standard wp-embed-responsive">
-
 <div class="wp-site-blocks">
 <header class="wp-block-template-part">
 <div class="wp-block-group alignwide has-base-background-color has-background has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:20px;padding-bottom:20px">
-	
-	<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
-		
-		<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
-			
-
-			
-			<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
-				<p class="wp-block-site-title"><a href="/" target="_self" rel="home">NIL: .to write(1) ~ help:about</a></p>
-			</div>
-			
-		</div>
-		
-
-		<nav class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" aria-label="" data-wp-interactive data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}'><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open " data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
-			<div class="wp-block-navigation__responsive-container  " id="modal-1" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" tabindex="-1">
-				<div class="wp-block-navigation__responsive-close" tabindex="-1">
-					<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
-							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
-						<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
-							<ul class="wp-block-page-list">
+<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
+<p class="wp-block-site-title"><a href="/" rel="home" target="_self">NIL: .to write(1) ~ help:about</a></p>
+</div>
+</div>
+<nav aria-label="" class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}' data-wp-interactive=""><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="1.5" width="16" x="4" y="7.5"></rect><rect height="1.5" width="16" x="4" y="15"></rect></svg></button>
+<div class="wp-block-navigation__responsive-container" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" id="modal-1" tabindex="-1">
+<div class="wp-block-navigation__responsive-close" tabindex="-1">
+<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
+<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
+<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
+<ul class="wp-block-page-list">
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click menu-item-home"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/">About</a></li>
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/all-posts/">All Posts</a></li>
 </ul>
-						</div>
-					</div>
-				</div>
-			</div></nav>
-	</div>
-	
+</div>
+</div>
+</div>
+</div></nav>
+</div>
 </div>
 </header>
-
-
 <main class="wp-block-group alignfull is-layout-flow wp-block-group-is-layout-flow">
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
-		
-
-		
-		<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
-			<h1 class="wp-block-post-title has-x-large-font-size">Python&#8217;s Innards: pystate</h1>
-
-			<div class="wp-block-template-part">
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
+<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
+<h1 class="wp-block-post-title has-x-large-font-size">Python’s Innards: pystate</h1>
+<div class="wp-block-template-part">
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-	
-	<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
-		<div class="wp-block-post-date"><time datetime="2010-05-26T14:31:31+00:00"><a href="/2010/05/26/pythons-innards-pystate/">May 26, 2010</a></time></div>
-
-		
-		<p class="has-contrast-2-color has-text-color">—</p>
-		
-
-		
-		<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
-		
-
-		<div class="wp-block-post-author-name"><a href="/author/yanivaknin/" target="_self" class="wp-block-post-author-name__link">Yaniv Aknin</a></div>
-
-		<div class="taxonomy-category wp-block-post-terms">
-<span class="wp-block-post-terms__prefix">in </span><a href="/category/my-projects/pythons-innards/" rel="tag">Python&#8217;s Innards</a>
+<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
+<div class="wp-block-post-date"><time datetime="2010-05-26T14:31:31+00:00"><a href="/2010/05/26/pythons-innards-pystate/">May 26, 2010</a></time></div>
+<p class="has-contrast-2-color has-text-color">—</p>
+<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
+<div class="wp-block-post-author-name"><a class="wp-block-post-author-name__link" href="/author/yanivaknin/" target="_self">Yaniv Aknin</a></div>
+<div class="taxonomy-category wp-block-post-terms">
+<span class="wp-block-post-terms__prefix">in </span><a href="/category/my-projects/pythons-innards/" rel="tag">Python’s Innards</a>
 </div>
-
-	</div>
-	
 </div>
-
-
 </div>
-		</div>
-		
-	</div>
-	
-
-	<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
-<p>We started our <a href="http://tech.blog.aknin.name/tag/pythons-innards/">series</a> discussing the basics of Python&#8217;s object system (Objects <a href="http://tech.blog.aknin.name/2010/05/12/pythons-innards-objects-101/">101</a> and <a href="http://tech.blog.aknin.name/2010/05/19/pythons-innards-objects-102/">102</a>), and it&#8217;s time to move on. Though we&#8217;re not done with objects by any stretch of the imagination, when I think of Python&#8217;s implementation I visualize this big machine with a conveyor belt feeding opcodes into a hulking processing plant with cranes and cooling towers sticking out, and I just <em>have</em> to friggin&#8217; peer inside already. So whether our knowledge of objects is complete or not, we&#8217;ll put them aside for a bit and look into the <strong>Interpreter State</strong> and the <strong>Thread State</strong> structures (both implemented in <tt>./Python/pystate.c</tt>). I may be naïve, but I chose these structures because I&#8217;d like this post to be a simple basis for our understanding of actual <em>bytecode evaluation</em> that we&#8217;ll begin in the next few posts. Soon enough we&#8217;ll pry open Pandora boxes like frames, namespaces and code objects, and before we tackle these concepts I&#8217;d like us see the broad-picture of how the data structures that bind them together are laid out. Finally, note that this post is a tad heavier on OS terminology, I assume at least passing familiarity with it (<a href="http://en.wikipedia.org/wiki/Kernel_(computing)">kernel</a>, <a href="http://en.wikipedia.org/wiki/Process_(computing)">process</a>, <a href="http://en.wikipedia.org/wiki/Thread_(computer_science)">thread</a>, etc).</p>
-<p>As you probably know, in many operating systems user-space code is executed by an abstraction called threads that run inside another abstraction called processes (this includes most Unices/Unix-likes and the decent members of the Windows family). The kernel is in charge of setting up and tearing down these processes and execution threads, as well as deciding which thread will run on which logical CPU at any given time. When a process invokes <tt>Py_Initialize</tt> another abstraction comes into play, and that is <em>the interpreter</em>. Any Python code that runs in a process is tied to an interpreter, you can think of the interpreter as the root of all other concepts we&#8217;ll discuss. Python&#8217;s code base supports initializing two (or more) completely separate interpreters that share little state with one another. This is rather rarely done (never in the vanilla executable), because too much subtly shared state of the interpreter core and of C extensions exists between these &#8216;insulated&#8217; interpreters. Still, since support exists for it and for completeness&#8217; sake, I&#8217;ll try anyway to write this post from the standpoint of a multi-interpreter world. Anyhow, we said all execution of code occurs in a thread (or threads), and Python&#8217;s Virtual Machine is no exception. However, Python&#8217;s Virtual Machine itself is something which supports the notion of threading, so Python has its own abstraction to represent Python threads. This abstraction&#8217;s implementation is fully reliant on the kernel&#8217;s threading mechanisms, so both the kernel and Python are aware of each Python thread and Python threads execute as separate kernel-managed threads, running in parallel with all other threads in the system. Uhm, almost.</p>
-<p>There&#8217;s an elephant in that particular living room, and that is the <strong>Global Interpreter Lock</strong> or the <a href="http://docs.python.org/c-api/init.html#thread-state-and-the-global-interpreter-lock">GIL</a>. Due to many reasons which we&#8217;ll cover briefly today and revisit at length some other time, many aspects of Python&#8217;s CPython implementation are not thread safe. This is has some benefits, like simplifying the implementation of easy-to-screw-up pieces of code and guaranteed atomicity of many Python operations, but it also means that a mechanism must be put in place to prevent two (or more) Pythonic threads from executing in parallel, lest they corrupt each other&#8217;s data. The GIL is a process-wide lock which must be held by a thread if it wants to do anything Pythonic &#8211; effectively limiting all such work to a single thread running on a single logical CPU at a time. Threads in Python multitask cooperatively by relinquishing the GIL voluntarily so other threads can do Pythonic work; this cooperation is built-in to the evaluation loop, so ordinarily authors of Python code and some extensions don&#8217;t need to do something special to make cooperation work (from their point of view, they are preempted). Do note that while a thread doesn&#8217;t use any of Python&#8217;s APIs it can (and many threads do) run in parallel to another Pythonic thread. We will discuss the GIL again briefly later in this post and at length at a later time, but for the time being I can refer the interested readers to <a href="http://us.pycon.org/2010/conference/schedule/event/76/">this</a> excellent PyCon lecture by David Beazely for additional information about how the GIL works (how the GIL works is not the main subject of the lecture, but the explanation of how it works is very good).</p>
-<p>With the concepts of a process (OS abstraction), interpreter(s) (Python abstraction) and threads (an OS abstraction and a Python abstraction) in mind, let&#8217;s go inside-out by zooming out from a single opcode <em>outwards</em> to the whole process. This should give us a good overview, since so far we mainly went <em>inwards</em> from the implementation of some object-centric opcodes to the actual implementation of how they operate on objects. Let&#8217;s look again at the disassembly of the bytecode generated for the simple statement <tt>spam = eggs - 1</tt>:<br></p>
+</div>
+</div>
+</div>
+<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
+<p>We started our <a href="http://tech.blog.aknin.name/tag/pythons-innards/">series</a> discussing the basics of Python’s object system (Objects <a href="http://tech.blog.aknin.name/2010/05/12/pythons-innards-objects-101/">101</a> and <a href="http://tech.blog.aknin.name/2010/05/19/pythons-innards-objects-102/">102</a>), and it’s time to move on. Though we’re not done with objects by any stretch of the imagination, when I think of Python’s implementation I visualize this big machine with a conveyor belt feeding opcodes into a hulking processing plant with cranes and cooling towers sticking out, and I just <em>have</em> to friggin’ peer inside already. So whether our knowledge of objects is complete or not, we’ll put them aside for a bit and look into the <strong>Interpreter State</strong> and the <strong>Thread State</strong> structures (both implemented in <tt>./Python/pystate.c</tt>). I may be naïve, but I chose these structures because I’d like this post to be a simple basis for our understanding of actual <em>bytecode evaluation</em> that we’ll begin in the next few posts. Soon enough we’ll pry open Pandora boxes like frames, namespaces and code objects, and before we tackle these concepts I’d like us see the broad-picture of how the data structures that bind them together are laid out. Finally, note that this post is a tad heavier on OS terminology, I assume at least passing familiarity with it (<a href="http://en.wikipedia.org/wiki/Kernel_(computing)">kernel</a>, <a href="http://en.wikipedia.org/wiki/Process_(computing)">process</a>, <a href="http://en.wikipedia.org/wiki/Thread_(computer_science)">thread</a>, etc).</p>
+<p>As you probably know, in many operating systems user-space code is executed by an abstraction called threads that run inside another abstraction called processes (this includes most Unices/Unix-likes and the decent members of the Windows family). The kernel is in charge of setting up and tearing down these processes and execution threads, as well as deciding which thread will run on which logical CPU at any given time. When a process invokes <tt>Py_Initialize</tt> another abstraction comes into play, and that is <em>the interpreter</em>. Any Python code that runs in a process is tied to an interpreter, you can think of the interpreter as the root of all other concepts we’ll discuss. Python’s code base supports initializing two (or more) completely separate interpreters that share little state with one another. This is rather rarely done (never in the vanilla executable), because too much subtly shared state of the interpreter core and of C extensions exists between these ‘insulated’ interpreters. Still, since support exists for it and for completeness’ sake, I’ll try anyway to write this post from the standpoint of a multi-interpreter world. Anyhow, we said all execution of code occurs in a thread (or threads), and Python’s Virtual Machine is no exception. However, Python’s Virtual Machine itself is something which supports the notion of threading, so Python has its own abstraction to represent Python threads. This abstraction’s implementation is fully reliant on the kernel’s threading mechanisms, so both the kernel and Python are aware of each Python thread and Python threads execute as separate kernel-managed threads, running in parallel with all other threads in the system. Uhm, almost.</p>
+<p>There’s an elephant in that particular living room, and that is the <strong>Global Interpreter Lock</strong> or the <a href="http://docs.python.org/c-api/init.html#thread-state-and-the-global-interpreter-lock">GIL</a>. Due to many reasons which we’ll cover briefly today and revisit at length some other time, many aspects of Python’s CPython implementation are not thread safe. This is has some benefits, like simplifying the implementation of easy-to-screw-up pieces of code and guaranteed atomicity of many Python operations, but it also means that a mechanism must be put in place to prevent two (or more) Pythonic threads from executing in parallel, lest they corrupt each other’s data. The GIL is a process-wide lock which must be held by a thread if it wants to do anything Pythonic – effectively limiting all such work to a single thread running on a single logical CPU at a time. Threads in Python multitask cooperatively by relinquishing the GIL voluntarily so other threads can do Pythonic work; this cooperation is built-in to the evaluation loop, so ordinarily authors of Python code and some extensions don’t need to do something special to make cooperation work (from their point of view, they are preempted). Do note that while a thread doesn’t use any of Python’s APIs it can (and many threads do) run in parallel to another Pythonic thread. We will discuss the GIL again briefly later in this post and at length at a later time, but for the time being I can refer the interested readers to <a href="http://us.pycon.org/2010/conference/schedule/event/76/">this</a> excellent PyCon lecture by David Beazely for additional information about how the GIL works (how the GIL works is not the main subject of the lecture, but the explanation of how it works is very good).</p>
+<p>With the concepts of a process (OS abstraction), interpreter(s) (Python abstraction) and threads (an OS abstraction and a Python abstraction) in mind, let’s go inside-out by zooming out from a single opcode <em>outwards</em> to the whole process. This should give us a good overview, since so far we mainly went <em>inwards</em> from the implementation of some object-centric opcodes to the actual implementation of how they operate on objects. Let’s look again at the disassembly of the bytecode generated for the simple statement <tt>spam = eggs - 1</tt>:<br/></p>
 <pre><code class="lang-pycon">
 # what's 'diss'? see 'tools' under 'metablogging' above!
->>> diss("spam = eggs - 1")
+&gt;&gt;&gt; diss("spam = eggs - 1")
   1           0 LOAD_NAME                0 (eggs)
               3 LOAD_CONST               0 (1)
               6 BINARY_SUBTRACT
               7 STORE_NAME               1 (spam)
              10 LOAD_CONST               1 (None)
              13 RETURN_VALUE
->>>
+&gt;&gt;&gt;
 </code></pre>
-<p>In addition to the actual &#8216;do work&#8217; opcode <tt>BINARY_SUBTRACT</tt>, we see opcodes like <tt>LOAD_NAME (eggs)</tt> and <tt>STORE_NAME (spam)</tt>. It seems obvious that evaluating such opcodes requires some storage room: <tt>eggs</tt> has to be loaded from somewhere, <tt>spam</tt> has to be stored somewhere. The inner-most data structures in which evaluation occurs are the <strong>frame object</strong> and the <strong>code object</strong>, and they point to this storage room. When you&#8217;re &#8220;running&#8221; Python code, you&#8217;re actually evaluating frames (recall <tt>ceval.c: PyEval_EvalFrameEx</tt>). For now we&#8217;re happy to lump frame objects and code objects together; in reality they are rather distinct, but we&#8217;ll explore that some other time. In this code-structure-oriented post, the main thing we care about is the <tt>f_back</tt> field of the frame object (though many others exist). In frame <tt>n</tt> this field points to frame <tt>n-1</tt>, i.e., the frame that called us (the first frame that was called in any particular thread, the top frame, points to NULL).</p>
-<p>This stack of frames is unique to every thread and is anchored to the thread-specific structure <tt>./Include.h/pystate.h: PyThreadState</tt>, which includes a pointer to the currently executing frame in that thread (the most recently called frame, the bottom of the stack). <tt>PyThreadState</tt> is allocated and initialized for every Python thread in a process by <tt>_PyThreadState_Prealloc</tt> just before new thread creation is actually requested from the underlying OS (see <tt>./Modules/_threadmodule.c: thread_PyThread_start_new_thread</tt> and <kbd>&gt;&gt;&gt; from _thread import start_new_thread</kbd>). Threads can be created which will not be under the interpreter&#8217;s control; these threads won&#8217;t have a <tt>PyThreadState</tt> structure and must never call a Python API. This isn&#8217;t so common in a Python application but is more common when Python is embedded into another application. It is possible to &#8216;Pythonize&#8217; such foreign threads that weren&#8217;t originally created by Python code in order to allow them to run Python code (<tt>PyThreadState</tt> will have to be allocated for them). APIs exist that can do such a migration so long as only one interpreter exists, it is also possible though harder to do it manually in a multi-interpreter environment. I hope to revisit these APIs and their operation in a later post, possibly one about embedding. Finally, a bit like all frames are tied together in a backward-going stack of previous-frame pointers, so are all thread states tied together in a linked list of <tt>PyThreadState *next</tt> pointers.</p>
-<p>The list of thread states is anchored to the interpreter state structure which owns these threads. The interpreter state structure is defined at <tt>./Include.h/pystate.h: PyInterpreterState</tt>, and it is created when you call <tt>Py_Initialize</tt> to initialize the Python VM in a process or <a class="code" href="http://docs.python.org/py3k/c-api/init.html#Py_NewInterpreter">Py_NewInterpreter</a> to create a new interpreter state for multi-interpreter processes. Mostly as an exercise to sharpen your understanding, note carefully that <tt>Py_NewInterpreter</tt> does <em>not</em> return an interpreter state &#8211; it returns a (newly created) <tt>PyThreadState</tt> for the single automatically created thread of the newly created interpreter. There&#8217;s no sense in creating a new interpreter state without at least one thread in it, much like there&#8217;s no sense in creating a new process with no threads in it. Similarly to the list of threads anchored to its interpreter, so does the interpreter structure have a <tt>next</tt> field which forms a list by linking the interpreters to one another.</p>
-<p>This pretty much sums up our zooming out from the resolution of a single opcode to the whole process: opcodes belong to <em>currently evaluating</em> code objects (currently evaluating is specified as opposed to code objects which are just lying around as data, waiting for the opportunity to be called), which belong to currently evaluating frames, which belong to Pythonic threads, which belong to interpreters. The anchor which holds the root of this structure is the static variable <tt>./Python/pystate.c: interp_head</tt>, which points to the first interpreter state (through that all interpreters are reachable, through each of them all thread states are reachable, and so fourth). The mutex <tt>head_mutex</tt> protects <tt>interp_head</tt> and the lists it points to so they won&#8217;t be corrupt by concurrent modifications from multiple threads (I want it to be clear that this lock is <em>not</em> the GIL, it&#8217;s just the mutex for interpreter and thread states). The macros <tt>HEAD_LOCK</tt> and <tt>HEAD_UNLOCK</tt> control this lock. <tt>interp_head</tt> is typically used when one wishes to add/remove interpreters or threads and for special purposes. That&#8217;s because accessing an interpreter or a thread through the head variable would get you <em>an</em> interpreter state rather than <em>the</em> interpreter state owning the currently running thread (just in case there&#8217;s more than one interpreter state).</p>
-<p>A more useful variable similar to <tt>interp_head</tt> is <tt>./Python/pystate.c: _PyThreadState_Current</tt> which points to the currently running thread state (important terms and conditions apply, see soon). This is how code typically accesses the correct interpreter state for itself: first find its your own thread&#8217;s thread state, then dereference its <tt>interp</tt> field to get to your interpreter. There are a couple of functions that let you access this variable (get its current value or swap it with a new one while retaining the old one) and they require that you hold the GIL to be used. This is important, and serves as an example of CPython&#8217;s lack of thread safety (a rather simple one, others are hairier). If two threads are running and there was no GIL, to which thread would this variable point? &#8220;The thread that holds the GIL&#8221; is an easy answer, and indeed, the one that&#8217;s used. <tt>_PyThreadState_Current</tt> is set during Python&#8217;s initialization or during a new thread&#8217;s creation to the thread state structure that was just created. When a Pythonic thread is bootstrapped and starts running for the very first time it can assume two things: (a) it holds the GIL and (b) it will find a correct value in <tt>_PyThreadState_Current</tt>. As of that moment the Pythonic thread should not relinquish the GIL and let other threads run without first storing <tt>_PyThreadState_Current</tt> somewhere, and should immediately re-acquire the GIL and restore <tt>_PyThreadState_Current</tt> to its old value when it wants to resume running Pythonic code. This behaviour is what keeps <tt>_PyThreadState_Current</tt> correct for GIL-holding threads and is so common that macros exist to do the save-release/acquire-restore idioms (<a class="code" href="http://docs.python.org/py3k/c-api/init.html#Py_BEGIN_ALLOW_THREADS">Py_BEGIN_ALLOW_THREADS</a> and <a class="code" href="http://docs.python.org/py3k/c-api/init.html#Py_END_ALLOW_THREADS">Py_END_ALLOW_THREADS</a>). There&#8217;s much more to say about the GIL and <a href="http://docs.python.org/py3k/c-api/init.html#thread-state-and-the-global-interpreter-lock">additional APIs to handle it</a> and it&#8217;s probably also interesting to contrast it with other Python implementation (Jython and IronPython are thread safe and <em>do</em> run Pythonic threads concurrently). But we&#8217;ll leave all that to a later post.</p>
-<p>We now have all pieces in place, so here&#8217;s a little diagram I quickly jotted<sup>1</sup> which shows the relation between the state structures within a single process hosting Python as described so far. We have in this example two interpreters with two threads each, you can see each of these threads points to its own call stack of frames.<br>
-<figure id="attachment_606" aria-describedby="caption-attachment-606" style="width: 440px" class="wp-caption aligncenter"><a href=":8000/wp-content/uploads/2010/05/states4.png"><img fetchpriority="high" decoding="async" src=":8000/wp-content/uploads/2010/05/states4.png" alt="A Diagram of Python&#039;s State Structures" title="Python States" width="440" height="314" class="size-full wp-image-606" srcset="/wp-content/uploads/2010/05/states4.png 1275w, /wp-content/uploads/2010/05/states4-300x215.png 300w, /wp-content/uploads/2010/05/states4-1024x732.png 1024w, /wp-content/uploads/2010/05/states4-768x549.png 768w" sizes="(max-width: 440px) 100vw, 440px"></a><figcaption id="caption-attachment-606" class="wp-caption-text">A Diagram of Python&#8217;s State Structures</figcaption></figure></p>
-<p>Lovely, isn&#8217;t it. Anyway, something we didn&#8217;t discuss at all is <em>why</em> these structures are needed. I mean, what&#8217;s in them? The reason we didn&#8217;t discuss the contents so far and will only briefly mention it now is that I wanted the structure to be clear more than the features. We will discuss the roles of each of these objects as we discuss the feature that relies on that role; for example, interpreter states contain several fields dealing with imported modules of that particular interpreter, so we can talk about that when we talk about importing. That said, I wouldn&#8217;t want to leave you completely in the dark, so we&#8217;ll briefly add that in addition to managing imports they hold bunch of pointers related to handling Unicode codecs, a field to do with dynamic linking flags and a field to do with <a href="http://en.wikipedia.org/wiki/Time_Stamp_Counter">TSC</a> usage for profiling (see last bullet <a href="http://docs.python.org/whatsnew/2.4.html#porting-to-python-2-4">here</a>), I didn&#8217;t look into it much.</p>
+<p>In addition to the actual ‘do work’ opcode <tt>BINARY_SUBTRACT</tt>, we see opcodes like <tt>LOAD_NAME (eggs)</tt> and <tt>STORE_NAME (spam)</tt>. It seems obvious that evaluating such opcodes requires some storage room: <tt>eggs</tt> has to be loaded from somewhere, <tt>spam</tt> has to be stored somewhere. The inner-most data structures in which evaluation occurs are the <strong>frame object</strong> and the <strong>code object</strong>, and they point to this storage room. When you’re “running” Python code, you’re actually evaluating frames (recall <tt>ceval.c: PyEval_EvalFrameEx</tt>). For now we’re happy to lump frame objects and code objects together; in reality they are rather distinct, but we’ll explore that some other time. In this code-structure-oriented post, the main thing we care about is the <tt>f_back</tt> field of the frame object (though many others exist). In frame <tt>n</tt> this field points to frame <tt>n-1</tt>, i.e., the frame that called us (the first frame that was called in any particular thread, the top frame, points to NULL).</p>
+<p>This stack of frames is unique to every thread and is anchored to the thread-specific structure <tt>./Include.h/pystate.h: PyThreadState</tt>, which includes a pointer to the currently executing frame in that thread (the most recently called frame, the bottom of the stack). <tt>PyThreadState</tt> is allocated and initialized for every Python thread in a process by <tt>_PyThreadState_Prealloc</tt> just before new thread creation is actually requested from the underlying OS (see <tt>./Modules/_threadmodule.c: thread_PyThread_start_new_thread</tt> and <kbd>&gt;&gt;&gt; from _thread import start_new_thread</kbd>). Threads can be created which will not be under the interpreter’s control; these threads won’t have a <tt>PyThreadState</tt> structure and must never call a Python API. This isn’t so common in a Python application but is more common when Python is embedded into another application. It is possible to ‘Pythonize’ such foreign threads that weren’t originally created by Python code in order to allow them to run Python code (<tt>PyThreadState</tt> will have to be allocated for them). APIs exist that can do such a migration so long as only one interpreter exists, it is also possible though harder to do it manually in a multi-interpreter environment. I hope to revisit these APIs and their operation in a later post, possibly one about embedding. Finally, a bit like all frames are tied together in a backward-going stack of previous-frame pointers, so are all thread states tied together in a linked list of <tt>PyThreadState *next</tt> pointers.</p>
+<p>The list of thread states is anchored to the interpreter state structure which owns these threads. The interpreter state structure is defined at <tt>./Include.h/pystate.h: PyInterpreterState</tt>, and it is created when you call <tt>Py_Initialize</tt> to initialize the Python VM in a process or <a class="code" href="http://docs.python.org/py3k/c-api/init.html#Py_NewInterpreter">Py_NewInterpreter</a> to create a new interpreter state for multi-interpreter processes. Mostly as an exercise to sharpen your understanding, note carefully that <tt>Py_NewInterpreter</tt> does <em>not</em> return an interpreter state – it returns a (newly created) <tt>PyThreadState</tt> for the single automatically created thread of the newly created interpreter. There’s no sense in creating a new interpreter state without at least one thread in it, much like there’s no sense in creating a new process with no threads in it. Similarly to the list of threads anchored to its interpreter, so does the interpreter structure have a <tt>next</tt> field which forms a list by linking the interpreters to one another.</p>
+<p>This pretty much sums up our zooming out from the resolution of a single opcode to the whole process: opcodes belong to <em>currently evaluating</em> code objects (currently evaluating is specified as opposed to code objects which are just lying around as data, waiting for the opportunity to be called), which belong to currently evaluating frames, which belong to Pythonic threads, which belong to interpreters. The anchor which holds the root of this structure is the static variable <tt>./Python/pystate.c: interp_head</tt>, which points to the first interpreter state (through that all interpreters are reachable, through each of them all thread states are reachable, and so fourth). The mutex <tt>head_mutex</tt> protects <tt>interp_head</tt> and the lists it points to so they won’t be corrupt by concurrent modifications from multiple threads (I want it to be clear that this lock is <em>not</em> the GIL, it’s just the mutex for interpreter and thread states). The macros <tt>HEAD_LOCK</tt> and <tt>HEAD_UNLOCK</tt> control this lock. <tt>interp_head</tt> is typically used when one wishes to add/remove interpreters or threads and for special purposes. That’s because accessing an interpreter or a thread through the head variable would get you <em>an</em> interpreter state rather than <em>the</em> interpreter state owning the currently running thread (just in case there’s more than one interpreter state).</p>
+<p>A more useful variable similar to <tt>interp_head</tt> is <tt>./Python/pystate.c: _PyThreadState_Current</tt> which points to the currently running thread state (important terms and conditions apply, see soon). This is how code typically accesses the correct interpreter state for itself: first find its your own thread’s thread state, then dereference its <tt>interp</tt> field to get to your interpreter. There are a couple of functions that let you access this variable (get its current value or swap it with a new one while retaining the old one) and they require that you hold the GIL to be used. This is important, and serves as an example of CPython’s lack of thread safety (a rather simple one, others are hairier). If two threads are running and there was no GIL, to which thread would this variable point? “The thread that holds the GIL” is an easy answer, and indeed, the one that’s used. <tt>_PyThreadState_Current</tt> is set during Python’s initialization or during a new thread’s creation to the thread state structure that was just created. When a Pythonic thread is bootstrapped and starts running for the very first time it can assume two things: (a) it holds the GIL and (b) it will find a correct value in <tt>_PyThreadState_Current</tt>. As of that moment the Pythonic thread should not relinquish the GIL and let other threads run without first storing <tt>_PyThreadState_Current</tt> somewhere, and should immediately re-acquire the GIL and restore <tt>_PyThreadState_Current</tt> to its old value when it wants to resume running Pythonic code. This behaviour is what keeps <tt>_PyThreadState_Current</tt> correct for GIL-holding threads and is so common that macros exist to do the save-release/acquire-restore idioms (<a class="code" href="http://docs.python.org/py3k/c-api/init.html#Py_BEGIN_ALLOW_THREADS">Py_BEGIN_ALLOW_THREADS</a> and <a class="code" href="http://docs.python.org/py3k/c-api/init.html#Py_END_ALLOW_THREADS">Py_END_ALLOW_THREADS</a>). There’s much more to say about the GIL and <a href="http://docs.python.org/py3k/c-api/init.html#thread-state-and-the-global-interpreter-lock">additional APIs to handle it</a> and it’s probably also interesting to contrast it with other Python implementation (Jython and IronPython are thread safe and <em>do</em> run Pythonic threads concurrently). But we’ll leave all that to a later post.</p>
+<p>We now have all pieces in place, so here’s a little diagram I quickly jotted<sup>1</sup> which shows the relation between the state structures within a single process hosting Python as described so far. We have in this example two interpreters with two threads each, you can see each of these threads points to its own call stack of frames.<br/>
+<figure aria-describedby="caption-attachment-606" class="wp-caption aligncenter" id="attachment_606" style="width: 440px"><a href=":8000/wp-content/uploads/2010/05/states4.png"><img alt="A Diagram of Python's State Structures" class="size-full wp-image-606" decoding="async" fetchpriority="high" height="314" sizes="(max-width: 440px) 100vw, 440px" src=":8000/wp-content/uploads/2010/05/states4.png" srcset="/wp-content/uploads/2010/05/states4.png 1275w, /wp-content/uploads/2010/05/states4-300x215.png 300w, /wp-content/uploads/2010/05/states4-1024x732.png 1024w, /wp-content/uploads/2010/05/states4-768x549.png 768w" title="Python States" width="440"/></a><figcaption class="wp-caption-text" id="caption-attachment-606">A Diagram of Python’s State Structures</figcaption></figure></p>
+<p>Lovely, isn’t it. Anyway, something we didn’t discuss at all is <em>why</em> these structures are needed. I mean, what’s in them? The reason we didn’t discuss the contents so far and will only briefly mention it now is that I wanted the structure to be clear more than the features. We will discuss the roles of each of these objects as we discuss the feature that relies on that role; for example, interpreter states contain several fields dealing with imported modules of that particular interpreter, so we can talk about that when we talk about importing. That said, I wouldn’t want to leave you completely in the dark, so we’ll briefly add that in addition to managing imports they hold bunch of pointers related to handling Unicode codecs, a field to do with dynamic linking flags and a field to do with <a href="http://en.wikipedia.org/wiki/Time_Stamp_Counter">TSC</a> usage for profiling (see last bullet <a href="http://docs.python.org/whatsnew/2.4.html#porting-to-python-2-4">here</a>), I didn’t look into it much.</p>
 <p>Thread states have more fields but to me they were more easily understood. Not too surprisingly, they have fields that deal with things that relate to the execution flow of a particular thread and are of too broad a scope to fit particular frame. Take for example the fields <tt>recursion_depth</tt>, <tt>overflow</tt> and <tt>recursion_critical</tt>, which are meant to trap and raise a <tt>RuntimeError</tt> during overly deep recursions before the stack of the underlying platform is exhausted and the whole process crashes. In addition to these fields, this structure accommodates fields related to profiling and tracing, exception handling (exceptions can be thrown across frames), a general purpose per-thread dictionary for extensions to store arbitrary stuff in and counters to do with deciding when a thread ran too much and should voluntarily relinquish the GIL to let other threads run.</p>
 <p>I think this pretty much sums up what I have to say about the general layout of a Python process. I hope it was indeed simple enough to follow, I plan on getting into rough waters soon and wanted this post to sink in well with you (and me!). The next two (maybe three) posts will start chasing a real heavyweight, the <strong>frame object</strong>, which will force us to discuss <strong>namespaces</strong> and <strong>code objects</strong>. Engage.</p>
-<hr>
+<hr/>
 <p><em>I would like to thank <strong>Antoine Pitrou</strong> and <strong>Nick Coghlan</strong> for reviewing this article; any mistakes that slipped through are my own.</em></p>
-<hr>
-<p><span class="footer"><sup>1</sup> This is a vicious lie. I worked far harder than I&#8217;d like to on this diagram (and desperately need your encouragement in the comments for it ), trying several tools along the way (dia, inkscape, Google Docs drawing and gaphor). If you know how to make diagrams like this one, especially in SVG format, using FOSS tools that run on Ubuntu and don&#8217;t suck, please let me know. While I&#8217;m ranting, if you knows CSS and WordPress.com and can figure out why the right border of the diagram is chopped, also let me know. Hrmf.</span></p>
+<hr/>
+<p><span class="footer"><sup>1</sup> This is a vicious lie. I worked far harder than I’d like to on this diagram (and desperately need your encouragement in the comments for it ), trying several tools along the way (dia, inkscape, Google Docs drawing and gaphor). If you know how to make diagrams like this one, especially in SVG format, using FOSS tools that run on Ubuntu and don’t suck, please let me know. While I’m ranting, if you knows CSS and WordPress.com and can figure out why the right border of the diagram is chopped, also let me know. Hrmf.</span></p>
 </div>
-
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
-		<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
-<a href="/tag/frame-object/" rel="tag">frame object</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/gil/" rel="tag">GIL</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/internals/" rel="tag">internals</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/interpreter-state/" rel="tag">interpreter state</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/python/" rel="tag">python</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/thread-state/" rel="tag">thread state</a>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
+<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
+<a href="/tag/frame-object/" rel="tag">frame object</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/gil/" rel="tag">GIL</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/internals/" rel="tag">internals</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/interpreter-state/" rel="tag">interpreter state</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/python/" rel="tag">python</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/thread-state/" rel="tag">thread state</a>
 </div>
-
-		
-		<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-			
-			<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer">
-			</div>
-			
-
-			
-			<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)">
-			
-
-			
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div aria-hidden="true" class="wp-block-spacer" style="height:var(--wp--preset--spacing--40)">
+</div>
+<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)"/>
 <div class="wp-block-comments wp-block-comments-query-loop">
-	
-	<h2 class="wp-block-heading">Comments</h2>
-	
-	<h3 id="comments" class="wp-block-comments-title">11 responses to &#8220;Python&#8217;s Innards: pystate&#8221;</h3>
-	<ol class="wp-block-comment-template">
-<li id="comment-139" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Graham Dumpleton Avatar" src="http://1.gravatar.com/avatar/70dfb4afd84b106d0855184bf0ae4675?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/70dfb4afd84b106d0855184bf0ae4675?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://blog.dscpl.com.au/" target="_self">Graham Dumpleton</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-26T15:41:30+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-139">May 26, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>You say &#8216;note that theoretically threads can be created which will not be under the interpreter’s control; these threads won’t have a PyThreadState structure and must never call a Python API; this is not very common&#8217;.</p>
-<p>I&#8217;d suggest that in embedded systems this is more common than you think. It is quite likely to be the case in an embedded system that you will have foreign threads created outside of the interpreter which will be calling into the interpreter as opposed to always having Python threads that call out.</p>
+<h2 class="wp-block-heading">Comments</h2>
+<h3 class="wp-block-comments-title" id="comments">11 responses to “Python’s Innards: pystate”</h3>
+<ol class="wp-block-comment-template">
+<li class="comment even thread-even depth-1" id="comment-139">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Graham Dumpleton Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://1.gravatar.com/avatar/70dfb4afd84b106d0855184bf0ae4675?s=40&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/70dfb4afd84b106d0855184bf0ae4675?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://blog.dscpl.com.au/" rel="external nofollow ugc" target="_self">Graham Dumpleton</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-26T15:41:30+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-139">May 26, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>You say ‘note that theoretically threads can be created which will not be under the interpreter’s control; these threads won’t have a PyThreadState structure and must never call a Python API; this is not very common’.</p>
+<p>I’d suggest that in embedded systems this is more common than you think. It is quite likely to be the case in an embedded system that you will have foreign threads created outside of the interpreter which will be calling into the interpreter as opposed to always having Python threads that call out.</p>
 <p>For the main interpreter, so long as they use the PyGILState_Ensure()/PyGILState_Release() functions appropriately around the call into Python API, the thread state will be created on demand.</p>
 <p>It gets more complicated for sub interpreters as the PyGILState_???() functions only work for main interpreter. In sub interpreters you have to create the thread state objects manually through other APIs and this can get tricky as you need to avoid having multiple thread states for same thread against same sub interpreter. To ensure that thread local storage persists across calls into Python API, you should reuse the thread state rather than destroying it after each use.</p>
 <p>For an example of thread state usage and differences between main interpreter/sub interpreter usage, suggest you have a look at code for mod_wsgi.</p>
 <p>You should also perhaps look more at what PyGILState_Ensure()/PyGILState_Release() do in contect of main interpreter and how they allow foreign threads with no existing thread state to call into Python API.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/26/pythons-innards-pystate/?replytocom=139#respond" data-commentid="139" data-postid="501" data-belowelement="comment-139" data-respondelement="respond" data-replyto="Reply to Graham Dumpleton" aria-label="Reply to Graham Dumpleton">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-140" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-27T01:37:41+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-140">May 27, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2" id="comment-140">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-27T01:37:41+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-140">May 27, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Thanks for the detailed comment, Graham!</p>
-<p>re. non-Python threads and embedded systems: This is the obvious use-case for such threads. I didn&#8217;t do a survey, but I tend to think there is far more CPython code running unembedded than otherwise. I might be wrong with that assumption, but when I said &#8216;not very common&#8217;, I was thinking about that.</p>
-<p>re. <tt>PyGILState_*</tt>, in writing each article I often tiptoe around terms which I don&#8217;t want to introduce, so as not to confuse my readers (or myself, I&#8217;m new here!). This article isn&#8217;t about the GIL, it&#8217;s about <tt>pystate.c</tt>. I know the topics are related, but then again, if I were to chase <em>every</em> related topic I&#8217;d never publish! When I said &#8216;There’s much more to say about the GIL and additional APIs to handle it&#8217;, these APIs were exactly what I was talking about, but, alas, we&#8217;ll have to get there some other day indeed.</p>
-<p>On a side-ish note, I&#8217;m honored to see the owner of <tt>mod_wsgi</tt> here! Perhaps you&#8217;d care to read a bit about <a href="http://tech.blog.aknin.name/category/my-projects/labour/" rel="nofollow ugc">Labour</a>, a WSGI server &#8216;durability benchmark&#8217; following Ian Bicking&#8217;s suggestion, I&#8217;d greatly appreciate your comment on that. Labour doesn&#8217;t support mod_wsgi (yet?), but I sorta despaired of the effort as I felt not many people are interested and I wasn&#8217;t certain I&#8217;m heading in the right direction.</p>
+<p>re. non-Python threads and embedded systems: This is the obvious use-case for such threads. I didn’t do a survey, but I tend to think there is far more CPython code running unembedded than otherwise. I might be wrong with that assumption, but when I said ‘not very common’, I was thinking about that.</p>
+<p>re. <tt>PyGILState_*</tt>, in writing each article I often tiptoe around terms which I don’t want to introduce, so as not to confuse my readers (or myself, I’m new here!). This article isn’t about the GIL, it’s about <tt>pystate.c</tt>. I know the topics are related, but then again, if I were to chase <em>every</em> related topic I’d never publish! When I said ‘There’s much more to say about the GIL and additional APIs to handle it’, these APIs were exactly what I was talking about, but, alas, we’ll have to get there some other day indeed.</p>
+<p>On a side-ish note, I’m honored to see the owner of <tt>mod_wsgi</tt> here! Perhaps you’d care to read a bit about <a href="http://tech.blog.aknin.name/category/my-projects/labour/" rel="nofollow ugc">Labour</a>, a WSGI server ‘durability benchmark’ following Ian Bicking’s suggestion, I’d greatly appreciate your comment on that. Labour doesn’t support mod_wsgi (yet?), but I sorta despaired of the effort as I felt not many people are interested and I wasn’t certain I’m heading in the right direction.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/26/pythons-innards-pystate/?replytocom=140#respond" data-commentid="140" data-postid="501" data-belowelement="comment-140" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-141" class="comment even depth-3">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Graham Dumpleton Avatar" src="http://1.gravatar.com/avatar/70dfb4afd84b106d0855184bf0ae4675?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/70dfb4afd84b106d0855184bf0ae4675?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://blog.dscpl.com.au/" target="_self">Graham Dumpleton</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-27T02:47:25+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-141">May 27, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment even depth-3" id="comment-141">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Graham Dumpleton Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://1.gravatar.com/avatar/70dfb4afd84b106d0855184bf0ae4675?s=40&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/70dfb4afd84b106d0855184bf0ae4675?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://blog.dscpl.com.au/" rel="external nofollow ugc" target="_self">Graham Dumpleton</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-27T02:47:25+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-141">May 27, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>The PyGILState_* functions are a bit deceptively named as the prime reasons for their existence is the creation of a thread state when none exists against the thread already and the subsequent acquiring and release of that thread state object without actually having a reference to it. The GIL is really a side issue and they could have implemented the PyGILState_Ensure() function with a prerequisite that you have already separately acquired the GIL and it would still have had a purpose. It was likely just more convenient to have it also acquire the GIL as well to avoid a separate function call.</p>
-<p>As to durability testing of WSGI servers, there are people interested in it, including myself, but I just don&#8217;t have to the time to do much these days on anything let alone that area. I imagine it is the same for others who care as well, other things just take priority.</p>
+<p>As to durability testing of WSGI servers, there are people interested in it, including myself, but I just don’t have to the time to do much these days on anything let alone that area. I imagine it is the same for others who care as well, other things just take priority.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/26/pythons-innards-pystate/?replytocom=141#respond" data-commentid="141" data-postid="501" data-belowelement="comment-141" data-respondelement="respond" data-replyto="Reply to Graham Dumpleton" aria-label="Reply to Graham Dumpleton">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-142" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-4">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-27T03:24:33+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-142">May 27, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Hmm. Yes, I understand what you&#8217;re saying, I&#8217;ll see how I can update the post accordingly.</p>
-<p>re. durability testing, I wasn&#8217;t expecting active participation (not that I&#8217;d object :), but more some comment regarding if the effort is in the right direction. That said, I&#8217;m aware that comments take time to write, too. It can wait.</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/26/pythons-innards-pystate/?replytocom=142#respond" data-commentid="142" data-postid="501" data-belowelement="comment-142" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-4" id="comment-142">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-27T03:24:33+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-142">May 27, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Hmm. Yes, I understand what you’re saying, I’ll see how I can update the post accordingly.</p>
+<p>re. durability testing, I wasn’t expecting active participation (not that I’d object :), but more some comment regarding if the effort is in the right direction. That said, I’m aware that comments take time to write, too. It can wait.</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 </li></ol>
 </li></ol>
 </li>
-<li id="comment-143" class="comment even thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Andrew Montalenti Avatar" src="http://0.gravatar.com/avatar/04fc5ae40efe3a8b0fde3cf6d12c9aaf?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/04fc5ae40efe3a8b0fde3cf6d12c9aaf?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://pixelmonkey.org/" target="_self">Andrew Montalenti</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-27T07:43:14+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-143">May 27, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<li class="comment even thread-odd thread-alt depth-1" id="comment-143">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Andrew Montalenti Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/04fc5ae40efe3a8b0fde3cf6d12c9aaf?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/04fc5ae40efe3a8b0fde3cf6d12c9aaf?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://pixelmonkey.org/" rel="external nofollow ugc" target="_self">Andrew Montalenti</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-27T07:43:14+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-143">May 27, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Re: your CSS question, the reason your right border is chopped is because:</p>
 <p>1. The image + border is greather than 460px, the size of the #content div ( in the markup).</p>
-<p>2. The CSS style of your content div is overflow: hidden, which means when a block element of greater width than it appears, it will actually be &#8220;hidden&#8221; inside the content area.</p>
+<p>2. The CSS style of your content div is overflow: hidden, which means when a block element of greater width than it appears, it will actually be “hidden” inside the content area.</p>
 <p>So, your three options: remove overflow: hidden from #content in your CSS style, make #content width bigger relative to your sidebar, or make the image + border less than 460px to fit inside your content area.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/26/pythons-innards-pystate/?replytocom=143#respond" data-commentid="143" data-postid="501" data-belowelement="comment-143" data-respondelement="respond" data-replyto="Reply to Andrew Montalenti" aria-label="Reply to Andrew Montalenti">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-144" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-27T08:44:44+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-144">May 27, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2" id="comment-144">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-27T08:44:44+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-144">May 27, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Damn, the Internet is a cool thing. 🙂</p>
 <p>Thanks for the help, your solution did the trick (and made me understand a WordPress.com setting).</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/26/pythons-innards-pystate/?replytocom=144#respond" data-commentid="144" data-postid="501" data-belowelement="comment-144" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
-</li>
-<li id="comment-145" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Eli Bendersky Avatar" src="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://eli.thegreenplace.net/" target="_self">Eli Bendersky</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-28T08:14:39+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-145">May 28, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>About your plea for help with diagramming on Linux. I had the exactly same problem, having tried all these tools you&#8217;ve mentioned to easily create diagrams. At work I&#8217;m using Visio all the time to easily draw any diagram I have enough creativity to envision.</p>
-<p>Eventually I broke down and bought a discounted version of Visio 2007 via work, and this is what I use now, happily (but guiltily) ever after. I run it on Windows, of course, but I guess it can also be done through something like Wine (or worst things worst, a Windows installation on top of VirtualBox)</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-35 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/26/pythons-innards-pystate/?replytocom=145#respond" data-commentid="145" data-postid="501" data-belowelement="comment-145" data-respondelement="respond" data-replyto="Reply to Eli Bendersky" aria-label="Reply to Eli Bendersky">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-146" class="comment odd alt depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-38 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Tracy Reed Avatar" src="http://1.gravatar.com/avatar/7d54d11660e6643940962f825a0ff3b2?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/7d54d11660e6643940962f825a0ff3b2?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://Tracyreed.org/" target="_self">Tracy Reed</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-28T08:52:32+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-146">May 28, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>How depressing. I too need a good Linux based diagramming tool. I can&#8217;t believe we don&#8217;t have one. Inkscape really should do the job but every time I try to learn it I give up in frustration.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-39 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/26/pythons-innards-pystate/?replytocom=146#respond" data-commentid="146" data-postid="501" data-belowelement="comment-146" data-respondelement="respond" data-replyto="Reply to Tracy Reed" aria-label="Reply to Tracy Reed">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-147" class="comment even depth-3">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-42 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Eli Bendersky Avatar" src="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://eli.thegreenplace.net/" target="_self">Eli Bendersky</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-07-03T15:36:51+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-147">July 3, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Tracy, Inkscape is a wonderful piece of software, but it is not a diagramming tool! Trying to use it as such can only bring you misery. Inkscape is great for drawings and shapes, which are the atoms of diagrams, but not for connecting those.</p>
-</div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-43 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/26/pythons-innards-pystate/?replytocom=147#respond" data-commentid="147" data-postid="501" data-belowelement="comment-147" data-respondelement="respond" data-replyto="Reply to Eli Bendersky" aria-label="Reply to Eli Bendersky">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
 </li></ol>
 </li>
-<li id="comment-148" class="pingback odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-46 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar">  </div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://www.cyberhades.com/2011/11/16/interesante-listado-de-enlaces-sobre-python/" target="_self">Interesante listado de enlaces sobre Python | CyberHades</a></div>
-				<div class="wp-block-comment-date"><time datetime="2011-11-16T14:27:30+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-148">November 16, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>[&#8230;] Python’s Innards: Pystate [&#8230;]</p>
+<li class="comment even thread-even depth-1" id="comment-145">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Eli Bendersky Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://eli.thegreenplace.net/" rel="external nofollow ugc" target="_self">Eli Bendersky</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-28T08:14:39+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-145">May 28, 2010</a></time></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-47 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/26/pythons-innards-pystate/?replytocom=148#respond" data-commentid="148" data-postid="501" data-belowelement="comment-148" data-respondelement="respond" data-replyto="Reply to Interesante listado de enlaces sobre Python | CyberHades" aria-label="Reply to Interesante listado de enlaces sobre Python | CyberHades">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-149" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-50 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="coot1864 Avatar" src="http://0.gravatar.com/avatar/0c877a119f9e36dd332e58706096593b?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/0c877a119f9e36dd332e58706096593b?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">coot1864</div>
-				<div class="wp-block-comment-date"><time datetime="2013-06-18T05:31:07+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-149">June 18, 2013</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>diagrams: you could use tikz latex package (google &#8220;tikz diagrams&#8221; to see lots of examples).  Sphinx (the python documentation module <a href="http://www.sphinx-doc.org/" rel="nofollow ugc">http://www.sphinx-doc.org</a>) has an extension to make tikz diagrams <a href="https://bitbucket.org/philexander/tikz" rel="nofollow ugc">https://bitbucket.org/philexander/tikz</a> .</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-51 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/26/pythons-innards-pystate/?replytocom=149#respond" data-commentid="149" data-postid="501" data-belowelement="comment-149" data-respondelement="respond" data-replyto="Reply to coot1864" aria-label="Reply to coot1864">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
+<div class="wp-block-comment-content">
+<p>About your plea for help with diagramming on Linux. I had the exactly same problem, having tried all these tools you’ve mentioned to easily create diagrams. At work I’m using Visio all the time to easily draw any diagram I have enough creativity to envision.</p>
+<p>Eventually I broke down and bought a discounted version of Visio 2007 via work, and this is what I use now, happily (but guiltily) ever after. I run it on Windows, of course, but I guess it can also be done through something like Wine (or worst things worst, a Windows installation on top of VirtualBox)</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-35 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment odd alt depth-2" id="comment-146">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-38 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Tracy Reed Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://1.gravatar.com/avatar/7d54d11660e6643940962f825a0ff3b2?s=40&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/7d54d11660e6643940962f825a0ff3b2?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://Tracyreed.org/" rel="external nofollow ugc" target="_self">Tracy Reed</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-28T08:52:32+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-146">May 28, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>How depressing. I too need a good Linux based diagramming tool. I can’t believe we don’t have one. Inkscape really should do the job but every time I try to learn it I give up in frustration.</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-39 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment even depth-3" id="comment-147">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-42 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Eli Bendersky Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://eli.thegreenplace.net/" rel="external nofollow ugc" target="_self">Eli Bendersky</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-07-03T15:36:51+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-147">July 3, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Tracy, Inkscape is a wonderful piece of software, but it is not a diagramming tool! Trying to use it as such can only bring you misery. Inkscape is great for drawings and shapes, which are the atoms of diagrams, but not for connecting those.</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-43 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
+</li></ol>
+</li>
+<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-148">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-46 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"> </div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://www.cyberhades.com/2011/11/16/interesante-listado-de-enlaces-sobre-python/" rel="external nofollow ugc" target="_self">Interesante listado de enlaces sobre Python | CyberHades</a></div>
+<div class="wp-block-comment-date"><time datetime="2011-11-16T14:27:30+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-148">November 16, 2011</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>[…] Python’s Innards: Pystate […]</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-47 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment even thread-even depth-1" id="comment-149">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-50 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="coot1864 Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/0c877a119f9e36dd332e58706096593b?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/0c877a119f9e36dd332e58706096593b?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">coot1864</div>
+<div class="wp-block-comment-date"><time datetime="2013-06-18T05:31:07+00:00"><a href="/2010/05/26/pythons-innards-pystate/#comment-149">June 18, 2013</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>diagrams: you could use tikz latex package (google “tikz diagrams” to see lots of examples).  Sphinx (the python documentation module <a href="http://www.sphinx-doc.org/" rel="nofollow ugc">http://www.sphinx-doc.org</a>) has an extension to make tikz diagrams <a href="https://bitbucket.org/philexander/tikz" rel="nofollow ugc">https://bitbucket.org/philexander/tikz</a> .</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-51 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
 </ol>
 
-	
-
-		<div id="respond" style="padding-top:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);" class="comment-respond wp-block-post-comments-form">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2010/05/26/pythons-innards-pystate/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="http://localhost/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p>
-<p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p>
-<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit wp-block-button"><input name="submit" type="submit" id="submit" class="wp-block-button__link wp-element-button" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="501" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
 <!-- #respond -->
-	
 </div>
-
-
-
-			
-
-<nav class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-53 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)" aria-label="Posts">
-	<div class="post-navigation-link-previous wp-block-post-navigation-link">
-<span class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow" aria-hidden="true">←</span><a href="/2010/05/22/pythons-innards-series-rename/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Python&#8217;s Innards: Series Renamed</span></a>
+<nav aria-label="Posts" class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-53 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
+<div class="post-navigation-link-previous wp-block-post-navigation-link">
+<span aria-hidden="true" class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow">←</span><a href="/2010/05/22/pythons-innards-series-rename/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Python’s Innards: Series Renamed</span></a>
 </div>
-	<div class="post-navigation-link-next wp-block-post-navigation-link">
-<a href="/2010/05/29/mailing-list-debates-considered-harmful/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Mailing list debates considered harmful</span></a><span class="wp-block-post-navigation-link__arrow-next is-arrow-arrow" aria-hidden="true">→</span>
+<div class="post-navigation-link-next wp-block-post-navigation-link">
+<a href="/2010/05/29/mailing-list-debates-considered-harmful/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Mailing list debates considered harmful</span></a><span aria-hidden="true" class="wp-block-post-navigation-link__arrow-next is-arrow-arrow">→</span>
 </div>
 </nav>
-
-
-
-		</div>
-		
-	</div>
-	
+</div>
+</div>
 </main>
-
-
 <footer class="wp-block-template-part"></footer>
 </div>
-<script src="/wp-includes/js/comment-reply.min.js?ver=6.4.2" id="comment-reply-js" async data-wp-strategy="async"></script>
+<script async="" data-wp-strategy="async" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js?ver=6.4.2"></script>
 <script id="wp-block-template-skip-link-js-after">( function() {
 		var skipLinkTarget = document.querySelector( 'main' ),
 			sibling,
@@ -702,9 +526,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 		sibling.parentElement.insertBefore( skipLink, sibling );
 	}() );</script>
 <!-- start Simple Custom CSS and JS -->
-
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
 <script>window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

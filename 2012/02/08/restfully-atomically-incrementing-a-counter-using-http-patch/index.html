@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="max-image-preview:large">
-<title>RESTfully atomically incrementing a counter using HTTP PATCH &#8211; NIL: .to write(1) ~ help:about</title>
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Feed" href="/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Comments Feed" href="/comments/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; RESTfully atomically incrementing a counter using HTTP PATCH Comments Feed" href="/2012/02/08/restfully-atomically-incrementing-a-counter-using-http-patch/feed/">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="max-image-preview:large" name="robots"/>
+<title>RESTfully atomically incrementing a counter using HTTP PATCH – NIL: .to write(1) ~ help:about</title>
+<link href="/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Feed" type="application/rss+xml"/>
+<link href="/comments/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Comments Feed" type="application/rss+xml"/>
+<link href="/2012/02/08/restfully-atomically-incrementing-a-counter-using-http-patch/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » RESTfully atomically incrementing a counter using HTTP PATCH Comments Feed" type="application/rss+xml"/>
 <script>
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.2"}};
 /*! This file is auto-generated */
@@ -20,7 +21,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 .wp-block-site-title a:where(:not(.wp-element-button)):hover{text-decoration: none;}</style>
 <style id="wp-block-group-inline-css">.wp-block-group{box-sizing:border-box}</style>
 <style id="wp-block-page-list-inline-css">.wp-block-navigation .wp-block-page-list{align-items:var(--navigation-layout-align,initial);background-color:inherit;display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation .wp-block-navigation-item{background-color:inherit}</style>
-<link rel="stylesheet" id="wp-block-navigation-css" href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" media="all">
+<link href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" id="wp-block-navigation-css" media="all" rel="stylesheet"/>
 <style id="wp-block-navigation-inline-css">.wp-block-navigation{font-weight: 500;}
 .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;text-decoration: none;}
 .wp-block-navigation a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
@@ -159,238 +160,151 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 			width: auto;
 			z-index: 100000;
 		}</style>
-<script src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2" id="wp-interactivity-js" defer data-wp-strategy="defer"></script>
-<script src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831" id="wp-block-navigation-view-js" defer data-wp-strategy="defer"></script>
-<link rel="https://api.w.org/" href="/wp-json/">
-<link rel="alternate" type="application/json" href="/wp-json/wp/v2/posts/1265">
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 6.4.2">
-<link rel="canonical" href="/2012/02/08/restfully-atomically-incrementing-a-counter-using-http-patch/">
-<link rel="shortlink" href="/?p=1265">
-<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2012%2F02%2F08%2Frestfully-atomically-incrementing-a-counter-using-http-patch%2F">
-<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2012%2F02%2F08%2Frestfully-atomically-incrementing-a-counter-using-http-patch%2F#038;format=xml">
+<script data-wp-strategy="defer" defer="" id="wp-interactivity-js" src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2"></script>
+<script data-wp-strategy="defer" defer="" id="wp-block-navigation-view-js" src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831"></script>
+<link href="/wp-json/" rel="https://api.w.org/"/>
+<link href="/wp-json/wp/v2/posts/1265" rel="alternate" type="application/json"/>
+<link href="/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
+<meta content="WordPress 6.4.2" name="generator"/>
+<link href="/2012/02/08/restfully-atomically-incrementing-a-counter-using-http-patch/" rel="canonical"/>
+<link href="/?p=1265" rel="shortlink"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2012%2F02%2F08%2Frestfully-atomically-incrementing-a-counter-using-http-patch%2F" rel="alternate" type="application/json+oembed"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2012%2F02%2F08%2Frestfully-atomically-incrementing-a-counter-using-http-patch%2F#038;format=xml" rel="alternate" type="text/xml+oembed"/>
 <style id="wp-fonts-local">@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
 @font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:italic;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_italic_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:normal;font-weight:700;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}</style>
 </head>
-
 <body class="post-template-default single single-post postid-1265 single-format-standard wp-embed-responsive">
-
 <div class="wp-site-blocks">
 <header class="wp-block-template-part">
 <div class="wp-block-group alignwide has-base-background-color has-background has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:20px;padding-bottom:20px">
-	
-	<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
-		
-		<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
-			
-
-			
-			<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
-				<p class="wp-block-site-title"><a href="/" target="_self" rel="home">NIL: .to write(1) ~ help:about</a></p>
-			</div>
-			
-		</div>
-		
-
-		<nav class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" aria-label="" data-wp-interactive data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}'><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open " data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
-			<div class="wp-block-navigation__responsive-container  " id="modal-1" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" tabindex="-1">
-				<div class="wp-block-navigation__responsive-close" tabindex="-1">
-					<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
-							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
-						<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
-							<ul class="wp-block-page-list">
+<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
+<p class="wp-block-site-title"><a href="/" rel="home" target="_self">NIL: .to write(1) ~ help:about</a></p>
+</div>
+</div>
+<nav aria-label="" class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}' data-wp-interactive=""><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="1.5" width="16" x="4" y="7.5"></rect><rect height="1.5" width="16" x="4" y="15"></rect></svg></button>
+<div class="wp-block-navigation__responsive-container" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" id="modal-1" tabindex="-1">
+<div class="wp-block-navigation__responsive-close" tabindex="-1">
+<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
+<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
+<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
+<ul class="wp-block-page-list">
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click menu-item-home"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/">About</a></li>
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/all-posts/">All Posts</a></li>
 </ul>
-						</div>
-					</div>
-				</div>
-			</div></nav>
-	</div>
-	
+</div>
+</div>
+</div>
+</div></nav>
+</div>
 </div>
 </header>
-
-
 <main class="wp-block-group alignfull is-layout-flow wp-block-group-is-layout-flow">
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
-		
-
-		
-		<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
-			<h1 class="wp-block-post-title has-x-large-font-size">RESTfully atomically incrementing a counter using HTTP PATCH</h1>
-
-			<div class="wp-block-template-part">
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
+<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
+<h1 class="wp-block-post-title has-x-large-font-size">RESTfully atomically incrementing a counter using HTTP PATCH</h1>
+<div class="wp-block-template-part">
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-	
-	<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
-		<div class="wp-block-post-date"><time datetime="2012-02-08T15:38:06+00:00"><a href="/2012/02/08/restfully-atomically-incrementing-a-counter-using-http-patch/">Feb 8, 2012</a></time></div>
-
-		
-		<p class="has-contrast-2-color has-text-color">—</p>
-		
-
-		
-		<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
-		
-
-		<div class="wp-block-post-author-name"><a href="/author/yanivaknin/" target="_self" class="wp-block-post-author-name__link">Yaniv Aknin</a></div>
-
-		<div class="taxonomy-category wp-block-post-terms">
+<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
+<div class="wp-block-post-date"><time datetime="2012-02-08T15:38:06+00:00"><a href="/2012/02/08/restfully-atomically-incrementing-a-counter-using-http-patch/">Feb 8, 2012</a></time></div>
+<p class="has-contrast-2-color has-text-color">—</p>
+<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
+<div class="wp-block-post-author-name"><a class="wp-block-post-author-name__link" href="/author/yanivaknin/" target="_self">Yaniv Aknin</a></div>
+<div class="taxonomy-category wp-block-post-terms">
 <span class="wp-block-post-terms__prefix">in </span><a href="/category/uncategorized/" rel="tag">Uncategorized</a>
 </div>
-
-	</div>
-	
 </div>
-
-
 </div>
-		</div>
-		
-	</div>
-	
-
-	<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
-<p>So today I ran into the question of incrementing a counter in a RESTful manner, and wasn&#8217;t sure how to go about doing it. Googling around a bit didn&#8217;t find me a satisfactory answer, though I did find <code>@idangazit</code> asked the same <a href="http://stackoverflow.com/questions/1426845/incrementing-resource-counter-in-a-restful-way-put-vs-post">question</a> on Stack Overflow, but alas the question was answered by what I humbly felt was an inadequate answer.</p>
-<p>Idan had &#8220;PUT vs. POST&#8221; in his question, but quoting the answer I just added to that question (<code>#selfplagiarism</code>!), I believe PATCH is the answer as <a href="http://tools.ietf.org/html/rfc2068#section-19.6.1">RFC 2068</a> says very well:</p>
-<blockquote><p>The PATCH method is similar to PUT except that the entity contains a list of differences between the original version of the resource identified by the Request-URI and the desired content of the resource after the PATCH action has been applied. The list of differences is in a format defined by the media type of the entity (e.g., &#8220;application/diff&#8221;) and MUST include sufficient information to allow the server to recreate the changes necessary to convert the original version of the resource to the desired version.
+</div>
+</div>
+</div>
+<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
+<p>So today I ran into the question of incrementing a counter in a RESTful manner, and wasn’t sure how to go about doing it. Googling around a bit didn’t find me a satisfactory answer, though I did find <code>@idangazit</code> asked the same <a href="http://stackoverflow.com/questions/1426845/incrementing-resource-counter-in-a-restful-way-put-vs-post">question</a> on Stack Overflow, but alas the question was answered by what I humbly felt was an inadequate answer.</p>
+<p>Idan had “PUT vs. POST” in his question, but quoting the answer I just added to that question (<code>#selfplagiarism</code>!), I believe PATCH is the answer as <a href="http://tools.ietf.org/html/rfc2068#section-19.6.1">RFC 2068</a> says very well:</p>
+<blockquote><p>The PATCH method is similar to PUT except that the entity contains a list of differences between the original version of the resource identified by the Request-URI and the desired content of the resource after the PATCH action has been applied. The list of differences is in a format defined by the media type of the entity (e.g., “application/diff”) and MUST include sufficient information to allow the server to recreate the changes necessary to convert the original version of the resource to the desired version.
 </p></blockquote>
-<p>So, for example, to update profile 123&#8217;s view count, I would do (using <a href="http://docs.python-requests.org/en/latest/index.html">requests</a>, what else?):<br>
-[sourcecode language=&#8221;python&#8221; light=&#8221;1&#8243;]<br>
+<p>So, for example, to update profile 123’s view count, I would do (using <a href="http://docs.python-requests.org/en/latest/index.html">requests</a>, what else?):<br/>
+[sourcecode language=”python” light=”1″]<br/>
 import requests</p>
-<p>requests.patch(<br>
-    &#8216;http://localhost:8000/profiles/123&#8217;,<br>
-    &#8216;views + 1\n&#8217;,<br>
-    headers={&quot;Content-Type&quot;: &quot;application/x-counters&quot;}<br>
-)<br>
+<p>requests.patch(<br/>
+    ‘http://localhost:8000/profiles/123’,<br/>
+    ‘views + 1\n’,<br/>
+    headers={"Content-Type": "application/x-counters"}<br/>
+)<br/>
 [/sourcecode]</p>
-<p>Which would emit something like:<br>
-[sourcecode light=&#8221;1&#8243;]<br>
-PATCH /profiles/123 HTTP/1.1<br>
-Host: localhost:8000<br>
-Content-Length: 10<br>
-Content-Type: application/x-counters<br>
-Accept-Encoding: identity, deflate, compress, gzip<br>
-Accept: */*<br>
+<p>Which would emit something like:<br/>
+[sourcecode light=”1″]<br/>
+PATCH /profiles/123 HTTP/1.1<br/>
+Host: localhost:8000<br/>
+Content-Length: 10<br/>
+Content-Type: application/x-counters<br/>
+Accept-Encoding: identity, deflate, compress, gzip<br/>
+Accept: */*<br/>
 User-Agent: python-requests/0.10.0</p>
-<p>views + 1<br>
+<p>views + 1<br/>
 [/sourcecode]</p>
-<p>Where the <code>x-counters</code> media type (which I just made up) is made of multiple lines of <code>field operator scalar</code> tuples. <code>views + 1</code>, <code>views = 500</code>, <code>views - 1</code> or <code>views + 3</code> are all valid syntactically (but some may be forbidden semantically). I can understand some frowning-upon making up yet another media type, but I think this approach matches the intention of the RFC quite well, it&#8217;s extremely simple and if the backend is implemented correctly, it&#8217;s atomically correct.</p>
+<p>Where the <code>x-counters</code> media type (which I just made up) is made of multiple lines of <code>field operator scalar</code> tuples. <code>views + 1</code>, <code>views = 500</code>, <code>views - 1</code> or <code>views + 3</code> are all valid syntactically (but some may be forbidden semantically). I can understand some frowning-upon making up yet another media type, but I think this approach matches the intention of the RFC quite well, it’s extremely simple and if the backend is implemented correctly, it’s atomically correct.</p>
 <p>Suggestions for another approach?</p>
-<p><strong>EDIT:</strong> I&#8217;ve had a long discussion with a friend who disliked the use of a non-standard media type. Perhaps something like this is better, though I&#8217;m still not entirely convinced:<br>
-[sourcecode language=&#8221;python&#8221; light=&#8221;1&#8243;]<br>
+<p><strong>EDIT:</strong> I’ve had a long discussion with a friend who disliked the use of a non-standard media type. Perhaps something like this is better, though I’m still not entirely convinced:<br/>
+[sourcecode language=”python” light=”1″]<br/>
 import requests</p>
-<p>requests.patch(<br>
-    &#8216;http://localhost:8000/profiles/123&#8217;,<br>
-    &#8216;[{&quot;field&quot;: &quot;views&quot;, &quot;operator&quot;: &quot;+&quot;, &quot;operand&quot;: 1}]&#8217;,<br>
-    headers={&quot;Content-Type&quot;: &quot;application/json&quot;}<br>
-)<br>
-[/sourcecode]<br>
-I&#8217;m not sure what&#8217;s the bigger crime &#8211; using a non-standard media type, which, in the words of the RFC, is &#8220;discouraged&#8221;, or using a standard generic serialization format as the media type, which doesn&#8217;t say much about the scheme you&#8217;d like to use within it. Both are better than anything else I can think of.</p>
+<p>requests.patch(<br/>
+    ‘http://localhost:8000/profiles/123’,<br/>
+    ‘[{"field": "views", "operator": "+", "operand": 1}]’,<br/>
+    headers={"Content-Type": "application/json"}<br/>
+)<br/>
+[/sourcecode]<br/>
+I’m not sure what’s the bigger crime – using a non-standard media type, which, in the words of the RFC, is “discouraged”, or using a standard generic serialization format as the media type, which doesn’t say much about the scheme you’d like to use within it. Both are better than anything else I can think of.</p>
 <p><span class="footer">p.s.: escaping spaces in field names are left as an exercise to the reader, I suggest <code>application/x-www-form-urlencoded</code> or simply using sane field names, ffs.</span></p>
 </div>
-
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
-		<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
-<a href="/tag/atomic-increment/" rel="tag">atomic increment</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/atomicity/" rel="tag">atomicity</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/counters/" rel="tag">counters</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/http/" rel="tag">http</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/patch/" rel="tag">patch</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/rest/" rel="tag">rest</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/restful/" rel="tag">restful</a>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
+<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
+<a href="/tag/atomic-increment/" rel="tag">atomic increment</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/atomicity/" rel="tag">atomicity</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/counters/" rel="tag">counters</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/http/" rel="tag">http</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/patch/" rel="tag">patch</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/rest/" rel="tag">rest</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/restful/" rel="tag">restful</a>
 </div>
-
-		
-		<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-			
-			<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer">
-			</div>
-			
-
-			
-			<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)">
-			
-
-			
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div aria-hidden="true" class="wp-block-spacer" style="height:var(--wp--preset--spacing--40)">
+</div>
+<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)"/>
 <div class="wp-block-comments wp-block-comments-query-loop">
-	
-	<h2 class="wp-block-heading">Comments</h2>
-	
-	<h3 id="comments" class="wp-block-comments-title">One response to &#8220;RESTfully atomically incrementing a counter using HTTP PATCH&#8221;</h3>
-	<ol class="wp-block-comment-template"><li id="comment-304" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Maurits van der Schee Avatar" src="http://2.gravatar.com/avatar/28af3cff0e6fb491c9e45fad15f89c1b?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/28af3cff0e6fb491c9e45fad15f89c1b?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://tqdev.com/2017-restful-incrementing-using-patch" target="_self">Maurits van der Schee</a></div>
-				<div class="wp-block-comment-date"><time datetime="2017-02-05T01:19:41+00:00"><a href="/2012/02/08/restfully-atomically-incrementing-a-counter-using-http-patch/#comment-304">February 5, 2017</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<h2 class="wp-block-heading">Comments</h2>
+<h3 class="wp-block-comments-title" id="comments">One response to “RESTfully atomically incrementing a counter using HTTP PATCH”</h3>
+<ol class="wp-block-comment-template"><li class="comment even thread-even depth-1" id="comment-304">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Maurits van der Schee Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://2.gravatar.com/avatar/28af3cff0e6fb491c9e45fad15f89c1b?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/28af3cff0e6fb491c9e45fad15f89c1b?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://tqdev.com/2017-restful-incrementing-using-patch" rel="external nofollow ugc" target="_self">Maurits van der Schee</a></div>
+<div class="wp-block-comment-date"><time datetime="2017-02-05T01:19:41+00:00"><a href="/2012/02/08/restfully-atomically-incrementing-a-counter-using-http-patch/#comment-304">February 5, 2017</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Why not just send the document using PATCH and assume all values are increments? I wrote about that here: <a href="http://tqdev.com/2017-restful-incrementing-using-patch" rel="nofollow ugc">http://tqdev.com/2017-restful-incrementing-using-patch</a></p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2012/02/08/restfully-atomically-incrementing-a-counter-using-http-patch/?replytocom=304#respond" data-commentid="304" data-postid="1265" data-belowelement="comment-304" data-respondelement="respond" data-replyto="Reply to Maurits van der Schee" aria-label="Reply to Maurits van der Schee">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 
-	
-
-		<div id="respond" style="padding-top:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);" class="comment-respond wp-block-post-comments-form">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2012/02/08/restfully-atomically-incrementing-a-counter-using-http-patch/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="http://localhost/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p>
-<p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p>
-<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit wp-block-button"><input name="submit" type="submit" id="submit" class="wp-block-button__link wp-element-button" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1265" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
 <!-- #respond -->
-	
 </div>
-
-
-
-			
-
-<nav class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-13 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)" aria-label="Posts">
-	<div class="post-navigation-link-previous wp-block-post-navigation-link">
-<span class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow" aria-hidden="true">←</span><a href="/2011/12/28/i-wish-someone-wrote-django-static-upstream-maybe-even-me/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">I wish someone wrote django-static-upstream&#8230; maybe even&#8230; me!</span></a>
+<nav aria-label="Posts" class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-13 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
+<div class="post-navigation-link-previous wp-block-post-navigation-link">
+<span aria-hidden="true" class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow">←</span><a href="/2011/12/28/i-wish-someone-wrote-django-static-upstream-maybe-even-me/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">I wish someone wrote django-static-upstream… maybe even… me!</span></a>
 </div>
-	<div class="post-navigation-link-next wp-block-post-navigation-link">
-<a href="/2012/03/09/heroku-is-great-however/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Heroku is great! However&#8230;</span></a><span class="wp-block-post-navigation-link__arrow-next is-arrow-arrow" aria-hidden="true">→</span>
+<div class="post-navigation-link-next wp-block-post-navigation-link">
+<a href="/2012/03/09/heroku-is-great-however/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Heroku is great! However…</span></a><span aria-hidden="true" class="wp-block-post-navigation-link__arrow-next is-arrow-arrow">→</span>
 </div>
 </nav>
-
-
-
-		</div>
-		
-	</div>
-	
+</div>
+</div>
 </main>
-
-
 <footer class="wp-block-template-part"></footer>
 </div>
-<script src="/wp-includes/js/comment-reply.min.js?ver=6.4.2" id="comment-reply-js" async data-wp-strategy="async"></script>
+<script async="" data-wp-strategy="async" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js?ver=6.4.2"></script>
 <script id="wp-block-template-skip-link-js-after">( function() {
 		var skipLinkTarget = document.querySelector( 'main' ),
 			sibling,
@@ -430,9 +344,8 @@ I&#8217;m not sure what&#8217;s the bigger crime &#8211; using a non-standard me
 		sibling.parentElement.insertBefore( skipLink, sibling );
 	}() );</script>
 <!-- start Simple Custom CSS and JS -->
-
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
 <script>window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

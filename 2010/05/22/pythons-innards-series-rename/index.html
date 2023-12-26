@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="max-image-preview:large">
-<title>Python&#8217;s Innards: Series Renamed &#8211; NIL: .to write(1) ~ help:about</title>
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Feed" href="/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Comments Feed" href="/comments/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Python&#8217;s Innards: Series Renamed Comments Feed" href="/2010/05/22/pythons-innards-series-rename/feed/">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="max-image-preview:large" name="robots"/>
+<title>Python’s Innards: Series Renamed – NIL: .to write(1) ~ help:about</title>
+<link href="/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Feed" type="application/rss+xml"/>
+<link href="/comments/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Comments Feed" type="application/rss+xml"/>
+<link href="/2010/05/22/pythons-innards-series-rename/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Python’s Innards: Series Renamed Comments Feed" type="application/rss+xml"/>
 <script>
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.2"}};
 /*! This file is auto-generated */
@@ -20,7 +21,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 .wp-block-site-title a:where(:not(.wp-element-button)):hover{text-decoration: none;}</style>
 <style id="wp-block-group-inline-css">.wp-block-group{box-sizing:border-box}</style>
 <style id="wp-block-page-list-inline-css">.wp-block-navigation .wp-block-page-list{align-items:var(--navigation-layout-align,initial);background-color:inherit;display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation .wp-block-navigation-item{background-color:inherit}</style>
-<link rel="stylesheet" id="wp-block-navigation-css" href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" media="all">
+<link href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" id="wp-block-navigation-css" media="all" rel="stylesheet"/>
 <style id="wp-block-navigation-inline-css">.wp-block-navigation{font-weight: 500;}
 .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;text-decoration: none;}
 .wp-block-navigation a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
@@ -102,149 +103,91 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 			width: auto;
 			z-index: 100000;
 		}</style>
-<script src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2" id="wp-interactivity-js" defer data-wp-strategy="defer"></script>
-<script src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831" id="wp-block-navigation-view-js" defer data-wp-strategy="defer"></script>
-<link rel="https://api.w.org/" href="/wp-json/">
-<link rel="alternate" type="application/json" href="/wp-json/wp/v2/posts/496">
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 6.4.2">
-<link rel="canonical" href="/2010/05/22/pythons-innards-series-rename/">
-<link rel="shortlink" href="/?p=496">
-<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F22%2Fpythons-innards-series-rename%2F">
-<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F22%2Fpythons-innards-series-rename%2F#038;format=xml">
+<script data-wp-strategy="defer" defer="" id="wp-interactivity-js" src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2"></script>
+<script data-wp-strategy="defer" defer="" id="wp-block-navigation-view-js" src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831"></script>
+<link href="/wp-json/" rel="https://api.w.org/"/>
+<link href="/wp-json/wp/v2/posts/496" rel="alternate" type="application/json"/>
+<link href="/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
+<meta content="WordPress 6.4.2" name="generator"/>
+<link href="/2010/05/22/pythons-innards-series-rename/" rel="canonical"/>
+<link href="/?p=496" rel="shortlink"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F22%2Fpythons-innards-series-rename%2F" rel="alternate" type="application/json+oembed"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F22%2Fpythons-innards-series-rename%2F#038;format=xml" rel="alternate" type="text/xml+oembed"/>
 <style id="wp-fonts-local">@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
 @font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:italic;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_italic_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:normal;font-weight:700;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}</style>
 </head>
-
 <body class="post-template-default single single-post postid-496 single-format-standard wp-embed-responsive">
-
 <div class="wp-site-blocks">
 <header class="wp-block-template-part">
 <div class="wp-block-group alignwide has-base-background-color has-background has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:20px;padding-bottom:20px">
-	
-	<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
-		
-		<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
-			
-
-			
-			<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
-				<p class="wp-block-site-title"><a href="/" target="_self" rel="home">NIL: .to write(1) ~ help:about</a></p>
-			</div>
-			
-		</div>
-		
-
-		<nav class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" aria-label="" data-wp-interactive data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}'><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open " data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
-			<div class="wp-block-navigation__responsive-container  " id="modal-1" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" tabindex="-1">
-				<div class="wp-block-navigation__responsive-close" tabindex="-1">
-					<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
-							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
-						<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
-							<ul class="wp-block-page-list">
+<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
+<p class="wp-block-site-title"><a href="/" rel="home" target="_self">NIL: .to write(1) ~ help:about</a></p>
+</div>
+</div>
+<nav aria-label="" class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}' data-wp-interactive=""><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="1.5" width="16" x="4" y="7.5"></rect><rect height="1.5" width="16" x="4" y="15"></rect></svg></button>
+<div class="wp-block-navigation__responsive-container" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" id="modal-1" tabindex="-1">
+<div class="wp-block-navigation__responsive-close" tabindex="-1">
+<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
+<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
+<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
+<ul class="wp-block-page-list">
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click menu-item-home"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/">About</a></li>
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/all-posts/">All Posts</a></li>
 </ul>
-						</div>
-					</div>
-				</div>
-			</div></nav>
-	</div>
-	
+</div>
+</div>
+</div>
+</div></nav>
+</div>
 </div>
 </header>
-
-
 <main class="wp-block-group alignfull is-layout-flow wp-block-group-is-layout-flow">
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
-		
-
-		
-		<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
-			<h1 class="wp-block-post-title has-x-large-font-size">Python&#8217;s Innards: Series Renamed</h1>
-
-			<div class="wp-block-template-part">
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
+<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
+<h1 class="wp-block-post-title has-x-large-font-size">Python’s Innards: Series Renamed</h1>
+<div class="wp-block-template-part">
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-	
-	<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
-		<div class="wp-block-post-date"><time datetime="2010-05-22T15:40:24+00:00"><a href="/2010/05/22/pythons-innards-series-rename/">May 22, 2010</a></time></div>
-
-		
-		<p class="has-contrast-2-color has-text-color">—</p>
-		
-
-		
-		<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
-		
-
-		<div class="wp-block-post-author-name"><a href="/author/yanivaknin/" target="_self" class="wp-block-post-author-name__link">Yaniv Aknin</a></div>
-
-		<div class="taxonomy-category wp-block-post-terms">
-<span class="wp-block-post-terms__prefix">in </span><a href="/category/errata/" rel="tag">Errata</a><span class="wp-block-post-terms__separator">, </span><a href="/category/my-projects/guidos-python/" rel="tag">Guido&#039;s Python</a>
+<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
+<div class="wp-block-post-date"><time datetime="2010-05-22T15:40:24+00:00"><a href="/2010/05/22/pythons-innards-series-rename/">May 22, 2010</a></time></div>
+<p class="has-contrast-2-color has-text-color">—</p>
+<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
+<div class="wp-block-post-author-name"><a class="wp-block-post-author-name__link" href="/author/yanivaknin/" target="_self">Yaniv Aknin</a></div>
+<div class="taxonomy-category wp-block-post-terms">
+<span class="wp-block-post-terms__prefix">in </span><a href="/category/errata/" rel="tag">Errata</a><span class="wp-block-post-terms__separator">, </span><a href="/category/my-projects/guidos-python/" rel="tag">Guido's Python</a>
 </div>
-
-	</div>
-	
 </div>
-
-
 </div>
-		</div>
-		
-	</div>
-	
-
-	<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
-<p>Just yesterday I promised to tell you if I make significant mistakes, hoping it would be a seldom occasion. Yet here I am writing to you about another mistake I made, though this time not one of technical nature. I chose the old name for this <a href="http://tech.blog.aknin.name/tag/pythons-innards/">series</a> of articles about Python&#8217;s inner working as I was musing about how creators may see their creations far more thoroughly than other people possibly can (the old name of the series was &#8220;Guido&#8217;s Python&#8221;). It was recently brought to my attention that the name I chose might have been incorrect, misleading and/or simply tasteless. I certainly did not mean to give a false impression of affiliation or endorsement; of course Python&#8217;s creator and community leader never had anything to do with the series. Due to these reasons and to set things straight, the series will be promptly and retroactively renamed to &#8220;Python&#8217;s Innards&#8221;. </p>
-<p>Since the series&#8217; old name was used in URLs and category names, things will break as I do the rename and readers will have to update their bookmarks. I&#8217;m sorry for the discomfort I&#8217;ll cause my readers with the rename, but far worse, I apologize if I misled anyone or tainted someone&#8217;s good name. I&#8217;ll use this unfortunate opportunity to say explicitly that unless stated otherwise, everything you can find anywhere under the aknin.name domain (so far there&#8217;s only this blog) is solely my creation, not endorsed nor affiliated with anyone else (be assured that I&#8217;ll give credit where such is due if I&#8217;ll receive some kind of help in the future). </p>
-<p>Genuinely no malice was intended and I hope this will be forgotten soon enough; I&#8217;m working on the next article and look forward to see you as we continue this journey into Python.</p>
 </div>
-
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
-		<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
-<a href="/tag/ouch/" rel="tag">ouch</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/python/" rel="tag">python</a>
 </div>
-
-		
-		<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-			
-			<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer">
-			</div>
-			
-
-			
-			<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)">
-			
-
-			
-
-
-
-			
-
-<nav class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-9 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)" aria-label="Posts">
-	<div class="post-navigation-link-previous wp-block-post-navigation-link">
-<span class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow" aria-hidden="true">←</span><a href="/2010/05/20/correction-for-pythons-innards-objects-102/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Correction for &#8216;Python&#8217;s Innards: Objects 102&#8217;</span></a>
 </div>
-	<div class="post-navigation-link-next wp-block-post-navigation-link">
-<a href="/2010/05/26/pythons-innards-pystate/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Python&#8217;s Innards: pystate</span></a><span class="wp-block-post-navigation-link__arrow-next is-arrow-arrow" aria-hidden="true">→</span>
+<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
+<p>Just yesterday I promised to tell you if I make significant mistakes, hoping it would be a seldom occasion. Yet here I am writing to you about another mistake I made, though this time not one of technical nature. I chose the old name for this <a href="http://tech.blog.aknin.name/tag/pythons-innards/">series</a> of articles about Python’s inner working as I was musing about how creators may see their creations far more thoroughly than other people possibly can (the old name of the series was “Guido’s Python”). It was recently brought to my attention that the name I chose might have been incorrect, misleading and/or simply tasteless. I certainly did not mean to give a false impression of affiliation or endorsement; of course Python’s creator and community leader never had anything to do with the series. Due to these reasons and to set things straight, the series will be promptly and retroactively renamed to “Python’s Innards”. </p>
+<p>Since the series’ old name was used in URLs and category names, things will break as I do the rename and readers will have to update their bookmarks. I’m sorry for the discomfort I’ll cause my readers with the rename, but far worse, I apologize if I misled anyone or tainted someone’s good name. I’ll use this unfortunate opportunity to say explicitly that unless stated otherwise, everything you can find anywhere under the aknin.name domain (so far there’s only this blog) is solely my creation, not endorsed nor affiliated with anyone else (be assured that I’ll give credit where such is due if I’ll receive some kind of help in the future). </p>
+<p>Genuinely no malice was intended and I hope this will be forgotten soon enough; I’m working on the next article and look forward to see you as we continue this journey into Python.</p>
+</div>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
+<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
+<a href="/tag/ouch/" rel="tag">ouch</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/python/" rel="tag">python</a>
+</div>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div aria-hidden="true" class="wp-block-spacer" style="height:var(--wp--preset--spacing--40)">
+</div>
+<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)"/>
+<nav aria-label="Posts" class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-9 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
+<div class="post-navigation-link-previous wp-block-post-navigation-link">
+<span aria-hidden="true" class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow">←</span><a href="/2010/05/20/correction-for-pythons-innards-objects-102/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Correction for ‘Python’s Innards: Objects 102’</span></a>
+</div>
+<div class="post-navigation-link-next wp-block-post-navigation-link">
+<a href="/2010/05/26/pythons-innards-pystate/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Python’s Innards: pystate</span></a><span aria-hidden="true" class="wp-block-post-navigation-link__arrow-next is-arrow-arrow">→</span>
 </div>
 </nav>
-
-
-
-		</div>
-		
-	</div>
-	
+</div>
+</div>
 </main>
-
-
 <footer class="wp-block-template-part"></footer>
 </div>
 <script id="wp-block-template-skip-link-js-after">( function() {
@@ -286,9 +229,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 		sibling.parentElement.insertBefore( skipLink, sibling );
 	}() );</script>
 <!-- start Simple Custom CSS and JS -->
-
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
 <script>window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

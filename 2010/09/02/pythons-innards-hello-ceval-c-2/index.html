@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="max-image-preview:large">
-<title>Python&#8217;s Innards: Hello, ceval.c! &#8211; NIL: .to write(1) ~ help:about</title>
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Feed" href="/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Comments Feed" href="/comments/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Python&#8217;s Innards: Hello, ceval.c! Comments Feed" href="/2010/09/02/pythons-innards-hello-ceval-c-2/feed/">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="max-image-preview:large" name="robots"/>
+<title>Python’s Innards: Hello, ceval.c! – NIL: .to write(1) ~ help:about</title>
+<link href="/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Feed" type="application/rss+xml"/>
+<link href="/comments/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Comments Feed" type="application/rss+xml"/>
+<link href="/2010/09/02/pythons-innards-hello-ceval-c-2/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Python’s Innards: Hello, ceval.c! Comments Feed" type="application/rss+xml"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 <script>
@@ -23,7 +24,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 .wp-block-site-title a:where(:not(.wp-element-button)):hover{text-decoration: none;}</style>
 <style id="wp-block-group-inline-css">.wp-block-group{box-sizing:border-box}</style>
 <style id="wp-block-page-list-inline-css">.wp-block-navigation .wp-block-page-list{align-items:var(--navigation-layout-align,initial);background-color:inherit;display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation .wp-block-navigation-item{background-color:inherit}</style>
-<link rel="stylesheet" id="wp-block-navigation-css" href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" media="all">
+<link href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" id="wp-block-navigation-css" media="all" rel="stylesheet"/>
 <style id="wp-block-navigation-inline-css">.wp-block-navigation{font-weight: 500;}
 .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;text-decoration: none;}
 .wp-block-navigation a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
@@ -162,107 +163,72 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 			width: auto;
 			z-index: 100000;
 		}</style>
-<script src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2" id="wp-interactivity-js" defer data-wp-strategy="defer"></script>
-<script src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831" id="wp-block-navigation-view-js" defer data-wp-strategy="defer"></script>
-<link rel="https://api.w.org/" href="/wp-json/">
-<link rel="alternate" type="application/json" href="/wp-json/wp/v2/posts/989">
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 6.4.2">
-<link rel="canonical" href="/2010/09/02/pythons-innards-hello-ceval-c-2/">
-<link rel="shortlink" href="/?p=989">
-<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F09%2F02%2Fpythons-innards-hello-ceval-c-2%2F">
-<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F09%2F02%2Fpythons-innards-hello-ceval-c-2%2F#038;format=xml">
+<script data-wp-strategy="defer" defer="" id="wp-interactivity-js" src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2"></script>
+<script data-wp-strategy="defer" defer="" id="wp-block-navigation-view-js" src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831"></script>
+<link href="/wp-json/" rel="https://api.w.org/"/>
+<link href="/wp-json/wp/v2/posts/989" rel="alternate" type="application/json"/>
+<link href="/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
+<meta content="WordPress 6.4.2" name="generator"/>
+<link href="/2010/09/02/pythons-innards-hello-ceval-c-2/" rel="canonical"/>
+<link href="/?p=989" rel="shortlink"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F09%2F02%2Fpythons-innards-hello-ceval-c-2%2F" rel="alternate" type="application/json+oembed"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F09%2F02%2Fpythons-innards-hello-ceval-c-2%2F#038;format=xml" rel="alternate" type="text/xml+oembed"/>
 <style id="wp-fonts-local">@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
 @font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:italic;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_italic_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:normal;font-weight:700;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}</style>
 </head>
-
 <body class="post-template-default single single-post postid-989 single-format-standard wp-embed-responsive">
-
 <div class="wp-site-blocks">
 <header class="wp-block-template-part">
 <div class="wp-block-group alignwide has-base-background-color has-background has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:20px;padding-bottom:20px">
-	
-	<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
-		
-		<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
-			
-
-			
-			<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
-				<p class="wp-block-site-title"><a href="/" target="_self" rel="home">NIL: .to write(1) ~ help:about</a></p>
-			</div>
-			
-		</div>
-		
-
-		<nav class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" aria-label="" data-wp-interactive data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}'><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open " data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
-			<div class="wp-block-navigation__responsive-container  " id="modal-1" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" tabindex="-1">
-				<div class="wp-block-navigation__responsive-close" tabindex="-1">
-					<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
-							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
-						<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
-							<ul class="wp-block-page-list">
+<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
+<p class="wp-block-site-title"><a href="/" rel="home" target="_self">NIL: .to write(1) ~ help:about</a></p>
+</div>
+</div>
+<nav aria-label="" class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}' data-wp-interactive=""><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="1.5" width="16" x="4" y="7.5"></rect><rect height="1.5" width="16" x="4" y="15"></rect></svg></button>
+<div class="wp-block-navigation__responsive-container" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" id="modal-1" tabindex="-1">
+<div class="wp-block-navigation__responsive-close" tabindex="-1">
+<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
+<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
+<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
+<ul class="wp-block-page-list">
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click menu-item-home"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/">About</a></li>
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/all-posts/">All Posts</a></li>
 </ul>
-						</div>
-					</div>
-				</div>
-			</div></nav>
-	</div>
-	
+</div>
+</div>
+</div>
+</div></nav>
+</div>
 </div>
 </header>
-
-
 <main class="wp-block-group alignfull is-layout-flow wp-block-group-is-layout-flow">
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
-		
-
-		
-		<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
-			<h1 class="wp-block-post-title has-x-large-font-size">Python&#8217;s Innards: Hello, ceval.c!</h1>
-
-			<div class="wp-block-template-part">
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
+<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
+<h1 class="wp-block-post-title has-x-large-font-size">Python’s Innards: Hello, ceval.c!</h1>
+<div class="wp-block-template-part">
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-	
-	<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
-		<div class="wp-block-post-date"><time datetime="2010-09-02T21:19:43+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/">Sep 2, 2010</a></time></div>
-
-		
-		<p class="has-contrast-2-color has-text-color">—</p>
-		
-
-		
-		<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
-		
-
-		<div class="wp-block-post-author-name"><a href="/author/yanivaknin/" target="_self" class="wp-block-post-author-name__link">Yaniv Aknin</a></div>
-
-		<div class="taxonomy-category wp-block-post-terms">
-<span class="wp-block-post-terms__prefix">in </span><a href="/category/my-projects/pythons-innards/" rel="tag">Python&#8217;s Innards</a>
+<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
+<div class="wp-block-post-date"><time datetime="2010-09-02T21:19:43+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/">Sep 2, 2010</a></time></div>
+<p class="has-contrast-2-color has-text-color">—</p>
+<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
+<div class="wp-block-post-author-name"><a class="wp-block-post-author-name__link" href="/author/yanivaknin/" target="_self">Yaniv Aknin</a></div>
+<div class="taxonomy-category wp-block-post-terms">
+<span class="wp-block-post-terms__prefix">in </span><a href="/category/my-projects/pythons-innards/" rel="tag">Python’s Innards</a>
 </div>
-
-	</div>
-	
 </div>
-
-
 </div>
-		</div>
-		
-	</div>
-	
-
-	<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
-<p>The &#8220;Python&#8217;s Innards&#8221; <a href="http://tech.blog.aknin.name/2010/04/02/pythons-innards-introduction/">series</a> owes its existence, at least in part, to hearing one of the Python-Fu masters in my previous workplace say something about a switch statement so large that it was needed to break it up just so some compilers won&#8217;t choke on it. I remember thinking then: &#8220;Choke the compiler with a switch? Hrmf, let me see that code.&#8221; Turns out that this switch can be found in <tt>./Python/ceval.c: PyEval_EvalFrameEx</tt> and it switches over the current opcode, invoking its implementation. If I had to summarize all of CPython into one line, I&#8217;d probably choose that switch (actually I&#8217;d refuse, but humour me by assuming I was at gunpoint or something). This choice is rather subjective, as arguably there are more complex/interesting bits in Python&#8217;s object system (explored <a href="http://tech.blog.aknin.name/2010/05/12/pythons-innards-objects-101/">here</a> and <a href="http://tech.blog.aknin.name/2010/05/19/pythons-innards-objects-102/">there</a>) or parser/compiler related code. But I can&#8217;t help seeing that line, and its surrounding function and file, as the &#8216;do-work&#8217; heart of CPython.</p>
-<p>The reason I didn&#8217;t start the series from this heart is that I thought it would be too hard (mostly for the author&#8230;). Thanks to what we (well, at least I) learned in the <a href="http://en.wordpress.com/tag/pythons-innards/">previous posts</a>, I think we can now understand it quite well. I&#8217;ll try to link backwards as necessary throughout the article, but if you haven&#8217;t followed the series so far, you&#8217;d probably do much better if you went back and read some of the previous articles before tackling this one. Also, for brevity&#8217;s sake in this post, I won&#8217;t qualify the file <tt>./Python/ceval.c</tt> and the function <tt>PyEval_EvalFrameEx</tt> in it. Finally, remember that usually in the series when I quote code, I may note that I edited it, and in that case I often prefer clarity and brevity over accuracy; this is true for this post as well, only much more so, excerpts here might bear only slight resemblance to the real code.</p>
-<p>So, where were we&#8230; Ah, yes, monstrous switch statement. Well, as I said, this switch can be found in the rather lengthy file <tt>ceval.c</tt>, in the rather lengthy function <tt>PyEval_EvalFrameEx</tt>, which takes more than half the file&#8217;s lines (it&#8217;s roughly 2,250 lines, the file is about 4,400). <tt>PyEval_EvalFrameEx</tt> implements CPython&#8217;s evaluation loop, which is to say that it&#8217;s a function that takes a <a href="http://tech.blog.aknin.name/2010/07/22/pythons-innards-interpreter-stacks/">frame object</a> and iterates over each of the opcodes in its associated <a href="http://tech.blog.aknin.name/2010/07/03/pythons-innards-code-objects/">code object</a>, evaluating (interpreting, executing) each opcode within the context of the given frame (this context is chiefly the associated <a href="http://tech.blog.aknin.name/2010/06/05/pythons-innards-naming/">namespaces</a> and <a href="http://tech.blog.aknin.name/2010/05/26/pythons-innards-pystate/">interpreter/thread states</a>). There&#8217;s more to <tt>ceval.c</tt> than <tt>PyEval_EvalFrameEx</tt>, and we may discuss some of the other bits later in this post (or perhaps a follow-up post), but <tt>PyEval_EvalFrameEx</tt> is obviously the most important part of it.</p>
-<p>Having described the evaluation loop in the previous paragraph, let&#8217;s see what it looks like in C (edited):</p>
+</div>
+</div>
+</div>
+<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
+<p>The “Python’s Innards” <a href="http://tech.blog.aknin.name/2010/04/02/pythons-innards-introduction/">series</a> owes its existence, at least in part, to hearing one of the Python-Fu masters in my previous workplace say something about a switch statement so large that it was needed to break it up just so some compilers won’t choke on it. I remember thinking then: “Choke the compiler with a switch? Hrmf, let me see that code.” Turns out that this switch can be found in <tt>./Python/ceval.c: PyEval_EvalFrameEx</tt> and it switches over the current opcode, invoking its implementation. If I had to summarize all of CPython into one line, I’d probably choose that switch (actually I’d refuse, but humour me by assuming I was at gunpoint or something). This choice is rather subjective, as arguably there are more complex/interesting bits in Python’s object system (explored <a href="http://tech.blog.aknin.name/2010/05/12/pythons-innards-objects-101/">here</a> and <a href="http://tech.blog.aknin.name/2010/05/19/pythons-innards-objects-102/">there</a>) or parser/compiler related code. But I can’t help seeing that line, and its surrounding function and file, as the ‘do-work’ heart of CPython.</p>
+<p>The reason I didn’t start the series from this heart is that I thought it would be too hard (mostly for the author…). Thanks to what we (well, at least I) learned in the <a href="http://en.wordpress.com/tag/pythons-innards/">previous posts</a>, I think we can now understand it quite well. I’ll try to link backwards as necessary throughout the article, but if you haven’t followed the series so far, you’d probably do much better if you went back and read some of the previous articles before tackling this one. Also, for brevity’s sake in this post, I won’t qualify the file <tt>./Python/ceval.c</tt> and the function <tt>PyEval_EvalFrameEx</tt> in it. Finally, remember that usually in the series when I quote code, I may note that I edited it, and in that case I often prefer clarity and brevity over accuracy; this is true for this post as well, only much more so, excerpts here might bear only slight resemblance to the real code.</p>
+<p>So, where were we… Ah, yes, monstrous switch statement. Well, as I said, this switch can be found in the rather lengthy file <tt>ceval.c</tt>, in the rather lengthy function <tt>PyEval_EvalFrameEx</tt>, which takes more than half the file’s lines (it’s roughly 2,250 lines, the file is about 4,400). <tt>PyEval_EvalFrameEx</tt> implements CPython’s evaluation loop, which is to say that it’s a function that takes a <a href="http://tech.blog.aknin.name/2010/07/22/pythons-innards-interpreter-stacks/">frame object</a> and iterates over each of the opcodes in its associated <a href="http://tech.blog.aknin.name/2010/07/03/pythons-innards-code-objects/">code object</a>, evaluating (interpreting, executing) each opcode within the context of the given frame (this context is chiefly the associated <a href="http://tech.blog.aknin.name/2010/06/05/pythons-innards-naming/">namespaces</a> and <a href="http://tech.blog.aknin.name/2010/05/26/pythons-innards-pystate/">interpreter/thread states</a>). There’s more to <tt>ceval.c</tt> than <tt>PyEval_EvalFrameEx</tt>, and we may discuss some of the other bits later in this post (or perhaps a follow-up post), but <tt>PyEval_EvalFrameEx</tt> is obviously the most important part of it.</p>
+<p>Having described the evaluation loop in the previous paragraph, let’s see what it looks like in C (edited):</p>
 <pre><code class="lang-c"> PyEval_EvalFrameEx(PyFrameObject *f, int throwflag)
 {
     /* variable declaration and initialization stuff */
@@ -284,10 +250,10 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
     return retval;
 }
 </code></pre>
-<p>As you can see, iteration over opcodes is infinite (forever: fetch next opcode, do stuff), breaking out of the loop must be done explicitly. CPython (reasonably) assumes that evaluated bytecode is correct in the sense that it terminates itself by raising an exception, returning a value, etc. Indeed, if you were to synthesize a code object without a <tt>RETURN_VALUE</tt> at its end and execute it (exercise to reader: how?<sup>1</sup>), you&#8217;re likely to execute rubbish, reach the <tt>default</tt> handler (raises a <tt>SystemError</tt>) or maybe even segfault the interpreter (I didn&#8217;t check this thoroughly, but it looks plausible).</p>
-<p>The evaluation loop may look fairly simple so far, but I kept back an important piece: I snipped about 1,450 lines of opcode implementations from within that big switch, all of them presumably more complex than a <tt>NOP</tt>. In order for you to be able to get a feel for what more serious opcode implementations look like, here&#8217;s the (edited) implementation of three more opcodes, illustrating a few more principles:<br>
+<p>As you can see, iteration over opcodes is infinite (forever: fetch next opcode, do stuff), breaking out of the loop must be done explicitly. CPython (reasonably) assumes that evaluated bytecode is correct in the sense that it terminates itself by raising an exception, returning a value, etc. Indeed, if you were to synthesize a code object without a <tt>RETURN_VALUE</tt> at its end and execute it (exercise to reader: how?<sup>1</sup>), you’re likely to execute rubbish, reach the <tt>default</tt> handler (raises a <tt>SystemError</tt>) or maybe even segfault the interpreter (I didn’t check this thoroughly, but it looks plausible).</p>
+<p>The evaluation loop may look fairly simple so far, but I kept back an important piece: I snipped about 1,450 lines of opcode implementations from within that big switch, all of them presumably more complex than a <tt>NOP</tt>. In order for you to be able to get a feel for what more serious opcode implementations look like, here’s the (edited) implementation of three more opcodes, illustrating a few more principles:<br/>
 <pre><code class="lang-c"> case BINARY_SUBTRACT:
-                w = *&#8211;stack_pointer; /* value stack POP */
+                w = *–stack_pointer; /* value stack POP */
                 v = stack_pointer[-1];
                 x = PyNumber_Subtract(v, w);
                 stack_pointer[-1] = x; /* value stack SET_TOP */
@@ -304,29 +270,29 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
                            STACK_LEVEL());
                 continue;
 </code></pre>
-<p>We see several things. First, we see a typical value manipulation opcode, <tt>BINARY_SUBTRACT</tt>. This opcode (and many others) works with values on the <a href="http://tech.blog.aknin.name/2010/07/22/pythons-innards-interpreter-stacks/">value stack</a> as well as with a few temporary variables, using CPython&#8217;s C-API abstract object layer (in our case, a function from the <a href="http://docs.python.org/py3k/c-api/number.html">number-like object abstraction</a>) to replace the two top values on the value stack with the single value resulting from subtraction. As you can see, a small set of temporary variables, such as <tt>v</tt>, <tt>w</tt> and <tt>x</tt> are used (and reused, and reused&#8230;) as the registers of the CPython VM. The variable <tt>stack_pointer</tt> represents the current bottom of the stack (the next free pointer in the stack). This variable is initialized at the beginning of the function like so: <tt>stack_pointer = f-&gt;f_stacktop;</tt>. In essence, together with the room reserved in the frame object for that purpose, the value stack <em>is</em> this pointer. To make things simpler and more readable, the real (unedited by me) code of <tt>ceval.c</tt> defines several value stack manipulation/observation macros, like <tt>PUSH</tt>, <tt>TOP</tt> or <tt>EMPTY</tt>. They do what you imagine from their names.</p>
-<p>Next, we see a very simple opcode that loads values from somewhere into the valuestack. I chose to quote <tt>LOAD_CONST</tt> because it&#8217;s very brief and simple, although it&#8217;s not really a namespace related opcode. &#8220;Real&#8221; namespace opcodes load values into the value stack from a namespace and store values from the value stack into a namespace; <tt>LOAD_CONST</tt> loads constants, but doesn&#8217;t fetch them from a namespace and has no <tt>STORE_CONST</tt> counterpart (we explored all this at length in the article about <a href="http://tech.blog.aknin.name/2010/06/05/pythons-innards-naming/">namespaces</a>). The final opcode I chose to show is actually the single implementation of several different control-flow related opcodes (<tt>SETUP_LOOP</tt>, <tt>SETUP_EXCEPT</tt> and <tt>SETUP_FINALLY</tt>), which offload all details of their implementation to the block stack manipulation function <tt>PyFrame_BlockSetup</tt>; we discussed the block stack in our discussion of <a href="http://tech.blog.aknin.name/2010/07/22/pythons-innards-interpreter-stacks/">interpreter stacks</a>.</p>
-<p>Something we can observe looking at these implementations is that different opcodes exit the switch statement differently. Some simply <tt>break</tt>, and let the code after the switch resume. Some use <tt>continue</tt> to start the <tt>for</tt> loop from the beginning. Some <tt>goto</tt> various labels in the function. Each exit has different semantic meaning. If you break out of the switch (the &#8216;normal&#8217; route), various checks will be made to see if some special behaviour should be performed &#8211; maybe a code block has ended, maybe an exception was raised, maybe we&#8217;re ready to return a value. Continuing the loop or going to a label lets certain opcodes take various shortcuts; no use checking for an exception after a <tt>NOP</tt> or a <tt>LOAD_CONST</tt>, for instance.</p>
-<p>That&#8217;s pretty much it. I can&#8217;t really say we&#8217;re done (not at all), but this is pretty much the gist of <tt>PyEval_EvalFrameEx</tt>. Simple, eh? Well, yeah, simple, but I lied a bit with the editing to make it simpler. For example, if you look at the code itself, you will see that none of the <tt>case</tt> expressions for the big <tt>switch</tt> are really there. The code for the <tt>NOP</tt> opcode is actually (remember this series is about Python 3.x unless noted otherwise, so this snippet is from Python 3.1.2):<br>
+<p>We see several things. First, we see a typical value manipulation opcode, <tt>BINARY_SUBTRACT</tt>. This opcode (and many others) works with values on the <a href="http://tech.blog.aknin.name/2010/07/22/pythons-innards-interpreter-stacks/">value stack</a> as well as with a few temporary variables, using CPython’s C-API abstract object layer (in our case, a function from the <a href="http://docs.python.org/py3k/c-api/number.html">number-like object abstraction</a>) to replace the two top values on the value stack with the single value resulting from subtraction. As you can see, a small set of temporary variables, such as <tt>v</tt>, <tt>w</tt> and <tt>x</tt> are used (and reused, and reused…) as the registers of the CPython VM. The variable <tt>stack_pointer</tt> represents the current bottom of the stack (the next free pointer in the stack). This variable is initialized at the beginning of the function like so: <tt>stack_pointer = f-&gt;f_stacktop;</tt>. In essence, together with the room reserved in the frame object for that purpose, the value stack <em>is</em> this pointer. To make things simpler and more readable, the real (unedited by me) code of <tt>ceval.c</tt> defines several value stack manipulation/observation macros, like <tt>PUSH</tt>, <tt>TOP</tt> or <tt>EMPTY</tt>. They do what you imagine from their names.</p>
+<p>Next, we see a very simple opcode that loads values from somewhere into the valuestack. I chose to quote <tt>LOAD_CONST</tt> because it’s very brief and simple, although it’s not really a namespace related opcode. “Real” namespace opcodes load values into the value stack from a namespace and store values from the value stack into a namespace; <tt>LOAD_CONST</tt> loads constants, but doesn’t fetch them from a namespace and has no <tt>STORE_CONST</tt> counterpart (we explored all this at length in the article about <a href="http://tech.blog.aknin.name/2010/06/05/pythons-innards-naming/">namespaces</a>). The final opcode I chose to show is actually the single implementation of several different control-flow related opcodes (<tt>SETUP_LOOP</tt>, <tt>SETUP_EXCEPT</tt> and <tt>SETUP_FINALLY</tt>), which offload all details of their implementation to the block stack manipulation function <tt>PyFrame_BlockSetup</tt>; we discussed the block stack in our discussion of <a href="http://tech.blog.aknin.name/2010/07/22/pythons-innards-interpreter-stacks/">interpreter stacks</a>.</p>
+<p>Something we can observe looking at these implementations is that different opcodes exit the switch statement differently. Some simply <tt>break</tt>, and let the code after the switch resume. Some use <tt>continue</tt> to start the <tt>for</tt> loop from the beginning. Some <tt>goto</tt> various labels in the function. Each exit has different semantic meaning. If you break out of the switch (the ‘normal’ route), various checks will be made to see if some special behaviour should be performed – maybe a code block has ended, maybe an exception was raised, maybe we’re ready to return a value. Continuing the loop or going to a label lets certain opcodes take various shortcuts; no use checking for an exception after a <tt>NOP</tt> or a <tt>LOAD_CONST</tt>, for instance.</p>
+<p>That’s pretty much it. I can’t really say we’re done (not at all), but this is pretty much the gist of <tt>PyEval_EvalFrameEx</tt>. Simple, eh? Well, yeah, simple, but I lied a bit with the editing to make it simpler. For example, if you look at the code itself, you will see that none of the <tt>case</tt> expressions for the big <tt>switch</tt> are really there. The code for the <tt>NOP</tt> opcode is actually (remember this series is about Python 3.x unless noted otherwise, so this snippet is from Python 3.1.2):<br/>
 <pre><code class="lang-c"> TARGET(NOP)
     FAST_DISPATCH();
 </code></pre>
-<p><tt>TARGET</tt>? <tt>FAST_DISPATCH</tt>? What are these? Let me explain. Things may become clearer if we&#8217;d look for a moment at the implementation of the <tt>NOP</tt> opcode in <a href="http://svn.python.org/view/python/trunk/Python/ceval.c?view=markup" class="code">ceval.c</a> of Python 2.x. Over there the code for <tt>NOP</tt> looks more like the samples I&#8217;ve shown you so far, and it actually seems to me that the code of <tt>ceval.c</tt> gets simpler and simpler as we look backwards at older revisions of it. The reason is that although I think <tt>PyEval_EvalFrameEx</tt> was originally written as a really exceptionally straightforward piece of code, over the years some necessary complexity crept into it as various optimizations and improvements were implemented (I&#8217;ll collectively call them &#8216;additions&#8217; from now on, for lack of a better term).</p>
-<p>To further complicate matters, many of these additions are compiled conditionally with preprocessor directives, so several things are implemented in more than one way in the same source file. In the larger code samples I quoted above, I liberally expanded some preprocessor directives using their least complex expansion. However, depending on compilation flags, these and other preprocessor directives might expand to something else, possibly a more complicated something. I can understand trading simplicity to optimize a tight loop which is used very often, and the evaluation loop is probably one of the more used loops in CPython (and probably as tight as its contributors could make it). So while this is all very warranted, it doesn&#8217;t help the readability of the code.</p>
-<p>Anyway, I&#8217;d like to enumerate these additions here explicitly (some in more depth than others); this should aid future discussion of <tt>ceval.c</tt>, as well as prevent me from feeling like I&#8217;m hiding too many important things with my free spirited editing of quoted code. Fortunately, most if not all these additions are very well commented -actually, some of the explanations below will be just summaries or even taken verbatim from these comments, as I believe that they&#8217;re accurate (eek!). So, as you read <tt>PyEval_EvalFrameEx</tt> (and indeed <tt>ceval.c</tt> in general), you&#8217;re likely to run into any of these:</p>
+<p><tt>TARGET</tt>? <tt>FAST_DISPATCH</tt>? What are these? Let me explain. Things may become clearer if we’d look for a moment at the implementation of the <tt>NOP</tt> opcode in <a class="code" href="http://svn.python.org/view/python/trunk/Python/ceval.c?view=markup">ceval.c</a> of Python 2.x. Over there the code for <tt>NOP</tt> looks more like the samples I’ve shown you so far, and it actually seems to me that the code of <tt>ceval.c</tt> gets simpler and simpler as we look backwards at older revisions of it. The reason is that although I think <tt>PyEval_EvalFrameEx</tt> was originally written as a really exceptionally straightforward piece of code, over the years some necessary complexity crept into it as various optimizations and improvements were implemented (I’ll collectively call them ‘additions’ from now on, for lack of a better term).</p>
+<p>To further complicate matters, many of these additions are compiled conditionally with preprocessor directives, so several things are implemented in more than one way in the same source file. In the larger code samples I quoted above, I liberally expanded some preprocessor directives using their least complex expansion. However, depending on compilation flags, these and other preprocessor directives might expand to something else, possibly a more complicated something. I can understand trading simplicity to optimize a tight loop which is used very often, and the evaluation loop is probably one of the more used loops in CPython (and probably as tight as its contributors could make it). So while this is all very warranted, it doesn’t help the readability of the code.</p>
+<p>Anyway, I’d like to enumerate these additions here explicitly (some in more depth than others); this should aid future discussion of <tt>ceval.c</tt>, as well as prevent me from feeling like I’m hiding too many important things with my free spirited editing of quoted code. Fortunately, most if not all these additions are very well commented -actually, some of the explanations below will be just summaries or even taken verbatim from these comments, as I believe that they’re accurate (eek!). So, as you read <tt>PyEval_EvalFrameEx</tt> (and indeed <tt>ceval.c</tt> in general), you’re likely to run into any of these:</p>
 <div class="indented">
-<h3>&#8220;Threaded Code&#8221; (Computed-GOTOs)</h3>
-<p>Let&#8217;s start with the addition that gave us <tt>TARGET</tt>, <tt>FAST_DISPATCH</tt> and a few other macros. The evaluation loop uses a &#8220;switch&#8221; statement, which decent compilers optimize as a single indirect branch instruction with a lookup table of addresses. Alas, since we&#8217;re switching over rapidly changing opcodes (it&#8217;s uncommon to have the same opcode repeat), this would have an adverse effect on the success rate of CPU branch prediction. Fortunately <tt>gcc</tt> <a href="http://gcc.gnu.org/onlinedocs/gcc/Labels-as-Values.html">supports</a> the use of C-goto labels as values, which you can generally pass around and place in an array (restrictions apply!). Using an array of adresses in memory obtained from labels, as you can see in <tt>./Python/opcode_targets.h</tt>, we create an explicit jump table and place an explicit indirect jump instruction at the end of each opcode. This improves the success rate of CPU prediction and can yield as much as 20% boost in performance.</p>
-<p>Thus, for example, the <tt>NOP</tt> opcode is implemented in the code like so:<br>
+<h3>“Threaded Code” (Computed-GOTOs)</h3>
+<p>Let’s start with the addition that gave us <tt>TARGET</tt>, <tt>FAST_DISPATCH</tt> and a few other macros. The evaluation loop uses a “switch” statement, which decent compilers optimize as a single indirect branch instruction with a lookup table of addresses. Alas, since we’re switching over rapidly changing opcodes (it’s uncommon to have the same opcode repeat), this would have an adverse effect on the success rate of CPU branch prediction. Fortunately <tt>gcc</tt> <a href="http://gcc.gnu.org/onlinedocs/gcc/Labels-as-Values.html">supports</a> the use of C-goto labels as values, which you can generally pass around and place in an array (restrictions apply!). Using an array of adresses in memory obtained from labels, as you can see in <tt>./Python/opcode_targets.h</tt>, we create an explicit jump table and place an explicit indirect jump instruction at the end of each opcode. This improves the success rate of CPU prediction and can yield as much as 20% boost in performance.</p>
+<p>Thus, for example, the <tt>NOP</tt> opcode is implemented in the code like so:<br/>
 <pre><code class="lang-c"> TARGET(NOP)
     FAST_DISPATCH();
 </code></pre>
-In the simpler scenario, this would expand to a plain <tt>case</tt> statement and a <tt>goto</tt>, like so:<br>
+In the simpler scenario, this would expand to a plain <tt>case</tt> statement and a <tt>goto</tt>, like so:<br/>
 <pre><code class="lang-c">
         case NOP:
             goto fast_next_opcode;
 </code></pre>
-But when threaded code is in use, that snippet would expand to (I highlighted the lines where we actually move on to the next opcode, using the dispatch table of label-values):<br>
+But when threaded code is in use, that snippet would expand to (I highlighted the lines where we actually move on to the next opcode, using the dispatch table of label-values):<br/>
 <pre><code class="lang-c">
         TARGET_NOP:
             opcode = NOP;
@@ -343,21 +309,21 @@ But when threaded code is in use, that snippet would expand to (I highlighted th
 </code></pre>
 Same behaviour, somewhat more complicated implementation, up to 20% faster Python. Nifty.</p>
 <h3>Opcode Prediction</h3>
-<p>Some opcodes tend to come in pairs. For example, <tt>COMPARE_OP</tt> is often followed by <tt>JUMP_IF_FALSE</tt> or <tt>JUMP_IF_TRUE</tt>, themselves often followed by a <tt>POP_TOP</tt>. What&#8217;s more, there are situations where you can determine that a particular next-opcode can be run immediately after the execution of the current opcode, without going through the &#8216;outer&#8217; (and expensive) parts of the evaluation loop. <tt>PREDICT</tt> (and a few others) are a set of macros that explicitly peek at the next opcode and jump to it if possible, shortcutting most of the loop in this fashion (i.e., <tt>if (*next_instr == op) goto PRED_##op</tt>). Note that there is no relation to real hardware here, these are simply hardcoded conditional jumps, not an exploitation of some mechanism in the underlying CPU (in particular, it has nothing to do with &#8220;Threaded Code&#8221; described above).</p>
+<p>Some opcodes tend to come in pairs. For example, <tt>COMPARE_OP</tt> is often followed by <tt>JUMP_IF_FALSE</tt> or <tt>JUMP_IF_TRUE</tt>, themselves often followed by a <tt>POP_TOP</tt>. What’s more, there are situations where you can determine that a particular next-opcode can be run immediately after the execution of the current opcode, without going through the ‘outer’ (and expensive) parts of the evaluation loop. <tt>PREDICT</tt> (and a few others) are a set of macros that explicitly peek at the next opcode and jump to it if possible, shortcutting most of the loop in this fashion (i.e., <tt>if (*next_instr == op) goto PRED_##op</tt>). Note that there is no relation to real hardware here, these are simply hardcoded conditional jumps, not an exploitation of some mechanism in the underlying CPU (in particular, it has nothing to do with “Threaded Code” described above).</p>
 <h3>Low Level Tracing</h3>
-<p>An addition primarily geared towards those developing CPython (or suffering from a horrible, horrible bug). Low Level Tracing is controlled by the <tt>LLTRACE</tt> preprocessor name, which is enabled by default on debug builds of CPython (see <tt>--with-pydebug</tt>). As explained in <tt>./Misc/SpecialBuilds.txt</tt>: <q>when this feature is compiled-in, <tt>PyEval_EvalFrameEx</tt> checks the frame&#8217;s global namespace for the variable <tt>__lltrace__</tt>. If such a variable is found, mounds of information about what the interpreter is doing are sprayed to stdout, such as every opcode and opcode argument and values pushed onto and popped off the value stack. Not useful very often, but very useful when needed.</q></p>
-<p>This is the what the low level trace output looks like (slightly edited):<br>
+<p>An addition primarily geared towards those developing CPython (or suffering from a horrible, horrible bug). Low Level Tracing is controlled by the <tt>LLTRACE</tt> preprocessor name, which is enabled by default on debug builds of CPython (see <tt>--with-pydebug</tt>). As explained in <tt>./Misc/SpecialBuilds.txt</tt>: <q>when this feature is compiled-in, <tt>PyEval_EvalFrameEx</tt> checks the frame’s global namespace for the variable <tt>__lltrace__</tt>. If such a variable is found, mounds of information about what the interpreter is doing are sprayed to stdout, such as every opcode and opcode argument and values pushed onto and popped off the value stack. Not useful very often, but very useful when needed.</q></p>
+<p>This is the what the low level trace output looks like (slightly edited):<br/>
 <pre><code class="lang-pycon">
->>> def f():
+&gt;&gt;&gt; def f():
 ...     global a
 ...     return a - 5
 ... 
->>> dis(f)
+&gt;&gt;&gt; dis(f)
   3           0 LOAD_GLOBAL              0 (a) 
               3 LOAD_CONST               1 (5) 
               6 BINARY_SUBTRACT      
               7 RETURN_VALUE         
->>> exec(f.__code__, {'__lltrace__': 'foo', 'a': 10})
+&gt;&gt;&gt; exec(f.__code__, {'__lltrace__': 'foo', 'a': 10})
 0: 116, 0
 push 10
 3: 100, 1
@@ -367,311 +333,196 @@ pop 5
 7: 83
 pop 5
 # trace of the end of exec() removed
->>> 
+&gt;&gt;&gt; 
 </code></pre>
-As you can guess, you&#8217;re seeing a real-time disassembly of what&#8217;s going through the VM as well as stack operations. For example, the first line says: line 0, do opcode 116 (<tt>LOAD_GLOBAL</tt>) with the operand 0 (expands to the global variable <tt>a</tt>), and so on, and so forth. This is a bit like (well, little more than) adding a bunch of <tt>printf</tt> calls to the heart of VM.</p>
+As you can guess, you’re seeing a real-time disassembly of what’s going through the VM as well as stack operations. For example, the first line says: line 0, do opcode 116 (<tt>LOAD_GLOBAL</tt>) with the operand 0 (expands to the global variable <tt>a</tt>), and so on, and so forth. This is a bit like (well, little more than) adding a bunch of <tt>printf</tt> calls to the heart of VM.</p>
 <h3>Advanced Profiling</h3>
-<p>Under this heading I&#8217;d like to briefly discuss several profiling related additions. The first relies on the fact that some processors (notably Pentium descendants and at least some PowerPCs) have built-in wall time measurement capabilities which are cheap and precise (correct me if I&#8217;m wrong). As an aid in the development of a high-performance CPython implementation, <a href="http://docs.python.org/whatsnew/2.4.html#porting-to-python-2-4">Python 2.4&#8217;s</a> <tt>ceval.c</tt> was instrumented with the ability to collect per-opcode profiling statistics using these counters. This instrumentation is controlled by the somewhat misnamed <tt>--with-tsc</tt> configuration flag (TSC is an Intel Pentium specific name, and this feature is more general than that). Calling <tt>sys.settscdump(True)</tt> on an instrumented interpreter will cause the function <tt>./Python/ceval.c: dump_tsc</tt> to print these statistics every time the evaluation loop loops.</p>
-<p>The second advanced profiling feature is Dynamic Execution Profiling. This is only available if Python was built with the <tt>DYNAMIC_EXECUTION_PROFILE</tt> preprocessor name. As <tt>./Tools/scripts/analyze_dxp.py</tt> says, <q>[this] will tell you which opcodes have been executed most frequently in the current process, and, if Python was also built with -DDXPAIRS, will tell you which instruction _pairs_ were executed most frequently, which may help in choosing new instructions.</q> One last thing to add here is that enabling Dynamic Execution Profiling implicitly disables the &#8220;Threaded Code&#8221; addition.</p>
+<p>Under this heading I’d like to briefly discuss several profiling related additions. The first relies on the fact that some processors (notably Pentium descendants and at least some PowerPCs) have built-in wall time measurement capabilities which are cheap and precise (correct me if I’m wrong). As an aid in the development of a high-performance CPython implementation, <a href="http://docs.python.org/whatsnew/2.4.html#porting-to-python-2-4">Python 2.4’s</a> <tt>ceval.c</tt> was instrumented with the ability to collect per-opcode profiling statistics using these counters. This instrumentation is controlled by the somewhat misnamed <tt>--with-tsc</tt> configuration flag (TSC is an Intel Pentium specific name, and this feature is more general than that). Calling <tt>sys.settscdump(True)</tt> on an instrumented interpreter will cause the function <tt>./Python/ceval.c: dump_tsc</tt> to print these statistics every time the evaluation loop loops.</p>
+<p>The second advanced profiling feature is Dynamic Execution Profiling. This is only available if Python was built with the <tt>DYNAMIC_EXECUTION_PROFILE</tt> preprocessor name. As <tt>./Tools/scripts/analyze_dxp.py</tt> says, <q>[this] will tell you which opcodes have been executed most frequently in the current process, and, if Python was also built with -DDXPAIRS, will tell you which instruction _pairs_ were executed most frequently, which may help in choosing new instructions.</q> One last thing to add here is that enabling Dynamic Execution Profiling implicitly disables the “Threaded Code” addition.</p>
 <p>The third and last addition in this category is function call profiling, controlled by the preprocessor name <tt>CALL_PROFILE</tt>. Quoting <tt>./Misc/SpecialBuilds.txt</tt> again: <q>When this name is defined, the ceval mainloop and helper functions count the number of function calls made. It keeps detailed statistics about what kind of object was called and whether the call hit any of the special fast paths in the code.</q></p>
 <h3>Extra Safety Valves</h3>
-<p>Two preprocessor names, <tt>USE_STACKCHECK</tt> and <tt>CHECKEXC</tt> include extra assertions. Testing an interpreter with these enabled may catch a subtle bug or regression, but they are usually disabled as they&#8217;re too expensive.
+<p>Two preprocessor names, <tt>USE_STACKCHECK</tt> and <tt>CHECKEXC</tt> include extra assertions. Testing an interpreter with these enabled may catch a subtle bug or regression, but they are usually disabled as they’re too expensive.
 </p>
 </div>
-<p>These are the additions I found, grepping <tt>ceval.c</tt> for <tt>#ifdef</tt>. I think we&#8217;ll call it a day here, although we&#8217;re by no means finished. For example, I&#8217;d like to devote a separate post to exceptions, which is where we can discuss the tail of the evaluation loop (everything after the big <tt>switch</tt> and before the end of the big <tt>for</tt>), which we merely skimmed today. I&#8217;d also like to devote a whole post to locking and synchronization (including the <a href="http://docs.python.org/c-api/init.html#thread-state-and-the-global-interpreter-lock">GIL</a>), which we <a href="http://tech.blog.aknin.name/2010/05/26/pythons-innards-pystate/">touched</a> upon before but never covered properly. Last but really not least, there&#8217;s about 2,000 other lines in <tt>ceval.c</tt> which we didn&#8217;t cover today; none of them are as important as <tt>PyEval_EvalFrameEx</tt>, but we need to talk at least about some of them.</p>
-<p>All these things taken into account, I think we can say that today we finally conquered the evaluation loop. This isn&#8217;t the end of the series, far from it, but I do see it as a milestone. &#8220;Hooray&#8221;, I believe the saying goes. I hope you&#8217;re enjoying the show, thanks for the supportive comments (they keep me going), and I&#8217;ll see you in the next post.</p>
-<hr>
+<p>These are the additions I found, grepping <tt>ceval.c</tt> for <tt>#ifdef</tt>. I think we’ll call it a day here, although we’re by no means finished. For example, I’d like to devote a separate post to exceptions, which is where we can discuss the tail of the evaluation loop (everything after the big <tt>switch</tt> and before the end of the big <tt>for</tt>), which we merely skimmed today. I’d also like to devote a whole post to locking and synchronization (including the <a href="http://docs.python.org/c-api/init.html#thread-state-and-the-global-interpreter-lock">GIL</a>), which we <a href="http://tech.blog.aknin.name/2010/05/26/pythons-innards-pystate/">touched</a> upon before but never covered properly. Last but really not least, there’s about 2,000 other lines in <tt>ceval.c</tt> which we didn’t cover today; none of them are as important as <tt>PyEval_EvalFrameEx</tt>, but we need to talk at least about some of them.</p>
+<p>All these things taken into account, I think we can say that today we finally conquered the evaluation loop. This isn’t the end of the series, far from it, but I do see it as a milestone. “Hooray”, I believe the saying goes. I hope you’re enjoying the show, thanks for the supportive comments (they keep me going), and I’ll see you in the next post.</p>
+<hr/>
 <p><em>I would like to thank <strong>Nick Coghlan</strong> for reviewing this article; any mistakes that slipped through are my own.</em></p>
-<p><span class="footer"><sup>1</sup>Lazy or timid readers may choose to defer to Nick Coghlan&#8217;s <a href="http://pastebin.com/MMpKTPej">example</a> of one way he did it; I urge you not to look there and solve it on your own, it&#8217;s rather easy.</span></p>
+<p><span class="footer"><sup>1</sup>Lazy or timid readers may choose to defer to Nick Coghlan’s <a href="http://pastebin.com/MMpKTPej">example</a> of one way he did it; I urge you not to look there and solve it on your own, it’s rather easy.</span></p>
+</p></p></div>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
+<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
+<a href="/tag/bytecode/" rel="tag">bytecode</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/code-objects/" rel="tag">code objects</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/evaluation/" rel="tag">evaluation</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/evaluation-loop/" rel="tag">evaluation loop</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/frame-object/" rel="tag">frame object</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/internals/" rel="tag">internals</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/python/" rel="tag">python</a>
 </div>
-
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
-		<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
-<a href="/tag/bytecode/" rel="tag">bytecode</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/code-objects/" rel="tag">code objects</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/evaluation/" rel="tag">evaluation</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/evaluation-loop/" rel="tag">evaluation loop</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/frame-object/" rel="tag">frame object</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/internals/" rel="tag">internals</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/python/" rel="tag">python</a>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div aria-hidden="true" class="wp-block-spacer" style="height:var(--wp--preset--spacing--40)">
 </div>
-
-		
-		<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-			
-			<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer">
-			</div>
-			
-
-			
-			<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)">
-			
-
-			
-
+<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)"/>
 <div class="wp-block-comments wp-block-comments-query-loop">
-	
-	<h2 class="wp-block-heading">Comments</h2>
-	
-	<h3 id="comments" class="wp-block-comments-title">8 responses to &#8220;Python&#8217;s Innards: Hello, ceval.c!&#8221;</h3>
-	<ol class="wp-block-comment-template">
-<li id="comment-236" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Nick Coghlan Avatar" src="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Nick Coghlan</div>
-				<div class="wp-block-comment-date"><time datetime="2010-09-03T01:01:33+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-236">September 3, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<h2 class="wp-block-heading">Comments</h2>
+<h3 class="wp-block-comments-title" id="comments">8 responses to “Python’s Innards: Hello, ceval.c!”</h3>
+<ol class="wp-block-comment-template">
+<li class="comment even thread-even depth-1" id="comment-236">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Nick Coghlan Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/f3ba3ecffd20251d73749afbfa636786?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Nick Coghlan</div>
+<div class="wp-block-comment-date"><time datetime="2010-09-03T01:01:33+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-236">September 3, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>And the curious can search ceval.c for CASE_TOO_BIG to see that yes, indeed, there is a #define that allows configure and/or pyport.h to break the switch into two separate pieces 🙂</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/09/02/pythons-innards-hello-ceval-c-2/?replytocom=236#respond" data-commentid="236" data-postid="989" data-belowelement="comment-236" data-respondelement="respond" data-replyto="Reply to Nick Coghlan" aria-label="Reply to Nick Coghlan">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-237" class="comment odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Eli Bendersky Avatar" src="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://eli.thegreenplace.net/" target="_self">Eli Bendersky</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-09-06T06:45:15+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-237">September 6, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-237">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Eli Bendersky Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/fc761ccaf6c0d7d977e2959f9bfebd06?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://eli.thegreenplace.net/" rel="external nofollow ugc" target="_self">Eli Bendersky</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-09-06T06:45:15+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-237">September 6, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Yaniv, nice job differentiating between the simple core and the optimized &amp; complicated outer shell. As always, optimization and clarity are in a clash here and optimization wins. When trying to understand how these things work under the hood, optimization tricks are a big stumbling block, and simplifying them as much as possible is crucial.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/09/02/pythons-innards-hello-ceval-c-2/?replytocom=237#respond" data-commentid="237" data-postid="989" data-belowelement="comment-237" data-respondelement="respond" data-replyto="Reply to Eli Bendersky" aria-label="Reply to Eli Bendersky">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-238" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Abafei Software Avatar" src="http://0.gravatar.com/avatar/fc91ff52337edf0d292c09b80ddbe76a?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/fc91ff52337edf0d292c09b80ddbe76a?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://abafei.blogspot.com/" target="_self">Abafei Software</a></div>
-				<div class="wp-block-comment-date"><time datetime="2011-03-28T05:18:26+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-238">March 28, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment even thread-even depth-1" id="comment-238">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Abafei Software Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/fc91ff52337edf0d292c09b80ddbe76a?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/fc91ff52337edf0d292c09b80ddbe76a?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://abafei.blogspot.com/" rel="external nofollow ugc" target="_self">Abafei Software</a></div>
+<div class="wp-block-comment-date"><time datetime="2011-03-28T05:18:26+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-238">March 28, 2011</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Yasher Koach!</p>
 <p>Amazingly explained!</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/09/02/pythons-innards-hello-ceval-c-2/?replytocom=238#respond" data-commentid="238" data-postid="989" data-belowelement="comment-238" data-respondelement="respond" data-replyto="Reply to Abafei Software" aria-label="Reply to Abafei Software">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-239" class="comment odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Martin Avatar" src="http://2.gravatar.com/avatar/e9a207e83d7759baadc36e9b9106de0b?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/e9a207e83d7759baadc36e9b9106de0b?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Martin</div>
-				<div class="wp-block-comment-date"><time datetime="2013-04-15T19:42:12+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-239">April 15, 2013</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-239">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Martin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/e9a207e83d7759baadc36e9b9106de0b?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/e9a207e83d7759baadc36e9b9106de0b?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Martin</div>
+<div class="wp-block-comment-date"><time datetime="2013-04-15T19:42:12+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-239">April 15, 2013</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>I was very much enjoying this series. Sad to see you never finished with the promised articles on Exceptions, the GIL, etc. maybe this comment will be enough to drive you onwards, 2 years later. 😉</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/09/02/pythons-innards-hello-ceval-c-2/?replytocom=239#respond" data-commentid="239" data-postid="989" data-belowelement="comment-239" data-respondelement="respond" data-replyto="Reply to Martin" aria-label="Reply to Martin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-240" class="comment byuser comment-author-yanivaknin bypostauthor even depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2013-04-15T19:51:03+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-240">April 15, 2013</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Glad you enjoyed it, I&#8217;ll do my best to carry on. I became a father in those past two years&#8230; 🙂</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/09/02/pythons-innards-hello-ceval-c-2/?replytocom=240#respond" data-commentid="240" data-postid="989" data-belowelement="comment-240" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-242" class="comment odd alt depth-3">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="pdehaye Avatar" src="http://0.gravatar.com/avatar/9fe598449817a5b72b657b112a2dbc01?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9fe598449817a5b72b657b112a2dbc01?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">pdehaye</div>
-				<div class="wp-block-comment-date"><time datetime="2013-11-24T03:23:34+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-242">November 24, 2013</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Congratulations on becoming a father. I will second those encouragements to continue the series&#8230; You are very gifted at explaining those concepts, and reducing them to their essence.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/09/02/pythons-innards-hello-ceval-c-2/?replytocom=242#respond" data-commentid="242" data-postid="989" data-belowelement="comment-242" data-respondelement="respond" data-replyto="Reply to pdehaye" aria-label="Reply to pdehaye">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor even depth-2" id="comment-240">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2013-04-15T19:51:03+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-240">April 15, 2013</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Glad you enjoyed it, I’ll do my best to carry on. I became a father in those past two years… 🙂</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment odd alt depth-3" id="comment-242">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="pdehaye Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9fe598449817a5b72b657b112a2dbc01?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9fe598449817a5b72b657b112a2dbc01?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">pdehaye</div>
+<div class="wp-block-comment-date"><time datetime="2013-11-24T03:23:34+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-242">November 24, 2013</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Congratulations on becoming a father. I will second those encouragements to continue the series… You are very gifted at explaining those concepts, and reducing them to their essence.</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 </li></ol>
 </li>
-<li id="comment-241" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Andrei Kopats Avatar" src="http://0.gravatar.com/avatar/96693ff21b23e3b7ed3107a2e43259bd?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/96693ff21b23e3b7ed3107a2e43259bd?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="https://plus.google.com/109430034452227920795" target="_self">Andrei Kopats</a></div>
-				<div class="wp-block-comment-date"><time datetime="2013-09-10T19:29:30+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-241">September 10, 2013</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Yaniv, it would be nice, if you created page with index (Table of contents) of Python&#8217;s Innards articles.<br>
+<li class="comment even thread-even depth-1" id="comment-241">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Andrei Kopats Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/96693ff21b23e3b7ed3107a2e43259bd?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/96693ff21b23e3b7ed3107a2e43259bd?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="https://plus.google.com/109430034452227920795" rel="external nofollow ugc" target="_self">Andrei Kopats</a></div>
+<div class="wp-block-comment-date"><time datetime="2013-09-10T19:29:30+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-241">September 10, 2013</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Yaniv, it would be nice, if you created page with index (Table of contents) of Python’s Innards articles.<br/>
 I found only page with all articles: <a href="http://tech.blog.aknin.name/category/my-projects/pythons-innards/" rel="nofollow ugc">http://tech.blog.aknin.name/category/my-projects/pythons-innards/</a>, but it is very difficult to find titles on long page, especially when surfing from phone.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-35 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/09/02/pythons-innards-hello-ceval-c-2/?replytocom=241#respond" data-commentid="241" data-postid="989" data-belowelement="comment-241" data-respondelement="respond" data-replyto="Reply to Andrei Kopats" aria-label="Reply to Andrei Kopats">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-243" class="comment odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-38 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="soundbbg Avatar" src="http://1.gravatar.com/avatar/72b43f73d32dead4456c63c845f388a8?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/72b43f73d32dead4456c63c845f388a8?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://gravatar.com/soundbbg" target="_self">soundbbg</a></div>
-				<div class="wp-block-comment-date"><time datetime="2014-07-03T04:30:07+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-243">July 3, 2014</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-35 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-243">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-38 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="soundbbg Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://1.gravatar.com/avatar/72b43f73d32dead4456c63c845f388a8?s=40&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/72b43f73d32dead4456c63c845f388a8?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://gravatar.com/soundbbg" rel="external nofollow ugc" target="_self">soundbbg</a></div>
+<div class="wp-block-comment-date"><time datetime="2014-07-03T04:30:07+00:00"><a href="/2010/09/02/pythons-innards-hello-ceval-c-2/#comment-243">July 3, 2014</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Grate post! I really love it! Could I make sure one thing about generator?</p>
 <p>Every Generator Object has a Frame Object when created, Frame has Value Stack to store values. So every time run a generator by using next(), function gen_iternext called and it call gen_send_ex actually.</p>
-<p>Generator Object is a controller of it&#8217;s own Frame, it run the code (I image frame as a code object, so it will be easier to understand) and PyEval_EvalFrameEx then goes to `yield` (opcode YIELD_VALUE), do something and pop the result from stack and return. Frame will not be cleaned and stores in memory. So context is saved.</p>
+<p>Generator Object is a controller of it’s own Frame, it run the code (I image frame as a code object, so it will be easier to understand) and PyEval_EvalFrameEx then goes to `yield` (opcode YIELD_VALUE), do something and pop the result from stack and return. Frame will not be cleaned and stores in memory. So context is saved.</p>
 <p>Next time Generator call next, still the same, run the code and PyEval_EvalFrameEx begins from Frame and Frame is not empty, so we have some value and context. Then it goes to `yield`, still do something and pop the result.</p>
-<p>Only then Generator Object ref count equals 0, it will be cleaned by GC, include it&#8217;s own Frame.</p>
+<p>Only then Generator Object ref count equals 0, it will be cleaned by GC, include it’s own Frame.</p>
 <p>Am I right? Or something wrong?</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-39 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/09/02/pythons-innards-hello-ceval-c-2/?replytocom=243#respond" data-commentid="243" data-postid="989" data-belowelement="comment-243" data-respondelement="respond" data-replyto="Reply to soundbbg" aria-label="Reply to soundbbg">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-39 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
 </ol>
 
-	
-
-		<div id="respond" style="padding-top:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);" class="comment-respond wp-block-post-comments-form">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2010/09/02/pythons-innards-hello-ceval-c-2/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="http://localhost/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p>
-<p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p>
-<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit wp-block-button"><input name="submit" type="submit" id="submit" class="wp-block-button__link wp-element-button" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="989" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
 <!-- #respond -->
-	
 </div>
-
-
-
-			
-
-<nav class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-41 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)" aria-label="Posts">
-	<div class="post-navigation-link-previous wp-block-post-navigation-link">
-<span class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow" aria-hidden="true">←</span><a href="/2010/08/21/the-curious-case-of-hid-malfunction/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">The Curious Case of HID Malfunction</span></a>
+<nav aria-label="Posts" class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-41 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
+<div class="post-navigation-link-previous wp-block-post-navigation-link">
+<span aria-hidden="true" class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow">←</span><a href="/2010/08/21/the-curious-case-of-hid-malfunction/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">The Curious Case of HID Malfunction</span></a>
 </div>
-	<div class="post-navigation-link-next wp-block-post-navigation-link">
-<a href="/2010/10/01/eulogy-to-a-server/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Eulogy to a server</span></a><span class="wp-block-post-navigation-link__arrow-next is-arrow-arrow" aria-hidden="true">→</span>
+<div class="post-navigation-link-next wp-block-post-navigation-link">
+<a href="/2010/10/01/eulogy-to-a-server/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Eulogy to a server</span></a><span aria-hidden="true" class="wp-block-post-navigation-link__arrow-next is-arrow-arrow">→</span>
 </div>
 </nav>
-
-
-
-		</div>
-		
-	</div>
-	
+</div>
+</div>
 </main>
-
-
 <footer class="wp-block-template-part"></footer>
 </div>
-<script src="/wp-includes/js/comment-reply.min.js?ver=6.4.2" id="comment-reply-js" async data-wp-strategy="async"></script>
+<script async="" data-wp-strategy="async" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js?ver=6.4.2"></script>
 <script id="wp-block-template-skip-link-js-after">( function() {
 		var skipLinkTarget = document.querySelector( 'main' ),
 			sibling,
@@ -711,9 +562,8 @@ I found only page with all articles: <a href="http://tech.blog.aknin.name/catego
 		sibling.parentElement.insertBefore( skipLink, sibling );
 	}() );</script>
 <!-- start Simple Custom CSS and JS -->
-
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
 <script>window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

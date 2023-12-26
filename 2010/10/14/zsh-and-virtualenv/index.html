@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="max-image-preview:large">
-<title>zsh and virtualenv &#8211; NIL: .to write(1) ~ help:about</title>
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Feed" href="/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Comments Feed" href="/comments/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; zsh and virtualenv Comments Feed" href="/2010/10/14/zsh-and-virtualenv/feed/">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="max-image-preview:large" name="robots"/>
+<title>zsh and virtualenv – NIL: .to write(1) ~ help:about</title>
+<link href="/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Feed" type="application/rss+xml"/>
+<link href="/comments/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Comments Feed" type="application/rss+xml"/>
+<link href="/2010/10/14/zsh-and-virtualenv/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » zsh and virtualenv Comments Feed" type="application/rss+xml"/>
 <script>
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.2"}};
 /*! This file is auto-generated */
@@ -20,7 +21,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 .wp-block-site-title a:where(:not(.wp-element-button)):hover{text-decoration: none;}</style>
 <style id="wp-block-group-inline-css">.wp-block-group{box-sizing:border-box}</style>
 <style id="wp-block-page-list-inline-css">.wp-block-navigation .wp-block-page-list{align-items:var(--navigation-layout-align,initial);background-color:inherit;display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation .wp-block-navigation-item{background-color:inherit}</style>
-<link rel="stylesheet" id="wp-block-navigation-css" href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" media="all">
+<link href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" id="wp-block-navigation-css" media="all" rel="stylesheet"/>
 <style id="wp-block-navigation-inline-css">.wp-block-navigation{font-weight: 500;}
 .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;text-decoration: none;}
 .wp-block-navigation a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
@@ -159,566 +160,416 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 			width: auto;
 			z-index: 100000;
 		}</style>
-<script src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2" id="wp-interactivity-js" defer data-wp-strategy="defer"></script>
-<script src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831" id="wp-block-navigation-view-js" defer data-wp-strategy="defer"></script>
-<link rel="https://api.w.org/" href="/wp-json/">
-<link rel="alternate" type="application/json" href="/wp-json/wp/v2/posts/1023">
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 6.4.2">
-<link rel="canonical" href="/2010/10/14/zsh-and-virtualenv/">
-<link rel="shortlink" href="/?p=1023">
-<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F10%2F14%2Fzsh-and-virtualenv%2F">
-<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F10%2F14%2Fzsh-and-virtualenv%2F#038;format=xml">
+<script data-wp-strategy="defer" defer="" id="wp-interactivity-js" src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2"></script>
+<script data-wp-strategy="defer" defer="" id="wp-block-navigation-view-js" src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831"></script>
+<link href="/wp-json/" rel="https://api.w.org/"/>
+<link href="/wp-json/wp/v2/posts/1023" rel="alternate" type="application/json"/>
+<link href="/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
+<meta content="WordPress 6.4.2" name="generator"/>
+<link href="/2010/10/14/zsh-and-virtualenv/" rel="canonical"/>
+<link href="/?p=1023" rel="shortlink"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F10%2F14%2Fzsh-and-virtualenv%2F" rel="alternate" type="application/json+oembed"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F10%2F14%2Fzsh-and-virtualenv%2F#038;format=xml" rel="alternate" type="text/xml+oembed"/>
 <style id="wp-fonts-local">@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
 @font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:italic;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_italic_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:normal;font-weight:700;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}</style>
 </head>
-
 <body class="post-template-default single single-post postid-1023 single-format-standard wp-embed-responsive">
-
 <div class="wp-site-blocks">
 <header class="wp-block-template-part">
 <div class="wp-block-group alignwide has-base-background-color has-background has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:20px;padding-bottom:20px">
-	
-	<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
-		
-		<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
-			
-
-			
-			<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
-				<p class="wp-block-site-title"><a href="/" target="_self" rel="home">NIL: .to write(1) ~ help:about</a></p>
-			</div>
-			
-		</div>
-		
-
-		<nav class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" aria-label="" data-wp-interactive data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}'><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open " data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
-			<div class="wp-block-navigation__responsive-container  " id="modal-1" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" tabindex="-1">
-				<div class="wp-block-navigation__responsive-close" tabindex="-1">
-					<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
-							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
-						<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
-							<ul class="wp-block-page-list">
+<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
+<p class="wp-block-site-title"><a href="/" rel="home" target="_self">NIL: .to write(1) ~ help:about</a></p>
+</div>
+</div>
+<nav aria-label="" class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}' data-wp-interactive=""><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="1.5" width="16" x="4" y="7.5"></rect><rect height="1.5" width="16" x="4" y="15"></rect></svg></button>
+<div class="wp-block-navigation__responsive-container" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" id="modal-1" tabindex="-1">
+<div class="wp-block-navigation__responsive-close" tabindex="-1">
+<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
+<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
+<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
+<ul class="wp-block-page-list">
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click menu-item-home"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/">About</a></li>
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/all-posts/">All Posts</a></li>
 </ul>
-						</div>
-					</div>
-				</div>
-			</div></nav>
-	</div>
-	
+</div>
+</div>
+</div>
+</div></nav>
+</div>
 </div>
 </header>
-
-
 <main class="wp-block-group alignfull is-layout-flow wp-block-group-is-layout-flow">
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
-		
-
-		
-		<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
-			<h1 class="wp-block-post-title has-x-large-font-size">zsh and virtualenv</h1>
-
-			<div class="wp-block-template-part">
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
+<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
+<h1 class="wp-block-post-title has-x-large-font-size">zsh and virtualenv</h1>
+<div class="wp-block-template-part">
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-	
-	<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
-		<div class="wp-block-post-date"><time datetime="2010-10-14T01:53:04+00:00"><a href="/2010/10/14/zsh-and-virtualenv/">Oct 14, 2010</a></time></div>
-
-		
-		<p class="has-contrast-2-color has-text-color">—</p>
-		
-
-		
-		<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
-		
-
-		<div class="wp-block-post-author-name"><a href="/author/yanivaknin/" target="_self" class="wp-block-post-author-name__link">Yaniv Aknin</a></div>
-
-		<div class="taxonomy-category wp-block-post-terms">
+<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
+<div class="wp-block-post-date"><time datetime="2010-10-14T01:53:04+00:00"><a href="/2010/10/14/zsh-and-virtualenv/">Oct 14, 2010</a></time></div>
+<p class="has-contrast-2-color has-text-color">—</p>
+<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
+<div class="wp-block-post-author-name"><a class="wp-block-post-author-name__link" href="/author/yanivaknin/" target="_self">Yaniv Aknin</a></div>
+<div class="taxonomy-category wp-block-post-terms">
 <span class="wp-block-post-terms__prefix">in </span><a href="/category/uncategorized/" rel="tag">Uncategorized</a>
 </div>
-
-	</div>
-	
 </div>
-
-
 </div>
-		</div>
-		
-	</div>
-	
-
-	<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
-<p>A week ago or so I finally got off my arse and did the pragmatic programmer thing, setting aside those measly ten minutes to check out <strong>virtualenv</strong> (well, I also checked out <em>buildout</em>, but I won&#8217;t discuss it in this post). I knew pretty much what to expect, but I wanted to get my hands dirty with them so I could see what I assumed I&#8217;ve been missing out on for so long (and indeed I promptly kicked myself for not doing it sooner, yada yada, you probably know the drill about well-known-must-know-techniques-and-tools-that-somehow-you-don&#8217;t-know). Much as I liked virtualenv, there were two things I didn&#8217;t like about environment activation in virtualenv. First, I found typing &#8216;source bin/activate&#8217; (or similar) cumbersome, I wanted something short and snazzy that worked regardless of <em>where</em> inside the virtualenv I am so long as I&#8217;m somewhere in it (it makes sense to me to say that I&#8217;m &#8216;in&#8217; a virtualenv when my current working directory is somewhere under the virtualenv&#8217;s directory). Note that being &#8220;in&#8221; a virtualenv isn&#8217;t the same as activating it; you can change directory from virtualenv foo to virtualenv bar, and virtualenv foo will remain active. Indeed, this was the second problem I had: I kept forgetting to activate my virtualenv as I started using it or to deactivate the old one as I switched from one to another. </p>
-<p>zsh to the rescue. You may recall that I already <a href="http://tech.blog.aknin.name/2010/05/14/switching-to-mercurial-taming-zsh/">mentioned</a> the tinkering I&#8217;ve done to make it easier to remember my current DVCS branch. Briefly, I have a function called <tt>_rprompt_dvcs</tt> which is evaluated whenever zsh displays my prompt and if I&#8217;m in a git/Mercurial repository it sets my right prompt to the name of the current branch in blue/green. You may also recall that while I use git itself to tell me if I&#8217;m in a git repository at all and which branch I&#8217;m at (using <tt>git branch --no-color 2&gt; /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'</tt>), I had to resort to a small C program (<a href="http://bitbucket.org/yaniv_aknin/fast_hg_root" class="code">fast_hg_root</a>) in order to decide whether I&#8217;m in a Mercurial repository or not and then I manually parse the branch with <tt>cat</tt>. As I said in the previous post about hg and prompt, I&#8217;m not into giving hg grief about speed vs. git, but when it comes to the <em>prompt</em> things are different.</p>
-<p>With this background in mind, I was perfectly armed to solve my woes with virtualenv. First, I changed <tt>fast_hg_root</tt> to be slightly more generic and search for a user-specified &#8220;magic&#8221; filename upwards from the current working directory (I called the outcome <a href="https://bitbucket.org/yaniv_aknin/walkup" class="code">walkup</a>, it&#8217;s really simple and nothing to write home about&#8230;). For example, to mimic <tt>fast_hg_root</tt> with <tt>walkup</tt>, you&#8217;d run it like so: <kbd>$ walkup .hg</kbd>. Using <kbd>$ walkup bin/activate</kbd> to find my current virtualenv (if any at all), I could easily add the following function to my zsh environment:<br>
-[sourcecode language=&#8221;bash&#8221;]<br>
-act () {<br>
-        if [ -n &quot;$1&quot; ]<br>
-        then<br>
-                if [ ! -d &quot;$1&quot; ]<br>
-                then<br>
-                        echo &quot;act: $1 no such directory&quot;<br>
-                        return 1<br>
-                fi<br>
-                if [ ! -e &quot;$1/bin/activate&quot; ]<br>
-                then<br>
-                        echo &quot;act: $1 is not a virtualenv&quot;<br>
-                        return 1<br>
-                fi<br>
-                if which deactivate &gt; /dev/null<br>
-                then<br>
-                        deactivate<br>
-                fi<br>
-                cd &quot;$1&quot;<br>
-                source bin/activate<br>
-        else<br>
-                virtualenv=&quot;$(walkup bin/activate)&quot;<br>
-                if [ $? -eq 1 ]<br>
-                then<br>
-                        echo &quot;act: not in a virtualenv&quot;<br>
-                        return 1<br>
-                fi<br>
-                source &quot;$virtualenv&quot;/bin/activate<br>
-        fi<br>
-}<br>
-[/sourcecode]<br>
-Now I can type <kbd>$ act</kbd> anywhere I want in a virtualenv, and that virtualenv will become active; this saves figuring out the path to <tt>bin/activate</tt> and ending up typing something ugly like <kbd>$ source ../../bin/activate</kbd>. If you want something that can work for you without a special binary on your host, there&#8217;s also a pure-shell version of the same function in the collapsed snippet below.<br>
-[sourcecode language=&#8221;bash&#8221; collapse=&#8221;true&#8221;]<br>
-function act() {<br>
-    if [ -n &quot;$1&quot; ]; then<br>
-        if [ ! -d &quot;$1&quot; ]; then<br>
-            echo &quot;act: $1 no such directory&quot;<br>
-            return 1<br>
-        fi<br>
-        if [ ! -e &quot;$1/bin/activate&quot; ]; then<br>
-            echo &quot;act: $1 is not a virtualenv&quot;<br>
-            return 1<br>
+</div>
+</div>
+</div>
+<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
+<p>A week ago or so I finally got off my arse and did the pragmatic programmer thing, setting aside those measly ten minutes to check out <strong>virtualenv</strong> (well, I also checked out <em>buildout</em>, but I won’t discuss it in this post). I knew pretty much what to expect, but I wanted to get my hands dirty with them so I could see what I assumed I’ve been missing out on for so long (and indeed I promptly kicked myself for not doing it sooner, yada yada, you probably know the drill about well-known-must-know-techniques-and-tools-that-somehow-you-don’t-know). Much as I liked virtualenv, there were two things I didn’t like about environment activation in virtualenv. First, I found typing ‘source bin/activate’ (or similar) cumbersome, I wanted something short and snazzy that worked regardless of <em>where</em> inside the virtualenv I am so long as I’m somewhere in it (it makes sense to me to say that I’m ‘in’ a virtualenv when my current working directory is somewhere under the virtualenv’s directory). Note that being “in” a virtualenv isn’t the same as activating it; you can change directory from virtualenv foo to virtualenv bar, and virtualenv foo will remain active. Indeed, this was the second problem I had: I kept forgetting to activate my virtualenv as I started using it or to deactivate the old one as I switched from one to another. </p>
+<p>zsh to the rescue. You may recall that I already <a href="http://tech.blog.aknin.name/2010/05/14/switching-to-mercurial-taming-zsh/">mentioned</a> the tinkering I’ve done to make it easier to remember my current DVCS branch. Briefly, I have a function called <tt>_rprompt_dvcs</tt> which is evaluated whenever zsh displays my prompt and if I’m in a git/Mercurial repository it sets my right prompt to the name of the current branch in blue/green. You may also recall that while I use git itself to tell me if I’m in a git repository at all and which branch I’m at (using <tt>git branch --no-color 2&gt; /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'</tt>), I had to resort to a small C program (<a class="code" href="http://bitbucket.org/yaniv_aknin/fast_hg_root">fast_hg_root</a>) in order to decide whether I’m in a Mercurial repository or not and then I manually parse the branch with <tt>cat</tt>. As I said in the previous post about hg and prompt, I’m not into giving hg grief about speed vs. git, but when it comes to the <em>prompt</em> things are different.</p>
+<p>With this background in mind, I was perfectly armed to solve my woes with virtualenv. First, I changed <tt>fast_hg_root</tt> to be slightly more generic and search for a user-specified “magic” filename upwards from the current working directory (I called the outcome <a class="code" href="https://bitbucket.org/yaniv_aknin/walkup">walkup</a>, it’s really simple and nothing to write home about…). For example, to mimic <tt>fast_hg_root</tt> with <tt>walkup</tt>, you’d run it like so: <kbd>$ walkup .hg</kbd>. Using <kbd>$ walkup bin/activate</kbd> to find my current virtualenv (if any at all), I could easily add the following function to my zsh environment:<br/>
+[sourcecode language=”bash”]<br/>
+act () {<br/>
+        if [ -n "$1" ]<br/>
+        then<br/>
+                if [ ! -d "$1" ]<br/>
+                then<br/>
+                        echo "act: $1 no such directory"<br/>
+                        return 1<br/>
+                fi<br/>
+                if [ ! -e "$1/bin/activate" ]<br/>
+                then<br/>
+                        echo "act: $1 is not a virtualenv"<br/>
+                        return 1<br/>
+                fi<br/>
+                if which deactivate &gt; /dev/null<br/>
+                then<br/>
+                        deactivate<br/>
+                fi<br/>
+                cd "$1"<br/>
+                source bin/activate<br/>
+        else<br/>
+                virtualenv="$(walkup bin/activate)"<br/>
+                if [ $? -eq 1 ]<br/>
+                then<br/>
+                        echo "act: not in a virtualenv"<br/>
+                        return 1<br/>
+                fi<br/>
+                source "$virtualenv"/bin/activate<br/>
+        fi<br/>
+}<br/>
+[/sourcecode]<br/>
+Now I can type <kbd>$ act</kbd> anywhere I want in a virtualenv, and that virtualenv will become active; this saves figuring out the path to <tt>bin/activate</tt> and ending up typing something ugly like <kbd>$ source ../../bin/activate</kbd>. If you want something that can work for you without a special binary on your host, there’s also a pure-shell version of the same function in the collapsed snippet below.<br/>
+[sourcecode language=”bash” collapse=”true”]<br/>
+function act() {<br/>
+    if [ -n "$1" ]; then<br/>
+        if [ ! -d "$1" ]; then<br/>
+            echo "act: $1 no such directory"<br/>
+            return 1<br/>
+        fi<br/>
+        if [ ! -e "$1/bin/activate" ]; then<br/>
+            echo "act: $1 is not a virtualenv"<br/>
+            return 1<br/>
         fi</p>
-<p>        if which deactivate &gt; /dev/null; then<br>
-            deactivate<br>
-        fi<br>
-        cd &quot;$1&quot;<br>
-        source bin/activate<br>
-    else<br>
-        stored_dir=&quot;$(pwd)&quot;<br>
-        while [ ! -f bin/activate ]; do<br>
-            if [ $(pwd) = / ]; then<br>
-                echo &quot;act: not in a virtualenv&quot;<br>
-                cd &quot;$stored_dir&quot;<br>
-                return 1<br>
-            fi<br>
-            cd ..<br>
-        done<br>
-        source bin/activate<br>
-        cd &quot;$stored_dir&quot;<br>
-    fi<br>
-}<br>
+<p>        if which deactivate &gt; /dev/null; then<br/>
+            deactivate<br/>
+        fi<br/>
+        cd "$1"<br/>
+        source bin/activate<br/>
+    else<br/>
+        stored_dir="$(pwd)"<br/>
+        while [ ! -f bin/activate ]; do<br/>
+            if [ $(pwd) = / ]; then<br/>
+                echo "act: not in a virtualenv"<br/>
+                cd "$stored_dir"<br/>
+                return 1<br/>
+            fi<br/>
+            cd ..<br/>
+        done<br/>
+        source bin/activate<br/>
+        cd "$stored_dir"<br/>
+    fi<br/>
+}<br/>
 [/sourcecode]</p>
-<p>This was nice, but only solved half the problem: I still kept forgetting to activate the virtualenv, or moving out of a virtualenv and forgetting that I left it activated (this can cause lots of confusion, for example, if you&#8217;re simultaneously trying out <a href="http://code.google.com/p/django-facebookconnect/">this</a>, <a href="http://github.com/sciyoshi/pyfacebook/">this</a>, <a href="http://github.com/uswaretech/Django-Socialauth">this</a> or <a href="http://github.com/flashingpumpkin/django-socialregistration">that</a> django-facebook integration modules, more than one of them thinks that <tt>facebook</tt> is a good idea for a namespace to take!). To remind me, I wanted my left prompt to reflect my virtualenv in the following manner (much like my right prompt reflects my current git/hg branch if any):</p>
+<p>This was nice, but only solved half the problem: I still kept forgetting to activate the virtualenv, or moving out of a virtualenv and forgetting that I left it activated (this can cause lots of confusion, for example, if you’re simultaneously trying out <a href="http://code.google.com/p/django-facebookconnect/">this</a>, <a href="http://github.com/sciyoshi/pyfacebook/">this</a>, <a href="http://github.com/uswaretech/Django-Socialauth">this</a> or <a href="http://github.com/flashingpumpkin/django-socialregistration">that</a> django-facebook integration modules, more than one of them thinks that <tt>facebook</tt> is a good idea for a namespace to take!). To remind me, I wanted my left prompt to reflect my virtualenv in the following manner (much like my right prompt reflects my current git/hg branch if any):</p>
 <ol>
-<li>If I&#8217;m not in a virtualenv and no virtualenv is active, do nothing.</li>
-<li>If I&#8217;m in a virtualenv and it is not active, display its name as part of the prompt in white.</li>
-<li>If I&#8217;m in a virtualenv and it is active, display its name as part of the prompt in green.</li>
-<li>If I&#8217;m not in a virtualenv but some virtualenv is active, display its name in yellow.</li>
-<li>Finally, if I&#8217;m in one virtualenv but another virtualenv is active, display both their names in red.</li>
+<li>If I’m not in a virtualenv and no virtualenv is active, do nothing.</li>
+<li>If I’m in a virtualenv and it is not active, display its name as part of the prompt in white.</li>
+<li>If I’m in a virtualenv and it is active, display its name as part of the prompt in green.</li>
+<li>If I’m not in a virtualenv but some virtualenv is active, display its name in yellow.</li>
+<li>Finally, if I’m in one virtualenv but another virtualenv is active, display both their names in red.</li>
 </ol>
-<p>So, using <tt>walkup</tt>, I wrote the virtualenv parsing functions:<br>
-[sourcecode language=&#8221;bash&#8221;]<br>
-function active_virtualenv() {<br>
-    if [ -z &quot;$VIRTUAL_ENV&quot; ]; then<br>
-        # not in a virtualenv<br>
-        return<br>
+<p>So, using <tt>walkup</tt>, I wrote the virtualenv parsing functions:<br/>
+[sourcecode language=”bash”]<br/>
+function active_virtualenv() {<br/>
+    if [ -z "$VIRTUAL_ENV" ]; then<br/>
+        # not in a virtualenv<br/>
+        return<br/>
     fi</p>
-<p>    basename &quot;$VIRTUAL_ENV&quot;<br>
+<p>    basename "$VIRTUAL_ENV"<br/>
 }</p>
-<p>function enclosing_virtualenv() {<br>
-    if ! which walkup &gt; /dev/null; then<br>
-        return<br>
-    fi<br>
-    virtualenv=&quot;$(walkup bin/activate)&quot;<br>
-    if [ -z &quot;$virtualenv&quot; ]; then<br>
-        # not in a virtualenv<br>
-        return<br>
+<p>function enclosing_virtualenv() {<br/>
+    if ! which walkup &gt; /dev/null; then<br/>
+        return<br/>
+    fi<br/>
+    virtualenv="$(walkup bin/activate)"<br/>
+    if [ -z "$virtualenv" ]; then<br/>
+        # not in a virtualenv<br/>
+        return<br/>
     fi</p>
-<p>    basename $(grep VIRTUAL_ENV= &quot;$virtualenv&quot;/bin/activate | sed -E &#8216;s/VIRTUAL_ENV=&quot;(.*)&quot;$/\1/&#8217;)<br>
-}<br>
+<p>    basename $(grep VIRTUAL_ENV= "$virtualenv"/bin/activate | sed -E ‘s/VIRTUAL_ENV="(.*)"$/\1/’)<br/>
+}<br/>
 [/sourcecode]</p>
-<p>All that remained was to change my lprompt function to look like so (remember I have <tt>setopt prompt_subst</tt> on):<br>
-[sourcecode language=&#8221;bash&#8221;]<br>
-function _lprompt_env {<br>
-    local active=&quot;$(active_virtualenv)&quot;<br>
-    local enclosing=&quot;$(enclosing_virtualenv)&quot;<br>
-    if [ -z &quot;$active&quot; -a -z &quot;$enclosing&quot; ]; then<br>
-        # no active virtual env, no enclosing virtualenv, just leave<br>
-        return<br>
-    fi<br>
-    if [ -z &quot;$active&quot; ]; then<br>
-        local color=white<br>
-        local text=&quot;$enclosing&quot;<br>
-    else<br>
-        if [ -z &quot;$enclosing&quot; ]; then<br>
-            local color=yellow<br>
-            local text=&quot;$active&quot;<br>
-        elif [ &quot;$enclosing&quot; = &quot;$active&quot; ]; then<br>
-            local color=green<br>
-            local text=&quot;$active&quot;<br>
-        else<br>
-            local color=red<br>
-            local text=&quot;$active&quot;:&quot;$enclosing&quot;<br>
-        fi<br>
-    fi<br>
-    local result=&quot;%{$fg[$color]%}${text}$rst &quot;<br>
-    echo -n $result<br>
+<p>All that remained was to change my lprompt function to look like so (remember I have <tt>setopt prompt_subst</tt> on):<br/>
+[sourcecode language=”bash”]<br/>
+function _lprompt_env {<br/>
+    local active="$(active_virtualenv)"<br/>
+    local enclosing="$(enclosing_virtualenv)"<br/>
+    if [ -z "$active" -a -z "$enclosing" ]; then<br/>
+        # no active virtual env, no enclosing virtualenv, just leave<br/>
+        return<br/>
+    fi<br/>
+    if [ -z "$active" ]; then<br/>
+        local color=white<br/>
+        local text="$enclosing"<br/>
+    else<br/>
+        if [ -z "$enclosing" ]; then<br/>
+            local color=yellow<br/>
+            local text="$active"<br/>
+        elif [ "$enclosing" = "$active" ]; then<br/>
+            local color=green<br/>
+            local text="$active"<br/>
+        else<br/>
+            local color=red<br/>
+            local text="$active":"$enclosing"<br/>
+        fi<br/>
+    fi<br/>
+    local result="%{$fg[$color]%}${text}$rst "<br/>
+    echo -n $result<br/>
 }</p>
-<p>function lprompt {<br>
-    local col1 col2 ch1 ch2<br>
-    col1=&quot;%{%b$fg[$2]%}&quot;<br>
-    col2=&quot;%{$4$fg[$3]%}&quot;<br>
-    ch1=$col1${1[1]}<br>
+<p>function lprompt {<br/>
+    local col1 col2 ch1 ch2<br/>
+    col1="%{%b$fg[$2]%}"<br/>
+    col2="%{$4$fg[$3]%}"<br/>
+    ch1=$col1${1[1]}<br/>
     ch2=$col1${1[2]}</p>
-<p>    local _env=&#8217;$(_lprompt_env)&#8217;</p>
-<p>    local col_b col_s<br>
-    col_b=&quot;%{$fg[green]%}&quot;<br>
-    col_s=&quot;%{$fg[red]%}&quot;</p>
-<p>    PROMPT=&quot;\<br>
-$bgc$ch1\<br>
-$_env\<br>
-%{$fg_bold[white]%}%m:\<br>
-$bgc$col2%B%1~%b\<br>
-$ch2$rst \<br>
-$col2%#$rst &quot;<br>
-}<br>
+<p>    local _env=’$(_lprompt_env)’</p>
+<p>    local col_b col_s<br/>
+    col_b="%{$fg[green]%}"<br/>
+    col_s="%{$fg[red]%}"</p>
+<p>    PROMPT="\<br/>
+$bgc$ch1\<br/>
+$_env\<br/>
+%{$fg_bold[white]%}%m:\<br/>
+$bgc$col2%B%1~%b\<br/>
+$ch2$rst \<br/>
+$col2%#$rst "<br/>
+}<br/>
 [/sourcecode]</p>
-<p>A bit lengthy, but not very difficult. I suffered a bit until I figured out that I should escape the result of <tt>_lprompt_virtualenv</tt> using a percent sign (like so: <tt>"%{$fg[$color]%}${text}$rst "</tt>), or else the ANSII color escapes are counted for cursor positioning purposes and screw up the prompt&#8217;s alignment. Meh. Also, remember to set <tt>VIRTUAL_ENV_DISABLE_PROMPT=True</tt> somewhere, so virtualenv&#8217;s simple/default prompt manipulation functionality won&#8217;t kick in and screw things up for you, and we&#8217;re good to go.</p>
-<p>The result looks like so (I still don&#8217;t know how to do a terminal-&#8220;screenshot&#8221;-to-html, here&#8217;s a crummy png):<br>
-<a href=":8000/wp-content/uploads/2010/10/zsh-and-virtualenv.png"><img fetchpriority="high" decoding="async" src=":8000/wp-content/uploads/2010/10/zsh-and-virtualenv.png" alt="" title="zsh-and-virtualenv" width="440" height="266" class="aligncenter size-full wp-image-1035" srcset="/wp-content/uploads/2010/10/zsh-and-virtualenv.png 895w, /wp-content/uploads/2010/10/zsh-and-virtualenv-300x182.png 300w, /wp-content/uploads/2010/10/zsh-and-virtualenv-768x466.png 768w" sizes="(max-width: 440px) 100vw, 440px"></a></p>
+<p>A bit lengthy, but not very difficult. I suffered a bit until I figured out that I should escape the result of <tt>_lprompt_virtualenv</tt> using a percent sign (like so: <tt>"%{$fg[$color]%}${text}$rst "</tt>), or else the ANSII color escapes are counted for cursor positioning purposes and screw up the prompt’s alignment. Meh. Also, remember to set <tt>VIRTUAL_ENV_DISABLE_PROMPT=True</tt> somewhere, so virtualenv’s simple/default prompt manipulation functionality won’t kick in and screw things up for you, and we’re good to go.</p>
+<p>The result looks like so (I still don’t know how to do a terminal-“screenshot”-to-html, here’s a crummy png):<br/>
+<a href=":8000/wp-content/uploads/2010/10/zsh-and-virtualenv.png"><img alt="" class="aligncenter size-full wp-image-1035" decoding="async" fetchpriority="high" height="266" sizes="(max-width: 440px) 100vw, 440px" src=":8000/wp-content/uploads/2010/10/zsh-and-virtualenv.png" srcset="/wp-content/uploads/2010/10/zsh-and-virtualenv.png 895w, /wp-content/uploads/2010/10/zsh-and-virtualenv-300x182.png 300w, /wp-content/uploads/2010/10/zsh-and-virtualenv-768x466.png 768w" title="zsh-and-virtualenv" width="440"/></a></p>
 <p>Voila! Feel free to use these snippets, and happy zshelling!</p>
 </div>
-
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
-		<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
-<a href="/tag/prompt/" rel="tag">prompt</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/python/" rel="tag">python</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/virtualenv/" rel="tag">virtualenv</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/zsh/" rel="tag">zsh</a>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
+<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
+<a href="/tag/prompt/" rel="tag">prompt</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/python/" rel="tag">python</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/virtualenv/" rel="tag">virtualenv</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/zsh/" rel="tag">zsh</a>
 </div>
-
-		
-		<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-			
-			<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer">
-			</div>
-			
-
-			
-			<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)">
-			
-
-			
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div aria-hidden="true" class="wp-block-spacer" style="height:var(--wp--preset--spacing--40)">
+</div>
+<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)"/>
 <div class="wp-block-comments wp-block-comments-query-loop">
-	
-	<h2 class="wp-block-heading">Comments</h2>
-	
-	<h3 id="comments" class="wp-block-comments-title">8 responses to &#8220;zsh and virtualenv&#8221;</h3>
-	<ol class="wp-block-comment-template">
-<li id="comment-249" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Martin Avatar" src="http://0.gravatar.com/avatar/3949eadbf8213b05e415415b2c17eaee?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/3949eadbf8213b05e415415b2c17eaee?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Martin</div>
-				<div class="wp-block-comment-date"><time datetime="2010-10-14T05:22:57+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-249">October 14, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>So&#8230; you are telling us that you just got your hands dirty on virtualenv but you did NOT discover virtualenvwrapper?!?</p>
+<h2 class="wp-block-heading">Comments</h2>
+<h3 class="wp-block-comments-title" id="comments">8 responses to “zsh and virtualenv”</h3>
+<ol class="wp-block-comment-template">
+<li class="comment even thread-even depth-1" id="comment-249">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Martin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/3949eadbf8213b05e415415b2c17eaee?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/3949eadbf8213b05e415415b2c17eaee?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Martin</div>
+<div class="wp-block-comment-date"><time datetime="2010-10-14T05:22:57+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-249">October 14, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>So… you are telling us that you just got your hands dirty on virtualenv but you did NOT discover virtualenvwrapper?!?</p>
 <p>You should google before you implement something 🙂</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/10/14/zsh-and-virtualenv/?replytocom=249#respond" data-commentid="249" data-postid="1023" data-belowelement="comment-249" data-respondelement="respond" data-replyto="Reply to Martin" aria-label="Reply to Martin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-253" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-10-14T08:42:56+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-253">October 14, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2" id="comment-253">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-10-14T08:42:56+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-253">October 14, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p><em>/me feels sheepish</em></p>
-<p>I found <tt>virtualenv-commands</tt>, somehow missed <tt>virtualenvwrappers</tt>. While Indeed it looks like wrappers could have saved me some of the work, I&#8217;m not sure it would have replaced all or even most of it.</p>
-<p>In particular, the current do-stuff-on-entering-directory hacks you can find in wrappers&#8217; documentation refer to checking for a virtualenv <em>immediately in</em> the directory you&#8217;re at (look for ./.venv), whereas I want to be anywhere in the tree (recursively look upwards for .venv). Also, most of my work was about zsh coloring, and while it&#8217;s mentioned in wrappers&#8217; FAQ as an also-can-do thing, it&#8217;s more a suggestion of the idea than something complete and I think I&#8217;ll have to write most of the scripts I wrote anyway.</p>
+<p>I found <tt>virtualenv-commands</tt>, somehow missed <tt>virtualenvwrappers</tt>. While Indeed it looks like wrappers could have saved me some of the work, I’m not sure it would have replaced all or even most of it.</p>
+<p>In particular, the current do-stuff-on-entering-directory hacks you can find in wrappers’ documentation refer to checking for a virtualenv <em>immediately in</em> the directory you’re at (look for ./.venv), whereas I want to be anywhere in the tree (recursively look upwards for .venv). Also, most of my work was about zsh coloring, and while it’s mentioned in wrappers’ FAQ as an also-can-do thing, it’s more a suggestion of the idea than something complete and I think I’ll have to write most of the scripts I wrote anyway.</p>
 <p>The main thing that ends up being redundant is my <tt>act</tt> function, but then again, that was vy far the easiest bit to write, since I already had <tt>fast_hg_root</tt> (the function practically worked the first time I typed it).</p>
-<p>All in all, of course I should have bloody looked before I implemented something (and more importantly, before blogging about it&#8230;); but where&#8217;s the fun in that?! 🙂</p>
+<p>All in all, of course I should have bloody looked before I implemented something (and more importantly, before blogging about it…); but where’s the fun in that?! 🙂</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/10/14/zsh-and-virtualenv/?replytocom=253#respond" data-commentid="253" data-postid="1023" data-belowelement="comment-253" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 </li>
-<li id="comment-250" class="comment even thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Dj Gilcrease Avatar" src="http://2.gravatar.com/avatar/2734a68774f024b072093ae0c4240b76?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/2734a68774f024b072093ae0c4240b76?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Dj Gilcrease</div>
-				<div class="wp-block-comment-date"><time datetime="2010-10-14T06:41:21+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-250">October 14, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Wondering why the &#8220;hg branch&#8221; command didn&#8217;t work for you to tell you if you are in a hg repository and what branch is active if you are. Other then that very useful I find myself forgetting what virtualenv is active all the time, this should help</p>
+<li class="comment even thread-odd thread-alt depth-1" id="comment-250">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Dj Gilcrease Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/2734a68774f024b072093ae0c4240b76?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/2734a68774f024b072093ae0c4240b76?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Dj Gilcrease</div>
+<div class="wp-block-comment-date"><time datetime="2010-10-14T06:41:21+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-250">October 14, 2010</a></time></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/10/14/zsh-and-virtualenv/?replytocom=250#respond" data-commentid="250" data-postid="1023" data-belowelement="comment-250" data-respondelement="respond" data-replyto="Reply to Dj Gilcrease" aria-label="Reply to Dj Gilcrease">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-252" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-10-14T08:25:20+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-252">October 14, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>I didn&#8217;t use <tt>hg branch</tt> because of the 88-fold decrease in overall performance and significant increase in resource usage:<br>
-[sourcecode light=&#8221;true&#8221;]<br>
-$ pwd<br>
-/tmp/foo/Python-3.1.2/Lib/email/mime<br>
-$ time hg branch<br>
-default<br>
-hg branch  0.14s user 0.03s system 98% cpu 0.176 total<br>
-$ time hg branch<br>
-default<br>
-hg branch  0.14s user 0.03s system 98% cpu 0.176 total<br>
-$ time hg branch<br>
-default<br>
-hg branch  0.14s user 0.03s system 98% cpu 0.176 total<br>
-$ time cat $(walkup .hg)/.hg/branch 2&gt;/dev/null || echo default<br>
-cat $(walkup .hg)/.hg/branch 2&gt; /dev/null  0.00s user 0.00s system 77% cpu 0.002 total<br>
-default<br>
-$ time cat $(walkup .hg)/.hg/branch 2&gt;/dev/null || echo default<br>
-cat $(walkup .hg)/.hg/branch 2&gt; /dev/null  0.00s user 0.00s system 82% cpu 0.002 total<br>
-default<br>
-$ time cat $(walkup .hg)/.hg/branch 2&gt;/dev/null || echo default<br>
-cat $(walkup .hg)/.hg/branch 2&gt; /dev/null  0.00s user 0.00s system 82% cpu 0.002 total<br>
-default<br>
-$<br>
+</div>
+<div class="wp-block-comment-content">
+<p>Wondering why the “hg branch” command didn’t work for you to tell you if you are in a hg repository and what branch is active if you are. Other then that very useful I find myself forgetting what virtualenv is active all the time, this should help</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2" id="comment-252">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-10-14T08:25:20+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-252">October 14, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>I didn’t use <tt>hg branch</tt> because of the 88-fold decrease in overall performance and significant increase in resource usage:<br/>
+[sourcecode light=”true”]<br/>
+$ pwd<br/>
+/tmp/foo/Python-3.1.2/Lib/email/mime<br/>
+$ time hg branch<br/>
+default<br/>
+hg branch  0.14s user 0.03s system 98% cpu 0.176 total<br/>
+$ time hg branch<br/>
+default<br/>
+hg branch  0.14s user 0.03s system 98% cpu 0.176 total<br/>
+$ time hg branch<br/>
+default<br/>
+hg branch  0.14s user 0.03s system 98% cpu 0.176 total<br/>
+$ time cat $(walkup .hg)/.hg/branch 2&gt;/dev/null || echo default<br/>
+cat $(walkup .hg)/.hg/branch 2&gt; /dev/null  0.00s user 0.00s system 77% cpu 0.002 total<br/>
+default<br/>
+$ time cat $(walkup .hg)/.hg/branch 2&gt;/dev/null || echo default<br/>
+cat $(walkup .hg)/.hg/branch 2&gt; /dev/null  0.00s user 0.00s system 82% cpu 0.002 total<br/>
+default<br/>
+$ time cat $(walkup .hg)/.hg/branch 2&gt;/dev/null || echo default<br/>
+cat $(walkup .hg)/.hg/branch 2&gt; /dev/null  0.00s user 0.00s system 82% cpu 0.002 total<br/>
+default<br/>
+$<br/>
 [/sourcecode]</p>
-<p>It may not be much if you type the command now and then to see which branch you&#8217;re on, but <em>for every prompt</em> it ends up being noticeably slow, and if you&#8217;re also compiling something or otherwise chewing your processor/IO &#8211; it&#8217;s much slower.</p>
+<p>It may not be much if you type the command now and then to see which branch you’re on, but <em>for every prompt</em> it ends up being noticeably slow, and if you’re also compiling something or otherwise chewing your processor/IO – it’s much slower.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/10/14/zsh-and-virtualenv/?replytocom=252#respond" data-commentid="252" data-postid="1023" data-belowelement="comment-252" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 </li>
-<li id="comment-251" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Simeon Avatar" src="http://0.gravatar.com/avatar/cee7a7e8e4ceacacca1a4909a43914c3?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/cee7a7e8e4ceacacca1a4909a43914c3?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://metapundit.net/" target="_self">Simeon</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-10-14T06:51:30+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-251">October 14, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>If you&#8217;re going to this level to script management of your virtualenvs you should consider virtualenvwrapper. It gives you a (tab completion enabled) workon command to choose which virtual env to activate and also has the convenient commands to cd/ls the site-packages dir of the currently activated virtual environment. It also has convenience commands for creating/deleting virtual envs and adding globally installed packages. Finally there&#8217;s a hooks system for scripting entry and exit of a virtualenv. A lot there and I saw something about zsh support in 1.6 &#8211; I&#8217;ve never used zsh so ymmv.</p>
+<li class="comment even thread-even depth-1" id="comment-251">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Simeon Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/cee7a7e8e4ceacacca1a4909a43914c3?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/cee7a7e8e4ceacacca1a4909a43914c3?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://metapundit.net/" rel="external nofollow ugc" target="_self">Simeon</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-10-14T06:51:30+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-251">October 14, 2010</a></time></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/10/14/zsh-and-virtualenv/?replytocom=251#respond" data-commentid="251" data-postid="1023" data-belowelement="comment-251" data-respondelement="respond" data-replyto="Reply to Simeon" aria-label="Reply to Simeon">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-254" class="comment odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Seth Avatar" src="http://0.gravatar.com/avatar/f0bb4c8e95d355891ab9028e4bac480e?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/f0bb4c8e95d355891ab9028e4bac480e?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://eseth.org/" target="_self">Seth</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-10-15T02:11:49+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-254">October 15, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+</div>
+<div class="wp-block-comment-content">
+<p>If you’re going to this level to script management of your virtualenvs you should consider virtualenvwrapper. It gives you a (tab completion enabled) workon command to choose which virtual env to activate and also has the convenient commands to cd/ls the site-packages dir of the currently activated virtual environment. It also has convenience commands for creating/deleting virtual envs and adding globally installed packages. Finally there’s a hooks system for scripting entry and exit of a virtualenv. A lot there and I saw something about zsh support in 1.6 – I’ve never used zsh so ymmv.</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-254">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Seth Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/f0bb4c8e95d355891ab9028e4bac480e?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/f0bb4c8e95d355891ab9028e4bac480e?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://eseth.org/" rel="external nofollow ugc" target="_self">Seth</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-10-15T02:11:49+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-254">October 15, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Nice work!</p>
-<p>Zsh comes bundled with functionality for putting VCS information in your prompt called VCS_Info. It&#8217;s documented in the zshcontrib manpage or you can look at the code here:</p>
+<p>Zsh comes bundled with functionality for putting VCS information in your prompt called VCS_Info. It’s documented in the zshcontrib manpage or you can look at the code here:</p>
 <p><a href="http://zsh.git.sourceforge.net/git/gitweb.cgi?p=zsh/zsh;a=tree;f=Functions/VCS_Info" rel="nofollow ugc">http://zsh.git.sourceforge.net/git/gitweb.cgi?p=zsh/zsh;a=tree;f=Functions/VCS_Info</a></p>
-<p>It uses a mechanism very similar to your pure-shell version of walkup to detect when you&#8217;re inside a version-controlled directory. 🙂</p>
+<p>It uses a mechanism very similar to your pure-shell version of walkup to detect when you’re inside a version-controlled directory. 🙂</p>
 <p>You may find reading through the code for the Mercurial backend interesting; I recently did some work on it and I went to great lengths to keep it as fast as possible. If you opt to invoke Mercurial, it does so only once per prompt or you can configure it to use hexdump instead which is very fast.</p>
 <p>The version in the current release of zsh is missing a ton of the cool new features, but you can easily use the new VCS_Info now just by copying the VCS_Info directory and putting it on your fpath. There are instructions at the bottom of this file:</p>
 <p><a href="http://zsh.git.sourceforge.net/git/gitweb.cgi?p=zsh/zsh;a=blob_plain;f=Misc/vcs_info-examples" rel="nofollow ugc">http://zsh.git.sourceforge.net/git/gitweb.cgi?p=zsh/zsh;a=blob_plain;f=Misc/vcs_info-examples</a></p>
 <p>Anyway, thanks for an interesting post. Now I want to add auto-detecting virtualenvs into my own prompt. 😀</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/10/14/zsh-and-virtualenv/?replytocom=254#respond" data-commentid="254" data-postid="1023" data-belowelement="comment-254" data-respondelement="respond" data-replyto="Reply to Seth" aria-label="Reply to Seth">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-255" class="pingback even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar">  </div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://blog.dannynavarro.net/2010/10/16/zsh-prompt-for-virtualenv-git-and-bzr/" target="_self">ZSH prompt for virtualenv, git and bzr &laquo; Danny Navarro&#039;s Blog</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-10-16T18:27:58+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-255">October 16, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>[&#8230;] I have been reading some great posts about customizations of ZSH prompt. In the screenshot below I show how my customized ZSH [&#8230;]</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-35 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/10/14/zsh-and-virtualenv/?replytocom=255#respond" data-commentid="255" data-postid="1023" data-belowelement="comment-255" data-respondelement="respond" data-replyto="Reply to ZSH prompt for virtualenv, git and bzr &laquo; Danny Navarro&#039;s Blog" aria-label="Reply to ZSH prompt for virtualenv, git and bzr &laquo; Danny Navarro&#039;s Blog">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-256" class="comment odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-38 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Dan Crosta Avatar" src="http://2.gravatar.com/avatar/84c6cbd836b65fbb4661ff6ae56359ba?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/84c6cbd836b65fbb4661ff6ae56359ba?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://late.am/" target="_self">Dan Crosta</a></div>
-				<div class="wp-block-comment-date"><time datetime="2011-12-23T03:46:20+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-256">December 23, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>I&#8217;ve recently spent a bit of time customizing virtualenvwrapper through its hooks, and just documented it on my blog: <a href="http://late.am/post/2011/12/22/customize-virtualenvwrapper-for-fun-and-profit" rel="nofollow ugc">http://late.am/post/2011/12/22/customize-virtualenvwrapper-for-fun-and-profit</a> as a sort of reply to your post.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-39 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/10/14/zsh-and-virtualenv/?replytocom=256#respond" data-commentid="256" data-postid="1023" data-belowelement="comment-256" data-respondelement="respond" data-replyto="Reply to Dan Crosta" aria-label="Reply to Dan Crosta">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
+</li>
+<li class="pingback even thread-even depth-1" id="comment-255">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"> </div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://blog.dannynavarro.net/2010/10/16/zsh-prompt-for-virtualenv-git-and-bzr/" rel="external nofollow ugc" target="_self">ZSH prompt for virtualenv, git and bzr « Danny Navarro's Blog</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-10-16T18:27:58+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-255">October 16, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>[…] I have been reading some great posts about customizations of ZSH prompt. In the screenshot below I show how my customized ZSH […]</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-35 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-256">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-38 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Dan Crosta Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/84c6cbd836b65fbb4661ff6ae56359ba?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/84c6cbd836b65fbb4661ff6ae56359ba?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://late.am/" rel="external nofollow ugc" target="_self">Dan Crosta</a></div>
+<div class="wp-block-comment-date"><time datetime="2011-12-23T03:46:20+00:00"><a href="/2010/10/14/zsh-and-virtualenv/#comment-256">December 23, 2011</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>I’ve recently spent a bit of time customizing virtualenvwrapper through its hooks, and just documented it on my blog: <a href="http://late.am/post/2011/12/22/customize-virtualenvwrapper-for-fun-and-profit" rel="nofollow ugc">http://late.am/post/2011/12/22/customize-virtualenvwrapper-for-fun-and-profit</a> as a sort of reply to your post.</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-39 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
 </ol>
 
-	
-
-		<div id="respond" style="padding-top:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);" class="comment-respond wp-block-post-comments-form">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2010/10/14/zsh-and-virtualenv/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="http://localhost/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p>
-<p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p>
-<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit wp-block-button"><input name="submit" type="submit" id="submit" class="wp-block-button__link wp-element-button" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1023" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
 <!-- #respond -->
-	
 </div>
-
-
-
-			
-
-<nav class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-41 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)" aria-label="Posts">
-	<div class="post-navigation-link-previous wp-block-post-navigation-link">
-<span class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow" aria-hidden="true">←</span><a href="/2010/10/01/eulogy-to-a-server/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Eulogy to a server</span></a>
+<nav aria-label="Posts" class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-41 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
+<div class="post-navigation-link-previous wp-block-post-navigation-link">
+<span aria-hidden="true" class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow">←</span><a href="/2010/10/01/eulogy-to-a-server/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Eulogy to a server</span></a>
 </div>
-	<div class="post-navigation-link-next wp-block-post-navigation-link">
-<a href="/2010/12/09/somethings-horribly-wrong-with-dell-and-hp/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Something&#8217;s horribly wrong with Dell (and HP)</span></a><span class="wp-block-post-navigation-link__arrow-next is-arrow-arrow" aria-hidden="true">→</span>
+<div class="post-navigation-link-next wp-block-post-navigation-link">
+<a href="/2010/12/09/somethings-horribly-wrong-with-dell-and-hp/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Something’s horribly wrong with Dell (and HP)</span></a><span aria-hidden="true" class="wp-block-post-navigation-link__arrow-next is-arrow-arrow">→</span>
 </div>
 </nav>
-
-
-
-		</div>
-		
-	</div>
-	
+</div>
+</div>
 </main>
-
-
 <footer class="wp-block-template-part"></footer>
 </div>
-<script src="/wp-includes/js/comment-reply.min.js?ver=6.4.2" id="comment-reply-js" async data-wp-strategy="async"></script>
+<script async="" data-wp-strategy="async" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js?ver=6.4.2"></script>
 <script id="wp-block-template-skip-link-js-after">( function() {
 		var skipLinkTarget = document.querySelector( 'main' ),
 			sibling,
@@ -758,9 +609,8 @@ $<br>
 		sibling.parentElement.insertBefore( skipLink, sibling );
 	}() );</script>
 <!-- start Simple Custom CSS and JS -->
-
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
 <script>window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

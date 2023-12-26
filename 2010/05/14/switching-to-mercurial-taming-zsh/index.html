@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="max-image-preview:large">
-<title>Switching to mercurial: taming zsh &#8211; NIL: .to write(1) ~ help:about</title>
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Feed" href="/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Comments Feed" href="/comments/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Switching to mercurial: taming zsh Comments Feed" href="/2010/05/14/switching-to-mercurial-taming-zsh/feed/">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="max-image-preview:large" name="robots"/>
+<title>Switching to mercurial: taming zsh – NIL: .to write(1) ~ help:about</title>
+<link href="/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Feed" type="application/rss+xml"/>
+<link href="/comments/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Comments Feed" type="application/rss+xml"/>
+<link href="/2010/05/14/switching-to-mercurial-taming-zsh/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Switching to mercurial: taming zsh Comments Feed" type="application/rss+xml"/>
 <script>
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.2"}};
 /*! This file is auto-generated */
@@ -20,7 +21,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 .wp-block-site-title a:where(:not(.wp-element-button)):hover{text-decoration: none;}</style>
 <style id="wp-block-group-inline-css">.wp-block-group{box-sizing:border-box}</style>
 <style id="wp-block-page-list-inline-css">.wp-block-navigation .wp-block-page-list{align-items:var(--navigation-layout-align,initial);background-color:inherit;display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation .wp-block-navigation-item{background-color:inherit}</style>
-<link rel="stylesheet" id="wp-block-navigation-css" href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" media="all">
+<link href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" id="wp-block-navigation-css" media="all" rel="stylesheet"/>
 <style id="wp-block-navigation-inline-css">.wp-block-navigation{font-weight: 500;}
 .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;text-decoration: none;}
 .wp-block-navigation a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
@@ -159,552 +160,366 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 			width: auto;
 			z-index: 100000;
 		}</style>
-<script src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2" id="wp-interactivity-js" defer data-wp-strategy="defer"></script>
-<script src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831" id="wp-block-navigation-view-js" defer data-wp-strategy="defer"></script>
-<link rel="https://api.w.org/" href="/wp-json/">
-<link rel="alternate" type="application/json" href="/wp-json/wp/v2/posts/361">
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 6.4.2">
-<link rel="canonical" href="/2010/05/14/switching-to-mercurial-taming-zsh/">
-<link rel="shortlink" href="/?p=361">
-<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F14%2Fswitching-to-mercurial-taming-zsh%2F">
-<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F14%2Fswitching-to-mercurial-taming-zsh%2F#038;format=xml">
+<script data-wp-strategy="defer" defer="" id="wp-interactivity-js" src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2"></script>
+<script data-wp-strategy="defer" defer="" id="wp-block-navigation-view-js" src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831"></script>
+<link href="/wp-json/" rel="https://api.w.org/"/>
+<link href="/wp-json/wp/v2/posts/361" rel="alternate" type="application/json"/>
+<link href="/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
+<meta content="WordPress 6.4.2" name="generator"/>
+<link href="/2010/05/14/switching-to-mercurial-taming-zsh/" rel="canonical"/>
+<link href="/?p=361" rel="shortlink"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F14%2Fswitching-to-mercurial-taming-zsh%2F" rel="alternate" type="application/json+oembed"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2010%2F05%2F14%2Fswitching-to-mercurial-taming-zsh%2F#038;format=xml" rel="alternate" type="text/xml+oembed"/>
 <style id="wp-fonts-local">@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
 @font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:italic;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_italic_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:normal;font-weight:700;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}</style>
 </head>
-
 <body class="post-template-default single single-post postid-361 single-format-standard wp-embed-responsive">
-
 <div class="wp-site-blocks">
 <header class="wp-block-template-part">
 <div class="wp-block-group alignwide has-base-background-color has-background has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:20px;padding-bottom:20px">
-	
-	<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
-		
-		<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
-			
-
-			
-			<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
-				<p class="wp-block-site-title"><a href="/" target="_self" rel="home">NIL: .to write(1) ~ help:about</a></p>
-			</div>
-			
-		</div>
-		
-
-		<nav class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" aria-label="" data-wp-interactive data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}'><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open " data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
-			<div class="wp-block-navigation__responsive-container  " id="modal-1" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" tabindex="-1">
-				<div class="wp-block-navigation__responsive-close" tabindex="-1">
-					<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
-							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
-						<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
-							<ul class="wp-block-page-list">
+<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
+<p class="wp-block-site-title"><a href="/" rel="home" target="_self">NIL: .to write(1) ~ help:about</a></p>
+</div>
+</div>
+<nav aria-label="" class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}' data-wp-interactive=""><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="1.5" width="16" x="4" y="7.5"></rect><rect height="1.5" width="16" x="4" y="15"></rect></svg></button>
+<div class="wp-block-navigation__responsive-container" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" id="modal-1" tabindex="-1">
+<div class="wp-block-navigation__responsive-close" tabindex="-1">
+<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
+<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
+<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
+<ul class="wp-block-page-list">
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click menu-item-home"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/">About</a></li>
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/all-posts/">All Posts</a></li>
 </ul>
-						</div>
-					</div>
-				</div>
-			</div></nav>
-	</div>
-	
+</div>
+</div>
+</div>
+</div></nav>
+</div>
 </div>
 </header>
-
-
 <main class="wp-block-group alignfull is-layout-flow wp-block-group-is-layout-flow">
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
-		
-
-		
-		<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
-			<h1 class="wp-block-post-title has-x-large-font-size">Switching to mercurial: taming zsh</h1>
-
-			<div class="wp-block-template-part">
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
+<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
+<h1 class="wp-block-post-title has-x-large-font-size">Switching to mercurial: taming zsh</h1>
+<div class="wp-block-template-part">
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-	
-	<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
-		<div class="wp-block-post-date"><time datetime="2010-05-14T04:35:12+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/">May 14, 2010</a></time></div>
-
-		
-		<p class="has-contrast-2-color has-text-color">—</p>
-		
-
-		
-		<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
-		
-
-		<div class="wp-block-post-author-name"><a href="/author/yanivaknin/" target="_self" class="wp-block-post-author-name__link">Yaniv Aknin</a></div>
-
-		<div class="taxonomy-category wp-block-post-terms">
+<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
+<div class="wp-block-post-date"><time datetime="2010-05-14T04:35:12+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/">May 14, 2010</a></time></div>
+<p class="has-contrast-2-color has-text-color">—</p>
+<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
+<div class="wp-block-post-author-name"><a class="wp-block-post-author-name__link" href="/author/yanivaknin/" target="_self">Yaniv Aknin</a></div>
+<div class="taxonomy-category wp-block-post-terms">
 <span class="wp-block-post-terms__prefix">in </span><a href="/category/uncategorized/" rel="tag">Uncategorized</a>
 </div>
-
-	</div>
-	
 </div>
-
-
 </div>
-		</div>
-		
-	</div>
-	
-
-	<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
-<p>A quick one, so you&#8217;ll know not all my posts must have so many words. <a href="http://www.python.org/dev/peps/pep-0385/">PEP 385</a> is <a href="http://www.mail-archive.com/python-dev@python.org/msg45460.html">materializing</a>, and its time to learn <a href="http://mercurial.selenic.com/wiki/GitConcepts">Mercurial</a>. I can&#8217;t say I&#8217;m a Mercurial expert, but I thought migrating all my git-oriented-zsh-gizmos would help me along the way. The conversion is almost done and had just one somewhat noteworthy tidbit.</p>
-<p>A while back I copied from a friend a rather elaborate zsh prompt (not as elaborate as <a href="http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/">some</a> people&#8217;s&#8230;), which includes my current git branch (if any) in it. The code to make it looked like this:<br>
-[sourcecode lang=&#8221;bash&#8221;]<br>
-parse_git_branch() {<br>
-        git branch &#8211;no-color 2&gt; /dev/null | sed -e &#8216;/^[^*]/d&#8217; -e &#8216;s/* \(.*\)/(\1)/&#8217;<br>
+</div>
+</div>
+</div>
+<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
+<p>A quick one, so you’ll know not all my posts must have so many words. <a href="http://www.python.org/dev/peps/pep-0385/">PEP 385</a> is <a href="http://www.mail-archive.com/python-dev@python.org/msg45460.html">materializing</a>, and its time to learn <a href="http://mercurial.selenic.com/wiki/GitConcepts">Mercurial</a>. I can’t say I’m a Mercurial expert, but I thought migrating all my git-oriented-zsh-gizmos would help me along the way. The conversion is almost done and had just one somewhat noteworthy tidbit.</p>
+<p>A while back I copied from a friend a rather elaborate zsh prompt (not as elaborate as <a href="http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/">some</a> people’s…), which includes my current git branch (if any) in it. The code to make it looked like this:<br/>
+[sourcecode lang=”bash”]<br/>
+parse_git_branch() {<br/>
+        git branch –no-color 2&gt; /dev/null | sed -e ‘/^[^*]/d’ -e ‘s/* \(.*\)/(\1)/’<br/>
 }</p>
-<p>function _rprompt_git {<br>
-    local git_branch=&quot;$(parse_git_branch)&quot;<br>
-    if [ -n &quot;$git_branch&quot; ]; then<br>
-        result=&quot;:%{$fg[blue]%}$git_branch$rst&quot;<br>
-    fi<br>
-    echo -n $result<br>
-}<br>
-[/sourcecode]<br>
-I&#8217;ve naïvely added a Mercurial equivalent to <tt>parse_git_branch</tt> using <kbd>hg bookmarks</kbd> or <kbd>hg branch</kbd>, and retrofitted/redubbed <tt>_rprompt_git</tt> into <tt>_rprompt_dvcs</tt>. It worked well, but was <strong>slow</strong>. I&#8217;m not the kind of person to give <tt>hg</tt> grief over reasonable speed differences with the speed monster, but you can&#8217;t wait 0.15 seconds for your friggin&#8217; <em>prompt</em>, now can you (this is not an invitation for a git/hg/bzr performance holy war in the comments, people). Removing a call to <tt>hg</tt> by using <kbd>$ hg root</kbd> just once, storing that value and using <tt>cat</tt> to get the actual branch/bookmark didn&#8217;t speed things up enough. <tt>#mercurial</tt> on freenode was kind but didn&#8217;t know how to help, other than suggest I buy a really fast computer&#8230; Blah, I&#8217;ll have to jot something out in C.</p>
-<p>One bitbucket account later and a bit of tinkering led to <a href="http://bitbucket.org/yaniv_aknin/fast_hg_root" class="code">fast_hg_root</a>, which is a dumb C program which acts as a (fast) replacement to <tt>hg root</tt>. So now my dvcs-prompt-related code includes:<br>
-[sourcecode lang=&#8221;bash&#8221;]<br>
-parse_git_branch() {<br>
-        git branch &#8211;no-color 2&gt; /dev/null | sed -e &#8216;/^[^*]/d&#8217; -e &#8216;s/* \(.*\)/(\1)/&#8217;<br>
+<p>function _rprompt_git {<br/>
+    local git_branch="$(parse_git_branch)"<br/>
+    if [ -n "$git_branch" ]; then<br/>
+        result=":%{$fg[blue]%}$git_branch$rst"<br/>
+    fi<br/>
+    echo -n $result<br/>
+}<br/>
+[/sourcecode]<br/>
+I’ve naïvely added a Mercurial equivalent to <tt>parse_git_branch</tt> using <kbd>hg bookmarks</kbd> or <kbd>hg branch</kbd>, and retrofitted/redubbed <tt>_rprompt_git</tt> into <tt>_rprompt_dvcs</tt>. It worked well, but was <strong>slow</strong>. I’m not the kind of person to give <tt>hg</tt> grief over reasonable speed differences with the speed monster, but you can’t wait 0.15 seconds for your friggin’ <em>prompt</em>, now can you (this is not an invitation for a git/hg/bzr performance holy war in the comments, people). Removing a call to <tt>hg</tt> by using <kbd>$ hg root</kbd> just once, storing that value and using <tt>cat</tt> to get the actual branch/bookmark didn’t speed things up enough. <tt>#mercurial</tt> on freenode was kind but didn’t know how to help, other than suggest I buy a really fast computer… Blah, I’ll have to jot something out in C.</p>
+<p>One bitbucket account later and a bit of tinkering led to <a class="code" href="http://bitbucket.org/yaniv_aknin/fast_hg_root">fast_hg_root</a>, which is a dumb C program which acts as a (fast) replacement to <tt>hg root</tt>. So now my dvcs-prompt-related code includes:<br/>
+[sourcecode lang=”bash”]<br/>
+parse_git_branch() {<br/>
+        git branch –no-color 2&gt; /dev/null | sed -e ‘/^[^*]/d’ -e ‘s/* \(.*\)/(\1)/’<br/>
 }</p>
-<p>parse_hg_branch() {<br>
-        if ! HG_ROOT=$(fast_hg_root) 2&gt; /dev/null; then<br>
-            # not an HG repository, quit<br>
-            return<br>
-        fi<br>
-        BOOKMARK=$(cat &quot;$HG_ROOT&quot;/.hg/bookmarks.current 2&gt; /dev/null)<br>
-        if [ -n &quot;$BOOKMARK&quot; ]; then<br>
-            # have a current bookmark, display that<br>
-            echo $BOOKMARK<br>
-            return<br>
-        fi<br>
-        # display the current branch or &#8216;default&#8217;<br>
-        cat &quot;$HG_ROOT&quot;/.hg/branch 2&gt; /dev/null || echo &#8216;default&#8217;<br>
+<p>parse_hg_branch() {<br/>
+        if ! HG_ROOT=$(fast_hg_root) 2&gt; /dev/null; then<br/>
+            # not an HG repository, quit<br/>
+            return<br/>
+        fi<br/>
+        BOOKMARK=$(cat "$HG_ROOT"/.hg/bookmarks.current 2&gt; /dev/null)<br/>
+        if [ -n "$BOOKMARK" ]; then<br/>
+            # have a current bookmark, display that<br/>
+            echo $BOOKMARK<br/>
+            return<br/>
+        fi<br/>
+        # display the current branch or ‘default’<br/>
+        cat "$HG_ROOT"/.hg/branch 2&gt; /dev/null || echo ‘default’<br/>
 }</p>
-<p>function _rprompt_dvcs {<br>
-    local git_branch=&quot;$(parse_git_branch)&quot;<br>
-    if [ -n &quot;$git_branch&quot; ]; then<br>
-        result=&quot;:%{$fg[blue]%}$git_branch$rst&quot;<br>
-    else<br>
-        local hg_branch=&quot;$(parse_hg_branch)&quot;<br>
-        if [ -n &quot;$hg_branch&quot; ]; then<br>
-            result=&quot;:%{$fg[green]%}$hg_branch$rst&quot;<br>
-        fi<br>
-    fi<br>
-    echo -n $result<br>
-}<br>
+<p>function _rprompt_dvcs {<br/>
+    local git_branch="$(parse_git_branch)"<br/>
+    if [ -n "$git_branch" ]; then<br/>
+        result=":%{$fg[blue]%}$git_branch$rst"<br/>
+    else<br/>
+        local hg_branch="$(parse_hg_branch)"<br/>
+        if [ -n "$hg_branch" ]; then<br/>
+            result=":%{$fg[green]%}$hg_branch$rst"<br/>
+        fi<br/>
+    fi<br/>
+    echo -n $result<br/>
+}<br/>
 [/sourcecode]</p>
-<p>Which leads to my terminal sessions on my netbook <a href="http://en.wikipedia.org/wiki/Monica_Sex" class="code">monica</a> looking like so:<br>
-<a href=":8000/wp-content/uploads/2010/05/dvcs-aware-zsh-prompt.png"><img fetchpriority="high" decoding="async" src=":8000/wp-content/uploads/2010/05/dvcs-aware-zsh-prompt.png" alt="DVCS aware zsh prompts" title="DVCS aware zsh prompts" width="460" height="321" class="aligncenter size-full wp-image-368" srcset="/wp-content/uploads/2010/05/dvcs-aware-zsh-prompt.png 680w, /wp-content/uploads/2010/05/dvcs-aware-zsh-prompt-300x210.png 300w" sizes="(max-width: 460px) 100vw, 460px"></a></p>
-<p>C&#8217;est tout. If someone is interested, I&#8217;ll open a repository with more of my <tt>.zsh.d</tt> stuff. By the way, anyone knows of a good way to capture a terminal into HTML, preserving ANSI color? I know of <a href="http://0xcc.net/ttyrec/index.html.en" class="code">ttyrec</a> and found <a href="http://search.cpan.org/~nuffin/HTML-FromANSI-2.03/lib/HTML/FromANSI.pm" class="code">HTML::FromANSI</a>, but was hoping for a finished program or at least, uhm, a library less in Perl. :p</p>
+<p>Which leads to my terminal sessions on my netbook <a class="code" href="http://en.wikipedia.org/wiki/Monica_Sex">monica</a> looking like so:<br/>
+<a href=":8000/wp-content/uploads/2010/05/dvcs-aware-zsh-prompt.png"><img alt="DVCS aware zsh prompts" class="aligncenter size-full wp-image-368" decoding="async" fetchpriority="high" height="321" sizes="(max-width: 460px) 100vw, 460px" src=":8000/wp-content/uploads/2010/05/dvcs-aware-zsh-prompt.png" srcset="/wp-content/uploads/2010/05/dvcs-aware-zsh-prompt.png 680w, /wp-content/uploads/2010/05/dvcs-aware-zsh-prompt-300x210.png 300w" title="DVCS aware zsh prompts" width="460"/></a></p>
+<p>C’est tout. If someone is interested, I’ll open a repository with more of my <tt>.zsh.d</tt> stuff. By the way, anyone knows of a good way to capture a terminal into HTML, preserving ANSI color? I know of <a class="code" href="http://0xcc.net/ttyrec/index.html.en">ttyrec</a> and found <a class="code" href="http://search.cpan.org/~nuffin/HTML-FromANSI-2.03/lib/HTML/FromANSI.pm">HTML::FromANSI</a>, but was hoping for a finished program or at least, uhm, a library less in Perl. :p</p>
 </div>
-
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
-		<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
-<a href="/tag/hg/" rel="tag">hg</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/mercurial/" rel="tag">mercurial</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/prompt/" rel="tag">prompt</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/zsh/" rel="tag">zsh</a>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
+<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
+<a href="/tag/hg/" rel="tag">hg</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/mercurial/" rel="tag">mercurial</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/prompt/" rel="tag">prompt</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/zsh/" rel="tag">zsh</a>
 </div>
-
-		
-		<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-			
-			<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer">
-			</div>
-			
-
-			
-			<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)">
-			
-
-			
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div aria-hidden="true" class="wp-block-spacer" style="height:var(--wp--preset--spacing--40)">
+</div>
+<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)"/>
 <div class="wp-block-comments wp-block-comments-query-loop">
-	
-	<h2 class="wp-block-heading">Comments</h2>
-	
-	<h3 id="comments" class="wp-block-comments-title">12 responses to &#8220;Switching to mercurial: taming zsh&#8221;</h3>
-	<ol class="wp-block-comment-template">
-<li id="comment-115" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="dubek Avatar" src="http://0.gravatar.com/avatar/05d3ef5e3c3dffb7310e46caa9f7652a?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/05d3ef5e3c3dffb7310e46caa9f7652a?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">dubek</div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-20T11:25:59+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-115">May 20, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>I don&#8217;t know about mercurial, but git comes with a bash script to give you the branch name (if you&#8217;re inside a &#8220;working copy&#8221;), and even the dirty-state and whether you have stashed files.</p>
-<p>I have this in my bash_profile (sorry, haven&#8217;t moved to zsh yet):</p>
-<p>  export GIT_PS1_SHOWDIRTYSTATE=1<br>
-  . /usr/local/git/contrib/completion/git-completion.bash<br>
-  export PS1=&#8217;\u@\h \w$(__git_ps1) \$ &#8216;</p>
+<h2 class="wp-block-heading">Comments</h2>
+<h3 class="wp-block-comments-title" id="comments">12 responses to “Switching to mercurial: taming zsh”</h3>
+<ol class="wp-block-comment-template">
+<li class="comment even thread-even depth-1" id="comment-115">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="dubek Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/05d3ef5e3c3dffb7310e46caa9f7652a?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/05d3ef5e3c3dffb7310e46caa9f7652a?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">dubek</div>
+<div class="wp-block-comment-date"><time datetime="2010-05-20T11:25:59+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-115">May 20, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>I don’t know about mercurial, but git comes with a bash script to give you the branch name (if you’re inside a “working copy”), and even the dirty-state and whether you have stashed files.</p>
+<p>I have this in my bash_profile (sorry, haven’t moved to zsh yet):</p>
+<p>  export GIT_PS1_SHOWDIRTYSTATE=1<br/>
+  . /usr/local/git/contrib/completion/git-completion.bash<br/>
+  export PS1=’\u@\h \w$(__git_ps1) \$ ‘</p>
 <p>The __git_ps1 function uses some plumbing utils like git-rev-parse which are probably faster than git-branch.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/14/switching-to-mercurial-taming-zsh/?replytocom=115#respond" data-commentid="115" data-postid="361" data-belowelement="comment-115" data-respondelement="respond" data-replyto="Reply to dubek" aria-label="Reply to dubek">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-116" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-20T12:32:48+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-116">May 20, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2" id="comment-116">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-20T12:32:48+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-116">May 20, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Sweet, cheers (good to see you among the readers)!</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/14/switching-to-mercurial-taming-zsh/?replytocom=116#respond" data-commentid="116" data-postid="361" data-belowelement="comment-116" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 </li>
-<li id="comment-117" class="comment even thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="ap3rson Avatar" src="http://0.gravatar.com/avatar/ff4e70b896b5e2edb982ae65a03002db?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/ff4e70b896b5e2edb982ae65a03002db?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">ap3rson</div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-20T23:24:02+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-117">May 20, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>I&#8217;ve noticed that you have a broken Wikipedia reference going out to Monica_Sex (a rock band) instead of what I assume is meant to be a reference to Monica Font Family.</p>
+<li class="comment even thread-odd thread-alt depth-1" id="comment-117">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="ap3rson Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/ff4e70b896b5e2edb982ae65a03002db?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/ff4e70b896b5e2edb982ae65a03002db?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">ap3rson</div>
+<div class="wp-block-comment-date"><time datetime="2010-05-20T23:24:02+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-117">May 20, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>I’ve noticed that you have a broken Wikipedia reference going out to Monica_Sex (a rock band) instead of what I assume is meant to be a reference to Monica Font Family.</p>
 <p>-D</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/14/switching-to-mercurial-taming-zsh/?replytocom=117#respond" data-commentid="117" data-postid="361" data-belowelement="comment-117" data-respondelement="respond" data-replyto="Reply to ap3rson" aria-label="Reply to ap3rson">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-118" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-21T02:10:36+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-118">May 21, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-2" id="comment-118">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-05-21T02:10:36+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-118">May 21, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Nope, my hostname is monica, named after the rock band Monica Sex. 🙂</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/14/switching-to-mercurial-taming-zsh/?replytocom=118#respond" data-commentid="118" data-postid="361" data-belowelement="comment-118" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-119" class="comment even depth-3">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="ap3rson Avatar" src="http://0.gravatar.com/avatar/ff4e70b896b5e2edb982ae65a03002db?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/ff4e70b896b5e2edb982ae65a03002db?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">ap3rson</div>
-				<div class="wp-block-comment-date"><time datetime="2010-05-21T18:28:39+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-119">May 21, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Touche sir, my apologies. That&#8217;ll teach me how to read and look at the terminal window more carefully :).</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment even depth-3" id="comment-119">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="ap3rson Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/ff4e70b896b5e2edb982ae65a03002db?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/ff4e70b896b5e2edb982ae65a03002db?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">ap3rson</div>
+<div class="wp-block-comment-date"><time datetime="2010-05-21T18:28:39+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-119">May 21, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Touche sir, my apologies. That’ll teach me how to read and look at the terminal window more carefully :).</p>
 <p>Thanks for great posts.</p>
 <p>-D</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/14/switching-to-mercurial-taming-zsh/?replytocom=119#respond" data-commentid="119" data-postid="361" data-belowelement="comment-119" data-respondelement="respond" data-replyto="Reply to ap3rson" aria-label="Reply to ap3rson">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
-</li></ol>
-</li>
-<li id="comment-120" class="comment odd alt thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Mark Lodato Avatar" src="http://2.gravatar.com/avatar/2ba36f553521381741fcc3f87a48ba04?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/2ba36f553521381741fcc3f87a48ba04?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://github.com/MarkLodato/vt100-parser" target="_self">Mark Lodato</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-08-03T05:05:09+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-120">August 3, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Nice post.  Regarding script-to-HTML formatting, I started a Python program to do exactly that.  Click on my name for the link.  It does not yet support color, but if you express interest, that might give me enough motivation to finish it.  Or, I&#8217;d gladly accept patches&#8230; 🙂</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/14/switching-to-mercurial-taming-zsh/?replytocom=120#respond" data-commentid="120" data-postid="361" data-belowelement="comment-120" data-respondelement="respond" data-replyto="Reply to Mark Lodato" aria-label="Reply to Mark Lodato">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-121" class="comment even depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Mark Lodato Avatar" src="http://2.gravatar.com/avatar/2ba36f553521381741fcc3f87a48ba04?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/2ba36f553521381741fcc3f87a48ba04?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://github.com/MarkLodato/vt100-parser" target="_self">Mark Lodato</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-08-03T05:07:18+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-121">August 3, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Man, it&#8217;s been a while since I&#8217;ve looked at it.  It *does* support color &#8211; I just don&#8217;t have test cases for them yet.  So, it probably works.  It does not yet support 256 color output &#8211; just normal 8-bit (+ bold) colors.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-35 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/14/switching-to-mercurial-taming-zsh/?replytocom=121#respond" data-commentid="121" data-postid="361" data-belowelement="comment-121" data-respondelement="respond" data-replyto="Reply to Mark Lodato" aria-label="Reply to Mark Lodato">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-122" class="comment odd alt depth-3">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-38 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Mark Lodato Avatar" src="http://2.gravatar.com/avatar/2ba36f553521381741fcc3f87a48ba04?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/2ba36f553521381741fcc3f87a48ba04?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://github.com/MarkLodato/vt100-parser" target="_self">Mark Lodato</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-08-03T05:08:11+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-122">August 3, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>I wish I could edit or delete my posts.  I meant 8-color, not 8-bit color.  I&#8217;ll stop now.</p>
-</div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-39 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/14/switching-to-mercurial-taming-zsh/?replytocom=122#respond" data-commentid="122" data-postid="361" data-belowelement="comment-122" data-respondelement="respond" data-replyto="Reply to Mark Lodato" aria-label="Reply to Mark Lodato">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-123" class="comment byuser comment-author-yanivaknin bypostauthor even depth-4">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-42 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-08-04T12:42:41+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-123">August 4, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Thanks for your interest/support. I&#8217;d be happy to take a look at your program as soon as I can (I&#8217;m a bit on a schedule these days, but due to <a href="http://tech.blog.aknin.name/2010/06/19/gosh-its-hot-here/" rel="nofollow ugc">good</a> reasons&#8230;), will see if I can provide feedback or even patches at a later time. By the way, I <em>can</em> edit your comments, I just wasn&#8217;t sure if you&#8217;d want me to&#8230; 🙂</p>
-</div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-43 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/14/switching-to-mercurial-taming-zsh/?replytocom=123#respond" data-commentid="123" data-postid="361" data-belowelement="comment-123" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
 </li></ol>
 </li></ol>
 </li>
-<li id="comment-124" class="comment odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-46 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Brec Carson Avatar" src="http://2.gravatar.com/avatar/28f892ecc97c0e95ecd2edea41e73169?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/28f892ecc97c0e95ecd2edea41e73169?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Brec Carson</div>
-				<div class="wp-block-comment-date"><time datetime="2010-10-28T03:02:33+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-124">October 28, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+<li class="comment odd alt thread-even depth-1" id="comment-120">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Mark Lodato Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/2ba36f553521381741fcc3f87a48ba04?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/2ba36f553521381741fcc3f87a48ba04?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://github.com/MarkLodato/vt100-parser" rel="external nofollow ugc" target="_self">Mark Lodato</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-08-03T05:05:09+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-120">August 3, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Nice post.  Regarding script-to-HTML formatting, I started a Python program to do exactly that.  Click on my name for the link.  It does not yet support color, but if you express interest, that might give me enough motivation to finish it.  Or, I’d gladly accept patches… 🙂</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment even depth-2" id="comment-121">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Mark Lodato Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/2ba36f553521381741fcc3f87a48ba04?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/2ba36f553521381741fcc3f87a48ba04?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://github.com/MarkLodato/vt100-parser" rel="external nofollow ugc" target="_self">Mark Lodato</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-08-03T05:07:18+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-121">August 3, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Man, it’s been a while since I’ve looked at it.  It *does* support color – I just don’t have test cases for them yet.  So, it probably works.  It does not yet support 256 color output – just normal 8-bit (+ bold) colors.</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-35 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment odd alt depth-3" id="comment-122">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-38 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Mark Lodato Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/2ba36f553521381741fcc3f87a48ba04?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/2ba36f553521381741fcc3f87a48ba04?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://github.com/MarkLodato/vt100-parser" rel="external nofollow ugc" target="_self">Mark Lodato</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-08-03T05:08:11+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-122">August 3, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>I wish I could edit or delete my posts.  I meant 8-color, not 8-bit color.  I’ll stop now.</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-39 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor even depth-4" id="comment-123">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-42 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-08-04T12:42:41+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-123">August 4, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>Thanks for your interest/support. I’d be happy to take a look at your program as soon as I can (I’m a bit on a schedule these days, but due to <a href="http://tech.blog.aknin.name/2010/06/19/gosh-its-hot-here/" rel="nofollow ugc">good</a> reasons…), will see if I can provide feedback or even patches at a later time. By the way, I <em>can</em> edit your comments, I just wasn’t sure if you’d want me to… 🙂</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-43 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
+</li></ol>
+</li></ol>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-124">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-46 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Brec Carson Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/28f892ecc97c0e95ecd2edea41e73169?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/28f892ecc97c0e95ecd2edea41e73169?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Brec Carson</div>
+<div class="wp-block-comment-date"><time datetime="2010-10-28T03:02:33+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-124">October 28, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>why not just use sed to parse hg branch like is done for git?  too slow?</p>
-<p>that&#8217;s the approach I&#8217;m taking but don&#8217;t know sed very well so was hoping to see a shortcut here.</p>
+<p>that’s the approach I’m taking but don’t know sed very well so was hoping to see a shortcut here.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-47 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/14/switching-to-mercurial-taming-zsh/?replytocom=124#respond" data-commentid="124" data-postid="361" data-belowelement="comment-124" data-respondelement="respond" data-replyto="Reply to Brec Carson" aria-label="Reply to Brec Carson">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-125" class="comment even depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-50 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Brec Carson Avatar" src="http://2.gravatar.com/avatar/28f892ecc97c0e95ecd2edea41e73169?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/28f892ecc97c0e95ecd2edea41e73169?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Brec Carson</div>
-				<div class="wp-block-comment-date"><time datetime="2010-10-28T03:24:44+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-125">October 28, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>what I&#8217;ve gotten to work that has turned out to be quite easy and fast is this:</p>
-<p>parse_hg_branch() {<br>
-  hg branch  1&gt; /dev/null 2&gt; /dev/null | sed<br>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-47 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+<ol><li class="comment even depth-2" id="comment-125">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-50 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Brec Carson Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://2.gravatar.com/avatar/28f892ecc97c0e95ecd2edea41e73169?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/28f892ecc97c0e95ecd2edea41e73169?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Brec Carson</div>
+<div class="wp-block-comment-date"><time datetime="2010-10-28T03:24:44+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-125">October 28, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>what I’ve gotten to work that has turned out to be quite easy and fast is this:</p>
+<p>parse_hg_branch() {<br/>
+  hg branch  1&gt; /dev/null 2&gt; /dev/null | sed<br/>
 }</p>
-<p>I&#8217;m very naive wrt shell scripting experience so any advice is welcome.</p>
+<p>I’m very naive wrt shell scripting experience so any advice is welcome.</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-51 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/14/switching-to-mercurial-taming-zsh/?replytocom=125#respond" data-commentid="125" data-postid="361" data-belowelement="comment-125" data-respondelement="respond" data-replyto="Reply to Brec Carson" aria-label="Reply to Brec Carson">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-126" class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-3">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-54 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" loading="lazy" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2010-10-28T04:44:52+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-126">October 28, 2010</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>As I wrote in the article, <tt>hg branch</tt> does exactly what you need already, but being a Python process and wanting it to appear in the prompt causes it to be too slow. Also, piping through <tt>sed</tt> without any arguments has no text manipulation effect, it&#8217;s much like not piping it through anything at all. If it&#8217;s fast enough for your need, which it most likely is, vanilla <tt>hg branch</tt> is good enough.</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-51 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-55 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2010/05/14/switching-to-mercurial-taming-zsh/?replytocom=126#respond" data-commentid="126" data-postid="361" data-belowelement="comment-126" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor odd alt depth-3" id="comment-126">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-54 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" loading="lazy" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2010-10-28T04:44:52+00:00"><a href="/2010/05/14/switching-to-mercurial-taming-zsh/#comment-126">October 28, 2010</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>As I wrote in the article, <tt>hg branch</tt> does exactly what you need already, but being a Python process and wanting it to appear in the prompt causes it to be too slow. Also, piping through <tt>sed</tt> without any arguments has no text manipulation effect, it’s much like not piping it through anything at all. If it’s fast enough for your need, which it most likely is, vanilla <tt>hg branch</tt> is good enough.</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-55 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 </li></ol>
 </li>
 </ol>
 
-	
-
-		<div id="respond" style="padding-top:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);" class="comment-respond wp-block-post-comments-form">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2010/05/14/switching-to-mercurial-taming-zsh/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="http://localhost/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p>
-<p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p>
-<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit wp-block-button"><input name="submit" type="submit" id="submit" class="wp-block-button__link wp-element-button" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="361" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
 <!-- #respond -->
-	
 </div>
-
-
-
-			
-
-<nav class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-57 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)" aria-label="Posts">
-	<div class="post-navigation-link-previous wp-block-post-navigation-link">
-<span class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow" aria-hidden="true">←</span><a href="/2010/05/12/pythons-innards-objects-101/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Python&#8217;s Innards: Objects 101</span></a>
+<nav aria-label="Posts" class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-57 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
+<div class="post-navigation-link-previous wp-block-post-navigation-link">
+<span aria-hidden="true" class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow">←</span><a href="/2010/05/12/pythons-innards-objects-101/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Python’s Innards: Objects 101</span></a>
 </div>
-	<div class="post-navigation-link-next wp-block-post-navigation-link">
-<a href="/2010/05/19/pythons-innards-objects-102/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Python&#8217;s Innards: Objects 102</span></a><span class="wp-block-post-navigation-link__arrow-next is-arrow-arrow" aria-hidden="true">→</span>
+<div class="post-navigation-link-next wp-block-post-navigation-link">
+<a href="/2010/05/19/pythons-innards-objects-102/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Python’s Innards: Objects 102</span></a><span aria-hidden="true" class="wp-block-post-navigation-link__arrow-next is-arrow-arrow">→</span>
 </div>
 </nav>
-
-
-
-		</div>
-		
-	</div>
-	
+</div>
+</div>
 </main>
-
-
 <footer class="wp-block-template-part"></footer>
 </div>
-<script src="/wp-includes/js/comment-reply.min.js?ver=6.4.2" id="comment-reply-js" async data-wp-strategy="async"></script>
+<script async="" data-wp-strategy="async" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js?ver=6.4.2"></script>
 <script id="wp-block-template-skip-link-js-after">( function() {
 		var skipLinkTarget = document.querySelector( 'main' ),
 			sibling,
@@ -744,9 +559,8 @@ parse_git_branch() {<br>
 		sibling.parentElement.insertBefore( skipLink, sibling );
 	}() );</script>
 <!-- start Simple Custom CSS and JS -->
-
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
 <script>window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

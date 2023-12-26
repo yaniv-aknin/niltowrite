@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="max-image-preview:large">
-<title>nginx+gzip module might silently corrupt data upon backend failure &#8211; NIL: .to write(1) ~ help:about</title>
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Feed" href="/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Comments Feed" href="/comments/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; nginx+gzip module might silently corrupt data upon backend failure Comments Feed" href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/feed/">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="max-image-preview:large" name="robots"/>
+<title>nginx+gzip module might silently corrupt data upon backend failure – NIL: .to write(1) ~ help:about</title>
+<link href="/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Feed" type="application/rss+xml"/>
+<link href="/comments/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Comments Feed" type="application/rss+xml"/>
+<link href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » nginx+gzip module might silently corrupt data upon backend failure Comments Feed" type="application/rss+xml"/>
 <script>
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.2"}};
 /*! This file is auto-generated */
@@ -20,7 +21,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 .wp-block-site-title a:where(:not(.wp-element-button)):hover{text-decoration: none;}</style>
 <style id="wp-block-group-inline-css">.wp-block-group{box-sizing:border-box}</style>
 <style id="wp-block-page-list-inline-css">.wp-block-navigation .wp-block-page-list{align-items:var(--navigation-layout-align,initial);background-color:inherit;display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation .wp-block-navigation-item{background-color:inherit}</style>
-<link rel="stylesheet" id="wp-block-navigation-css" href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" media="all">
+<link href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" id="wp-block-navigation-css" media="all" rel="stylesheet"/>
 <style id="wp-block-navigation-inline-css">.wp-block-navigation{font-weight: 500;}
 .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;text-decoration: none;}
 .wp-block-navigation a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
@@ -159,266 +160,160 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 			width: auto;
 			z-index: 100000;
 		}</style>
-<script src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2" id="wp-interactivity-js" defer data-wp-strategy="defer"></script>
-<script src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831" id="wp-block-navigation-view-js" defer data-wp-strategy="defer"></script>
-<link rel="https://api.w.org/" href="/wp-json/">
-<link rel="alternate" type="application/json" href="/wp-json/wp/v2/posts/1131">
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 6.4.2">
-<link rel="canonical" href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/">
-<link rel="shortlink" href="/?p=1131">
-<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2011%2F11%2F04%2Fnginxgzip-module-might-silently-corrupt-data-upon-backend-failure%2F">
-<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2011%2F11%2F04%2Fnginxgzip-module-might-silently-corrupt-data-upon-backend-failure%2F#038;format=xml">
+<script data-wp-strategy="defer" defer="" id="wp-interactivity-js" src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2"></script>
+<script data-wp-strategy="defer" defer="" id="wp-block-navigation-view-js" src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831"></script>
+<link href="/wp-json/" rel="https://api.w.org/"/>
+<link href="/wp-json/wp/v2/posts/1131" rel="alternate" type="application/json"/>
+<link href="/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
+<meta content="WordPress 6.4.2" name="generator"/>
+<link href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/" rel="canonical"/>
+<link href="/?p=1131" rel="shortlink"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2011%2F11%2F04%2Fnginxgzip-module-might-silently-corrupt-data-upon-backend-failure%2F" rel="alternate" type="application/json+oembed"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2011%2F11%2F04%2Fnginxgzip-module-might-silently-corrupt-data-upon-backend-failure%2F#038;format=xml" rel="alternate" type="text/xml+oembed"/>
 <style id="wp-fonts-local">@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
 @font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:italic;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_italic_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:normal;font-weight:700;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}</style>
 </head>
-
 <body class="post-template-default single single-post postid-1131 single-format-standard wp-embed-responsive">
-
 <div class="wp-site-blocks">
 <header class="wp-block-template-part">
 <div class="wp-block-group alignwide has-base-background-color has-background has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:20px;padding-bottom:20px">
-	
-	<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
-		
-		<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
-			
-
-			
-			<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
-				<p class="wp-block-site-title"><a href="/" target="_self" rel="home">NIL: .to write(1) ~ help:about</a></p>
-			</div>
-			
-		</div>
-		
-
-		<nav class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" aria-label="" data-wp-interactive data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}'><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open " data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
-			<div class="wp-block-navigation__responsive-container  " id="modal-1" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" tabindex="-1">
-				<div class="wp-block-navigation__responsive-close" tabindex="-1">
-					<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
-							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
-						<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
-							<ul class="wp-block-page-list">
+<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
+<p class="wp-block-site-title"><a href="/" rel="home" target="_self">NIL: .to write(1) ~ help:about</a></p>
+</div>
+</div>
+<nav aria-label="" class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}' data-wp-interactive=""><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="1.5" width="16" x="4" y="7.5"></rect><rect height="1.5" width="16" x="4" y="15"></rect></svg></button>
+<div class="wp-block-navigation__responsive-container" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" id="modal-1" tabindex="-1">
+<div class="wp-block-navigation__responsive-close" tabindex="-1">
+<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
+<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
+<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
+<ul class="wp-block-page-list">
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click menu-item-home"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/">About</a></li>
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/all-posts/">All Posts</a></li>
 </ul>
-						</div>
-					</div>
-				</div>
-			</div></nav>
-	</div>
-	
+</div>
+</div>
+</div>
+</div></nav>
+</div>
 </div>
 </header>
-
-
 <main class="wp-block-group alignfull is-layout-flow wp-block-group-is-layout-flow">
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
-		
-
-		
-		<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
-			<h1 class="wp-block-post-title has-x-large-font-size">nginx+gzip module might silently corrupt data upon backend failure</h1>
-
-			<div class="wp-block-template-part">
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
+<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
+<h1 class="wp-block-post-title has-x-large-font-size">nginx+gzip module might silently corrupt data upon backend failure</h1>
+<div class="wp-block-template-part">
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-	
-	<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
-		<div class="wp-block-post-date"><time datetime="2011-11-04T11:33:20+00:00"><a href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/">Nov 4, 2011</a></time></div>
-
-		
-		<p class="has-contrast-2-color has-text-color">—</p>
-		
-
-		
-		<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
-		
-
-		<div class="wp-block-post-author-name"><a href="/author/yanivaknin/" target="_self" class="wp-block-post-author-name__link">Yaniv Aknin</a></div>
-
-		<div class="taxonomy-category wp-block-post-terms">
+<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
+<div class="wp-block-post-date"><time datetime="2011-11-04T11:33:20+00:00"><a href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/">Nov 4, 2011</a></time></div>
+<p class="has-contrast-2-color has-text-color">—</p>
+<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
+<div class="wp-block-post-author-name"><a class="wp-block-post-author-name__link" href="/author/yanivaknin/" target="_self">Yaniv Aknin</a></div>
+<div class="taxonomy-category wp-block-post-terms">
 <span class="wp-block-post-terms__prefix">in </span><a href="/category/uncategorized/" rel="tag">Uncategorized</a>
 </div>
-
-	</div>
-	
 </div>
-
-
 </div>
-		</div>
-		
-	</div>
-	
-
-	<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
-<p>There are several elements that make absolutely certain the page you&#8217;re reading in your browser is an accurate representation of the resource the HTTP server meant to send you<sup>1</sup>. Disregarding caching for a minute, we have two elements making sure the representation you get is protected from errors. The first protecting element is, of course, TCP, making sure that if the server wrote two-hundred bytes in a particular order, either they&#8217;ll all arrive to your end (in order and without errors) or your TCP stack will realize something bad happened and give your user-agent (your browser) a chance to cope with the error. The need for the second protecting element is a bit more sneaky: TCP will guarantee everything the server <em>wrote</em> will arrive, i.e., bytes for which the server called <tt>write(2)</tt> or equivalent will arrive (or you&#8217;ll know something went wrong). But what about bytes the server <em>should</em> have written but didn&#8217;t write all &#8211; for example, because some component on the server&#8217;s side failed?</p>
-<p>The <a href="http://www.w3.org/Protocols/HTTP/AsImplemented.html">original</a> HTTP (HTTP 0.9, 1996 time) didn&#8217;t cope with this situation at all. The signal to the client that the server finished talking was to disconnect the TCP session, which, from the client&#8217;s side, is a vague signal. Did the TCP server disconnect because it finished or because it ran into trouble (software fault, sysadmin action, kernel behaviour due to memory pressure or even a bug, etc)? Thankfully, current HTTP kicks in to complement TCP, allowing the server to do one of several things in order to make sure you&#8217;ll at least know you didn&#8217;t receive the whole picture. By far the two most common thing the server will do are to specify a <tt>Content-Length</tt> in the response&#8217;s header or to use a <tt>Transfer-Encoding</tt>, most probably <tt>chunked</tt> transfer encoding.</p>
-<p>Content length is simple to grasp. The server wishes to say 200 bytes. It explicitly says: &#8220;I will say 200 bytes&#8221; in the response header. If the user-agent didn&#8217;t receive 200 bytes of response, it knows something went wrong. Chunked transfer encoding is only slightly more complex &#8211; the server will send the response in chunks, each chunks prefixed by the length of the chunk. The end of the document is marked by a zero-length chunk. So if the user-agent saw a chunk cut in the middle, or didn&#8217;t receive a zero-length chunk, it also knows something went wrong and has a chance to decide what to do about it. For example, when faced with incorrect content length, Chrome displays an <tt>ERR_CONNECTION_CLOSED</tt> error, whereas Firefox would display the portion of the page it did receive. Different behaviour, yes, but at least both user-agents in this example had a chance realize the response they received is partial. Which is really, really important, you know why? I&#8217;ll tell you why.</p>
-<p>Enter caching. HTTP caching is a non-trivial matter with many unexpected gotchas and pitfalls, and I can&#8217;t cover it all here (why the complexity? I think it&#8217;s because <em>all caching</em> is an intentional form of <a href="http://en.wikipedia.org/wiki/Don%27t_Repeat_Yourself">data/state repetition</a>, and repetition is something that in my experience humans often have difficulty reasoning about). By far the best document I know about HTTP caching is <a href="http://www.mnot.net/cache_docs/">this</a> splendid guide, but if you&#8217;re in a hurry or impatient, let me summarize the points interesting for this particular post. First, caches might exist in many places, some of them might be surprising, some of them might be slightly broken or at least very aggressive (ISP transparent caches, mutter mutter cough cough). Second, among many other things, HTTP caching lets a server give a client a token together resource, telling the client &#8220;next time you request this resource, tell me you have this token; maybe I&#8217;ll just tell you that the representation you got with this token is still fresh, without transferring it all over again&#8221;. This is called an <tt>ETag</tt>, and the response that says &#8220;just use what you have in your cache&#8221; is called HTTP <tt>304 NOT MODIFIED</tt>.</p>
-<p>How is this relevant to HTTP responses cut in the middle? Well, if servers didn&#8217;t have a way of telling the user-agent how long is the document, and if the response was cut in the middle due to a server fault as described above, the user-agent/sneaky-caching-proxy might cache incorrect responses. If the server also sends an <tt>ETag</tt> along with the response, the caching entity will store this <tt>ETag</tt> along with the invalid cached representation, and even when it&#8217;s time to check the representation&#8217;s freshness with the origin server, the server will just take a look at the <tt>ETag</tt>, say &#8220;yep, this is fine&#8221;, tell the cache to keep using the bad representation and &lt;sinister&gt;never ever let it recover&lt;/sinister&gt;. If this happens on a large ISP&#8217;s transparent cache, easily tens of thousand of your users could be affected. If the affected resource is a common element in many of your pages with strict syntax checking, like a javascript resource, you&#8217;re kinda screwed. The only hope in such a condition is that the client, for some reason, will specify <tt>Cache-Control: no-cache</tt> in the request, and that caching entities along the path to the server will honour this request. Browsers like caching, so they won&#8217;t usually request <tt>no-cache</tt>, although AFAIK, recently Chrome started sending <tt>no-cache</tt> when the user explicitly requests a force-reload (Cmd-R on a Mac). Other browsers don&#8217;t fare as well, and I think that hoping one of your Chrome users will force reload the bad resource in time to save the day is hardly a sturdy solution.</p>
-<p>Bottom line is, it&#8217;s really important to know when a representation of a resource is broken. Which is why I was quite amazed to learn that my HTTP server of choice, nginx, doesn&#8217;t validate the <tt>Content-Length</tt> it receives from its upstreams and is simply unaware when the response it received from an upstream server is chopped off. If your response specifies a content length but closes the connection without delivering enough bytes, nginx will simply stall the request for a long time without closing the connection downstream, even though it has no hope of receiving additional data to push downstream. I tried this both with <tt>proxy_pass</tt> and <tt>uwsgi_pass</tt>, but I&#8217;m quite confident it&#8217;s true for other backends (<tt>fastcgi_pass</tt>, <tt>scgi_pass</tt>, etc). This is bad, but not as bad as the case where you want an nginx module to manipulate your content, removing existing content length/transfer encoding and applying its own (the <a href="http://wiki.nginx.org/HttpGzipModule#gzip_http_version">gzip</a> module indeed does that). If a backend error occurs while content-length-oblivious-nginx is altering the data, the content altering module will apply what it applies to the bytes it received, <em>add new content-length/transfer-encoding, assuring everyone the response is OK</em>, and entice user-agents or even proxies to enter the almost-never-recover bad cache scenario I described in the previews paragraph. Ouch!</p>
-<p>The proper way to fix this, IMHO, is that nginx simply must start looking at the upstream&#8217;s content length (or transfer encoding, once nginx starts using chunked responses with its upstreams). Part of the reason I&#8217;m writing this post is that Maxim Dounin, venerable nginx comitter and an OK chap overall, <a href="http://forum.nginx.org/read.php?2,216085,216094#msg-216094">told me</a> he doesn&#8217;t consider this a top priority at the moment, but I humbly disagree with his assessment of how serious the issue is. Until such a time as nginx is fixed about this, I think you must disable all content-manipulating nginx modules and instead handle all message length affecting work in your upstream (compression, addition, etc). This is what I opted to do with my django based web app, I replaced nginx&#8217;s gzip module with Django&#8217;s <tt><a href="https://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware.gzip">GZipMiddleware</a></tt>. It&#8217;s a terrible shame though. It&#8217;s doing the job of nginx for it, probably in a lesser fashion than how nginx could, it <a href="http://www.python.org/dev/peps/pep-0333/#handling-the-content-length-header">violates</a> a <b>must not</b> clause in Python&#8217;s WSGI PEP333, and I have empiric proof that Tim Berners-Lee chokes a kitten every time you do it.</p>
-<p>But what&#8217;s the alternative? Risk invisibly cached corrupt data for an undetermined length of time? Ditch nginx, which I think is the best HTTP server on this planet despite this debacle? Nah. Both are unacceptable.</p>
-<hr>
-
-<p><span class="footer"><sup>1</sup> This post assumes convenient values of &#8220;absolutely certain&#8221;; also, everything related to security/content tampering is out of scope in this post. I&#8217;m talking about possibly misbehaving but certainly well-meaning components.</span></p>
 </div>
-
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
-		<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
-<a href="/tag/django/" rel="tag">django</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/http/" rel="tag">http</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/nginx/" rel="tag">nginx</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/python/" rel="tag">python</a>
 </div>
-
-		
-		<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-			
-			<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer">
-			</div>
-			
-
-			
-			<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)">
-			
-
-			
-
+</div>
+<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
+<p>There are several elements that make absolutely certain the page you’re reading in your browser is an accurate representation of the resource the HTTP server meant to send you<sup>1</sup>. Disregarding caching for a minute, we have two elements making sure the representation you get is protected from errors. The first protecting element is, of course, TCP, making sure that if the server wrote two-hundred bytes in a particular order, either they’ll all arrive to your end (in order and without errors) or your TCP stack will realize something bad happened and give your user-agent (your browser) a chance to cope with the error. The need for the second protecting element is a bit more sneaky: TCP will guarantee everything the server <em>wrote</em> will arrive, i.e., bytes for which the server called <tt>write(2)</tt> or equivalent will arrive (or you’ll know something went wrong). But what about bytes the server <em>should</em> have written but didn’t write all – for example, because some component on the server’s side failed?</p>
+<p>The <a href="http://www.w3.org/Protocols/HTTP/AsImplemented.html">original</a> HTTP (HTTP 0.9, 1996 time) didn’t cope with this situation at all. The signal to the client that the server finished talking was to disconnect the TCP session, which, from the client’s side, is a vague signal. Did the TCP server disconnect because it finished or because it ran into trouble (software fault, sysadmin action, kernel behaviour due to memory pressure or even a bug, etc)? Thankfully, current HTTP kicks in to complement TCP, allowing the server to do one of several things in order to make sure you’ll at least know you didn’t receive the whole picture. By far the two most common thing the server will do are to specify a <tt>Content-Length</tt> in the response’s header or to use a <tt>Transfer-Encoding</tt>, most probably <tt>chunked</tt> transfer encoding.</p>
+<p>Content length is simple to grasp. The server wishes to say 200 bytes. It explicitly says: “I will say 200 bytes” in the response header. If the user-agent didn’t receive 200 bytes of response, it knows something went wrong. Chunked transfer encoding is only slightly more complex – the server will send the response in chunks, each chunks prefixed by the length of the chunk. The end of the document is marked by a zero-length chunk. So if the user-agent saw a chunk cut in the middle, or didn’t receive a zero-length chunk, it also knows something went wrong and has a chance to decide what to do about it. For example, when faced with incorrect content length, Chrome displays an <tt>ERR_CONNECTION_CLOSED</tt> error, whereas Firefox would display the portion of the page it did receive. Different behaviour, yes, but at least both user-agents in this example had a chance realize the response they received is partial. Which is really, really important, you know why? I’ll tell you why.</p>
+<p>Enter caching. HTTP caching is a non-trivial matter with many unexpected gotchas and pitfalls, and I can’t cover it all here (why the complexity? I think it’s because <em>all caching</em> is an intentional form of <a href="http://en.wikipedia.org/wiki/Don%27t_Repeat_Yourself">data/state repetition</a>, and repetition is something that in my experience humans often have difficulty reasoning about). By far the best document I know about HTTP caching is <a href="http://www.mnot.net/cache_docs/">this</a> splendid guide, but if you’re in a hurry or impatient, let me summarize the points interesting for this particular post. First, caches might exist in many places, some of them might be surprising, some of them might be slightly broken or at least very aggressive (ISP transparent caches, mutter mutter cough cough). Second, among many other things, HTTP caching lets a server give a client a token together resource, telling the client “next time you request this resource, tell me you have this token; maybe I’ll just tell you that the representation you got with this token is still fresh, without transferring it all over again”. This is called an <tt>ETag</tt>, and the response that says “just use what you have in your cache” is called HTTP <tt>304 NOT MODIFIED</tt>.</p>
+<p>How is this relevant to HTTP responses cut in the middle? Well, if servers didn’t have a way of telling the user-agent how long is the document, and if the response was cut in the middle due to a server fault as described above, the user-agent/sneaky-caching-proxy might cache incorrect responses. If the server also sends an <tt>ETag</tt> along with the response, the caching entity will store this <tt>ETag</tt> along with the invalid cached representation, and even when it’s time to check the representation’s freshness with the origin server, the server will just take a look at the <tt>ETag</tt>, say “yep, this is fine”, tell the cache to keep using the bad representation and &lt;sinister&gt;never ever let it recover&lt;/sinister&gt;. If this happens on a large ISP’s transparent cache, easily tens of thousand of your users could be affected. If the affected resource is a common element in many of your pages with strict syntax checking, like a javascript resource, you’re kinda screwed. The only hope in such a condition is that the client, for some reason, will specify <tt>Cache-Control: no-cache</tt> in the request, and that caching entities along the path to the server will honour this request. Browsers like caching, so they won’t usually request <tt>no-cache</tt>, although AFAIK, recently Chrome started sending <tt>no-cache</tt> when the user explicitly requests a force-reload (Cmd-R on a Mac). Other browsers don’t fare as well, and I think that hoping one of your Chrome users will force reload the bad resource in time to save the day is hardly a sturdy solution.</p>
+<p>Bottom line is, it’s really important to know when a representation of a resource is broken. Which is why I was quite amazed to learn that my HTTP server of choice, nginx, doesn’t validate the <tt>Content-Length</tt> it receives from its upstreams and is simply unaware when the response it received from an upstream server is chopped off. If your response specifies a content length but closes the connection without delivering enough bytes, nginx will simply stall the request for a long time without closing the connection downstream, even though it has no hope of receiving additional data to push downstream. I tried this both with <tt>proxy_pass</tt> and <tt>uwsgi_pass</tt>, but I’m quite confident it’s true for other backends (<tt>fastcgi_pass</tt>, <tt>scgi_pass</tt>, etc). This is bad, but not as bad as the case where you want an nginx module to manipulate your content, removing existing content length/transfer encoding and applying its own (the <a href="http://wiki.nginx.org/HttpGzipModule#gzip_http_version">gzip</a> module indeed does that). If a backend error occurs while content-length-oblivious-nginx is altering the data, the content altering module will apply what it applies to the bytes it received, <em>add new content-length/transfer-encoding, assuring everyone the response is OK</em>, and entice user-agents or even proxies to enter the almost-never-recover bad cache scenario I described in the previews paragraph. Ouch!</p>
+<p>The proper way to fix this, IMHO, is that nginx simply must start looking at the upstream’s content length (or transfer encoding, once nginx starts using chunked responses with its upstreams). Part of the reason I’m writing this post is that Maxim Dounin, venerable nginx comitter and an OK chap overall, <a href="http://forum.nginx.org/read.php?2,216085,216094#msg-216094">told me</a> he doesn’t consider this a top priority at the moment, but I humbly disagree with his assessment of how serious the issue is. Until such a time as nginx is fixed about this, I think you must disable all content-manipulating nginx modules and instead handle all message length affecting work in your upstream (compression, addition, etc). This is what I opted to do with my django based web app, I replaced nginx’s gzip module with Django’s <tt><a href="https://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware.gzip">GZipMiddleware</a></tt>. It’s a terrible shame though. It’s doing the job of nginx for it, probably in a lesser fashion than how nginx could, it <a href="http://www.python.org/dev/peps/pep-0333/#handling-the-content-length-header">violates</a> a <b>must not</b> clause in Python’s WSGI PEP333, and I have empiric proof that Tim Berners-Lee chokes a kitten every time you do it.</p>
+<p>But what’s the alternative? Risk invisibly cached corrupt data for an undetermined length of time? Ditch nginx, which I think is the best HTTP server on this planet despite this debacle? Nah. Both are unacceptable.</p>
+<hr/>
+<p><span class="footer"><sup>1</sup> This post assumes convenient values of “absolutely certain”; also, everything related to security/content tampering is out of scope in this post. I’m talking about possibly misbehaving but certainly well-meaning components.</span></p>
+</div>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
+<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
+<a href="/tag/django/" rel="tag">django</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/http/" rel="tag">http</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/nginx/" rel="tag">nginx</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/python/" rel="tag">python</a>
+</div>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div aria-hidden="true" class="wp-block-spacer" style="height:var(--wp--preset--spacing--40)">
+</div>
+<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)"/>
 <div class="wp-block-comments wp-block-comments-query-loop">
-	
-	<h2 class="wp-block-heading">Comments</h2>
-	
-	<h3 id="comments" class="wp-block-comments-title">3 responses to &#8220;nginx+gzip module might silently corrupt data upon backend failure&#8221;</h3>
-	<ol class="wp-block-comment-template">
-<li id="comment-261" class="pingback even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar">  </div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://www.syngu.com/development/1227957194/yaniv-aknin-nginxplusgzip-module-might-silently-corrupt-data-upon-backend-failure/" target="_self">Yaniv Aknin: nginx+gzip module might silently&#8230; | Python | Syngu</a></div>
-				<div class="wp-block-comment-date"><time datetime="2011-11-05T08:39:25+00:00"><a href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/#comment-261">November 5, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>[&#8230;] 1 This post assumes convenient values of &#8220;absolutely certain&#8221;; also, everything related to security/content tampering is out of scope in this post. I&#8217;m talking about possibly misbehaving but certainly well-meaning components.  Tagged: django, http, nginx, python   &nbsp;   &nbsp;Python     Read the original post on Planet Python&#8230; [&#8230;]</p>
+<h2 class="wp-block-heading">Comments</h2>
+<h3 class="wp-block-comments-title" id="comments">3 responses to “nginx+gzip module might silently corrupt data upon backend failure”</h3>
+<ol class="wp-block-comment-template">
+<li class="pingback even thread-even depth-1" id="comment-261">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"> </div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://www.syngu.com/development/1227957194/yaniv-aknin-nginxplusgzip-module-might-silently-corrupt-data-upon-backend-failure/" rel="external nofollow ugc" target="_self">Yaniv Aknin: nginx+gzip module might silently… | Python | Syngu</a></div>
+<div class="wp-block-comment-date"><time datetime="2011-11-05T08:39:25+00:00"><a href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/#comment-261">November 5, 2011</a></time></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/?replytocom=261#respond" data-commentid="261" data-postid="1131" data-belowelement="comment-261" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin: nginx+gzip module might silently... | Python | Syngu" aria-label="Reply to Yaniv Aknin: nginx+gzip module might silently... | Python | Syngu">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-262" class="comment odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Andy Avatar" src="http://0.gravatar.com/avatar/92b06a237fa7ba5c3031011283d0f533?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/92b06a237fa7ba5c3031011283d0f533?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://nginx.org/" target="_self">Andy</a></div>
-				<div class="wp-block-comment-date"><time datetime="2013-07-30T23:07:53+00:00"><a href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/#comment-262">July 30, 2013</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+</div>
+<div class="wp-block-comment-content">
+<p>[…] 1 This post assumes convenient values of “absolutely certain”; also, everything related to security/content tampering is out of scope in this post. I’m talking about possibly misbehaving but certainly well-meaning components.  Tagged: django, http, nginx, python        Python     Read the original post on Planet Python… […]</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-262">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Andy Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/92b06a237fa7ba5c3031011283d0f533?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/92b06a237fa7ba5c3031011283d0f533?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://nginx.org/" rel="external nofollow ugc" target="_self">Andy</a></div>
+<div class="wp-block-comment-date"><time datetime="2013-07-30T23:07:53+00:00"><a href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/#comment-262">July 30, 2013</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>Can you possibly try nginx-1.5.3 and see if it improves things for you?</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/?replytocom=262#respond" data-commentid="262" data-postid="1131" data-belowelement="comment-262" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-263" class="comment byuser comment-author-yanivaknin bypostauthor even depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2013-07-31T01:58:39+00:00"><a href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/#comment-263">July 31, 2013</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>This was a while ago, I no longer work at the same place/have the same setup, but I&#8217;ll try to check this on a weekend and keep you posted. Thanks!</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/?replytocom=263#respond" data-commentid="263" data-postid="1131" data-belowelement="comment-263" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor even depth-2" id="comment-263">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2013-07-31T01:58:39+00:00"><a href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/#comment-263">July 31, 2013</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>This was a while ago, I no longer work at the same place/have the same setup, but I’ll try to check this on a weekend and keep you posted. Thanks!</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 </li>
 </ol>
 
-	
-
-		<div id="respond" style="padding-top:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);" class="comment-respond wp-block-post-comments-form">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2011/11/04/nginxgzip-module-might-silently-corrupt-data-upon-backend-failure/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="http://localhost/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p>
-<p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p>
-<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit wp-block-button"><input name="submit" type="submit" id="submit" class="wp-block-button__link wp-element-button" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1131" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
 <!-- #respond -->
-	
 </div>
-
-
-
-			
-
-<nav class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-21 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)" aria-label="Posts">
-	<div class="post-navigation-link-previous wp-block-post-navigation-link">
-<span class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow" aria-hidden="true">←</span><a href="/2011/01/31/introducing-django-ajaxerrors/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Introducing django-ajaxerrors</span></a>
+<nav aria-label="Posts" class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-21 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
+<div class="post-navigation-link-previous wp-block-post-navigation-link">
+<span aria-hidden="true" class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow">←</span><a href="/2011/01/31/introducing-django-ajaxerrors/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">Introducing django-ajaxerrors</span></a>
 </div>
-	<div class="post-navigation-link-next wp-block-post-navigation-link">
-<a href="/2011/11/05/pv-the-pipe-swiss-army-knife/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">pv: the pipe swiss army knife</span></a><span class="wp-block-post-navigation-link__arrow-next is-arrow-arrow" aria-hidden="true">→</span>
+<div class="post-navigation-link-next wp-block-post-navigation-link">
+<a href="/2011/11/05/pv-the-pipe-swiss-army-knife/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">pv: the pipe swiss army knife</span></a><span aria-hidden="true" class="wp-block-post-navigation-link__arrow-next is-arrow-arrow">→</span>
 </div>
 </nav>
-
-
-
-		</div>
-		
-	</div>
-	
+</div>
+</div>
 </main>
-
-
 <footer class="wp-block-template-part"></footer>
 </div>
-<script src="/wp-includes/js/comment-reply.min.js?ver=6.4.2" id="comment-reply-js" async data-wp-strategy="async"></script>
+<script async="" data-wp-strategy="async" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js?ver=6.4.2"></script>
 <script id="wp-block-template-skip-link-js-after">( function() {
 		var skipLinkTarget = document.querySelector( 'main' ),
 			sibling,
@@ -458,9 +353,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 		sibling.parentElement.insertBefore( skipLink, sibling );
 	}() );</script>
 <!-- start Simple Custom CSS and JS -->
-
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
 <script>window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

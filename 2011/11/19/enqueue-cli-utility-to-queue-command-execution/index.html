@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="max-image-preview:large">
-<title>enqueue: CLI utility to queue command execution &#8211; NIL: .to write(1) ~ help:about</title>
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Feed" href="/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; Comments Feed" href="/comments/feed/">
-<link rel="alternate" type="application/rss+xml" title="NIL: .to write(1) ~ help:about &raquo; enqueue: CLI utility to queue command execution Comments Feed" href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/feed/">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="max-image-preview:large" name="robots"/>
+<title>enqueue: CLI utility to queue command execution – NIL: .to write(1) ~ help:about</title>
+<link href="/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Feed" type="application/rss+xml"/>
+<link href="/comments/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » Comments Feed" type="application/rss+xml"/>
+<link href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/feed/" rel="alternate" title="NIL: .to write(1) ~ help:about » enqueue: CLI utility to queue command execution Comments Feed" type="application/rss+xml"/>
 <script>
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.2"}};
 /*! This file is auto-generated */
@@ -20,7 +21,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 .wp-block-site-title a:where(:not(.wp-element-button)):hover{text-decoration: none;}</style>
 <style id="wp-block-group-inline-css">.wp-block-group{box-sizing:border-box}</style>
 <style id="wp-block-page-list-inline-css">.wp-block-navigation .wp-block-page-list{align-items:var(--navigation-layout-align,initial);background-color:inherit;display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation .wp-block-navigation-item{background-color:inherit}</style>
-<link rel="stylesheet" id="wp-block-navigation-css" href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" media="all">
+<link href="/wp-includes/blocks/navigation/style.min.css?ver=6.4.2" id="wp-block-navigation-css" media="all" rel="stylesheet"/>
 <style id="wp-block-navigation-inline-css">.wp-block-navigation{font-weight: 500;}
 .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;text-decoration: none;}
 .wp-block-navigation a:where(:not(.wp-element-button)):hover{text-decoration: underline;}</style>
@@ -159,284 +160,178 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 			width: auto;
 			z-index: 100000;
 		}</style>
-<script src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2" id="wp-interactivity-js" defer data-wp-strategy="defer"></script>
-<script src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831" id="wp-block-navigation-view-js" defer data-wp-strategy="defer"></script>
-<link rel="https://api.w.org/" href="/wp-json/">
-<link rel="alternate" type="application/json" href="/wp-json/wp/v2/posts/1165">
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 6.4.2">
-<link rel="canonical" href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/">
-<link rel="shortlink" href="/?p=1165">
-<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2011%2F11%2F19%2Fenqueue-cli-utility-to-queue-command-execution%2F">
-<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2011%2F11%2F19%2Fenqueue-cli-utility-to-queue-command-execution%2F#038;format=xml">
+<script data-wp-strategy="defer" defer="" id="wp-interactivity-js" src="/wp-includes/js/dist/interactivity.min.js?ver=6.4.2"></script>
+<script data-wp-strategy="defer" defer="" id="wp-block-navigation-view-js" src="/wp-includes/blocks/navigation/view.min.js?ver=e3d6f3216904b5b42831"></script>
+<link href="/wp-json/" rel="https://api.w.org/"/>
+<link href="/wp-json/wp/v2/posts/1165" rel="alternate" type="application/json"/>
+<link href="/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
+<meta content="WordPress 6.4.2" name="generator"/>
+<link href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/" rel="canonical"/>
+<link href="/?p=1165" rel="shortlink"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2011%2F11%2F19%2Fenqueue-cli-utility-to-queue-command-execution%2F" rel="alternate" type="application/json+oembed"/>
+<link href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2011%2F11%2F19%2Fenqueue-cli-utility-to-queue-command-execution%2F#038;format=xml" rel="alternate" type="text/xml+oembed"/>
 <style id="wp-fonts-local">@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
 @font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:italic;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_italic_400.woff2') format('woff2');}
 @font-face{font-family:Cardo;font-style:normal;font-weight:700;font-display:fallback;src:url('/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}</style>
 </head>
-
 <body class="post-template-default single single-post postid-1165 single-format-standard wp-embed-responsive">
-
 <div class="wp-site-blocks">
 <header class="wp-block-template-part">
 <div class="wp-block-group alignwide has-base-background-color has-background has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:20px;padding-bottom:20px">
-	
-	<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
-		
-		<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
-			
-
-			
-			<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
-				<p class="wp-block-site-title"><a href="/" target="_self" rel="home">NIL: .to write(1) ~ help:about</a></p>
-			</div>
-			
-		</div>
-		
-
-		<nav class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" aria-label="" data-wp-interactive data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}'><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open " data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
-			<div class="wp-block-navigation__responsive-container  " id="modal-1" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" tabindex="-1">
-				<div class="wp-block-navigation__responsive-close" tabindex="-1">
-					<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
-							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
-						<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
-							<ul class="wp-block-page-list">
+<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flex wp-container-core-group-layout-2 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-layout-flow wp-container-core-group-layout-1 wp-block-group-is-layout-flow">
+<p class="wp-block-site-title"><a href="/" rel="home" target="_self">NIL: .to write(1) ~ help:about</a></p>
+</div>
+</div>
+<nav aria-label="" class="is-responsive items-justified-right is-fallback wp-block-navigation is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-layout-1 wp-block-navigation-is-layout-flex" data-wp-context='{"core":{"navigation":{"overlayOpenedBy":[],"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}}}' data-wp-interactive=""><button aria-haspopup="true" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" data-wp-on--click="actions.core.navigation.openMenuOnClick" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="1.5" width="16" x="4" y="7.5"></rect><rect height="1.5" width="16" x="4" y="15"></rect></svg></button>
+<div class="wp-block-navigation__responsive-container" data-wp-class--has-modal-open="selectors.core.navigation.isMenuOpen" data-wp-class--is-menu-open="selectors.core.navigation.isMenuOpen" data-wp-effect="effects.core.navigation.initMenu" data-wp-on--focusout="actions.core.navigation.handleMenuFocusout" data-wp-on--keydown="actions.core.navigation.handleMenuKeydown" id="modal-1" tabindex="-1">
+<div class="wp-block-navigation__responsive-close" tabindex="-1">
+<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-label="selectors.core.navigation.ariaLabel" data-wp-bind--aria-modal="selectors.core.navigation.ariaModal" data-wp-bind--role="selectors.core.navigation.roleAttribute" data-wp-effect="effects.core.navigation.focusFirstElement">
+<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.core.navigation.closeMenuOnClick"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
+<div class="wp-block-navigation__responsive-container-content" id="modal-1-content">
+<ul class="wp-block-page-list">
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click menu-item-home"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/">About</a></li>
 <li class="wp-block-pages-list__item wp-block-navigation-item open-on-hover-click"><a class="wp-block-pages-list__item__link wp-block-navigation-item__content" href="/all-posts/">All Posts</a></li>
 </ul>
-						</div>
-					</div>
-				</div>
-			</div></nav>
-	</div>
-	
+</div>
+</div>
+</div>
+</div></nav>
+</div>
 </div>
 </header>
-
-
 <main class="wp-block-group alignfull is-layout-flow wp-block-group-is-layout-flow">
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
-		
-
-		
-		<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
-			<h1 class="wp-block-post-title has-x-large-font-size">enqueue: CLI utility to queue command execution</h1>
-
-			<div class="wp-block-template-part">
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
+<div class="wp-block-group is-vertical is-content-justification-stretch is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex" style="padding-top:0;padding-bottom:0">
+<h1 class="wp-block-post-title has-x-large-font-size">enqueue: CLI utility to queue command execution</h1>
+<div class="wp-block-template-part">
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-	
-	<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
-		<div class="wp-block-post-date"><time datetime="2011-11-19T02:02:30+00:00"><a href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/">Nov 19, 2011</a></time></div>
-
-		
-		<p class="has-contrast-2-color has-text-color">—</p>
-		
-
-		
-		<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
-		
-
-		<div class="wp-block-post-author-name"><a href="/author/yanivaknin/" target="_self" class="wp-block-post-author-name__link">Yaniv Aknin</a></div>
-
-		<div class="taxonomy-category wp-block-post-terms">
+<div class="wp-block-group is-content-justification-left is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex">
+<div class="wp-block-post-date"><time datetime="2011-11-19T02:02:30+00:00"><a href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/">Nov 19, 2011</a></time></div>
+<p class="has-contrast-2-color has-text-color">—</p>
+<p class="has-small-font-size has-contrast-2-color has-text-color">by</p>
+<div class="wp-block-post-author-name"><a class="wp-block-post-author-name__link" href="/author/yanivaknin/" target="_self">Yaniv Aknin</a></div>
+<div class="taxonomy-category wp-block-post-terms">
 <span class="wp-block-post-terms__prefix">in </span><a href="/category/my-projects/" rel="tag">My Projects</a>
 </div>
-
-	</div>
-	
 </div>
-
-
 </div>
-		</div>
-		
-	</div>
-	
-
-	<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
-<p><span style="color:#990000;"><strong>Update:</strong> As you can see in the comments below, and as I feared, it turned out that <em>Lluís Batlle i Rossell</em> already <a href="http://vicerveza.homeunix.net/~viric/soft/ts/">implemented</a> something much like Enqueue, only better in many regards. I doubt I&#8217;ll keep maintaining enqueue, there&#8217;s no reason to. Oh well, it was a nice afternoon project.</span></p>
+</div>
+</div>
+</div>
+<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
+<p><span style="color:#990000;"><strong>Update:</strong> As you can see in the comments below, and as I feared, it turned out that <em>Lluís Batlle i Rossell</em> already <a href="http://vicerveza.homeunix.net/~viric/soft/ts/">implemented</a> something much like Enqueue, only better in many regards. I doubt I’ll keep maintaining enqueue, there’s no reason to. Oh well, it was a nice afternoon project.</span></p>
 <p>Something that always bugged me with my shell workflow is the problem of queueing commands to run one after the other, while adding commands to the queue as they previous commands are being executed.</p>
-<p>Take, for example, a simple usecase: we want to move three large files from <tt>diskA</tt> to <tt>diskB</tt>. The problem is that you don&#8217;t know the name of the files in advance, perhaps because you&#8217;re renaming them manually and it takes you time to type, or because you&#8217;re hunting for them in the directory tree, or whatever. Here are some solutions to this:</p>
+<p>Take, for example, a simple usecase: we want to move three large files from <tt>diskA</tt> to <tt>diskB</tt>. The problem is that you don’t know the name of the files in advance, perhaps because you’re renaming them manually and it takes you time to type, or because you’re hunting for them in the directory tree, or whatever. Here are some solutions to this:</p>
 <ul>
 <li>Start one command in the background, then do something like <tt>fg ; <em>second-command</em></tt>. Then prepare the third command, but only run it after you saw the second finished. Meh. Or,</li>
 <li>Just let the jobs run concurrently in the background as you run them (using the <tt>&amp;</tt> control operator). But since each command is maxing out a resource (CPU, disk, etc), this becomes woefully inefficient really quickly. Or,</li>
-<li>Use a mad concoction of <tt>Ctrl-Z</tt>, <tt>fg</tt>/<tt>bg</tt>, <tt>wait n</tt> or (if you left the shell and want to add something to the queue) use a madder concoction of <tt>while pgrep -f 'mv /disk/A/foo' &gt; /dev/null; do ...</tt> (I&#8217;ll leave it as an exercise to the frustrated reader to finish that little one liner). But then again, you could also spend that time getting a paper-cut at the edge of your nostril, and it would probably be just as much fun and maybe even less error prone. Or,</li>
+<li>Use a mad concoction of <tt>Ctrl-Z</tt>, <tt>fg</tt>/<tt>bg</tt>, <tt>wait n</tt> or (if you left the shell and want to add something to the queue) use a madder concoction of <tt>while pgrep -f 'mv /disk/A/foo' &gt; /dev/null; do ...</tt> (I’ll leave it as an exercise to the frustrated reader to finish that little one liner). But then again, you could also spend that time getting a paper-cut at the edge of your nostril, and it would probably be just as much fun and maybe even less error prone. Or,</li>
 <li>Start a shell process reading from a named pipe (<tt>mkfifo(1)</tt>), and write the commands to the named pipe (credit to my friend and colleague <em>m0she</em> for this sneaky idea). In practice, I found it unwieldy at best, and impossible to extend with bells-and-whistle features if you need them, first and foremost, easily listing the queue and your position in it.</li>
 </ul>
-<p>I reckon you could think of a few more ways, but I doubt (and hope! 🙂 none would be more convenient than to simply use <strong><a href="https://github.com/yaniv-aknin/Enqueue">Enqueue</a></strong>, a simple and hopefully lightweight Python/twisted command line queuer (written today by yours truly). Usage looks a bit like so:<br>
-[sourcecode light=&#8221;1&#8243;]<br>
-$ alias nq=enqueue<br>
-$ nq add mv /disk1/file1 /disk2/file1<br>
-$ nq add mv /disk1/file2 /disk2/file2<br>
-$ nq add beep<br>
-$ nq list<br>
-* mv /disk1/file1 /disk2/file1<br>
-  mv /disk1/file2 /disk2/file2<br>
-  beep<br>
-$<br>
-[/sourcecode]<br>
-Nice and easy. Enqueue is still a bit rough around the edges and not very feature rich, but it does the job for me and I hope you&#8217;d like it too. Queues are managed by a twisted daemon that talks to the CLI client over UNIX domain sockets, and the whole thing fits in about 300 lines of Python. Feel free to open issues/send pull requests on GitHub if you find bugs or want to suggest something, I&#8217;ll try to keep up. Promise.</p>
-<hr>
-
-<p><span class="footer">p.s.: Why is it that every time I dabble in Python packaging I end up (a) horribly frustrated and (b) feeling the <a href="http://pypi.python.org/pypi/Enqueue/0.1.0">result</a> is awfully inadequate? Yes, I know I could probably package enqueue better, I know packaging isn&#8217;t Python&#8217;s strongest side and I know <a href="http://lmgtfy.com/?q=tarek+ziade+packaging">the future</a> is better than the present, but the present sucks and I just had to say this. Yeah, I also walk around in the summertime sayin&#8217; &#8220;how about this heat&#8221;.</span></p>
+<p>I reckon you could think of a few more ways, but I doubt (and hope! 🙂 none would be more convenient than to simply use <strong><a href="https://github.com/yaniv-aknin/Enqueue">Enqueue</a></strong>, a simple and hopefully lightweight Python/twisted command line queuer (written today by yours truly). Usage looks a bit like so:<br/>
+[sourcecode light=”1″]<br/>
+$ alias nq=enqueue<br/>
+$ nq add mv /disk1/file1 /disk2/file1<br/>
+$ nq add mv /disk1/file2 /disk2/file2<br/>
+$ nq add beep<br/>
+$ nq list<br/>
+* mv /disk1/file1 /disk2/file1<br/>
+  mv /disk1/file2 /disk2/file2<br/>
+  beep<br/>
+$<br/>
+[/sourcecode]<br/>
+Nice and easy. Enqueue is still a bit rough around the edges and not very feature rich, but it does the job for me and I hope you’d like it too. Queues are managed by a twisted daemon that talks to the CLI client over UNIX domain sockets, and the whole thing fits in about 300 lines of Python. Feel free to open issues/send pull requests on GitHub if you find bugs or want to suggest something, I’ll try to keep up. Promise.</p>
+<hr/>
+<p><span class="footer">p.s.: Why is it that every time I dabble in Python packaging I end up (a) horribly frustrated and (b) feeling the <a href="http://pypi.python.org/pypi/Enqueue/0.1.0">result</a> is awfully inadequate? Yes, I know I could probably package enqueue better, I know packaging isn’t Python’s strongest side and I know <a href="http://lmgtfy.com/?q=tarek+ziade+packaging">the future</a> is better than the present, but the present sucks and I just had to say this. Yeah, I also walk around in the summertime sayin’ “how about this heat”.</span></p>
 </div>
-
-	
-	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
-		<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
-<a href="/tag/cli/" rel="tag">cli</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/python/" rel="tag">python</a><span class="wp-block-post-terms__separator">  </span><a href="/tag/queueing/" rel="tag">queueing</a>
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
+<div class="taxonomy-post_tag is-style-pill wp-block-post-terms">
+<a href="/tag/cli/" rel="tag">cli</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/python/" rel="tag">python</a><span class="wp-block-post-terms__separator"> </span><a href="/tag/queueing/" rel="tag">queueing</a>
 </div>
-
-		
-		<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-			
-			<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer">
-			</div>
-			
-
-			
-			<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)">
-			
-
-			
-
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div aria-hidden="true" class="wp-block-spacer" style="height:var(--wp--preset--spacing--40)">
+</div>
+<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)"/>
 <div class="wp-block-comments wp-block-comments-query-loop">
-	
-	<h2 class="wp-block-heading">Comments</h2>
-	
-	<h3 id="comments" class="wp-block-comments-title">3 responses to &#8220;enqueue: CLI utility to queue command execution&#8221;</h3>
-	<ol class="wp-block-comment-template">
-<li id="comment-284" class="comment even thread-even depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Tom Swirly Avatar" src="http://1.gravatar.com/avatar/753ef975f85896eabdb64d9aa6ad4cbe?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/753ef975f85896eabdb64d9aa6ad4cbe?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://gravatar.com/tomswirly" target="_self">Tom Swirly</a></div>
-				<div class="wp-block-comment-date"><time datetime="2011-11-20T23:05:42+00:00"><a href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/#comment-284">November 20, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>Well, I have to agree about Python packaging &#8211; because I didn&#8217;t manage to get this installed.</p>
-<p>I realized there was a dependency on setuptools, and tried to install that &#8211; but for some reason it installed into my (experimental) Python 2.7 distribution instead of my Python 2.6 which is the default on my command line.</p>
-<p>Never mind, I&#8217;ll use 2.7, I thought.  And indeed, python2.7 setup.py install seemed to complete correctly&#8230; but then where is this &#8220;enqueue&#8221; executable actually installed?  Not in anything that&#8217;s in my path, or in the Enqueue directory&#8230;</p>
-<p>Much looking forward to packaging/distutils2 becoming universal &#8211; eventually&#8230;</p>
+<h2 class="wp-block-heading">Comments</h2>
+<h3 class="wp-block-comments-title" id="comments">3 responses to “enqueue: CLI utility to queue command execution”</h3>
+<ol class="wp-block-comment-template">
+<li class="comment even thread-even depth-1" id="comment-284">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Tom Swirly Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://1.gravatar.com/avatar/753ef975f85896eabdb64d9aa6ad4cbe?s=40&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/753ef975f85896eabdb64d9aa6ad4cbe?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://gravatar.com/tomswirly" rel="external nofollow ugc" target="_self">Tom Swirly</a></div>
+<div class="wp-block-comment-date"><time datetime="2011-11-20T23:05:42+00:00"><a href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/#comment-284">November 20, 2011</a></time></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/?replytocom=284#respond" data-commentid="284" data-postid="1165" data-belowelement="comment-284" data-respondelement="respond" data-replyto="Reply to Tom Swirly" aria-label="Reply to Tom Swirly">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li>
-<li id="comment-285" class="comment odd alt thread-odd thread-alt depth-1">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Kushal Kumaran Avatar" src="http://1.gravatar.com/avatar/7b02a1cb905b4cad6228173402ebb682?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/7b02a1cb905b4cad6228173402ebb682?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name">Kushal Kumaran</div>
-				<div class="wp-block-comment-date"><time datetime="2011-11-21T10:52:59+00:00"><a href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/#comment-285">November 21, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
+</div>
+<div class="wp-block-comment-content">
+<p>Well, I have to agree about Python packaging – because I didn’t manage to get this installed.</p>
+<p>I realized there was a dependency on setuptools, and tried to install that – but for some reason it installed into my (experimental) Python 2.7 distribution instead of my Python 2.6 which is the default on my command line.</p>
+<p>Never mind, I’ll use 2.7, I thought.  And indeed, python2.7 setup.py install seemed to complete correctly… but then where is this “enqueue” executable actually installed?  Not in anything that’s in my path, or in the Enqueue directory…</p>
+<p>Much looking forward to packaging/distutils2 becoming universal – eventually…</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-285">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-14 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Kushal Kumaran Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://1.gravatar.com/avatar/7b02a1cb905b4cad6228173402ebb682?s=40&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/7b02a1cb905b4cad6228173402ebb682?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name">Kushal Kumaran</div>
+<div class="wp-block-comment-date"><time datetime="2011-11-21T10:52:59+00:00"><a href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/#comment-285">November 21, 2011</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
 <p>The last time I had this need, I found taskspooler (<a href="http://freecode.com/projects/taskspooler" rel="nofollow ugc">http://freecode.com/projects/taskspooler</a>).</p>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/?replytocom=285#respond" data-commentid="285" data-postid="1165" data-belowelement="comment-285" data-respondelement="respond" data-replyto="Reply to Kushal Kumaran" aria-label="Reply to Kushal Kumaran">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	<ol><li id="comment-286" class="comment byuser comment-author-yanivaknin bypostauthor even depth-2">
-	
-	<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
-			<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo wp-block-avatar__image" height="40" width="40" decoding="async"></div>
-			
-			<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
-				<div class="wp-block-comment-author-name"><a rel="external nofollow ugc" href="http://niltowrite.wordpress.com/" target="_self">Yaniv Aknin</a></div>
-				<div class="wp-block-comment-date"><time datetime="2011-11-21T12:35:48+00:00"><a href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/#comment-286">November 21, 2011</a></time></div>
-			</div>
-			
-		</div>
-		
-		<div class="wp-block-comment-content">
-<p>I *so* knew someone would write such a comment and I&#8217;d find out there was such a tool, but by the Gods I looked and didn&#8217;t find it! :-/</p>
-<p>(I was looking for &#8216;queueing&#8217;, not &#8216;spooling&#8217;&#8230;)</p>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
 </div>
-		
-		<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
-			
-			<div class="wp-block-comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/?replytocom=286#respond" data-commentid="286" data-postid="1165" data-belowelement="comment-286" data-respondelement="respond" data-replyto="Reply to Yaniv Aknin" aria-label="Reply to Yaniv Aknin">Reply</a></div>
-		</div>
-		
-	</div>
-	
-	</li></ol>
+</div>
+<ol><li class="comment byuser comment-author-yanivaknin bypostauthor even depth-2" id="comment-286">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
+<div class="wp-block-avatar"><img alt="Yaniv Aknin Avatar" class="avatar avatar-40 photo wp-block-avatar__image" decoding="async" height="40" src="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=40&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/9e42ce18ec8a40b6334a6b0283d72528?s=80&amp;d=mm&amp;r=g 2x" width="40"/></div>
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-comment-author-name"><a href="http://niltowrite.wordpress.com/" rel="external nofollow ugc" target="_self">Yaniv Aknin</a></div>
+<div class="wp-block-comment-date"><time datetime="2011-11-21T12:35:48+00:00"><a href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/#comment-286">November 21, 2011</a></time></div>
+</div>
+</div>
+<div class="wp-block-comment-content">
+<p>I *so* knew someone would write such a comment and I’d find out there was such a tool, but by the Gods I looked and didn’t find it! :-/</p>
+<p>(I was looking for ‘queueing’, not ‘spooling’…)</p>
+</div>
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
+<div class="wp-block-comment-reply-link"></div>
+</div>
+</div>
+</li></ol>
 </li>
 </ol>
 
-	
-
-		<div id="respond" style="padding-top:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);" class="comment-respond wp-block-post-comments-form">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2011/11/19/enqueue-cli-utility-to-queue-command-execution/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="http://localhost/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p>
-<p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p>
-<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit wp-block-button"><input name="submit" type="submit" id="submit" class="wp-block-button__link wp-element-button" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1165" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
 <!-- #respond -->
-	
 </div>
-
-
-
-			
-
-<nav class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-21 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)" aria-label="Posts">
-	<div class="post-navigation-link-previous wp-block-post-navigation-link">
-<span class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow" aria-hidden="true">←</span><a href="/2011/11/05/pv-the-pipe-swiss-army-knife/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">pv: the pipe swiss army knife</span></a>
+<nav aria-label="Posts" class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-21 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
+<div class="post-navigation-link-previous wp-block-post-navigation-link">
+<span aria-hidden="true" class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow">←</span><a href="/2011/11/05/pv-the-pipe-swiss-army-knife/" rel="prev"><span class="post-navigation-link__label">Previous: </span> <span class="post-navigation-link__title">pv: the pipe swiss army knife</span></a>
 </div>
-	<div class="post-navigation-link-next wp-block-post-navigation-link">
-<a href="/2011/12/11/walking-python-objects-recursively/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Walking Python objects recursively</span></a><span class="wp-block-post-navigation-link__arrow-next is-arrow-arrow" aria-hidden="true">→</span>
+<div class="post-navigation-link-next wp-block-post-navigation-link">
+<a href="/2011/12/11/walking-python-objects-recursively/" rel="next"><span class="post-navigation-link__label">Next: </span> <span class="post-navigation-link__title">Walking Python objects recursively</span></a><span aria-hidden="true" class="wp-block-post-navigation-link__arrow-next is-arrow-arrow">→</span>
 </div>
 </nav>
-
-
-
-		</div>
-		
-	</div>
-	
+</div>
+</div>
 </main>
-
-
 <footer class="wp-block-template-part"></footer>
 </div>
-<script src="/wp-includes/js/comment-reply.min.js?ver=6.4.2" id="comment-reply-js" async data-wp-strategy="async"></script>
+<script async="" data-wp-strategy="async" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js?ver=6.4.2"></script>
 <script id="wp-block-template-skip-link-js-after">( function() {
 		var skipLinkTarget = document.querySelector( 'main' ),
 			sibling,
@@ -476,9 +371,8 @@ Nice and easy. Enqueue is still a bit rough around the edges and not very featur
 		sibling.parentElement.insertBefore( skipLink, sibling );
 	}() );</script>
 <!-- start Simple Custom CSS and JS -->
-
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VJKKHDVY2P"></script>
 <script>window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
